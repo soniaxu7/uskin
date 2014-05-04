@@ -1,0 +1,110 @@
+// Mixins
+
+// Button sizes
+.button-size(@v_padding; @h_padding; @font_size; @height; @line_height; @border_radius) {
+  padding: @v_padding @h_padding;
+  font-size: @font_size;
+  height: @height;
+  line-height: @line_height;
+  border-radius: @border_radius;
+}
+
+// Button hue
+.button-hue(@color; @bg_color; @bg_hover_color; @bg_active_color) {
+  color: @color;
+  background-color: @bg_color;
+  border-color: @bg_color;
+  &:hover {
+    color: @color;
+    background-color: @bg_hover_color;
+    border-color: @bg_hover_color;
+  }
+  &:active {
+    color: @color;
+    background-color: @bg_active_color;
+    background-color: @bg_active_color;
+  }
+}
+
+.button-hue(@color; @bg_color; @bg_hover_color; @bg_active_color; @border_color) {
+  color: @color;
+  background-color: @bg_color;
+  border-color: @border_color;
+  &:hover {
+    color: @color;
+    background-color: @bg_hover_color;
+  }
+  &:active {
+    color: @color;
+    background-color: @bg_active_color;
+  }
+}
+
+// Variables
+@btn_v_padding: 0;
+@btn_h_padding: 10px;
+@btn_font_size: 12px;
+@btn_min_width: 80px;
+@btn_height: 34px;
+@btn_line_height: 34px;
+@btn_border_radius: 2px;
+
+@btn_color: #fff;
+@btn_bg_color: #00afc8;
+@btn_bg_hover_color: #00a5bd;
+@btn_bg_active_color: #009bb1;
+
+@btn_bg_create_color: #1eb9a5; 
+@btn_bg_create_hover_color: #09b29c;
+@btn_bg_create_active_color: #00a993;
+
+@btn_bg_del_color: #e05c69; 
+@btn_bg_del_hover_color: #d6505c;
+@btn_bg_del_active_color: #cd4855;
+
+@btn_disable_color: #a8b3be;
+@btn_bg_disable_color: #d9e3e5; 
+@btn_bg_disable_hover_color: #d9e3e5;
+@btn_bg_disable_active_color: #d9e3e5;
+
+.btn {
+  display: inline-block;
+  min-width: @btn_min_width;
+  border: 1px solid transparent;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_line_height; @btn_border_radius);
+  .box-sizing(border-box);
+  .button-hue(@btn_color; @btn_bg_color; @btn_bg_hover_color; @btn_bg_active_color);
+  .user-select(none);
+
+  &.disabled {
+    cursor: not-allowed;
+    .button-hue(@btn_color; @btn_bg_disable_color; @btn_bg_disable_hover_color; @btn_bg_disable_active_color);
+  }
+}
+
+
+
+// Color
+.btn-create {
+  .button-hue(@btn_color; @btn_bg_create_color; @btn_bg_create_hover_color; @btn_bg_create_active_color);
+}
+
+.btn-del {
+  .button-hue(@btn_color; @btn_bg_del_color; @btn_bg_del_hover_color; @btn_bg_del_active_color);
+}
+
+
+// Size
+.btn-lg {
+  .button-size(0; 30px; 16px; 46px; 46px; 2px);
+}
+
+.btn-sm {
+  .button-size(0; 30px; 12px; 46px; 46px; 2px);
+}
+
