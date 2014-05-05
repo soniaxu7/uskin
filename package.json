@@ -11,7 +11,7 @@
   "homepage": "https://github.com/icecreamliker/uskin",
   "author": "LeeYao <yaoli111144@gmail.com>",
   "scripts": {
-    "test": "grunt test"
+    "test": "make test"
   },
   "style": "dist/css/uskin.css",
   "less": "less/uskin.less",

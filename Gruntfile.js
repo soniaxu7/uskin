@@ -99,6 +99,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['clean', 'less', 'cssmin', 'usebanner', 'copy']);
 
   // TODO
-  grunt.registerTask('test', []);
+  grunt.registerTask('test', ['clean', 'less', 'cssmin']);
 
 };
