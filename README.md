@@ -25,17 +25,25 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 uskin/
-├── css/
-│   ├── uskin.css
-│   └── uskin.min.css
+├── less/
 ├── js/
-│   ├── uskin.js
-│   └── uskin.min.js
-└── fonts/
-    ├── icomoon.eot
-    ├── icomoon.svg
-    ├── icomoon.ttf
-    └── icomoon.woff
+├── fonts/
+│   ├── icomoon.eot
+│   ├── icomoon.svg
+│   ├── icomoon.ttf
+│   └── icomoon.woff
+├── dist/
+│   ├── css/
+│   │   ├── uskin.css
+│   │   ├── uskin.min.css
+│   │   └── uskin.css.map
+│   ├── js/
+│   │   ├── uskin.js
+│   │   └── uskin.min.js
+│   └── fonts/
+└── docs/
+    ├── examples/
+    └── dist/
 ```
 // TODO more description and more structure
 

@@ -31,21 +31,31 @@
   }
 
   ul {
+    position: relative;
 
-    &:last-child {
-      &:after {
+    &:first-child {
+      &:before {
         display: none;
       }
     }
 
-    &:after {
+    &:before {
       display: block;
       margin: 0 16px 5px;
       height: 5px;
       border-bottom: 1px solid #dcdcdc;
       content: "";
     }
+
     li {
+
+      &.dropdown-header {
+        height: 20px;
+        line-height: 20px;
+        font-weight: normal;
+        padding-left: 16px;
+        color: gray;
+      }
 
       a {
         display: block;
