@@ -1,0 +1,60 @@
+
+
+// Horizontal
+.btn-group {
+  display: inline-block;
+  > .btn {
+    float: left;
+    margin-right: 1px;
+  }
+  > .btn:first-child {
+    .border-right-radius(0);
+  }
+  > .btn:last-child {
+    margin-right: 0;
+    .border-left-radius(0);
+  }
+  > .btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+
+}
+
+
+// Vertical
+.btn-group-vertical {
+  display: inline-block;
+  > .btn {
+    display: block;
+    margin-bottom: 1px;
+  }
+  > .btn:first-child {
+    .border-bottom-radius(0);
+  }
+  > .btn:last-child {
+    margin-bottom: 0;
+    .border-top-radius(0);
+  }
+  > .btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+  }
+}
+
+// Initial btn width
+.btn-group-initial > .btn { min-width: initial; }
+
+// Justified
+.btn-group-justified {
+  &.btn-group {
+    display: table;
+    wdith: 100%;
+    > .btn {
+      float: none;
+      display: table-cell;
+      width: 1%;
+    }
+  }
+  &.btn-group-vertical {
+    display: block;
+  }
+}
