@@ -45,8 +45,8 @@
 @btn_h_padding: 10px;
 @btn_font_size: 12px;
 @btn_min_width: 80px;
-@btn_height: 34px;
-@btn_line_height: 34px;
+@btn_height: 32px;
+@btn_line_height: 32px;
 @btn_border_radius: 2px;
 
 @btn_color: #fff;
@@ -80,10 +80,10 @@
   .box-sizing(border-box);
   .button-hue(@btn_color; @btn_bg_color; @btn_bg_hover_color; @btn_bg_active_color);
   .user-select(none);
-
+  &[disabled],
   &.disabled {
-    cursor: not-allowed;
     .button-hue(@btn_disable_color; @btn_bg_disable_color; @btn_bg_disable_hover_color; @btn_bg_disable_active_color);
+    cursor: not-allowed;
   }
 }
 
@@ -107,4 +107,7 @@
 .btn-sm {
   .button-size(0; 30px; 12px; 46px; 46px; 2px);
 }
+
+// Initialize btn width
+.btn-initial { min-width: initial; }
 

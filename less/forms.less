@@ -1,0 +1,45 @@
+// Mixins
+
+
+// Variables
+
+
+input {
+  padding: 4px 10px;
+  border: 1px solid #e2e7ea;
+  border-radius: 2px;
+  height: 22px;
+  line-height: 22px;
+  .box-sizing(content-box);
+
+  &:hover,
+  &:focus {
+    border-color: #00afc8;
+  }
+
+  &.error {
+    border-color: #e44444;
+  }
+}
+
+
+// Disabled and read-only inputs
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  color: #b8c5ce;
+  border-color: #e7ebee;
+  background-color: #f8fafc;
+  cursor: not-allowed !important;
+}
+// Explicitly reset the colors here
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+
