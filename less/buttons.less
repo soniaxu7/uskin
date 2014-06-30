@@ -67,6 +67,14 @@
 @btn_bg_disable_hover_color: #d9e3e5;
 @btn_bg_disable_active_color: #d9e3e5;
 
+@btn_status_color: #738293;
+@btn_status_selected_color: #252f3d;
+@btn_bg_status_color: #ecf0f2;
+@btn_bg_status_hover_color: #b9f1f9;
+@btn_bg_status_selected_color: #5cd0e0;
+
+
+
 .btn {
   display: inline-block;
   min-width: @btn_min_width;
@@ -79,7 +87,6 @@
   .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_line_height; @btn_border_radius);
   .box-sizing(border-box);
   .button-hue(@btn_color; @btn_bg_color; @btn_bg_hover_color; @btn_bg_active_color);
-  .user-select(none);
   &[disabled],
   &.disabled {
     .button-hue(@btn_disable_color; @btn_bg_disable_color; @btn_bg_disable_hover_color; @btn_bg_disable_active_color);
@@ -100,14 +107,32 @@
 
 
 // Size
+.btn-xl {
+  .button-size(0; 40px; 18px; 48px; 48px; 2px);
+}
+
 .btn-lg {
-  .button-size(0; 30px; 16px; 46px; 46px; 2px);
+  .button-size(0; 20px; 14px; 40px; 40px; 2px);
 }
 
 .btn-sm {
-  .button-size(0; 30px; 12px; 46px; 46px; 2px);
+  .button-size(0; 12px; 12px; 28px; 28px; 2px);
+}
+
+.btn-xs{
+  .button-size(0; 12px; 12px; 24px; 24px; 2px);
 }
 
 // Initialize btn width
 .btn-initial { min-width: initial; }
+
+// Status button
+.btn-status {
+  .button-hue(@btn_status_color; @btn_bg_status_color; @btn_bg_status_hover_color; @btn_bg_status_hover_color);
+  &.selected {
+    color: @btn_status_selected_color;
+    background-color: @btn_bg_status_selected_color;
+    border-color: @btn_bg_status_selected_color;
+  }
+}
 
