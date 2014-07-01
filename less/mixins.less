@@ -40,4 +40,32 @@
      border-top-left-radius: @radius;
 }
 
+// Fixed width & height
+.fixed-width(@value){
+  width: @value;
+  min-width: @value;
+  max-width: @value;
+}
+.fixed-height(@value){
+  height: @value;
+  min-height: @value;
+  max-height: @value;
+}
+
+// Transform
+.transform(@value){
+  -webkit-transform: @value;
+     -moz-transform: @value;
+      -ms-transform: @value;
+          transform: @value;
+}
+
+// Box shadow
+.box-shadow(@value){
+  -webkit-box-shadow: @value;
+     -moz-box-shadow: @value;
+      -ms-box-shadow: @value;
+          box-shadow: @value;
+}
+
 

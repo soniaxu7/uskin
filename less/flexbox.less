@@ -1,3 +1,8 @@
+// http://stackoverflow.com/questions/15662578/flexible-box-model-display-flex-box-flexbox by RubyLouvre
+
+// Modified by LeeY
+
+
 // display: flex
 
 .flexbox() {
@@ -197,44 +202,3 @@
     lign-self:@value
 }
 
-//===========================================================
-//  http://stackoverflow.com/questions/15662578/flexible-box-model-display-flex-box-flexbox by RubyLouvre
-.user-select(){
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-.fixed-width(@value){
-   width:@value;
-   min-width:@value;
-   max-width:@value;
-}
-.fixed-height(@value){
-    height:@value;
-    min-height:@value;
-    max-height:@value;
-}
-.box-sizing(@value){
-    -moz-box-sizing:@value;    /* Firefox, other Gecko */
-    box-sizing: @value;         /* Opera/IE 8+ */
-}
-.brimming(){
-    width: 100%;
-    height: 100%;
-}
-.transform(@value){
-    transform:@value;
-    -moz-transform:@value;
-    -webkit-transform:@value;
-    -ms-transform:@value;
-}
-.box-shadow(@value){
-    -webkit-box-shadow: @value;
-    -moz-box-shadow: @value;
-    -ms-box-shadow:@value;
-    box-shadow:@value;
-}
-//=========================================================
