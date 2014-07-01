@@ -1,3 +1,33 @@
+// Inherit from tips.less
+
 // Mixins
 
 // Variables
+@notify_padding: 12px 12px 12px 20px;
+@notify_width: 200px;
+@notify_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+
+
+
+.notify {
+  .tip();
+  padding: @notify_padding;
+  width: @notify_width;
+  box-shadow: @notify_shadow;
+  overflow: hidden;
+}
+
+.notify-success {
+  .tip-success();
+}
+
+.notify-warning {
+  .tip-warning();
+}
+
+.notify-danger {
+  .tip-danger();
+}
+
+
+
