@@ -10,34 +10,34 @@
 }
 
 // Button hue
-.button-hue(@color; @bg_color; @bg_hover_color; @bg_active_color) {
+.button-hue(@color; @bg_color; @hover_bg_color; @active_bg_color) {
   color: @color;
   background-color: @bg_color;
   border-color: @bg_color;
   &:hover {
     color: @color;
-    background-color: @bg_hover_color;
-    border-color: @bg_hover_color;
+    background-color: @hover_bg_color;
+    border-color: @hover_bg_color;
   }
   &:active {
     color: @color;
-    background-color: @bg_active_color;
-    background-color: @bg_active_color;
+    background-color: @active_bg_color;
+    background-color: @active_bg_color;
   }
 }
 
 // For outline-button
-.button-hue(@color; @bg_color; @bg_hover_color; @bg_active_color; @border_color) {
+.button-hue(@color; @bg_color; @hover_bg_color; @active_bg_color; @border_color) {
   color: @color;
   background-color: @bg_color;
   border-color: @border_color;
   &:hover {
     color: @color;
-    background-color: @bg_hover_color;
+    background-color: @hover_bg_color;
   }
   &:active {
     color: @color;
-    background-color: @bg_active_color;
+    background-color: @active_bg_color;
   }
 }
 
@@ -52,27 +52,27 @@
 
 @btn_color: #fff;
 @btn_bg_color: #00afc8;
-@btn_bg_hover_color: #00a5bd;
-@btn_bg_active_color: #009bb1;
+@btn_hover_bg_color: #00a5bd;
+@btn_active_bg_color: #009bb1;
 
-@btn_bg_create_color: #1eb9a5; 
-@btn_bg_create_hover_color: #09b29c;
-@btn_bg_create_active_color: #00a993;
+@btn_create_bg_color: #1eb9a5; 
+@btn_create_hover_bg_color: #09b29c;
+@btn_create_active_bg_color: #00a993;
 
-@btn_bg_del_color: #e05c69; 
-@btn_bg_del_hover_color: #d6505c;
-@btn_bg_del_active_color: #cd4855;
+@btn_del_bg_color: #e05c69; 
+@btn_del_hover_bg_color: #d6505c;
+@btn_del_active_bg_color: #cd4855;
 
 @btn_disable_color: #a8b3be;
-@btn_bg_disable_color: #d9e3e5; 
-@btn_bg_disable_hover_color: #d9e3e5;
-@btn_bg_disable_active_color: #d9e3e5;
+@btn_disable_bg_color: #d9e3e5; 
+@btn_disable_hover_bg_color: #d9e3e5;
+@btn_disable_active_bg_color: #d9e3e5;
 
 @btn_status_color: #738293;
 @btn_status_selected_color: #252f3d;
-@btn_bg_status_color: #ecf0f2;
-@btn_bg_status_hover_color: #b9f1f9;
-@btn_bg_status_selected_color: #5cd0e0;
+@btn_status_bg_color: #ecf0f2;
+@btn_status_hover_bg_color: #b9f1f9;
+@btn_status_selected_bg_color: #5cd0e0;
 
 
 
@@ -87,10 +87,10 @@
   white-space: nowrap;
   .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_line_height; @btn_border_radius);
   .box-sizing(border-box);
-  .button-hue(@btn_color; @btn_bg_color; @btn_bg_hover_color; @btn_bg_active_color);
+  .button-hue(@btn_color; @btn_bg_color; @btn_hover_bg_color; @btn_active_bg_color);
   &[disabled],
   &.disabled {
-    .button-hue(@btn_disable_color; @btn_bg_disable_color; @btn_bg_disable_hover_color; @btn_bg_disable_active_color);
+    .button-hue(@btn_disable_color; @btn_disable_bg_color; @btn_disable_hover_bg_color; @btn_disable_active_bg_color);
     cursor: not-allowed;
   }
 }
@@ -98,11 +98,11 @@
 
 // Color
 .btn-create {
-  .button-hue(@btn_color; @btn_bg_create_color; @btn_bg_create_hover_color; @btn_bg_create_active_color);
+  .button-hue(@btn_color; @btn_create_bg_color; @btn_create_hover_bg_color; @btn_create_active_bg_color);
 }
 
 .btn-del {
-  .button-hue(@btn_color; @btn_bg_del_color; @btn_bg_del_hover_color; @btn_bg_del_active_color);
+  .button-hue(@btn_color; @btn_del_bg_color; @btn_del_hover_bg_color; @btn_del_active_bg_color);
 }
 
 
@@ -128,11 +128,11 @@
 
 // Status button
 .btn-status {
-  .button-hue(@btn_status_color; @btn_bg_status_color; @btn_bg_status_hover_color; @btn_bg_status_hover_color);
+  .button-hue(@btn_status_color; @btn_status_bg_color; @btn_status_hover_bg_color; @btn_status_hover_bg_color);
   &.selected {
     color: @btn_status_selected_color;
-    background-color: @btn_bg_status_selected_color;
-    border-color: @btn_bg_status_selected_color;
+    background-color: @btn_status_selected_bg_color;
+    border-color: @btn_status_selected_bg_color;
   }
 }
 

@@ -1,0 +1,49 @@
+// Mixins
+
+// Variables
+@tip_v_padding: 7px;
+@tip_h_padding: 12px;
+@tip_line_height: 20px;
+@tip_border_radius: 2px;
+
+@tip_success_bg_color: #e5f7fa;
+@tip_success_border_color: #51c4d4;
+@tip_success_strong_color: #51c4d4;
+
+@tip_warning_bg_color: #fff7ea;
+@tip_warning_border_color: #ffcd7e;
+@tip_warning_strong_color: #ffcd7e;
+
+@tip_danger_bg_color: #fff4f4;
+@tip_danger_border_color: #e05c69;
+@tip_danger_strong_color: #e05c69;
+
+.tip {
+  padding: @tip_v_padding @tip_h_padding;
+  line-height: @tip_line_height;
+  border-radius: @tip_border_radius;
+}
+
+.tip-success {
+  background-color: @tip_success_bg_color;
+  border: 1px solid @tip_success_border_color;
+  strong {
+    color: @tip_success_strong_color;
+  }
+}
+
+.tip-warning {
+  background-color: @tip_warning_bg_color;
+  border: 1px solid @tip_warning_border_color;
+  strong {
+    color: @tip_warning_strong_color;
+  }
+}
+
+.tip-danger {
+  background-color: @tip_danger_bg_color;
+  border: 1px solid @tip_danger_border_color;
+  strong {
+    color: @tip_danger_strong_color;
+  }
+}

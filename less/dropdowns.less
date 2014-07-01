@@ -6,10 +6,11 @@
 @dropdown_border_radius: 2px;
 @dropdown_v_padding: 10px;
 @dropdown_h_padding: 0;
-@dropdown_bg_normal_color: #00afc8;
-@dropdown_bg_danger_color: #fdc4c8;
+@dropdown_normal_bg_color: #00afc8;
+@dropdown_danger_bg_color: #fdc4c8;
 @dropdown_color: #252f3d;
 @dropdown_disabled_color: #a8b3be;
+
 .dropdown {
   position: absolute;
   padding: @dropdown_v_padding @dropdown_h_padding;
@@ -26,7 +27,7 @@
     right: 0;
     top: 0;
     height: 3px;
-    background-color: @dropdown_bg_normal_color;
+    background-color: @dropdown_normal_bg_color;
     content: "";
   }
 
@@ -75,7 +76,7 @@
         &:hover,
         &:active,
         &:focus {
-          background-color: @dropdown_bg_danger_color;
+          background-color: @dropdown_danger_bg_color;
         }
       }
 
