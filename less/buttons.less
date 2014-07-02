@@ -43,7 +43,7 @@
 
 // Variables
 @btn_v_padding: 0;
-@btn_h_padding: 10px;
+@btn_h_padding: 12px;
 @btn_font_size: 13px;
 @btn_min_width: 80px;
 @btn_height: 32px;
@@ -79,6 +79,9 @@
 @btn_status_hover_bg_color: #b9f1f9;
 @btn_status_selected_bg_color: #5cd0e0;
 
+@btn_glyph_size: 16px;
+@btn_glyph_margin_right: 6px;
+
 
 
 .btn {
@@ -97,6 +100,11 @@
   &.disabled {
     .button-hue(@btn_disable_color; @btn_disable_bg_color; @btn_disable_hover_bg_color; @btn_disable_active_bg_color);
     cursor: not-allowed;
+  }
+  .glyphicon {
+    font-size: @btn_glyph_size;
+    margin-right: @btn_glyph_margin_right;
+    vertical-align: text-bottom;
   }
 }
 
