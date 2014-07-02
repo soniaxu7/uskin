@@ -44,7 +44,7 @@
 // Variables
 @btn_v_padding: 0;
 @btn_h_padding: 10px;
-@btn_font_size: 12px;
+@btn_font_size: 13px;
 @btn_min_width: 80px;
 @btn_height: 32px;
 @btn_line_height: 32px;
@@ -62,6 +62,11 @@
 @btn_del_bg_color: #e05c69; 
 @btn_del_hover_bg_color: #d6505c;
 @btn_del_active_bg_color: #cd4855;
+
+@btn_cancel_color: #5b6775;
+@btn_cancel_bg_color: #dfe4e6; 
+@btn_cancel_hover_bg_color: #d4dadc;
+@btn_cancel_active_bg_color: #c7cfd2;
 
 @btn_disable_color: #a8b3be;
 @btn_disable_bg_color: #d9e3e5; 
@@ -104,6 +109,11 @@
 .btn-del {
   .button-hue(@btn_color; @btn_del_bg_color; @btn_del_hover_bg_color; @btn_del_active_bg_color);
 }
+
+.btn-cancel {
+  .button-hue(@btn_cancel_color; @btn_cancel_bg_color; @btn_cancel_hover_bg_color; @btn_cancel_active_bg_color);
+}
+
 
 
 // Size

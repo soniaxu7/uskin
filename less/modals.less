@@ -1,0 +1,63 @@
+// Mixins
+
+
+// Variables
+
+.modal {
+  width: 550px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 18px rgba(0,0,0,.2);
+
+  .modal-hd {
+    position: relative;
+    padding-left: 48px;
+    height: 46px;
+    background-color: #ecf0f2;
+    h6 {
+      height: 46px;
+      line-height: 46px;
+      font-size: 18px;
+      font-weight: normal;
+    }
+    .close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      color: #5b6775;
+      cursor: pointer;
+      .user-select(none);
+      &:before {
+        font-size: 14px;
+      }
+      &:hover {
+        color: #1fcae7;
+      }
+      &:active {
+        color: #00afc8;
+      }
+    }
+  }
+
+  .modal-bd {
+    padding: 20px 48px;
+    min-height: 40px;
+  }
+
+  .modal-ft {
+    padding: 8px 48px;
+    height: 50px;
+    border-top: 1px solid #e2e7ea;
+    text-align: right;
+    font-size: 0;
+    .box-sizing(border-box);
+
+    > .btn:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+}
