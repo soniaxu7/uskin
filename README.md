@@ -5,8 +5,7 @@ USkin is a front-end framework (or a theme) which provides basic web components 
 ## Table of contents
 
  - [Quick start](#quick-start)
- - [Compiling CSS and JavaScript](#compiling-css-and-javascript)
- - [Versioning](#versioning)
+ - [Available commands](#available-commands)
  - [Authors](#author)
  - [License](#license)
 
@@ -47,7 +46,7 @@ uskin/
     └── dist/
 ```
 
-### Available commands
+## Available commands
 
 When Grunt is installed, go ahead and compile all the files:
 
