@@ -2,23 +2,33 @@
 
 
 // Variables
+@input_padding:  4px 10px;
+@input_border: 1px solid #e2e7ea;
+@input_height: 22px;
+@input_radius: 2px;
+@input_hover_border_color: #00afc8;
+@input_error_border_color: #e05c69;
+
+@input_disabled_color: #b8c5ce;
+@input_disabled_border_color: #e7ebee;
+@input_disabled_bg_color: #f8fafc;
 
 
 input {
-  padding: 4px 10px;
-  border: 1px solid #e2e7ea;
-  border-radius: 2px;
-  height: 22px;
-  line-height: 22px;
+  padding: @input_padding;
+  border: @input_border;
+  border-radius: @input_radius;
+  height: @input_height;
+  line-height: @input_height;
   .box-sizing(content-box);
 
   &:hover,
   &:focus {
-    border-color: #00afc8;
+    border-color: @input_hover_border_color;
   }
 
   &.error {
-    border-color: #e05c69;
+    border-color: @input_error_border_color;
   }
 }
 
@@ -30,9 +40,9 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  color: #b8c5ce;
-  border-color: #e7ebee;
-  background-color: #f8fafc;
+  color: @input_disabled_color;
+  border-color: @input_disabled_border_color;
+  background-color: @input_disabled_bg_color;
   cursor: not-allowed !important;
 }
 // Explicitly reset the colors here
