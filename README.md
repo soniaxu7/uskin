@@ -1,12 +1,10 @@
 # USkin
 
-USkin is a front-end framework which provides basic web components and widgets.
+USkin is a front-end framework (or a theme) which provides basic web components and widgets.
 
 ## Table of contents
 
  - [Quick start](#quick-start)
- - [Bugs and feature requests](#bugs-and-feature-requests)
- - [Documentation](#documentation)
  - [Compiling CSS and JavaScript](#compiling-css-and-javascript)
  - [Versioning](#versioning)
  - [Authors](#author)
@@ -14,10 +12,13 @@ USkin is a front-end framework which provides basic web components and widgets.
 
 ## Quick start
 
-Three quick start options are available:
+Three steps to go:
 
-- [Download the latest release](https://github.com/icecreamliker/uskin/archive/master.zip).
-- Or clone the repo: `git clone https://github.com/icecreamliker/uskin.git`.
+- [Download the latest release](https://github.com/icecreamliker/uskin/archive/master.zip). Or clone the repo: `git clone https://github.com/icecreamliker/uskin.git`.
+  
+- You can first compile the scripts via [Grunt](http://gruntjs.com/) or make command (make sure Grunt is installed).
+
+- Under the folder docs, we provide versatile samples that you can learn the baisc usage from them. And in the short future, a overview-introduction page will be shown.
 
 ### What's included
 
@@ -45,48 +46,26 @@ uskin/
     ├── examples/
     └── dist/
 ```
-// TODO more description and more structure
 
+### Available commands
 
+When Grunt is installed, go ahead and compile all the files:
 
-## Bugs and feature requests
-
-// TODO
-
-
-## Documentation
-
-// TODO
-
-## Compiling CSS and JavaScript
-
-//TODO
-
-### Install Grunt
-
-// TODO
-
-### Available Grunt commands
-
-// TODO
-
-
-## Versioning
-
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under the Semantic Versioning guidelines. Sometimes we screw up, but we'll adhere to these rules whenever possible.
-
-Releases will be numbered with the following format:
-
-`<major>.<minor>.<patch>`
-
-And constructed with the following guidelines:
-
-- Breaking backward compatibility **bumps the major** while resetting minor and patch
-- New additions without breaking backward compatibility **bumps the minor** while resetting the patch
-- Bug fixes and misc changes **bumps only the patch**
-
-For more information on SemVer, please visit <http://semver.org/>.
-
+```
+grunt (default) or make uskin
+```
+Run the script below to clean the generated files:
+```
+grunt clean or make clean
+```
+When test is needed:
+```
+grunt test or make test
+```
+If you want to make some slight changes, start up the following script which will compile the files when the changes are saved.
+```
+grunt watch or make watch
+```
 
 
 ## Author
