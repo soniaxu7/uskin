@@ -1,0 +1,77 @@
+// Mixins
+
+
+// Variables
+@table_bg_color: #fff;
+@table_hover_bg_hover: #e1f4f7;
+@table_striped_bg_color: #fff;
+
+
+table {
+  width: 100%;
+  max-width: 100%;
+  background-color: @table_bg_color;
+
+  > thead {
+    height: 36px;
+    background-color: #ecf0f2;
+    color: #626f7e;
+    font-size: 13px;
+
+    >tr {
+      height: 36px;
+
+      th {
+        padding-left: 16px;
+        text-align: left;
+        font-weight: normal;
+
+        &:not(:first-child) {
+          border-left: 1px solid #fff;
+        }
+      }
+    }
+  }
+
+  > tbody {
+    >tr {
+      height: 40px;
+      border-bottom: 1px solid #e7ebed;
+
+      &.selected {
+        background-color: #b9f1f9 !important;
+      }
+
+      >td {
+        padding-left: 16px;
+      }
+    }
+
+  }
+
+  > tfoot {
+    >tr {
+      height: 40px;
+      border-bottom: 1px solid #e7ebed;
+
+      >td {
+        padding-left: 16px;
+      }
+    }
+
+  }
+}
+
+
+
+.table-striped {
+  > tbody > tr:nth-child(even) {
+    background-color: @table_striped_bg_color;
+  }
+}
+
+.table-hover {
+  > tbody > tr:hover {
+    background-color: @table_hover_bg_hover;
+  }
+}
