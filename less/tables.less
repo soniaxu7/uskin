@@ -2,9 +2,17 @@
 
 
 // Variables
+@table_hd_bg_color: #ecf0f2;
+@table_hd_color: #626f7e;
+@table_hd_height: 36px;
 @table_bg_color: #fff;
 @table_hover_bg_hover: #e1f4f7;
-@table_striped_bg_color: #fff;
+@table_striped_bg_color: #f3f8fa;
+@table_selected_bg_color: #b9f1f9;
+@table_bd_height: 40px;
+@table_bd_border: 1px solid #e7ebed;
+@table_padding_left: 16px;
+@table_ft_color: #a8b3be;
 
 
 table {
@@ -13,16 +21,16 @@ table {
   background-color: @table_bg_color;
 
   > thead {
-    height: 36px;
-    background-color: #ecf0f2;
-    color: #626f7e;
+    height: @table_hd_height;
+    background-color: @table_hd_bg_color;
+    color: @table_hd_color;
     font-size: 13px;
 
     >tr {
-      height: 36px;
+      height: @table_hd_height;
 
       th {
-        padding-left: 16px;
+        padding-left: @table_padding_left;
         text-align: left;
         font-weight: normal;
 
@@ -35,15 +43,15 @@ table {
 
   > tbody {
     >tr {
-      height: 40px;
-      border-bottom: 1px solid #e7ebed;
+      height: @table_bd_height;
+      border-bottom: @table_bd_border;
 
       &.selected {
-        background-color: #b9f1f9 !important;
+        background-color: @table_selected_bg_color !important;
       }
 
       >td {
-        padding-left: 16px;
+        padding-left: @table_padding_left;
       }
     }
 
@@ -51,11 +59,11 @@ table {
 
   > tfoot {
     >tr {
-      height: 40px;
-      border-bottom: 1px solid #e7ebed;
+      height: @table_bd_height;
+      color: @table_ft_color;
 
       >td {
-        padding-left: 16px;
+        padding-left: @table_padding_left;
       }
     }
 
