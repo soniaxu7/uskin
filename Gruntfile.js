@@ -1,9 +1,10 @@
 /*!
- * Bootstrap's Gruntfile
- * http://getbootstrap.com
- * Copyright 2013-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * USkin's Gruntfile
+ * Author: Lee Yao <yaoli111144@gmail.com>
+ * Licensed under MIT
  */
+
+var fs = require('fs');
 
 module.exports = function(grunt) {
   'use strict';
@@ -52,6 +53,29 @@ module.exports = function(grunt) {
       }
     },
 
+    webfont: {
+      icons: {
+        src: 'fonts_svg/*.svg',
+        dest: 'less/fonts',
+        options: {
+          types: 'eot,woff,ttf,svg',
+          syntax: 'bem',
+          stylesheet: 'less',
+          relativeFontPath: 'fonts',
+          destHtml: 'docs/examples',
+          templateOptions: {
+            baseClass: 'glyphicon',
+            classPrefix: 'icon-'
+          },
+          callback: function() {
+            var src = 'less/fonts/icons.less',
+              dest = 'less/icons.less';
+            fs.renameSync(src, dest);
+          }
+        }
+      }
+    },
+
     usebanner: {
       options: {
         position: 'top',
@@ -65,8 +89,9 @@ module.exports = function(grunt) {
     copy: {
       fonts: {
         expand: true,
+        cwd: './less',
         src: 'fonts/*',
-        dest: 'dist/'
+        dest: 'dist/css'
       },
       docs: {
         expand: true,
@@ -74,7 +99,7 @@ module.exports = function(grunt) {
         src: [
           'css/*.css',
           'css/*.map',
-          'fonts/*'
+          'css/fonts/*'
         ],
         dest: 'docs/dist'
       }
@@ -96,9 +121,12 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'less', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('default', ['clean', 'webfont', 'less', 'cssmin', 'usebanner', 'copy']);
 
-  // TODO
+  // Test
   grunt.registerTask('test', ['clean', 'less', 'cssmin']);
+
+  // Generate web font
+  grunt.registerTask('font', ['webfont']);
 
 };
