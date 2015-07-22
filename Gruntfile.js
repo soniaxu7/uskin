@@ -121,7 +121,7 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'webfont', 'less', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('default', ['clean', 'less', 'cssmin', 'usebanner', 'copy']);
 
   // Test
   grunt.registerTask('test', ['clean', 'less', 'cssmin']);
