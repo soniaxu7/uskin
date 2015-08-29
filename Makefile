@@ -1,6 +1,6 @@
 uskin:
 # Make Sure grunt has been installed locally
-	grunt default 
+	grunt build 
 
 clean:
 # Clean generated css files

@@ -1,20 +1,20 @@
 {
   "name": "uskin",
-  "description": "A graceful skin which provides developers another chance to build an amazing site.",
+  "description": "A graceful framework which provides developers another chance to build an amazing site.",
   "version": "0.1.1",
   "keywords": [
     "css",
     "less",
+    "react",
+    "babel",
     "front-end",
-    "skin"
+    "framework"
   ],
   "homepage": "https://github.com/icecreamliker/uskin",
   "author": "LeeYao <yaoli111144@gmail.com>",
   "scripts": {
-    "test": "make test"
+    "test": "grunt test"
   },
-  "style": "dist/css/uskin.css",
-  "less": "less/uskin.less",
   "repository": {
     "type": "git",
     "url": "https://github.com/icecreamliker/uskin.git"

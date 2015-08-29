@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist', 'docs/dist']
+      dist: ['dist']
     },
 
     less: {
@@ -92,16 +92,6 @@ module.exports = function(grunt) {
         cwd: './less',
         src: 'fonts/*',
         dest: 'dist/css'
-      },
-      docs: {
-        expand: true,
-        cwd: './dist',
-        src: [
-          'css/*.css',
-          'css/*.map',
-          'css/fonts/*'
-        ],
-        dest: 'docs/dist'
       }
     },
 
@@ -121,7 +111,7 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'less', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('build', ['clean', 'less', 'cssmin', 'usebanner', 'copy']);
 
   // Test
   grunt.registerTask('test', ['clean', 'less', 'cssmin']);

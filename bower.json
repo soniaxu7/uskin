@@ -1,0 +1,23 @@
+{
+  "name": "uskin",
+  "description": "A graceful framework which provides developers another chance to build an amazing site.",
+  "keywords": [
+    "css",
+    "less",
+    "react",
+    "babel",
+    "front-end",
+    "framework"
+  ],
+  "homepage": "https://github.com/icecreamliker/uskin",
+  "license": "MIT",
+  "main": [
+    "dist/css/uskin.css"
+  ],
+  "ignore": [
+    ".travis.yml",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "package.json"
+  ]
+}
