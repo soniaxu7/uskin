@@ -678,7 +678,7 @@ input[type="checkbox"][readonly] {
   padding: 0 12px;
   font-size: 13px;
   height: 32px;
-  line-height: 32px;
+  line-height: 30px;
   border-radius: 2px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -694,6 +694,10 @@ input[type="checkbox"][readonly] {
 .btn:active {
   color: #ffffff;
   background-color: #009bb1;
+}
+.btn:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 .btn[disabled],
 .btn.disabled {
@@ -712,6 +716,11 @@ input[type="checkbox"][readonly] {
 .btn.disabled:active {
   color: #a8b3be;
   background-color: #d9e3e5;
+}
+.btn[disabled]:focus,
+.btn.disabled:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 .btn .glyphicon {
   font-size: 16px;
@@ -732,6 +741,10 @@ input[type="checkbox"][readonly] {
   color: #ffffff;
   background-color: #00a993;
 }
+.btn-create:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
 .btn-del {
   color: #ffffff;
   background-color: #e05c69;
@@ -745,6 +758,10 @@ input[type="checkbox"][readonly] {
 .btn-del:active {
   color: #ffffff;
   background-color: #cd4855;
+}
+.btn-del:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 .btn-cancel {
   color: #5b6775;
@@ -760,36 +777,9 @@ input[type="checkbox"][readonly] {
   color: #5b6775;
   background-color: #c7cfd2;
 }
-.btn-xl {
-  padding: 0 40px;
-  font-size: 18px;
-  height: 48px;
-  line-height: 48px;
-  border-radius: 2px;
-}
-.btn-lg {
-  padding: 0 20px;
-  font-size: 14px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 2px;
-}
-.btn-sm {
-  padding: 0 12px;
-  font-size: 12px;
-  height: 28px;
-  line-height: 28px;
-  border-radius: 2px;
-}
-.btn-xs {
-  padding: 0 12px;
-  font-size: 12px;
-  height: 24px;
-  line-height: 24px;
-  border-radius: 2px;
-}
-.btn-initial {
-  min-width: initial;
+.btn-cancel:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
 }
 .btn-status {
   color: #738293;
@@ -805,10 +795,45 @@ input[type="checkbox"][readonly] {
   color: #738293;
   background-color: #b9f1f9;
 }
+.btn-status:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
 .btn-status.selected {
   color: #252f3d;
   background-color: #5cd0e0;
   border-color: #5cd0e0;
+}
+.btn-initial {
+  min-width: initial;
+}
+.btn-xl {
+  padding: 0 40px;
+  font-size: 18px;
+  height: 48px;
+  line-height: 46px;
+  border-radius: 2px;
+}
+.btn-lg {
+  padding: 0 20px;
+  font-size: 14px;
+  height: 40px;
+  line-height: 38px;
+  border-radius: 2px;
+}
+.btn-sm {
+  padding: 0 12px;
+  font-size: 12px;
+  height: 28px;
+  line-height: 26px;
+  border-radius: 2px;
+}
+.btn-xs {
+  padding: 0 12px;
+  font-size: 12px;
+  height: 24px;
+  line-height: 22px;
+  border-radius: 2px;
 }
 .btn-group {
   display: inline-block;

@@ -1,11 +1,11 @@
 // Mixins
 
 // Button sizes
-.button-size(@v_padding; @h_padding; @font_size; @height; @line_height; @border_radius) {
+.button-size(@v_padding; @h_padding; @font_size; @height; @border_radius) {
   padding: @v_padding @h_padding;
   font-size: @font_size;
   height: @height;
-  line-height: @line_height;
+  line-height: (@height - 2 * @btn_border_width);
   border-radius: @border_radius;
 }
 
@@ -24,9 +24,13 @@
     background-color: @active_bg_color;
     background-color: @active_bg_color;
   }
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
 }
 
-// For outline-button
+// For border-button
 .button-hue(@color; @bg_color; @hover_bg_color; @active_bg_color; @border_color) {
   color: @color;
   background-color: @bg_color;
@@ -39,6 +43,10 @@
     color: @color;
     background-color: @active_bg_color;
   }
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
 }
 
 // Variables
@@ -47,8 +55,8 @@
 @btn_font_size: 13px;
 @btn_min_width: 80px;
 @btn_height: 32px;
-@btn_line_height: 32px;
 @btn_border_radius: 2px;
+@btn_border_width: 1px;
 
 @btn_color: #fff;
 @btn_bg_color: #00afc8;
@@ -87,13 +95,13 @@
 .btn {
   display: inline-block;
   min-width: @btn_min_width;
-  border: 1px solid transparent;
+  border: @btn_border_width solid transparent;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
   white-space: nowrap;
-  .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_line_height; @btn_border_radius);
+  .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_border_radius);
   .box-sizing(border-box);
   .button-hue(@btn_color; @btn_bg_color; @btn_hover_bg_color; @btn_active_bg_color);
   &[disabled],
@@ -122,28 +130,6 @@
   .button-hue(@btn_cancel_color; @btn_cancel_bg_color; @btn_cancel_hover_bg_color; @btn_cancel_active_bg_color);
 }
 
-
-
-// Size
-.btn-xl {
-  .button-size(0; 40px; 18px; 48px; 48px; 2px);
-}
-
-.btn-lg {
-  .button-size(0; 20px; 14px; 40px; 40px; 2px);
-}
-
-.btn-sm {
-  .button-size(0; 12px; 12px; 28px; 28px; 2px);
-}
-
-.btn-xs{
-  .button-size(0; 12px; 12px; 24px; 24px; 2px);
-}
-
-// Initialize btn width
-.btn-initial { min-width: initial; }
-
 // Status button
 .btn-status {
   .button-hue(@btn_status_color; @btn_status_bg_color; @btn_status_hover_bg_color; @btn_status_hover_bg_color);
@@ -153,3 +139,24 @@
     border-color: @btn_status_selected_bg_color;
   }
 }
+
+// Initialize btn width
+.btn-initial { min-width: initial; }
+
+// Size
+.btn-xl {
+  .button-size(0; 40px; 18px; 48px; 2px);
+}
+
+.btn-lg {
+  .button-size(0; 20px; 14px; 40px; 2px);
+}
+
+.btn-sm {
+  .button-size(0; 12px; 12px; 28px; 2px);
+}
+
+.btn-xs{
+  .button-size(0; 12px; 12px; 24px; 2px);
+}
+
