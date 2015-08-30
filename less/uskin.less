@@ -1,7 +1,9 @@
 // Core variables and mixins
 @import "variables.less";
-@import "./themes/default/custom.less";
 @import "mixins.less";
+
+// Theme
+@import "./themes/default/custom.less";
 
 // Reset and dependencies
 @import "normalize.less";
@@ -9,15 +11,15 @@
 @import "utilities.less";
 @import "icons.less";
 @import "flexbox.less";
+@import "layouts.less";
 
 // Components
-@import "layouts.less";
-@import "tables.less";
-@import "forms.less";
-@import "buttons.less";
-@import "button-groups.less";
-@import "dropdowns.less";
-@import "tips.less";
-@import "notifications.less";
-@import "modals.less";
-@import "tabs.less";
+@import "./components/tables.less";
+@import "./components/forms.less";
+@import "./components/buttons.less";
+@import "./components/button-groups.less";
+@import "./components/dropdowns.less";
+@import "./components/tips.less";
+@import "./components/notifications.less";
+@import "./components/modals.less";
+@import "./components/tabs.less";
