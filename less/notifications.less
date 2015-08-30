@@ -3,28 +3,28 @@
 // Mixins
 
 // Variables
-@notify_padding: 12px 12px 12px 20px;
-@notify_width: 200px;
-@notify_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+@notification_padding: 12px 12px 12px 20px;
+@notification_width: 200px;
+@notification_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
 
 
 
-.notify {
+.notification {
   .tip();
-  padding: @notify_padding;
-  width: @notify_width;
-  box-shadow: @notify_shadow;
+  padding: @notification_padding;
+  width: @notification_width;
+  box-shadow: @notification_shadow;
   overflow: hidden;
 }
 
-.notify-success {
+.notification-success {
   .tip-success();
 }
 
-.notify-warning {
+.notification-warning {
   .tip-warning();
 }
 
-.notify-danger {
+.notification-danger {
   .tip-danger();
 }

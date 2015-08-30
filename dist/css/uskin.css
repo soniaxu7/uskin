@@ -929,6 +929,7 @@ input[type="checkbox"][readonly] {
   padding: 7px 12px;
   line-height: 20px;
   border-radius: 2px;
+  border: 1px solid;
 }
 .tip-success {
   background-color: #e5f7fa;
@@ -951,34 +952,35 @@ input[type="checkbox"][readonly] {
 .tip-danger strong {
   color: #e05c69;
 }
-.notify {
+.notification {
   padding: 7px 12px;
   line-height: 20px;
   border-radius: 2px;
+  border: 1px solid;
   padding: 12px 12px 12px 20px;
   width: 200px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
-.notify-success {
+.notification-success {
   background-color: #e5f7fa;
   border: 1px solid #51c4d4;
 }
-.notify-success strong {
+.notification-success strong {
   color: #51c4d4;
 }
-.notify-warning {
+.notification-warning {
   background-color: #fff7ea;
   border: 1px solid #ffcd7e;
 }
-.notify-warning strong {
+.notification-warning strong {
   color: #ffcd7e;
 }
-.notify-danger {
+.notification-danger {
   background-color: #fff4f4;
   border: 1px solid #e05c69;
 }
-.notify-danger strong {
+.notification-danger strong {
   color: #e05c69;
 }
 .modal {
