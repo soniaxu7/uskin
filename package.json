@@ -11,7 +11,7 @@
     "framework"
   ],
   "homepage": "https://github.com/icecreamliker/uskin",
-  "author": "LeeYao <yaoli111144@gmail.com>",
+  "author": "Lee Yao <yaoli111144@gmail.com>",
   "scripts": {
     "test": "grunt test"
   },

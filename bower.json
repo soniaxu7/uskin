@@ -9,15 +9,22 @@
     "front-end",
     "framework"
   ],
+  "authors": [
+    "Lee Yao <yaoli111144@gmail.com>"
+  ],
   "homepage": "https://github.com/icecreamliker/uskin",
   "license": "MIT",
   "main": [
     "dist/css/uskin.css"
   ],
   "ignore": [
-    ".travis.yml",
+    "/.*",
+    "fonts_svg",
+    "less",
+    "Gruntfile.js",
     "CONTRIBUTING.md",
     "CHANGELOG.md",
-    "package.json"
+    "package.json",
+    "Makefile"
   ]
 }
