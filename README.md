@@ -1,13 +1,6 @@
 # USkin
 
-USkin is a front-end framework (or a theme) which provides basic web components and widgets.
-
-## Table of contents
-
- - [Quick start](#quick-start)
- - [Available commands](#available-commands)
- - [Authors](#author)
- - [License](#license)
+USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
 
 ## Quick start
 

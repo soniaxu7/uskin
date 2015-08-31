@@ -17,6 +17,10 @@
   "main": [
     "dist/css/uskin.css"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icecreamliker/uskin.git"
+  },
   "ignore": [
     "/.*",
     "fonts_svg",

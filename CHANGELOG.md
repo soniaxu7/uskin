@@ -1,8 +1,7 @@
-## 0.0.1 (2015.07.02)
+## Changelog
 
-#### New Features
+Details for each release are documented in the [release notes](https://github.com/icecreamliker/uskin/releases).
 
-* Add basic build scripts
-* Add style components
+Any questions to the releases are welcome, feel free to [create issues](https://github.com/icecreamliker/uskin/issues).
 
-#### Bug Fixes
+
