@@ -1,7 +1,7 @@
 /*!
  * USkin v0.1.1 (https://github.com/icecreamliker/uskin)
  * Inspired by bootstrap
- * Copyright 2015 LeeYao <yaoli111144@gmail.com>
+ * Copyright 2015 Lee Yao <yaoli111144@gmail.com>
  * Licensed under MIT (https://github.com/icecreamliker/uskin/blob/master/LICENSE)
  */
 
@@ -895,8 +895,6 @@ input[type="checkbox"][readonly] {
   border-radius: 2px;
   background-color: #fff;
   -webkit-box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.12);
-  -ms-box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.12);
   box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.12);
 }
 .dropdown:before {
@@ -1097,5 +1095,41 @@ input[type="checkbox"][readonly] {
   line-height: 35px;
   font-size: 14px;
   color: #738293;
+}
+.switch input {
+  position: absolute;
+  visibility: hidden;
+  left: -99px;
+}
+.switch input + .switch-inner {
+  display: block;
+  position: relative;
+  height: 22px;
+  width: 60px;
+  background-color: #bdc3c7;
+  color: #00afc8;
+  border-radius: 11px;
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.switch input + .switch-inner::after {
+  position: absolute;
+  content: "";
+  width: 16px;
+  height: 16px;
+  top: 3px;
+  left: 5px;
+  background-color: #7f8c8d;
+  border-radius: 50%;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.switch input:checked + .switch-inner {
+  background-color: #c3ebf0;
+}
+.switch input:checked + .switch-inner::after {
+  left: calc(100% - 20px);
+  background-color: #00afc8;
 }
 /*# sourceMappingURL=uskin.css.map */

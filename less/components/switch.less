@@ -1,0 +1,37 @@
+.switch {
+  input {
+    position: absolute;
+    visibility: hidden;
+    left: -99px;
+  }
+  input + .switch-inner {
+    display: block;
+    position: relative;
+    height: 22px;
+    width: 60px;
+    background-color: #bdc3c7;
+    color: #00afc8;
+    border-radius: 11px;
+    cursor: pointer;
+    .transition(all .4s);
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 16px;
+      height: 16px;
+      top: 3px;
+      left: 5px;
+      background-color: #7f8c8d;
+      border-radius: 50%;
+      .transition(all .4s);
+    }
+  }
+  input:checked + .switch-inner {
+    background-color: #c3ebf0;
+    &::after {
+      left: calc(100% - 20px);
+      background-color: #00afc8;
+    }
+  }
+}
