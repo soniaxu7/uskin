@@ -23,8 +23,10 @@
   },
   "ignore": [
     "/.*",
+    "docs",
     "fonts_svg",
     "less",
+    "js",
     "Gruntfile.js",
     "CONTRIBUTING.md",
     "CHANGELOG.md",

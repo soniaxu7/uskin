@@ -1,4 +1,6 @@
 .switch {
+  width: 60px;
+  .user-select(none);
   input {
     position: absolute;
     visibility: hidden;
@@ -7,13 +9,18 @@
   input + .switch-inner {
     display: block;
     position: relative;
+    padding-right: 10px;
     height: 22px;
-    width: 60px;
+    line-height: 22px;
+    width: 100%;
     background-color: #bdc3c7;
-    color: #00afc8;
+    color: #fff;
+    font-weight: bold;
     border-radius: 11px;
+    text-align: right;
     cursor: pointer;
-    .transition(all .4s);
+    .box-sizing(border-box);
+    .transition(background-color .4s);
 
     &::after {
       position: absolute;
@@ -27,8 +34,13 @@
       .transition(all .4s);
     }
   }
+
   input:checked + .switch-inner {
+    padding-left: 10px;
     background-color: #c3ebf0;
+    color: #00afc8;
+    text-align: left;
+
     &::after {
       left: calc(100% - 20px);
       background-color: #00afc8;

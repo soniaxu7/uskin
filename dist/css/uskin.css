@@ -467,8 +467,8 @@ a:active {
 }
 @font-face {
   font-family: "icons";
-  src: url("fonts/icons.eot?45b3c6a66c0af1031eae9bbe2dc49132");
-  src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.woff?45b3c6a66c0af1031eae9bbe2dc49132") format("woff"), url("fonts/icons.ttf?45b3c6a66c0af1031eae9bbe2dc49132") format("truetype"), url("fonts/icons.svg?45b3c6a66c0af1031eae9bbe2dc49132#icons") format("svg");
+  src: url("fonts/icons.eot?0f5f842b13509ea72a40d8342e3193e5");
+  src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.woff?0f5f842b13509ea72a40d8342e3193e5") format("woff"), url("fonts/icons.ttf?0f5f842b13509ea72a40d8342e3193e5") format("truetype"), url("fonts/icons.svg?0f5f842b13509ea72a40d8342e3193e5#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -486,107 +486,98 @@ a:active {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-untitled:before {
+.icon-FloatingIP:before {
   content: "\f101";
 }
-.icon-untitled10:before {
+.icon-accountcharge:before {
   content: "\f102";
 }
-.icon-untitled11:before {
+.icon-accounts:before {
   content: "\f103";
 }
-.icon-untitled12:before {
+.icon-appcenter:before {
   content: "\f104";
 }
-.icon-untitled13:before {
+.icon-billingoverview:before {
   content: "\f105";
 }
-.icon-untitled14:before {
+.icon-billingrecords:before {
   content: "\f106";
 }
-.icon-untitled15:before {
+.icon-chargerecords:before {
   content: "\f107";
 }
-.icon-untitled16:before {
+.icon-collaboration:before {
   content: "\f108";
 }
-.icon-untitled17:before {
+.icon-database:before {
   content: "\f109";
 }
-.icon-untitled18:before {
+.icon-databaseconfiguration:before {
   content: "\f10a";
 }
-.icon-untitled19:before {
+.icon-filesharing:before {
   content: "\f10b";
 }
-.icon-untitled2:before {
+.icon-image:before {
   content: "\f10c";
 }
-.icon-untitled20:before {
+.icon-instance:before {
   content: "\f10d";
 }
-.icon-untitled21:before {
+.icon-invoicemanagement:before {
   content: "\f10e";
 }
-.icon-untitled22:before {
+.icon-keypairs:before {
   content: "\f10f";
 }
-.icon-untitled23:before {
+.icon-loadbalancer:before {
   content: "\f110";
 }
-.icon-untitled24:before {
+.icon-monitor:before {
   content: "\f111";
 }
-.icon-untitled25:before {
+.icon-network-topology:before {
   content: "\f112";
 }
-.icon-untitled26:before {
+.icon-network:before {
   content: "\f113";
 }
-.icon-untitled27:before {
+.icon-notification:before {
   content: "\f114";
 }
-.icon-untitled28:before {
+.icon-operationlogs:before {
   content: "\f115";
 }
-.icon-untitled29:before {
+.icon-overview:before {
   content: "\f116";
 }
-.icon-untitled3:before {
+.icon-projects:before {
   content: "\f117";
 }
-.icon-untitled30:before {
+.icon-resourcepool:before {
   content: "\f118";
 }
-.icon-untitled31:before {
+.icon-router:before {
   content: "\f119";
 }
-.icon-untitled32:before {
+.icon-securitygroup:before {
   content: "\f11a";
 }
-.icon-untitled33:before {
+.icon-snapshot:before {
   content: "\f11b";
 }
-.icon-untitled34:before {
+.icon-subnet:before {
   content: "\f11c";
 }
-.icon-untitled4:before {
+.icon-tickets:before {
   content: "\f11d";
 }
-.icon-untitled5:before {
+.icon-virtualinterfaces:before {
   content: "\f11e";
 }
-.icon-untitled6:before {
+.icon-volume:before {
   content: "\f11f";
-}
-.icon-untitled7:before {
-  content: "\f120";
-}
-.icon-untitled8:before {
-  content: "\f121";
-}
-.icon-untitled9:before {
-  content: "\f122";
 }
 table {
   width: 100%;
@@ -1096,6 +1087,13 @@ input[type="checkbox"][readonly] {
   font-size: 14px;
   color: #738293;
 }
+.switch {
+  width: 60px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .switch input {
   position: absolute;
   visibility: hidden;
@@ -1104,14 +1102,20 @@ input[type="checkbox"][readonly] {
 .switch input + .switch-inner {
   display: block;
   position: relative;
+  padding-right: 10px;
   height: 22px;
-  width: 60px;
+  line-height: 22px;
+  width: 100%;
   background-color: #bdc3c7;
-  color: #00afc8;
+  color: #fff;
+  font-weight: bold;
   border-radius: 11px;
+  text-align: right;
   cursor: pointer;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
 }
 .switch input + .switch-inner::after {
   position: absolute;
@@ -1126,7 +1130,10 @@ input[type="checkbox"][readonly] {
   transition: all 0.4s;
 }
 .switch input:checked + .switch-inner {
+  padding-left: 10px;
   background-color: #c3ebf0;
+  color: #00afc8;
+  text-align: left;
 }
 .switch input:checked + .switch-inner::after {
   left: calc(100% - 20px);
