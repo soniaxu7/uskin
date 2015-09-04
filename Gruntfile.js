@@ -18,7 +18,7 @@ module.exports = function(grunt) {
       ' * USkin v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
       ' * Inspired by bootstrap\n' +
       ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-      ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
+      ' * Licensed under <%= pkg.license %> (https://github.com/icecreamliker/uskin/blob/master/LICENSE)\n' +
       ' */\n',
 
     // Task configuration.
@@ -37,6 +37,16 @@ module.exports = function(grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.css': 'less/<%= pkg.name %>.less'
+        }
+      }
+    },
+
+    lesslint: {
+      src: ['less/uskin.less'],
+      options: {
+        csslint: {
+          'font-sizes': false,
+          'unique-headings': false
         }
       }
     },
@@ -98,7 +108,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: 'less/*.less',
-        tasks: ['clean', 'less', 'cssmin', 'copy']
+        tasks: ['clean', 'lesslint', 'less', 'cssmin', 'copy']
       }
     }
   });
@@ -111,10 +121,10 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   // Default task.
-  grunt.registerTask('build', ['clean', 'less', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'cssmin', 'usebanner', 'copy']);
 
   // Test
-  grunt.registerTask('test', ['clean', 'less', 'cssmin']);
+  grunt.registerTask('test', ['clean', 'lesslint', 'less', 'cssmin']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);

@@ -1,6 +1,6 @@
-uskin:
+release:
 # Make Sure grunt has been installed locally
-	grunt build 
+	grunt release
 
 clean:
 # Clean generated css files
@@ -18,4 +18,4 @@ test:
 # Run tests
 	grunt test
 
-.PHONY: uskin clean watch generate_font test
+.PHONY: release clean watch generate_font test

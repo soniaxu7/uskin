@@ -22,10 +22,7 @@
   "bugs": {
     "url": "https://github.com/icecreamliker/uskin/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/icecreamliker/uskin/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-banner": "~0.2.2",
@@ -34,6 +31,7 @@
     "grunt-contrib-cssmin": "~0.12.3",
     "grunt-contrib-less": "~0.11.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-lesslint": "^1.2.0",
     "grunt-webfont": "^0.5.3",
     "load-grunt-tasks": "~0.4.0",
     "time-grunt": "~0.3.1"
