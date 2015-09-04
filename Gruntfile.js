@@ -41,15 +41,15 @@ module.exports = function(grunt) {
       }
     },
 
-    lesslint: {
-      src: ['less/uskin.less'],
-      options: {
-        csslint: {
-          'font-sizes': false,
-          'unique-headings': false
-        }
-      }
-    },
+    // lesslint: {
+    //   src: ['less/uskin.less'],
+    //   options: {
+    //     csslint: {
+    //       'font-sizes': false,
+    //       'unique-headings': false
+    //     }
+    //   }
+    // },
 
     csscomb: {
       options: {
@@ -67,6 +67,7 @@ module.exports = function(grunt) {
       minify: {
         options: {
           keepSpecialComments: 0,
+          sourceMap: true,
           report: 'gzip'
         },
         files: {
@@ -132,11 +133,14 @@ module.exports = function(grunt) {
   });
   require('time-grunt')(grunt);
 
+  // Load task-related files from the specified directory
+  grunt.task.loadTasks('./grunt');
+
   // Default task.
   grunt.registerTask('release', ['clean', 'lesslint', 'less', 'csscomb', 'cssmin', 'usebanner', 'copy']);
 
   // Test
-  grunt.registerTask('test', ['clean', 'lesslint', 'less', 'cssmin']);
+  grunt.registerTask('test', ['lesslint']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);
