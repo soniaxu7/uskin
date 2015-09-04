@@ -51,6 +51,18 @@ module.exports = function(grunt) {
       }
     },
 
+    csscomb: {
+      options: {
+        config: './.csscomb.json'
+      },
+      dist: {
+        expand: true,
+        cwd: 'dist/css/',
+        src: ['*.css'],
+        dest: 'dist/css/'
+      }
+    },
+
     cssmin: {
       minify: {
         options: {
@@ -108,7 +120,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: 'less/*.less',
-        tasks: ['clean', 'lesslint', 'less', 'cssmin', 'copy']
+        tasks: ['clean', 'lesslint', 'less', 'csscomb', 'cssmin', 'copy']
       }
     }
   });
@@ -121,7 +133,7 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   // Default task.
-  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'csscomb', 'cssmin', 'usebanner', 'copy']);
 
   // Test
   grunt.registerTask('test', ['clean', 'lesslint', 'less', 'cssmin']);
