@@ -1143,4 +1143,34 @@ input[type="checkbox"][readonly] {
   left: calc(100% - 20px);
   background-color: #00afc8;
 }
+.slider {
+  position: relative;
+  width: 300px;
+  height: 16px;
+  background-color: #e2e7ea;
+}
+.slider .slider-track {
+  width: 0;
+  height: 100%;
+  background-color: #9de6f1;
+}
+.slider .slider-default {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #00afc8;
+}
+.slider .slider-thumb {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 1px;
+  height: 12px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 5px solid #00afc8;
+  border-radius: 1px;
+}
 /*# sourceMappingURL=uskin.css.map */
