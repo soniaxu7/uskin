@@ -1,0 +1,50 @@
+// Mixins
+
+// Button sizes
+.button-size(@v_padding; @h_padding; @font_size; @height; @border_radius) {
+  padding: @v_padding @h_padding;
+  font-size: @font_size;
+  height: @height;
+  line-height: (@height - 2 * @btn_border_width);
+  border-radius: @border_radius;
+}
+
+// Button hue
+.button-hue(@text_color; @bg_color; @hover_bg_color; @active_bg_color) {
+  color: @text_color;
+  background-color: @bg_color;
+  border-color: @bg_color;
+  &:hover {
+    color: @text_color;
+    background-color: @hover_bg_color;
+    border-color: @hover_bg_color;
+  }
+  &:active {
+    color: @text_color;
+    background-color: @active_bg_color;
+    background-color: @active_bg_color;
+  }
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+}
+
+// For border-button
+.button-hue(@text_color; @bg_color; @hover_bg_color; @active_bg_color; @border_color) {
+  color: @text_color;
+  background-color: @bg_color;
+  border-color: @border_color;
+  &:hover {
+    color: @text_color;
+    background-color: @hover_bg_color;
+  }
+  &:active {
+    color: @text_color;
+    background-color: @active_bg_color;
+  }
+  &:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+}

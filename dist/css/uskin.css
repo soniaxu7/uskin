@@ -6,7 +6,7 @@
  */
 
 /**
- * Global variables
+ * Default theme
  */
 /**
  * Reference:
@@ -946,15 +946,22 @@ input[type="checkbox"][readonly] {
 .tip {
   padding: 7px 12px;
   line-height: 20px;
-  border: 1px solid;
+  border: 1px solid #252f3d;
   border-radius: 2px;
 }
-.tip-success {
+.tip-info {
   background-color: #e5f7fa;
-  border: 1px solid #51c4d4;
+  border: 1px solid #00afc8;
+}
+.tip-info strong {
+  color: #00afc8;
+}
+.tip-success {
+  background-color: #ddf9f6;
+  border: 1px solid #1eb9a5;
 }
 .tip-success strong {
-  color: #51c4d4;
+  color: #1eb9a5;
 }
 .tip-warning {
   background-color: #fff7ea;
@@ -976,16 +983,23 @@ input[type="checkbox"][readonly] {
   padding: 12px 12px 12px 20px;
   overflow: hidden;
   line-height: 20px;
-  border: 1px solid;
+  border: 1px solid #252f3d;
   border-radius: 2px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
 }
-.notification-success {
+.notification-info {
   background-color: #e5f7fa;
-  border: 1px solid #51c4d4;
+  border: 1px solid #00afc8;
+}
+.notification-info strong {
+  color: #00afc8;
+}
+.notification-success {
+  background-color: #ddf9f6;
+  border: 1px solid #1eb9a5;
 }
 .notification-success strong {
-  color: #51c4d4;
+  color: #1eb9a5;
 }
 .notification-warning {
   background-color: #fff7ea;
@@ -1148,11 +1162,14 @@ input[type="checkbox"][readonly] {
   width: 300px;
   height: 16px;
   background-color: #e2e7ea;
+  border-radius: 2px;
 }
 .slider .slider-track {
   width: 0;
   height: 100%;
   background-color: #9de6f1;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 .slider .slider-default {
   position: absolute;
@@ -1161,6 +1178,8 @@ input[type="checkbox"][readonly] {
   width: 0;
   height: 100%;
   background-color: #00afc8;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 .slider .slider-thumb {
   position: absolute;

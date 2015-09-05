@@ -4,25 +4,37 @@
 @tip_v_padding: 7px;
 @tip_h_padding: 12px;
 @tip_line_height: 20px;
-@tip_border_radius: 2px;
+@tip_border_radius: @border_radius;
 
-@tip_success_bg_color: #e5f7fa;
-@tip_success_border_color: #51c4d4;
-@tip_success_strong_color: #51c4d4;
+@tip_info_bg_color: @primary_normal_lighter_color;
+@tip_info_border_color: @primary_normal_light_color;
+@tip_info_strong_color: @primary_normal_light_color;
 
-@tip_warning_bg_color: #fff7ea;
-@tip_warning_border_color: #ffcd7e;
-@tip_warning_strong_color: #ffcd7e;
+@tip_success_bg_color: @primary_success_lighter_color;
+@tip_success_border_color: @primary_success_light_color;
+@tip_success_strong_color: @primary_success_light_color;
 
-@tip_danger_bg_color: #fff4f4;
-@tip_danger_border_color: #e05c69;
-@tip_danger_strong_color: #e05c69;
+@tip_warning_bg_color: @primary_warning_lighter_color;
+@tip_warning_border_color: @primary_warning_light_color;
+@tip_warning_strong_color: @primary_warning_light_color;
+
+@tip_danger_bg_color: @primary_danger_lighter_color;
+@tip_danger_border_color: @primary_danger_light_color;
+@tip_danger_strong_color: @primary_danger_light_color;
 
 .tip {
   padding: @tip_v_padding @tip_h_padding;
   line-height: @tip_line_height;
   border-radius: @tip_border_radius;
-  border: 1px solid;
+  border: 1px solid @text_color;
+}
+
+.tip-info {
+  background-color: @tip_info_bg_color;
+  border: 1px solid @tip_info_border_color;
+  strong {
+    color: @tip_info_strong_color;
+  }
 }
 
 .tip-success {
