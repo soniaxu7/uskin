@@ -1,5 +1,7 @@
 # USkin
 
+[![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin)
+
 USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
 
 ## Quick start
