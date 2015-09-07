@@ -1,6 +1,6 @@
 .switch {
   width: 60px;
-  .user-select(none);
+  user-select: none;
   input {
     position: absolute;
     visibility: hidden;
@@ -19,8 +19,8 @@
     border-radius: 11px;
     text-align: right;
     cursor: pointer;
-    .box-sizing(border-box);
-    .transition(background-color .4s);
+    box-sizing: border-box;
+    transition: background-color .4s;
 
     &::after {
       position: absolute;
@@ -31,7 +31,7 @@
       left: 5px;
       background-color: #7f8c8d;
       border-radius: 50%;
-      .transition(all .4s);
+      transition: all .4s;
     }
   }
 

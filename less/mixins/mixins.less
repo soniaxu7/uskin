@@ -2,26 +2,6 @@
  * Global mixins
  */
 
-// User select
-.user-select(@select) {
-  -webkit-user-select: @select;
-     -moz-user-select: @select;
-      -ms-user-select: @select;
-          user-select: @select;
-}
-
-// Box sizing
-.box-sizing(@boxmodel) {
-  -moz-box-sizing: @boxmodel;
-       box-sizing: @boxmodel;
-}
-
-// Box shadow
-.box-shadow(@shadow) {
-  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
-          box-shadow: @shadow;
-}
-
 // Single side border-radius
 .border-top-radius(@radius) {
   border-top-right-radius: @radius;
@@ -52,19 +32,6 @@
   max-height: @value;
 }
 
-// Transform
-.transform(@value){
-  -webkit-transform: @value;
-     -moz-transform: @value;
-      -ms-transform: @value;
-          transform: @value;
-}
-
-// Transition
-.transition(@value) {
-  -webkit-transition: @value;
-          transition: @value;
-}
 
 // Clearfix
 

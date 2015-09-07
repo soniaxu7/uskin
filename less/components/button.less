@@ -45,6 +45,7 @@
 
 .btn {
   display: inline-block;
+  box-sizing: border-box;
   min-width: @btn_min_width;
   border: @btn_border_width solid transparent;
   font-weight: normal;
@@ -53,7 +54,6 @@
   cursor: pointer;
   white-space: nowrap;
   .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_border_radius);
-  .box-sizing(border-box);
   .button-hue(@btn_color; @btn_bg_color; @btn_hover_bg_color; @btn_active_bg_color);
   &[disabled],
   &.disabled {

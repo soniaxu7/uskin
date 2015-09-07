@@ -41,15 +41,22 @@ module.exports = function(grunt) {
       }
     },
 
-    // lesslint: {
-    //   src: ['less/uskin.less'],
-    //   options: {
-    //     csslint: {
-    //       'font-sizes': false,
-    //       'unique-headings': false
-    //     }
-    //   }
-    // },
+    postcss: {
+      options: {
+        map: {
+          prev: 'dist/css',
+          inline: false
+        },
+        processors: [
+          require('autoprefixer')({
+            browsers: ['> 1%', 'last 2 versions']
+          })
+        ]
+      },
+      dist: {
+        src: 'dist/css/*.css'
+      }
+    },
 
     csscomb: {
       options: {
@@ -137,7 +144,7 @@ module.exports = function(grunt) {
   grunt.task.loadTasks('./grunt');
 
   // Default task.
-  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'csscomb', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'usebanner', 'copy']);
 
   // Test
   grunt.registerTask('test', ['lesslint']);
