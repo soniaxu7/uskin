@@ -37,6 +37,9 @@
     "grunt-webfont": "^0.5.3",
     "lesslint": "^0.1.8-beta.1",
     "load-grunt-tasks": "~0.4.0",
+    "postcss": "^5.0.4",
+    "postcss-class-prefix": "^0.2.0",
+    "stylelint": "^1.0.1",
     "time-grunt": "~0.3.1"
   },
   "engines": {

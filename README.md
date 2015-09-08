@@ -20,7 +20,7 @@ Three steps to go:
 When Grunt is installed, go ahead and compile all the files:
 
 ```
-grunt (default) or make uskin
+grunt release or make release
 ```
 Run the script below to clean the generated files:
 ```

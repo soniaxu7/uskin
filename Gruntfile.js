@@ -50,7 +50,9 @@ module.exports = function(grunt) {
         processors: [
           require('autoprefixer')({
             browsers: ['> 1%', 'last 2 versions']
-          })
+          }),
+          require('postcss-class-prefix')(''),
+          require("stylelint")()
         ]
       },
       dist: {
