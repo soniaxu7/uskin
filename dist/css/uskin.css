@@ -1183,4 +1183,40 @@ input[type="checkbox"][readonly] {
   border: 5px solid #00afc8;
   border-radius: 1px;
 }
+.steps .step-item {
+  position: relative;
+  float: left;
+  width: 190px;
+  text-align: center;
+}
+.steps .step-item span {
+  position: relative;
+  z-index: 9;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #ccd6dc;
+  border: 3px solid #ecf0f2;
+  border-radius: 50%;
+}
+.steps .step-item.selected span {
+  background-color: #09b29c;
+  border: 3px solid #ecf0f2;
+}
+.steps .step-item .delimiter {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  z-index: 8;
+  width: 100%;
+  height: 2px;
+  background-color: #ccd6dc;
+}
+.steps .step-item:first-child .delimiter {
+  width: 50%;
+}
+.steps .step-item:last-child .delimiter {
+  left: 0;
+  width: 50%;
+}
 /*# sourceMappingURL=uskin.css.map */

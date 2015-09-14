@@ -1,0 +1,48 @@
+
+.steps {
+  .step-item {
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 190px;
+
+    span {
+      display: inline-block;
+      position: relative;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 3px solid #ecf0f2;
+      background-color: #ccd6dc;
+      z-index: 9;
+    }
+
+    &.selected {
+      span {
+        border: 3px solid #ecf0f2;
+        background-color: #09b29c;
+      }
+    }
+
+    .delimiter {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ccd6dc;
+      z-index: 8;
+    }
+    &:first-child {
+      .delimiter {
+        width: 50%;
+      }
+    }
+    &:last-child {
+      .delimiter {
+        left: 0;
+        width: 50%;
+      }
+    }
+  }
+}
