@@ -83,3 +83,58 @@ table {
     background-color: @table_hover_bg_hover;
   }
 }
+
+.table {
+  .table-header {
+    display: flex;
+    > div {
+      flex: 1;
+      height: 36px;
+      line-height: 36px;
+      padding-left: 16px;
+      background-color: #ecf0f2;
+      color: #626f7e;
+      border-right: 1px solid #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+
+  .table-body {
+    .row {
+      display: flex;
+      border-bottom: 1px solid #e7ebed;
+      > div {
+        flex: 1;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+
+      &.selected {
+        background-color: #b9f1f9!important;
+      }
+
+      &:hover {
+        background-color: #e1f4f7;
+      }
+    }
+  }
+
+  .table-footer {
+
+  }
+}
+

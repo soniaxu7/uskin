@@ -624,6 +624,60 @@ table > tfoot > tr > td {
 .table-hover > tbody > tr:hover {
   background-color: #e1f4f7;
 }
+.table .table-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.table .table-header > div {
+  height: 36px;
+  padding-left: 16px;
+  overflow: hidden;
+  line-height: 36px;
+  color: #626f7e;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #ecf0f2;
+  border-right: 1px solid #fff;
+
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.table .table-header > div:last-child {
+  border-right: none;
+}
+.table .table-body .row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  border-bottom: 1px solid #e7ebed;
+}
+.table .table-body .row > div {
+  height: 40px;
+  padding-left: 16px;
+  overflow: hidden;
+  line-height: 40px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.table .table-body .row > div:last-child {
+  border-right: none;
+}
+.table .table-body .row.selected {
+  background-color: #b9f1f9!important;
+}
+.table .table-body .row:hover {
+  background-color: #e1f4f7;
+}
 input {
   height: 22px;
   box-sizing: content-box;
@@ -1218,5 +1272,9 @@ input[type="checkbox"][readonly] {
 .steps .step-item:last-child .delimiter {
   left: 0;
   width: 50%;
+}
+.breadcrumb span {
+  font-weight: bold;
+  color: #a8b3bc;
 }
 /*# sourceMappingURL=uskin.css.map */
