@@ -579,50 +579,44 @@ a:active {
 .icon-volume:before {
   content: "\f11f";
 }
-table {
+.table {
   width: 100%;
   max-width: 100%;
   background-color: #fff;
 }
-table > thead {
+.table > thead {
   height: 36px;
   font-size: 13px;
   color: #626f7e;
   background-color: #ecf0f2;
 }
-table > thead > tr {
+.table > thead > tr {
   height: 36px;
 }
-table > thead > tr th {
+.table > thead > tr th {
   padding-left: 16px;
   font-weight: normal;
   text-align: left;
 }
-table > thead > tr th:not(:first-child) {
+.table > thead > tr th:not(:first-child) {
   border-left: 1px solid #fff;
 }
-table > tbody > tr {
+.table > tbody > tr {
   height: 40px;
   border-bottom: 1px solid #e7ebed;
 }
-table > tbody > tr.selected {
+.table > tbody > tr.selected {
   background-color: #b9f1f9 !important;
 }
-table > tbody > tr > td {
+.table > tbody > tr > td {
   padding-left: 16px;
 }
-table > tfoot > tr {
+.table > tfoot > tr {
   height: 40px;
   color: #a8b3be;
 }
-table > tfoot > tr > td {
+.table > tfoot > tr > td {
   padding-left: 16px;
-}
-.table-striped > tbody > tr:nth-child(even) {
-  background-color: #f3f8fa;
-}
-.table-hover > tbody > tr:hover {
-  background-color: #e1f4f7;
 }
 .table .table-header {
   display: -webkit-box;
@@ -675,8 +669,29 @@ table > tfoot > tr > td {
 .table .table-body .row.selected {
   background-color: #b9f1f9!important;
 }
-.table .table-body .row:hover {
+.table-striped > tbody > tr:nth-child(even) {
+  background-color: #f3f8fa;
+}
+.table-striped .table-body .row:nth-child(even) {
+  background-color: #f3f8fa;
+}
+.table-hover > tbody > tr:hover {
   background-color: #e1f4f7;
+}
+.table-hover .table-body .row:hover {
+  background-color: #e1f4f7;
+}
+.table-mini .table-header {
+  border-bottom: 1px solid #e7ebed;
+}
+.table-mini .table-header > div {
+  height: 28px;
+  line-height: 28px;
+  background-color: #fff;
+}
+.table-mini .table-body > div {
+  height: 36px;
+  line-height: 36px;
 }
 input {
   height: 22px;
