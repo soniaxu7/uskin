@@ -39,6 +39,13 @@
         cursor: default;
       }
     }
+    &.disabled {
+      border-bottom: @tabs_border_bottom;
+      a {
+        cursor: default;
+      }
+    }
+
     a {
       display: inline-block;
       padding: @tab_link_padding;
@@ -49,3 +56,38 @@
     }
   }
 }
+
+.tabs-mini {
+  padding-left: 70px;
+  height: 36px;
+  background-color: #ecf0f2;
+  border: none;
+  font-size: 12px;
+
+  .tab {
+    display: inline-block;
+    margin-top: 6px;
+    height: 30px;
+    line-height: 30px;
+    .border-top-radius(2px);
+
+    &:hover {
+      background-color: #b9f1f9;
+    }
+
+    &.selected {
+      background-color: #fff;
+      a {
+        color: #252f3d;
+        cursor: default;
+      }
+    }
+
+    a {
+      display: block;
+      padding: 0 16px;
+      color: #738293;
+    }
+  }
+}
+

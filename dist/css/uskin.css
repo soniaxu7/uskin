@@ -1158,12 +1158,48 @@ input[type="checkbox"][readonly] {
   color: #252f3d;
   cursor: default;
 }
+.tabs .tab.disabled {
+  border-bottom: 3px solid #ecf0f2;
+}
+.tabs .tab.disabled a {
+  cursor: default;
+}
 .tabs .tab a {
   display: inline-block;
   height: 35px;
   padding: 6px 12px 4px;
   font-size: 14px;
   line-height: 35px;
+  color: #738293;
+}
+.tabs-mini {
+  height: 36px;
+  padding-left: 70px;
+  font-size: 12px;
+  background-color: #ecf0f2;
+  border: none;
+}
+.tabs-mini .tab {
+  display: inline-block;
+  height: 30px;
+  margin-top: 6px;
+  line-height: 30px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+.tabs-mini .tab:hover {
+  background-color: #b9f1f9;
+}
+.tabs-mini .tab.selected {
+  background-color: #fff;
+}
+.tabs-mini .tab.selected a {
+  color: #252f3d;
+  cursor: default;
+}
+.tabs-mini .tab a {
+  display: block;
+  padding: 0 16px;
   color: #738293;
 }
 .switch {
