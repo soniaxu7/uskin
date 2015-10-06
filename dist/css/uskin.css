@@ -999,7 +999,7 @@ input[type="checkbox"][readonly] {
 .dropdown ul li a.disabled {
   color: #a8b3be;
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .dropdown ul li.danger a:hover,
 .dropdown ul li.danger a:active,
