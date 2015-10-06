@@ -996,6 +996,11 @@ input[type="checkbox"][readonly] {
 .dropdown ul li a:focus {
   background-color: #b9f1f9;
 }
+.dropdown ul li a.disabled {
+  color: #a8b3be;
+  cursor: not-allowed;
+  background-color: transparent;
+}
 .dropdown ul li.danger a:hover,
 .dropdown ul li.danger a:active,
 .dropdown ul li.danger a:focus {

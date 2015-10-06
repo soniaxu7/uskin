@@ -70,6 +70,11 @@
         &:focus {
           background-color: #b9f1f9;
         }
+        &.disabled {
+          color: @dropdown_disabled_color;
+          background-color: transparent;
+          cursor: not-allowed;
+        }
       }
 
       &.danger a {
