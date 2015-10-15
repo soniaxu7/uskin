@@ -689,7 +689,7 @@ a:active {
   line-height: 28px;
   background-color: #fff;
 }
-.table-mini .table-body > div {
+.table-mini .table-body .row > div {
   height: 36px;
   line-height: 36px;
 }
