@@ -1,9 +1,9 @@
 # USkin
 
+![Project Progress](http://progressed.io/bar/45?title=progress) 
 [![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin) 
 [![bitHound Score](https://www.bithound.io/github/icecreamliker/uskin/badges/score.svg)](https://www.bithound.io/github/icecreamliker/uskin) 
-[![Join the chat at https://gitter.im/icecreamliker/uskin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icecreamliker/uskin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![project progress]](http://progressed.io/bar/45?title=progress) 
+[![Join the chat at https://gitter.im/icecreamliker/uskin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icecreamliker/uskin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
 
 
 USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
