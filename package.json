@@ -13,6 +13,7 @@
   "homepage": "https://github.com/icecreamliker/uskin",
   "author": "Lee Yao <yaoli111144@gmail.com>",
   "scripts": {
+    "release": "grunt release",
     "test": "grunt test"
   },
   "repository": {

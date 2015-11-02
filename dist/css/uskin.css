@@ -1333,4 +1333,26 @@ input[type="checkbox"][readonly] {
   font-weight: bold;
   color: #a8b3bc;
 }
+.panel {
+  width: 400px;
+  overflow: hidden;
+  border: 1px solid #ecf0f2;
+  border-radius: 2px;
+}
+.panel .panel-hd {
+  height: 44px;
+  padding-right: 18px;
+  padding-left: 18px;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 44px;
+  color: #252f3d;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #f3f6f8;
+}
+.panel .panel-bd {
+  padding: 18px;
+  line-height: 18px;
+}
 /*# sourceMappingURL=uskin.css.map */

@@ -1,0 +1,26 @@
+
+// Variables
+@panel_padding: 18px;
+
+.panel {
+  width: 400px;
+  border: 1px solid #ecf0f2;
+  border-radius: @border_radius;
+  overflow: hidden;
+
+  .panel-hd {
+    background-color: #f3f6f8;
+    font-size: 16px;
+    color: #252f3d;
+    height: 44px;
+    line-height: 44px;
+    padding-left: @panel_padding;
+    padding-right: @panel_padding;
+    .overflow();
+  }
+
+  .panel-bd {
+    padding: @panel_padding;
+    line-height: 18px;
+  }
+}
