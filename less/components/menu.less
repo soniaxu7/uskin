@@ -1,3 +1,60 @@
 .menu {
-  
+  background-color: #e6ebec;
+  width: 200px;
+
+  > li {
+    a {
+      display: block;
+      padding-left: 20px;
+      height: 38px;
+      line-height: 38px;
+      font-size: 13px;
+      color: #527583;
+
+      &:hover {
+        background-color: #d5dddf;
+      }
+      &.selected {
+        background-color: #00afc8;
+        color: #fff;
+      }
+      .glyphicon {
+        margin-right: 12px;
+        width: 16px;
+        height: 16px;
+        font-size: 16px;
+      }
+      span {
+        vertical-align: middle;
+      }
+    }
+
+    h6 {
+      height: 38px;
+      line-height: 38px;
+      padding-left: 20px;
+      color: #93b1bb;
+      font-weight: normal;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #d5dddf;
+      }
+    }
+
+    li {
+      height: 38px;
+      line-height: 38px;
+      background-color: #d5dddf;
+
+      a {
+        &:hover {
+          background-color: #b9f1f9;
+        }
+        &.selected {
+          background-color: #00afc8;
+        }
+      }
+    }
+  }
 }

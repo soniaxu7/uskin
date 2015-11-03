@@ -1355,6 +1355,56 @@ input[type="checkbox"][readonly] {
   padding: 18px;
   line-height: 18px;
 }
+.menu {
+  width: 200px;
+  background-color: #e6ebec;
+}
+.menu > li a {
+  display: block;
+  height: 38px;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 38px;
+  color: #527583;
+}
+.menu > li a:hover {
+  background-color: #d5dddf;
+}
+.menu > li a.selected {
+  color: #fff;
+  background-color: #00afc8;
+}
+.menu > li a .glyphicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  font-size: 16px;
+}
+.menu > li a span {
+  vertical-align: middle;
+}
+.menu > li h6 {
+  height: 38px;
+  padding-left: 20px;
+  font-weight: normal;
+  line-height: 38px;
+  color: #93b1bb;
+  cursor: pointer;
+}
+.menu > li h6:hover {
+  background-color: #d5dddf;
+}
+.menu > li li {
+  height: 38px;
+  line-height: 38px;
+  background-color: #d5dddf;
+}
+.menu > li li a:hover {
+  background-color: #b9f1f9;
+}
+.menu > li li a.selected {
+  background-color: #00afc8;
+}
 .pagination {
   display: inline-block;
 }
