@@ -1355,4 +1355,36 @@ input[type="checkbox"][readonly] {
   padding: 18px;
   line-height: 18px;
 }
+.pagination {
+  display: inline-block;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li a {
+  display: block;
+  float: left;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  line-height: 24px;
+  text-align: center;
+}
+.pagination > li .item {
+  color: #626f7e;
+}
+.pagination > li .item:hover {
+  color: #00a5bd;
+}
+.pagination > li .item:active {
+  color: #009bb1;
+}
+.pagination > li .item.active {
+  color: #00afc8;
+  cursor: default;
+}
+.pagination > li .prev,
+.pagination > li .next {
+  line-height: 22px;
+}
 /*# sourceMappingURL=uskin.css.map */

@@ -1,3 +1,36 @@
 .pagination {
-  
+  display: inline-block;
+
+  > li {
+    display: inline;
+
+    a {
+      float: left;
+      display: block;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+    }
+    .item {
+      color: #626f7e;
+      &:hover {
+        color: @link_hover_color;
+      }
+      &:active {
+        color: @link_active_color;
+      }
+      &.active {
+        color: @link_color;
+        cursor: default;
+      }
+    }
+    .prev,
+    .next {
+      line-height: 22px;
+    }
+
+  }
+
 }
