@@ -56,11 +56,11 @@
 
 @font-face {
 	font-family:"icons";
-	src:url("../../less/fonts/icons.eot?0f5f842b13509ea72a40d8342e3193e5");
+	src:url("../../less/fonts/icons.eot?aef5c4d73be12ee961fb08ff2790d5b6");
 	src:url("../../less/fonts/icons.eot?#iefix") format("embedded-opentype"),
-		url("../../less/fonts/icons.woff?0f5f842b13509ea72a40d8342e3193e5") format("woff"),
-		url("../../less/fonts/icons.ttf?0f5f842b13509ea72a40d8342e3193e5") format("truetype"),
-		url("../../less/fonts/icons.svg?0f5f842b13509ea72a40d8342e3193e5#icons") format("svg");
+		url("../../less/fonts/icons.woff?aef5c4d73be12ee961fb08ff2790d5b6") format("woff"),
+		url("../../less/fonts/icons.ttf?aef5c4d73be12ee961fb08ff2790d5b6") format("truetype"),
+		url("../../less/fonts/icons.svg?aef5c4d73be12ee961fb08ff2790d5b6#icons") format("svg");
 	font-weight:normal;
 	font-style:normal;
 }
@@ -75,7 +75,7 @@
 	speak:none;
 	text-decoration:inherit;
 	text-transform:none;
-	text-rendering:optimizeLegibility;
+	text-rendering:auto;
 	-webkit-font-smoothing:antialiased;
 	-moz-osx-font-smoothing:grayscale;
 }
@@ -323,7 +323,7 @@
 				e = e || window.event;
 				var name = e.target.getAttribute('data-name') || e.target.parentNode.getAttribute('data-name');
 				document.getElementById('name').innerHTML = name;
-				document.getElementById('name2').innerHTML = name;
+				
 			}
 		})();
 		</script>

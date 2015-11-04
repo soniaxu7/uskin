@@ -468,8 +468,8 @@ a:active {
   font-style: normal;
   font-weight: normal;
 
-  src: url("fonts/icons.eot?0f5f842b13509ea72a40d8342e3193e5");
-  src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.woff?0f5f842b13509ea72a40d8342e3193e5") format("woff"), url("fonts/icons.ttf?0f5f842b13509ea72a40d8342e3193e5") format("truetype"), url("fonts/icons.svg?0f5f842b13509ea72a40d8342e3193e5#icons") format("svg");
+  src: url("fonts/icons.eot?aef5c4d73be12ee961fb08ff2790d5b6");
+  src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.woff?aef5c4d73be12ee961fb08ff2790d5b6") format("woff"), url("fonts/icons.ttf?aef5c4d73be12ee961fb08ff2790d5b6") format("truetype"), url("fonts/icons.svg?aef5c4d73be12ee961fb08ff2790d5b6#icons") format("svg");
 }
 .glyphicon {
   display: inline-block;
@@ -482,7 +482,7 @@ a:active {
   vertical-align: middle;
 
   speak: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
