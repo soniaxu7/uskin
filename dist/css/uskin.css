@@ -468,8 +468,8 @@ a:active {
   font-style: normal;
   font-weight: normal;
 
-  src: url("fonts/icons.eot?aef5c4d73be12ee961fb08ff2790d5b6");
-  src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.woff?aef5c4d73be12ee961fb08ff2790d5b6") format("woff"), url("fonts/icons.ttf?aef5c4d73be12ee961fb08ff2790d5b6") format("truetype"), url("fonts/icons.svg?aef5c4d73be12ee961fb08ff2790d5b6#icons") format("svg");
+  src: url("fonts/icons.eot?662bbe418250aed94d2902658c77f02b");
+  src: url("fonts/icons.eot?#iefix") format("embedded-opentype"), url("fonts/icons.woff?662bbe418250aed94d2902658c77f02b") format("woff"), url("fonts/icons.ttf?662bbe418250aed94d2902658c77f02b") format("truetype"), url("fonts/icons.svg?662bbe418250aed94d2902658c77f02b#icons") format("svg");
 }
 .glyphicon {
   display: inline-block;
@@ -486,98 +486,218 @@ a:active {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-FloatingIP:before {
+.icon-account-charge:before {
   content: "\f101";
 }
-.icon-accountcharge:before {
+.icon-account:before {
   content: "\f102";
 }
-.icon-accounts:before {
+.icon-app-center:before {
   content: "\f103";
 }
-.icon-appcenter:before {
+.icon-arrow:before {
   content: "\f104";
 }
-.icon-billingoverview:before {
+.icon-associate:before {
   content: "\f105";
 }
-.icon-billingrecords:before {
+.icon-billing-record:before {
   content: "\f106";
 }
-.icon-chargerecords:before {
+.icon-billing:before {
   content: "\f107";
 }
-.icon-collaboration:before {
+.icon-bucket:before {
   content: "\f108";
 }
-.icon-database:before {
+.icon-cache-config:before {
   content: "\f109";
 }
-.icon-databaseconfiguration:before {
+.icon-cache:before {
   content: "\f10a";
 }
-.icon-filesharing:before {
+.icon-charge-record:before {
   content: "\f10b";
 }
-.icon-image:before {
+.icon-close:before {
   content: "\f10c";
 }
-.icon-instance:before {
+.icon-collaboration:before {
   content: "\f10d";
 }
-.icon-invoicemanagement:before {
+.icon-create:before {
   content: "\f10e";
 }
-.icon-keypairs:before {
+.icon-database-config:before {
   content: "\f10f";
 }
-.icon-loadbalancer:before {
+.icon-database:before {
   content: "\f110";
 }
-.icon-monitor:before {
+.icon-delete:before {
   content: "\f111";
 }
-.icon-network-topology:before {
+.icon-disable:before {
   content: "\f112";
 }
-.icon-network:before {
+.icon-dissociate:before {
   content: "\f113";
 }
-.icon-notification:before {
+.icon-download:before {
   content: "\f114";
 }
-.icon-operationlogs:before {
+.icon-dropdown:before {
   content: "\f115";
 }
-.icon-overview:before {
+.icon-edit:before {
   content: "\f116";
 }
-.icon-projects:before {
+.icon-enable:before {
   content: "\f117";
 }
-.icon-resourcepool:before {
+.icon-file-sharing:before {
   content: "\f118";
 }
-.icon-router:before {
+.icon-file:before {
   content: "\f119";
 }
-.icon-securitygroup:before {
+.icon-filter-collapse:before {
   content: "\f11a";
 }
-.icon-snapshot:before {
+.icon-filter-expand:before {
   content: "\f11b";
 }
-.icon-subnet:before {
+.icon-floating-ip:before {
   content: "\f11c";
 }
-.icon-tickets:before {
+.icon-image:before {
   content: "\f11d";
 }
-.icon-virtualinterfaces:before {
+.icon-instance:before {
   content: "\f11e";
 }
-.icon-volume:before {
+.icon-interface:before {
   content: "\f11f";
+}
+.icon-invoice:before {
+  content: "\f120";
+}
+.icon-keypair:before {
+  content: "\f121";
+}
+.icon-lb:before {
+  content: "\f122";
+}
+.icon-listener:before {
+  content: "\f123";
+}
+.icon-log:before {
+  content: "\f124";
+}
+.icon-monitor:before {
+  content: "\f125";
+}
+.icon-more:before {
+  content: "\f126";
+}
+.icon-network:before {
+  content: "\f127";
+}
+.icon-notification:before {
+  content: "\f128";
+}
+.icon-overview:before {
+  content: "\f129";
+}
+.icon-performance:before {
+  content: "\f12a";
+}
+.icon-power-off:before {
+  content: "\f12b";
+}
+.icon-power-on:before {
+  content: "\f12c";
+}
+.icon-project:before {
+  content: "\f12d";
+}
+.icon-property:before {
+  content: "\f12e";
+}
+.icon-question:before {
+  content: "\f12f";
+}
+.icon-redirect-policy:before {
+  content: "\f130";
+}
+.icon-refresh:before {
+  content: "\f131";
+}
+.icon-region:before {
+  content: "\f132";
+}
+.icon-remove:before {
+  content: "\f133";
+}
+.icon-resource-pool:before {
+  content: "\f134";
+}
+.icon-restart:before {
+  content: "\f135";
+}
+.icon-role:before {
+  content: "\f136";
+}
+.icon-router:before {
+  content: "\f137";
+}
+.icon-search:before {
+  content: "\f138";
+}
+.icon-security-group:before {
+  content: "\f139";
+}
+.icon-snapshot:before {
+  content: "\f13a";
+}
+.icon-status-active:before {
+  content: "\f13b";
+}
+.icon-status-deleted:before {
+  content: "\f13c";
+}
+.icon-status-disabled:before {
+  content: "\f13d";
+}
+.icon-status-light:before {
+  content: "\f13e";
+}
+.icon-status-paused:before {
+  content: "\f13f";
+}
+.icon-status-shutdown:before {
+  content: "\f140";
+}
+.icon-status-warning:before {
+  content: "\f141";
+}
+.icon-subnet:before {
+  content: "\f142";
+}
+.icon-ticket:before {
+  content: "\f143";
+}
+.icon-topology:before {
+  content: "\f144";
+}
+.icon-upload:before {
+  content: "\f145";
+}
+.icon-vnc:before {
+  content: "\f146";
+}
+.icon-volume:before {
+  content: "\f147";
 }
 .table {
   width: 100%;
