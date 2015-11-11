@@ -1,5 +1,6 @@
-<img src="https://icecreamliker.github.io/uskin/images/logo.png" width="200" height="200">
-
+<p align="center">
+  <img src="https://icecreamliker.github.io/uskin/images/logo.png" width="200" height="200">
+</p>
 
 # USkin
 
