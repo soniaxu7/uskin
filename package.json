@@ -36,12 +36,15 @@
     "grunt-csscomb": "^3.1.0",
     "grunt-postcss": "^0.6.0",
     "grunt-webfont": "~1.0.0",
+    "grunt-webpack": "^1.0.11",
     "lesslint": "^0.1.8-beta.1",
     "load-grunt-tasks": "~3.3.0",
     "postcss": "^5.0.4",
     "postcss-class-prefix": "~0.3.0",
     "stylelint": "^1.0.1",
-    "time-grunt": "~1.2.1"
+    "time-grunt": "~1.2.1",
+    "webpack": "^1.12.4",
+    "webpack-dev-server": "^1.12.1"
   },
   "engines": {
     "node": "~0.12.4"
