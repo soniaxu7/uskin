@@ -37,6 +37,7 @@
     "grunt-postcss": "^0.6.0",
     "grunt-webfont": "~1.0.0",
     "grunt-webpack": "^1.0.11",
+    "json-loader": "^0.5.3",
     "lesslint": "^0.1.8-beta.1",
     "load-grunt-tasks": "~3.3.0",
     "postcss": "^5.0.4",

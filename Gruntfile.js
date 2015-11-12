@@ -5,6 +5,7 @@
  */
 
 var fs = require('fs');
+var webpackConfig = require('./webpack.config.js');
 
 module.exports = function(grunt) {
   'use strict';
@@ -84,7 +85,12 @@ module.exports = function(grunt) {
         }
       }
     },
-
+    webpack: {
+      options: webpackConfig,
+      build: {
+        // configuration for this build
+      }
+    },
     webfont: {
       icons: {
         src: 'fonts_svg/*.svg',
