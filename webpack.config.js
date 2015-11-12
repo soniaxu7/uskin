@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: exportPath,
     filename: '[name].js',
-    library: 'uskin22',
+    library: 'uskin',
     libraryTarget: 'umd'
   },
   resolve: {
@@ -17,9 +17,9 @@ module.exports = {
   },
   module: {
     loaders: [{
-    //   test: /\.js|jsx$/,
-    //   loaders: ['babel']
-    // }, {
+      test: /\.js|jsx$/,
+      loaders: ['babel']
+    }, {
       test: /\.json$/,
       loader: 'json-loader'
     }]

@@ -6,6 +6,7 @@
 
 var fs = require('fs');
 var webpackConfig = require('./webpack.config.js');
+var webpack = require('webpack');
 
 module.exports = function(grunt) {
   'use strict';
@@ -88,7 +89,12 @@ module.exports = function(grunt) {
     webpack: {
       options: webpackConfig,
       build: {
-        // configuration for this build
+        output: {
+          filename: '[name].min.js',
+        },
+        plugins: [new webpack.optimize.UglifyJsPlugin({
+          sourceMap: false
+        })]
       }
     },
     webfont: {
@@ -120,7 +126,7 @@ module.exports = function(grunt) {
         banner: '<%= banner %>'
       },
       files: {
-        src: 'dist/css/*.css'
+        src: ['dist/css/*.css', 'dist/js/*.js']
       }
     },
 
@@ -152,7 +158,7 @@ module.exports = function(grunt) {
   grunt.task.loadTasks('./grunt');
 
   // Default task.
-  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'usebanner', 'copy']);
+  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'webpack:build', 'usebanner', 'copy']);
 
   // Test
   grunt.registerTask('test', ['lesslint']);
