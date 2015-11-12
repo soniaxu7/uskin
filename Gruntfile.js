@@ -92,10 +92,9 @@ module.exports = function(grunt) {
         output: {
           filename: '[name].min.js',
         },
-        plugins: [new webpack.optimize.UglifyJsPlugin({
-          sourceMap: false
-        })]
-      }
+        plugins: [new webpack.optimize.UglifyJsPlugin()]
+      },
+      dev: {}
     },
     webfont: {
       icons: {
@@ -157,8 +156,15 @@ module.exports = function(grunt) {
   // Load task-related files from the specified directory
   grunt.task.loadTasks('./grunt');
 
+  // Build CSS
+  grunt.registerTask('css', ['lesslint', 'less', 'postcss', 'csscomb', 'cssmin']);
+
+  // Build JS
+  grunt.registerTask('js', ['webpack:dev', 'webpack:build']);
+
+
   // Default task.
-  grunt.registerTask('release', ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'webpack:build', 'usebanner', 'copy']);
+  grunt.registerTask('release', ['clean', 'css', 'js', 'usebanner', 'copy']);
 
   // Test
   grunt.registerTask('test', ['lesslint']);

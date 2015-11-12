@@ -1,5 +1,4 @@
 var exportPath = require('path').resolve('./dist/js');
-//var pkg = require('./package');
 
 module.exports = {
   progress: true,
