@@ -2,12 +2,14 @@
  * USkin index
  */
 
+import Modal from '../js/components/modal';
+
 const uskin = {
-  Modal: require('../js/components/modal.js')
+  Modal: Modal
 };
 
 uskin.version = require('../package.json').version;
 
-module.exports = uskin;
+export default uskin;
 
 
