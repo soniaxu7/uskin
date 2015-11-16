@@ -11,14 +11,22 @@ module.exports = {
     library: 'uskin',
     libraryTarget: 'umd'
   },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    }
+  },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [{
       test: /\.js|jsx$/,
-      loader: 'babel-loader',
       exclude: /node_modules/,
+      loader: 'babel-loader',
       query: {
         cacheDirectory: true,
         presets: ['es2015', 'react']

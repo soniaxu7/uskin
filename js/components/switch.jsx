@@ -1,9 +1,9 @@
 import React from 'react';
 
-var Modal = React.createClass({
+var Switch = React.createClass({
   render: function() {
-    return <h1 > Hello, world! < /h1>
+    return <h1 > Hello, world! THIS IS MY COMPONENT!!! < /h1>
   }
 });
 
-export default Modal;
+export default Switch;

@@ -19,7 +19,7 @@ import Table from '../js/components/table';
 import Tip from '../js/components/tip';
 import Tooltip from '../js/components/tooltip';
 
-const uskin = {
+let uskin = {
   Breadcrumb: Breadcrumb,
   Button: Button,
   ButtonGroup: ButtonGroup,
@@ -40,4 +40,4 @@ const uskin = {
 
 uskin.version = require('../package.json').version;
 
-export default uskin;
+module.exports = uskin;
