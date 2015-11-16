@@ -178,12 +178,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/breadcrumb.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -225,12 +220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/button-group.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -260,12 +250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/dropdown.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -295,12 +280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/menu.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -330,12 +310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/modal.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -365,12 +340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/notification.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -400,12 +370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/pagination.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -435,12 +400,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/panel.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -470,12 +430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/slider.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -505,12 +460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/step.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -540,12 +490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/switch.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! THIS IS MY COMPONENT!!! '
 	    );
 	  }
@@ -575,12 +520,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/tab.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -610,12 +550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/table.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -645,12 +580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/tip.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -680,12 +610,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'h1',
-	      {
-	        __source: {
-	          fileName: '../../../../../js/components/tooltip.jsx',
-	          lineNumber: 5
-	        }
-	      },
+	      null,
 	      ' Hello, world! '
 	    );
 	  }
@@ -720,6 +645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		"license": "MIT",
 		"devDependencies": {
 			"autoprefixer": "^6.0.1",
+			"babel": "^6.1.18",
 			"babel-core": "^6.1.4",
 			"babel-loader": "^6.1.0",
 			"babel-preset-es2015": "^6.1.4",
