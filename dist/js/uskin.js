@@ -472,7 +472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -485,13 +485,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Switch = _react2.default.createClass({
-	  displayName: 'Switch',
+	  displayName: "Switch",
 	
 	  render: function render() {
 	    return _react2.default.createElement(
-	      'h1',
-	      null,
-	      ' Hello, world! THIS IS MY COMPONENT!!! '
+	      "div",
+	      { className: "switch" },
+	      _react2.default.createElement("input", { id: "uskin-1", type: "checkbox" }),
+	      _react2.default.createElement("label", { htmlFor: "uskin-1", className: "switch-inner" })
 	    );
 	  }
 	});
