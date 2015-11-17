@@ -167,7 +167,7 @@ module.exports = function(grunt) {
   grunt.registerTask('release', ['clean', 'css', 'js', 'usebanner', 'copy']);
 
   // Test
-  grunt.registerTask('test', ['lesslint']);
+  grunt.registerTask('lint', ['lesslint']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);
