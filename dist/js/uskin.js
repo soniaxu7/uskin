@@ -232,7 +232,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -244,19 +246,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Modal = _react2.default.createClass({
-	  displayName: 'Modal',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'h1',
-	      null,
-	      ' Hello, world! '
-	    );
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var CheckboxWithLabel = (function (_React$Component) {
+	  _inherits(CheckboxWithLabel, _React$Component);
+	
+	  function CheckboxWithLabel(props) {
+	    _classCallCheck(this, CheckboxWithLabel);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(CheckboxWithLabel).call(this, props));
+	
+	    _this.state = { isChecked: false };
+	
+	    // since auto-binding is disabled for React's class model
+	    // we can prebind methods here
+	    // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
+	    _this.onChange = _this.onChange.bind(_this);
+	    return _this;
 	  }
-	});
 	
-	exports.default = Modal;
+	  _createClass(CheckboxWithLabel, [{
+	    key: "onChange",
+	    value: function onChange() {
+	      this.setState({ isChecked: !this.state.isChecked });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "label",
+	        null,
+	        _react2.default.createElement("input", {
+	          type: "checkbox",
+	          checked: this.state.isChecked,
+	          onChange: this.onChange
+	        }),
+	        this.state.isChecked ? this.props.labelOn : this.props.labelOff
+	      );
+	    }
+	  }]);
+	
+	  return CheckboxWithLabel;
+	})(_react2.default.Component);
+	
+	exports.default = CheckboxWithLabel;
 
 /***/ },
 /* 6 */
@@ -634,7 +671,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		"author": "Lee Yao <yaoli111144@gmail.com>",
 		"scripts": {
 			"release": "grunt release",
-			"test": "grunt test"
+			"test": "jest"
 		},
 		"repository": {
 			"type": "git",
@@ -646,8 +683,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		"license": "MIT",
 		"devDependencies": {
 			"autoprefixer": "^6.0.1",
-			"babel": "^6.1.18",
 			"babel-core": "^6.1.4",
+			"babel-jest": "5.3.0",
 			"babel-loader": "^6.1.0",
 			"babel-preset-es2015": "^6.1.4",
 			"babel-preset-react": "^6.1.4",
@@ -658,15 +695,17 @@ return /******/ (function(modules) { // webpackBootstrap
 			"grunt-contrib-cssmin": "~0.14.0",
 			"grunt-contrib-less": "^1.0.1",
 			"grunt-contrib-watch": "~0.6.1",
-			"grunt-csscomb": "^3.1.0",
+			"grunt-jest": "^0.2.0",
 			"grunt-postcss": "^0.6.0",
 			"grunt-webfont": "~1.0.0",
 			"grunt-webpack": "^1.0.11",
+			"jest-cli": "^0.7.1",
 			"json-loader": "^0.5.3",
 			"lesslint": "^0.1.8-beta.1",
 			"load-grunt-tasks": "~3.3.0",
 			"postcss": "^5.0.4",
 			"postcss-class-prefix": "~0.3.0",
+			"react-addons-test-utils": "^0.14.2",
 			"stylelint": "^1.0.1",
 			"time-grunt": "~1.2.1",
 			"webpack": "^1.12.4",
@@ -674,7 +713,15 @@ return /******/ (function(modules) { // webpackBootstrap
 		},
 		"dependencies": {
 			"react": "^0.14.2",
-			"react-dom": "^0.14.2"
+			"react-dom": "^0.14.2",
+			"babel": "^6.1.18"
+		},
+		"jest": {
+			"scriptPreprocessor": "<rootDir>/node_modules/babel-jest/index.js",
+			"testFileExtensions": ["js", "jsx"],
+			"unmockedModulePathPatterns": ["<rootDir>/node_modules/"],
+			"moduleFileExtensions": ["js", "jsx"],
+			"testPathIgnorePatterns": ["<rootDir>/node_modules/"]
 		}
 	};
 

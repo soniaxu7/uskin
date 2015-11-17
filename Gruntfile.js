@@ -62,18 +62,6 @@ module.exports = function(grunt) {
       }
     },
 
-    csscomb: {
-      options: {
-        config: './.csscomb.json'
-      },
-      dist: {
-        expand: true,
-        cwd: 'dist/css/',
-        src: ['*.css'],
-        dest: 'dist/css/'
-      }
-    },
-
     cssmin: {
       minify: {
         options: {
@@ -141,7 +129,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: 'less/**/*.less',
-        tasks: ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'copy']
+        tasks: ['clean', 'lesslint', 'less', 'postcss', 'cssmin', 'copy']
       }
     }
   });
@@ -157,7 +145,7 @@ module.exports = function(grunt) {
   grunt.task.loadTasks('./grunt');
 
   // Build CSS
-  grunt.registerTask('css', ['lesslint', 'less', 'postcss', 'csscomb', 'cssmin']);
+  grunt.registerTask('css', ['less', 'postcss', 'cssmin']);
 
   // Build JS
   grunt.registerTask('js', ['webpack:dev', 'webpack:build']);
@@ -165,9 +153,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('release', ['clean', 'css', 'js', 'usebanner', 'copy']);
-
-  // Test
-  grunt.registerTask('lint', ['lesslint']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);
