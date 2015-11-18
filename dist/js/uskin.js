@@ -236,10 +236,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -293,7 +289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return CheckboxWithLabel;
 	})(_react2.default.Component);
 	
-	exports.default = CheckboxWithLabel;
+	module.exports = CheckboxWithLabel;
 
 /***/ },
 /* 6 */
@@ -684,7 +680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		"devDependencies": {
 			"autoprefixer": "^6.0.1",
 			"babel-core": "^6.1.4",
-			"babel-jest": "5.3.0",
+			"babel-jest": "6.0.1",
 			"babel-loader": "^6.1.0",
 			"babel-preset-es2015": "^6.1.4",
 			"babel-preset-react": "^6.1.4",
