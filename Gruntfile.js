@@ -62,6 +62,18 @@ module.exports = function(grunt) {
       }
     },
 
+    csscomb: {
+      options: {
+        config: './.csscomb.json'
+      },
+      dist: {
+        expand: true,
+        cwd: 'dist/css/',
+        src: ['*.css'],
+        dest: 'dist/css/'
+      }
+    },
+
     cssmin: {
       minify: {
         options: {
@@ -129,7 +141,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: 'less/**/*.less',
-        tasks: ['clean', 'lesslint', 'less', 'postcss', 'cssmin', 'copy']
+        tasks: ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'copy']
       }
     }
   });
@@ -145,7 +157,7 @@ module.exports = function(grunt) {
   grunt.task.loadTasks('./grunt');
 
   // Build CSS
-  grunt.registerTask('css', ['less', 'postcss', 'cssmin']);
+  grunt.registerTask('css', ['less', 'postcss', 'csscomb', 'cssmin']);
 
   // Build JS
   grunt.registerTask('js', ['webpack:dev', 'webpack:build']);
