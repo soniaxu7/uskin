@@ -1523,6 +1523,14 @@ input[type="checkbox"][readonly] {
 .menu > li h6:hover {
   background-color: #d5dddf;
 }
+.menu > li .icon-arrow-up,
+.menu > li .icon-arrow-down {
+  width: 10px;
+  height: 10px;
+  margin-left: 70px;
+  font-size: 10px;
+  vertical-align: baseline;
+}
 .menu > li li {
   height: 38px;
   line-height: 38px;
