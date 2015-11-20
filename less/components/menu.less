@@ -1,5 +1,13 @@
+@menu_category_color: @primary_gray_color;
+@menu_category_hover_color: @primary_gray_darker_color;
+@menu_category_select_color: @primary_gray_darker_color;
+
+@menu_item_color: @primary_gray_darker_color;
+@menu_item_hover_color: @link_hover_lighter_color;
+@menu_item_select_color: @link_color;
+
 .menu {
-  background-color: #e6ebec;
+  background-color: @menu_category_color;
   width: 200px;
 
   > li {
@@ -12,10 +20,10 @@
       color: #527583;
 
       &:hover {
-        background-color: #d5dddf;
+        background-color: @menu_category_hover_color;
       }
       &.selected {
-        background-color: #00afc8;
+        background-color: @menu_item_select_color;
         color: #fff;
       }
       .glyphicon {
@@ -38,21 +46,30 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #d5dddf;
+        background-color: @menu_category_hover_color;
       }
+    }
+
+    .icon-arrow-up,
+    .icon-arrow-down {
+      width: 10px;
+      height: 10px;
+      font-size: 10px;
+      margin-left: 70px;
+      vertical-align: baseline;
     }
 
     li {
       height: 38px;
       line-height: 38px;
-      background-color: #d5dddf;
+      background-color: @menu_item_color;
 
       a {
         &:hover {
-          background-color: #b9f1f9;
+          background-color: @menu_item_hover_color;
         }
         &.selected {
-          background-color: #00afc8;
+          background-color: @menu_item_select_color;
         }
       }
     }
