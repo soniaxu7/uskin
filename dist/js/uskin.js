@@ -1,5 +1,5 @@
 /*!
- * USkin v0.1.1 (https://github.com/icecreamliker/uskin)
+ * USkin v0.1.2 (https://github.com/icecreamliker/uskin)
  * Inspired by bootstrap
  * Copyright 2015 Lee Yao <yaoli111144@gmail.com>
  * Licensed under MIT (https://github.com/icecreamliker/uskin/blob/master/LICENSE)
@@ -661,7 +661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 		"name": "uskin",
 		"description": "A graceful framework which provides developers another chance to build an amazing site.",
-		"version": "0.1.1",
+		"version": "0.1.2",
 		"keywords": ["css", "less", "react", "babel", "front-end", "framework"],
 		"homepage": "https://github.com/icecreamliker/uskin",
 		"author": "Lee Yao <yaoli111144@gmail.com>",

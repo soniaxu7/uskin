@@ -1,7 +1,7 @@
 {
   "name": "uskin",
   "description": "A graceful framework which provides developers another chance to build an amazing site.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "css",
     "less",
