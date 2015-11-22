@@ -140,8 +140,8 @@ module.exports = function(grunt) {
 
     watch: {
       less: {
-        files: 'less/**/*.less',
-        tasks: ['clean', 'lesslint', 'less', 'postcss', 'csscomb', 'cssmin', 'copy']
+        files: ['less/**/*.less', 'js/**'],
+        tasks: ['clean', 'css', 'webpack:dev', 'usebanner', 'copy']
       }
     }
   });
@@ -164,7 +164,7 @@ module.exports = function(grunt) {
 
 
   // Default task.
-  grunt.registerTask('release', ['clean', 'css', 'js', 'usebanner', 'copy']);
+  grunt.registerTask('build', ['clean', 'css', 'js', 'usebanner', 'copy']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);

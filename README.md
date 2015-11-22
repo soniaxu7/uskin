@@ -25,7 +25,7 @@ Three steps to go:
 When Grunt is installed, go ahead and compile all the files:
 
 ```
-grunt release or make release
+grunt build or make build
 ```
 Run the script below to clean the generated files:
 ```

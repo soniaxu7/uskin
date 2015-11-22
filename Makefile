@@ -1,6 +1,6 @@
-release:
+build:
 # Make Sure grunt has been installed locally
-	grunt release
+	grunt build
 
 clean:
 # Clean generated css files
@@ -18,4 +18,4 @@ test:
 # Run tests
 	grunt test
 
-.PHONY: release clean watch generate_font test
+.PHONY: build clean watch generate_font test
