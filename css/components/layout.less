@@ -1,0 +1,9 @@
+@grid-columns: 24;
+
+.row {
+  display: block;
+  width: 100%;
+  &:extend(.clearfix all);
+}
+
+.generate-columns(1, @grid-columns);

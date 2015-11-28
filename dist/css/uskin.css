@@ -432,11 +432,14 @@ a:active {
   color: #009bb1;
 }
 .clearfix:before,
-.clearfix:after {
+.clearfix:after,
+.row:before,
+.row:after {
   display: table;
   content: " ";
 }
-.clearfix:after {
+.clearfix:after,
+.row:after {
   clear: both;
 }
 .hide {
@@ -1579,6 +1582,106 @@ input[type="checkbox"][readonly] {
 .pagination > li .prev,
 .pagination > li .next {
   line-height: 22px;
+}
+.row {
+  display: block;
+  width: 100%;
+}
+.row-col-1 {
+  float: left;
+  width: 4.16666667%;
+}
+.row-col-2 {
+  float: left;
+  width: 8.33333333%;
+}
+.row-col-3 {
+  float: left;
+  width: 12.5%;
+}
+.row-col-4 {
+  float: left;
+  width: 16.66666667%;
+}
+.row-col-5 {
+  float: left;
+  width: 20.83333333%;
+}
+.row-col-6 {
+  float: left;
+  width: 25%;
+}
+.row-col-7 {
+  float: left;
+  width: 29.16666667%;
+}
+.row-col-8 {
+  float: left;
+  width: 33.33333333%;
+}
+.row-col-9 {
+  float: left;
+  width: 37.5%;
+}
+.row-col-10 {
+  float: left;
+  width: 41.66666667%;
+}
+.row-col-11 {
+  float: left;
+  width: 45.83333333%;
+}
+.row-col-12 {
+  float: left;
+  width: 50%;
+}
+.row-col-13 {
+  float: left;
+  width: 54.16666667%;
+}
+.row-col-14 {
+  float: left;
+  width: 58.33333333%;
+}
+.row-col-15 {
+  float: left;
+  width: 62.5%;
+}
+.row-col-16 {
+  float: left;
+  width: 66.66666667%;
+}
+.row-col-17 {
+  float: left;
+  width: 70.83333333%;
+}
+.row-col-18 {
+  float: left;
+  width: 75%;
+}
+.row-col-19 {
+  float: left;
+  width: 79.16666667%;
+}
+.row-col-20 {
+  float: left;
+  width: 83.33333333%;
+}
+.row-col-21 {
+  float: left;
+  width: 87.5%;
+}
+.row-col-22 {
+  float: left;
+  width: 91.66666667%;
+}
+.row-col-23 {
+  float: left;
+  width: 95.83333333%;
+}
+.row-col-24 {
+  float: left;
+  width: 100%;
 }
 /**
  *  TODO: use flex to avoid minimal dimension style bug (overlapping)

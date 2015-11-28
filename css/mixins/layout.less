@@ -1,0 +1,7 @@
+.generate-columns(@index, @grid-columns) when (@index <= @grid-columns) {
+  .row-col-@{index} {
+    float: left;
+    width: percentage((@index / @grid-columns));
+  }
+  .generate-columns((@index + 1), @grid-columns);
+}
