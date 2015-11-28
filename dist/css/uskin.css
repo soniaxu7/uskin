@@ -454,6 +454,12 @@ a:active {
 .t-right {
   text-align: right;
 }
+.f-left {
+  float: left;
+}
+.f-right {
+  float: right;
+}
 .orange {
   color: #f78913;
 }
@@ -1573,5 +1579,44 @@ input[type="checkbox"][readonly] {
 .pagination > li .prev,
 .pagination > li .next {
   line-height: 22px;
+}
+/**
+ *  TODO: use flex to avoid minimal dimension style bug (overlapping)
+ *
+ */
+.navbar {
+  height: 50px;
+  background-color: #007382;
+}
+.navbar .nav-left {
+  float: left;
+  margin-left: 20px;
+}
+.navbar .nav-right {
+  float: right;
+  margin-right: 20px;
+}
+.navbar .nav-item {
+  display: block;
+  float: left;
+  line-height: 50px;
+  color: #90ccd7;
+  border-right: 1px solid #006779;
+}
+.navbar .nav-item a {
+  display: block;
+  padding: 0 20px;
+}
+.navbar .nav-item:first-child {
+  border-left: 1px solid #006779;
+}
+.navbar .nav-item.selected {
+  color: #fff;
+  cursor: default;
+  background-color: #006779;
+}
+.navbar .nav-item.selected a {
+  color: #fff;
+  cursor: default;
 }
 /*# sourceMappingURL=uskin.css.map */

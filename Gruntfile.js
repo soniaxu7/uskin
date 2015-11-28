@@ -38,7 +38,7 @@ module.exports = function(grunt) {
           sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
         },
         files: {
-          'dist/css/<%= pkg.name %>.css': 'less/<%= pkg.name %>.less'
+          'dist/css/<%= pkg.name %>.css': 'css/<%= pkg.name %>.less'
         }
       }
     },
@@ -99,7 +99,7 @@ module.exports = function(grunt) {
     webfont: {
       icons: {
         src: 'fonts_svg/*.svg',
-        dest: 'less/fonts',
+        dest: 'css/fonts',
         options: {
           types: 'eot,woff,ttf,svg',
           syntax: 'bem',
@@ -111,8 +111,8 @@ module.exports = function(grunt) {
             classPrefix: 'icon-'
           },
           callback: function() {
-            var src = 'less/fonts/icons.less',
-              dest = 'less/icons.less';
+            var src = 'css/fonts/icons.less',
+              dest = 'css/icons.less';
             fs.renameSync(src, dest);
           }
         }
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
     copy: {
       fonts: {
         expand: true,
-        cwd: './less',
+        cwd: './css',
         src: 'fonts/*',
         dest: 'dist/css'
       }
@@ -140,8 +140,12 @@ module.exports = function(grunt) {
 
     watch: {
       less: {
-        files: ['less/**/*.less', 'js/**'],
-        tasks: ['clean', 'css', 'webpack:dev', 'usebanner', 'copy']
+        files: ['css/**/*.less'],
+        tasks: ['css']
+      },
+      js: {
+        files: ['js/**'],
+        tasks: ['webpack:dev']
       }
     }
   });
