@@ -10,20 +10,25 @@
     <script src="../../node_modules/babel/dist/browser.min.js"></script>
     <script src="../../dist/js/uskin.js"></script>
     <style type="text/css">
-      #example {margin: 40px;}
+      #example, #example2 {margin: 40px;}
     </style>
   </head>
   <body>
     <div id="example"></div>
+    <div id="example2"></div>
+
     <script type="text/babel">
       var Switch = uskin.Switch;
       ReactDOM.render(
-        <Switch onClick={listener} />,
+        <Switch onClick={listener} labelOn="ON" labelOff="OFF" width="60" disabled={false} />,
         document.getElementById('example')
       );
-      function listener(e) {
-        console.debug(e);
-        alert('click triggered!');
+      ReactDOM.render(
+        <Switch onClick={listener} disabled={true} />,
+        document.getElementById('example2')
+      );
+      function listener(e, status) {
+        console.debug('click triggered!', e, status);
       }
     </script>
   </body>

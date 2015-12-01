@@ -111,19 +111,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _switch2 = _interopRequireDefault(_switch);
 	
-	var _tab = __webpack_require__(14);
+	var _tab = __webpack_require__(15);
 	
 	var _tab2 = _interopRequireDefault(_tab);
 	
-	var _table = __webpack_require__(15);
+	var _table = __webpack_require__(16);
 	
 	var _table2 = _interopRequireDefault(_table);
 	
-	var _tip = __webpack_require__(16);
+	var _tip = __webpack_require__(17);
 	
 	var _tip2 = _interopRequireDefault(_tip);
 	
-	var _tooltip = __webpack_require__(17);
+	var _tooltip = __webpack_require__(18);
 	
 	var _tooltip2 = _interopRequireDefault(_tooltip);
 	
@@ -152,7 +152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Tooltip: _tooltip2.default
 	};
 	
-	uskin.version = __webpack_require__(18).version;
+	uskin.version = __webpack_require__(19).version;
 	
 	module.exports = uskin;
 
@@ -505,7 +505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
@@ -516,6 +516,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	var _hash = __webpack_require__(14);
+	
+	var _hash2 = _interopRequireDefault(_hash);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -533,23 +537,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Switch).call(this, props));
 	
-	    _this.clickHandler = _this.clickHandler.bind(_this);
+	    _this.state = { checked: false };
+	
+	    _this.onChange = _this.onChange.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(Switch, [{
-	    key: "clickHandler",
-	    value: function clickHandler(e) {
-	      this.props.onClick && this.props.onClick.call(this, e);
+	    key: 'onChange',
+	    value: function onChange(e) {
+	      var checked = !this.state.checked;
+	      this.setState({
+	        checked: checked
+	      });
+	      this.props.onClick && this.props.onClick.apply(this, [e, checked]);
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      console.debug(this.props);
+	      var props = this.props,
+	          state = this.state;
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "switch" },
-	        _react2.default.createElement("input", { id: "uskin-1", type: "checkbox" }),
-	        _react2.default.createElement("label", { htmlFor: "uskin-1", className: "switch-inner", onClick: this.clickHandler })
+	        'div',
+	        { className: 'switch' },
+	        _react2.default.createElement('input', { type: 'checkbox', id: props.id, checked: state.checked }),
+	        _react2.default.createElement(
+	          'label',
+	          { htmlFor: props.id, className: 'switch-inner', onClick: props.disabled ? undefined : this.onChange },
+	          state.checked ? props.labelOn : props.labelOff
+	        )
 	      );
 	    }
 	  }]);
@@ -557,37 +574,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Switch;
 	})(_react2.default.Component);
 	
+	Switch.defaultProps = { id: (0, _hash2.default)(), disabled: false };
+	
 	exports.default = Switch;
 
 /***/ },
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Modal = _react2.default.createClass({
-	  displayName: 'Modal',
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'h1',
-	      null,
-	      ' Hello, world! '
-	    );
+	function hash(length) {
+	  if (!length) {
+	    length = 8;
 	  }
-	});
+	  if (window.btoa) {
+	    return btoa(Math.random()).replace(/\=+$/, '').slice(-length);
+	  } else {
+	    var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+	        len = str.length,
+	        ret = '';
 	
-	exports.default = Modal;
+	    for (var i = 0; i < length; i++) {
+	      ret += str[Math.floor(Math.random() * len)];
+	    }
+	    return ret;
+	  }
+	}
+	
+	exports.default = hash;
 
 /***/ },
 /* 15 */
@@ -681,6 +699,36 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Modal = _react2.default.createClass({
+	  displayName: 'Modal',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'h1',
+	      null,
+	      ' Hello, world! '
+	    );
+	  }
+	});
+	
+	exports.default = Modal;
+
+/***/ },
+/* 19 */
 /***/ function(module, exports) {
 
 	"use strict";
