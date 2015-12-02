@@ -1,5 +1,5 @@
-import React from 'react';
-import hash from '../mixins/hash';
+import { React } from 'react';
+import { hash } from '../mixins/hash';
 
 class Switch extends React.Component {
 
@@ -34,4 +34,4 @@ class Switch extends React.Component {
 
 Switch.defaultProps = {id: hash(), disabled: false};
 
-export default Switch;
+module.exports = Switch;

@@ -1357,10 +1357,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
 	var _getPrototypeOf = __webpack_require__(6);
 	
 	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -1383,11 +1379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react = __webpack_require__(2);
 	
-	var _react2 = _interopRequireDefault(_react);
-	
 	var _hash = __webpack_require__(63);
-	
-	var _hash2 = _interopRequireDefault(_hash);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1420,11 +1412,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      console.debug(this.props);
 	      var props = this.props,
 	          state = this.state;
-	      return _react2.default.createElement(
+	      return _react.React.createElement(
 	        'div',
 	        { className: 'switch' },
-	        _react2.default.createElement('input', { type: 'checkbox', id: props.id, checked: state.checked }),
-	        _react2.default.createElement(
+	        _react.React.createElement('input', { type: 'checkbox', id: props.id, checked: state.checked }),
+	        _react.React.createElement(
 	          'label',
 	          { htmlFor: props.id, className: 'switch-inner', onClick: props.disabled ? undefined : this.onChange },
 	          state.checked ? props.labelOn : props.labelOff
@@ -1433,11 +1425,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 	  return Switch;
-	})(_react2.default.Component);
+	})(_react.React.Component);
 	
-	Switch.defaultProps = { id: (0, _hash2.default)(), disabled: false };
+	Switch.defaultProps = { id: (0, _hash.hash)(), disabled: false };
 	
-	exports.default = Switch;
+	module.exports = Switch;
 
 /***/ },
 /* 63 */
