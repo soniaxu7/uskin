@@ -1,4 +1,3 @@
-var exportPath = require('path').resolve('./dist/js');
 
 module.exports = {
   progress: true,
@@ -6,7 +5,7 @@ module.exports = {
     uskin: './js/uskin.js'
   },
   output: {
-    path: exportPath,
+    path: './dist/js',
     filename: '[name].js',
     library: 'uskin',
     libraryTarget: 'umd'
@@ -25,7 +24,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js|jsx$/,
-      exclude: /node_modules/,
+      exclude: /node_modules|__tests__/,
       loader: 'babel-loader',
       query: {
         cacheDirectory: true
