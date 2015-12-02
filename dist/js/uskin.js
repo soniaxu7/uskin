@@ -65,57 +65,91 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _breadcrumb = __webpack_require__(1);
 	
+	var _breadcrumb2 = _interopRequireDefault(_breadcrumb);
+	
 	var _button = __webpack_require__(3);
+	
+	var _button2 = _interopRequireDefault(_button);
 	
 	var _buttonGroup = __webpack_require__(4);
 	
+	var _buttonGroup2 = _interopRequireDefault(_buttonGroup);
+	
 	var _dropdown = __webpack_require__(5);
+	
+	var _dropdown2 = _interopRequireDefault(_dropdown);
 	
 	var _menu = __webpack_require__(55);
 	
+	var _menu2 = _interopRequireDefault(_menu);
+	
 	var _modal = __webpack_require__(56);
+	
+	var _modal2 = _interopRequireDefault(_modal);
 	
 	var _notification = __webpack_require__(57);
 	
+	var _notification2 = _interopRequireDefault(_notification);
+	
 	var _pagination = __webpack_require__(58);
+	
+	var _pagination2 = _interopRequireDefault(_pagination);
 	
 	var _panel = __webpack_require__(59);
 	
+	var _panel2 = _interopRequireDefault(_panel);
+	
 	var _slider = __webpack_require__(60);
+	
+	var _slider2 = _interopRequireDefault(_slider);
 	
 	var _step = __webpack_require__(61);
 	
+	var _step2 = _interopRequireDefault(_step);
+	
 	var _switch = __webpack_require__(62);
+	
+	var _switch2 = _interopRequireDefault(_switch);
 	
 	var _tab = __webpack_require__(64);
 	
+	var _tab2 = _interopRequireDefault(_tab);
+	
 	var _table = __webpack_require__(65);
+	
+	var _table2 = _interopRequireDefault(_table);
 	
 	var _tip = __webpack_require__(66);
 	
+	var _tip2 = _interopRequireDefault(_tip);
+	
 	var _tooltip = __webpack_require__(67);
+	
+	var _tooltip2 = _interopRequireDefault(_tooltip);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	/**
 	 * USkin index
 	 */
 	
 	var uskin = {
-	  Breadcrumb: _breadcrumb.Breadcrumb,
-	  Button: _button.Button,
-	  ButtonGroup: _buttonGroup.ButtonGroup,
-	  Dropdown: _dropdown.Dropdown,
-	  Menu: _menu.Menu,
-	  Modal: _modal.Modal,
-	  Notification: _notification.Notification,
-	  Pagination: _pagination.Pagination,
-	  Panel: _panel.Panel,
-	  Slider: _slider.Slider,
-	  Step: _step.Step,
-	  Switch: _switch.Switch,
-	  Tab: _tab.Tab,
-	  Table: _table.Table,
-	  Tip: _tip.Tip,
-	  Tooltip: _tooltip.Tooltip
+	  Breadcrumb: _breadcrumb2.default,
+	  Button: _button2.default,
+	  ButtonGroup: _buttonGroup2.default,
+	  Dropdown: _dropdown2.default,
+	  Menu: _menu2.default,
+	  Modal: _modal2.default,
+	  Notification: _notification2.default,
+	  Pagination: _pagination2.default,
+	  Panel: _panel2.default,
+	  Slider: _slider2.default,
+	  Step: _step2.default,
+	  Switch: _switch2.default,
+	  Tab: _tab2.default,
+	  Table: _table2.default,
+	  Tip: _tip2.default,
+	  Tooltip: _tooltip2.default
 	};
 	
 	uskin.version = __webpack_require__(68).version;
@@ -1357,6 +1391,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _getPrototypeOf = __webpack_require__(6);
 	
 	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -1379,7 +1417,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react = __webpack_require__(2);
 	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _hash = __webpack_require__(63);
+	
+	var _hash2 = _interopRequireDefault(_hash);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1412,11 +1454,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      console.debug(this.props);
 	      var props = this.props,
 	          state = this.state;
-	      return _react.React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { className: 'switch' },
-	        _react.React.createElement('input', { type: 'checkbox', id: props.id, checked: state.checked }),
-	        _react.React.createElement(
+	        _react2.default.createElement('input', { type: 'checkbox', id: props.id, checked: state.checked }),
+	        _react2.default.createElement(
 	          'label',
 	          { htmlFor: props.id, className: 'switch-inner', onClick: props.disabled ? undefined : this.onChange },
 	          state.checked ? props.labelOn : props.labelOff
@@ -1425,11 +1467,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 	  return Switch;
-	})(_react.React.Component);
+	})(_react2.default.Component);
 	
-	Switch.defaultProps = { id: (0, _hash.hash)(), disabled: false };
+	Switch.defaultProps = { id: (0, _hash2.default)(), disabled: false };
 	
-	module.exports = Switch;
+	exports.default = Switch;
 
 /***/ },
 /* 63 */
