@@ -19,7 +19,7 @@ import Table from '../js/components/table';
 import Tip from '../js/components/tip';
 import Tooltip from '../js/components/tooltip';
 
-var uskin = {
+let uskin = {
   Breadcrumb: Breadcrumb,
   Button: Button,
   ButtonGroup: ButtonGroup,

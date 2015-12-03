@@ -86,6 +86,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     webpack: {
       options: webpackConfig,
       build: {
@@ -96,6 +97,7 @@ module.exports = function(grunt) {
       },
       dev: {}
     },
+
     webfont: {
       icons: {
         src: 'fonts_svg/*.svg',
@@ -165,7 +167,6 @@ module.exports = function(grunt) {
 
   // Build JS
   grunt.registerTask('js', ['webpack:dev', 'webpack:build']);
-
 
   // Default task.
   grunt.registerTask('build', ['clean', 'css', 'js', 'usebanner', 'copy']);

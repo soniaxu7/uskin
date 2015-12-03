@@ -20,7 +20,6 @@ class Switch extends React.Component {
   }
 
   render() {
-    console.debug(this.props)
     var props = this.props,
       state = this.state;
     return (
@@ -28,7 +27,7 @@ class Switch extends React.Component {
         <input type="checkbox" id={props.id} checked={state.checked} />
         <label htmlFor={props.id} className="switch-inner" onClick={props.disabled ? undefined : this.onChange}>{state.checked ? props.labelOn : props.labelOff}</label>
       </div>
-    )
+    );
   }
 }
 
