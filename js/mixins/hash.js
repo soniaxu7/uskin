@@ -1,5 +1,5 @@
 function hash(length) {
-  let ret = '';
+  var ret = '';
 
   if (!length) {
     length = 8;

@@ -14,7 +14,9 @@ class Switch extends React.Component {
   onChange(e) {
     var checked = !this.state.checked;
     this.setState({
-      checked: checked
+      checked,
+      name: 1,
+      age: 23
     });
     this.props.onClick && this.props.onClick.apply(this, [e, checked]);
   }

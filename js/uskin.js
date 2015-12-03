@@ -19,23 +19,23 @@ import Table from '../js/components/table';
 import Tip from '../js/components/tip';
 import Tooltip from '../js/components/tooltip';
 
-let uskin = {
-  Breadcrumb: Breadcrumb,
-  Button: Button,
-  ButtonGroup: ButtonGroup,
-  Dropdown: Dropdown,
-  Menu: Menu,
-  Modal: Modal,
-  Notification: Notification,
-  Pagination: Pagination,
-  Panel: Panel,
-  Slider: Slider,
-  Step: Step,
-  Switch: Switch,
-  Tab: Tab,
-  Table: Table,
-  Tip: Tip,
-  Tooltip: Tooltip
+var uskin = {
+  Breadcrumb,
+  Button,
+  ButtonGroup,
+  Dropdown,
+  Menu,
+  Modal,
+  Notification,
+  Pagination,
+  Panel,
+  Slider,
+  Step,
+  Switch,
+  Tab,
+  Table,
+  Tip,
+  Tooltip
 };
 
 uskin.version = require('../package.json').version;

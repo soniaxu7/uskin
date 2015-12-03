@@ -31,4 +31,3 @@ class CheckboxWithLabel extends React.Component {
 }
 
 module.exports = CheckboxWithLabel;
-
