@@ -2,17 +2,17 @@
 
 
 // Variables
-@table_hd_bg_color: #ecf0f2;
-@table_hd_color: #626f7e;
+@table_hd_bg_color: @color_default_gray;
+@table_hd_color: @color_table_hd_bg_color;
 @table_hd_height: 36px;
-@table_bg_color: #fff;
-@table_hover_bg_hover: #e1f4f7;
-@table_striped_bg_color: #f3f8fa;
-@table_selected_bg_color: #b9f1f9;
+@table_bg_color: @color_white;
+@table_hover_bg_hover: @color_talbe_hover;
+@table_striped_bg_color: @color_table_stripped;
+@table_selected_bg_color: @color_table_selected;
 @table_bd_height: 40px;
-@table_bd_border: 1px solid #e7ebed;
+@table_bd_border: 1px solid @color_disabled_input_border;
 @table_padding_left: 16px;
-@table_ft_color: #a8b3be;
+@table_ft_color: @color_btn_disabled_gray_font;
 
 
 .table {
@@ -35,7 +35,7 @@
         font-weight: normal;
 
         &:not(:first-child) {
-          border-left: 1px solid #fff;
+          border-left: 1px solid @color_white;
         }
       }
     }
@@ -76,9 +76,9 @@
       height: 36px;
       line-height: 36px;
       padding-left: 16px;
-      background-color: #ecf0f2;
+      background-color: @table_hd_bg_color;
       color: #626f7e;
-      border-right: 1px solid #fff;
+      border-right: 1px solid @color_white;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -92,7 +92,7 @@
   .table-body {
     .row {
       display: flex;
-      border-bottom: 1px solid #e7ebed;
+      border-bottom: @table_bd_border;
       > div {
         flex: 1;
         height: 40px;
@@ -108,7 +108,7 @@
       }
 
       &.selected {
-        background-color: #b9f1f9!important;
+        background-color: @table_selected_bg_color !important;
       }
 
     }
@@ -143,11 +143,11 @@
 
 .table-mini {
   .table-header {
-    border-bottom: 1px solid #e7ebed;
+    border-bottom: @table_bd_border;
     > div {
       height: 28px;
       line-height: 28px;
-      background-color: #fff;
+      background-color: @color_white;
     }
   }
   .table-body {
