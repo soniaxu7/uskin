@@ -1,15 +1,20 @@
+@slider_bg_color: @color_input_border;
+@slider_track_bg_color: @color_slider_track_bg;
+@slider_default_bg_color: @color_blue;
+@slider_thumb_bg_color: @color_blue;
+@slider_thumb_color: @color_white;
 
 .slider {
   position: relative;
   width: 300px;
   height: 16px;
-  background-color: #e2e7ea;
+  background-color: @slider_bg_color;
   border-radius: 2px;
 
   .slider-track {
     width: 0;
     height: 100%;
-    background-color: #9de6f1;
+    background-color: @slider_track_bg_color;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
   }
@@ -20,7 +25,7 @@
     top: 0;
     width: 0;
     height: 100%;
-    background-color: #00afc8;
+    background-color: @slider_default_bg_color;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
   }
@@ -31,9 +36,9 @@
     top: -3px;
     width: 1px;
     height: 12px;
-    border: 5px solid #00afc8;
+    border: 5px solid @slider_thumb_bg_color;
     border-radius: 1px;
-    background-color: #fff;
+    background-color: @slider_thumb_color;
     cursor: pointer;
   }
 }

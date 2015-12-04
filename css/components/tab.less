@@ -3,18 +3,24 @@
 
 // Variables
 @tabs_height: 48px;
-@tabs_border_bottom: 3px solid #ecf0f2;
+@tabs_border_bottom: 3px solid @color_default_gray;
 
 @tab_margin_left: 8px;
-@tab_hover_border_bottom: 3px solid #abe9f2;
+@tab_hover_border_bottom: 3px solid @color_blue_light;
 
-@tab_selected_color: @text_color;
-@tab_selected_border_bottom: 3px solid #00afc8;
+@tab_selected_color: @color_font;
+@tab_selected_border_bottom: 3px solid @color_blue;
 
 @tab_link_height: 35px;
 @tab_link_font_size: 14px;
-@tab_link_color: #738293;
+@tab_link_color: @color_font_title;
 @tab_link_padding: 6px 12px 4px;
+
+@tab_mini_font_color: @color_font_title;
+@tab_mini_bg_color: @color_default_gray;
+@tab_mini_hover_bg_color: @color_blue_light;
+@tab_mini_font_selected_color: @color_font;
+@tab_mini_selected_bg_color: @color_white;
 
 .tabs {
   height: @tabs_height;
@@ -60,7 +66,7 @@
 .tabs-mini {
   padding-left: 70px;
   height: 36px;
-  background-color: #ecf0f2;
+  background-color: @tab_mini_bg_color;
   border: none;
   font-size: 12px;
 
@@ -72,13 +78,13 @@
     .border-top-radius(2px);
 
     &:hover {
-      background-color: #b9f1f9;
+      background-color: @tab_mini_hover_bg_color;
     }
 
     &.selected {
-      background-color: #fff;
+      background-color: @tab_mini_selected_bg_color;
       a {
-        color: #252f3d;
+        color: @tab_mini_font_selected_color;
         cursor: default;
       }
     }
@@ -86,7 +92,7 @@
     a {
       display: block;
       padding: 0 16px;
-      color: #738293;
+      color: @tab_mini_font_color;
     }
   }
 }

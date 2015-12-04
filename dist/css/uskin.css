@@ -1,10 +1,3 @@
-/*!
- * USkin v0.1.2 (https://github.com/icecreamliker/uskin)
- * Inspired by bootstrap
- * Copyright 2015 Lee Yao <yaoli111144@gmail.com>
- * Licensed under MIT (https://github.com/icecreamliker/uskin/blob/master/LICENSE)
- */
-
 /**
  * Default theme
  */
@@ -741,7 +734,7 @@ a:active {
 }
 .table > tbody > tr {
   height: 40px;
-  border-bottom: 1px solid #e7ebed;
+  border-bottom: 1px solid #e7ebee;
 }
 .table > tbody > tr.selected {
   background-color: #b9f1f9 !important;
@@ -786,7 +779,7 @@ a:active {
   display: -webkit-flex;
   display: -ms-flexbox;
   display:         flex;
-  border-bottom: 1px solid #e7ebed;
+  border-bottom: 1px solid #e7ebee;
 }
 .table .table-body .row > div {
   height: 40px;
@@ -805,7 +798,7 @@ a:active {
   border-right: none;
 }
 .table .table-body .row.selected {
-  background-color: #b9f1f9!important;
+  background-color: #b9f1f9 !important;
 }
 .table-striped > tbody > tr:nth-child(even) {
   background-color: #f3f8fa;
@@ -820,7 +813,7 @@ a:active {
   background-color: #e1f4f7;
 }
 .table-mini .table-header {
-  border-bottom: 1px solid #e7ebed;
+  border-bottom: 1px solid #e7ebee;
 }
 .table-mini .table-header > div {
   height: 28px;
@@ -1258,7 +1251,7 @@ input[type="checkbox"][readonly] {
   font-size: 14px;
 }
 .modal .modal-hd .close:hover {
-  color: #1fcae7;
+  color: #5cd0e0;
 }
 .modal .modal-hd .close:active {
   color: #00afc8;
@@ -1292,7 +1285,7 @@ input[type="checkbox"][readonly] {
 }
 .tabs .tab:hover,
 .tabs .tab:active {
-  border-bottom: 3px solid #abe9f2;
+  border-bottom: 3px solid #b9f1f9;
 }
 .tabs .tab.selected {
   border-bottom: 3px solid #00afc8;
@@ -1567,7 +1560,7 @@ input[type="checkbox"][readonly] {
   text-align: center;
 }
 .pagination > li .item {
-  color: #626f7e;
+  color: #5b6775;
 }
 .pagination > li .item:hover {
   color: #00a5bd;
@@ -1703,7 +1696,7 @@ input[type="checkbox"][readonly] {
   display: block;
   float: left;
   line-height: 50px;
-  color: #90ccd7;
+  color: #00afc8;
   border-right: 1px solid #006779;
 }
 .navbar .nav-item a {

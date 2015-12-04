@@ -1,3 +1,8 @@
+@step_item_bg_color: @color_step_item_bg;
+@step_item_border_color: @color_default_gray;
+@step_item_selected_bg_color: @color_green_dark;
+@step_item_selected_border_color: @color_default_gray;
+@step_line_color: @color_step_item_bg;
 
 .steps {
   .step-item {
@@ -12,15 +17,15 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      border: 3px solid #ecf0f2;
-      background-color: #ccd6dc;
+      border: 3px solid @step_item_border_color;
+      background-color: @step_item_bg_color;
       z-index: 9;
     }
 
     &.selected {
       span {
-        border: 3px solid #ecf0f2;
-        background-color: #09b29c;
+        border: 3px solid @step_item_selected_border_color;
+        background-color: @step_item_selected_bg_color;
       }
     }
 
@@ -30,7 +35,7 @@
       right: 0;
       width: 100%;
       height: 2px;
-      background-color: #ccd6dc;
+      background-color: @step_line_color;
       z-index: 8;
     }
     &:first-child {

@@ -1,3 +1,10 @@
+@switch_off_color: @color_white;
+@switch_off_bg_color: @color_switch_gray_btn;
+@switch_off_btn_bg_color: @color_switch_gray_bg;
+@switch_on_bg_color: @color_blue;
+@switch_on_btn_bg_color: @color_switch_blue_bg;
+@switch_on_font_color: @color_blue;
+
 .switch {
   width: 60px;
   user-select: none;
@@ -13,8 +20,8 @@
     height: 22px;
     line-height: 22px;
     width: 100%;
-    background-color: #bdc3c7;
-    color: #fff;
+    background-color: @switch_off_btn_bg_color;
+    color: @switch_off_color;
     font-weight: bold;
     border-radius: 11px;
     text-align: right;
@@ -29,7 +36,7 @@
       height: 16px;
       top: 3px;
       left: 5px;
-      background-color: #7f8c8d;
+      background-color: @switch_off_bg_color;
       border-radius: 50%;
       transition: all .4s;
     }
@@ -37,13 +44,13 @@
 
   input:checked + .switch-inner {
     padding-left: 10px;
-    background-color: #c3ebf0;
-    color: #00afc8;
+    background-color: @switch_on_btn_bg_color;
+    color: @switch_on_font_color;
     text-align: left;
 
     &::after {
       left: calc(100% - 20px);
-      background-color: #00afc8;
+      background-color: @switch_on_bg_color;
     }
   }
 }

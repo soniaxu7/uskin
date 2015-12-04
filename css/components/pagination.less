@@ -1,3 +1,7 @@
+@pagination_item_color: @color_font_dark_title;
+@pagination_item_hover_color: @color_blue_dark;
+@pagination_item_active_color: @color_blue_darker;
+@pagination_item_selected_color: @color_blue;
 
 .pagination {
   display: inline-block;
@@ -15,15 +19,15 @@
       text-align: center;
     }
     .item {
-      color: #626f7e;
+      color: @pagination_item_color;
       &:hover {
-        color: @link_hover_color;
+        color: @pagination_item_hover_color;
       }
       &:active {
-        color: @link_active_color;
+        color: @pagination_item_active_color;
       }
       &.active {
-        color: @link_color;
+        color: @pagination_item_selected_color;
         cursor: default;
       }
     }
