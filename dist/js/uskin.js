@@ -1276,7 +1276,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'render',
 	    value: function render() {
 	      var props = this.props,
-	          style = props.width ? { 'width': props.width } : {};
+	          style = props.width ? {
+	        'width': props.width
+	      } : {};
 	
 	      return _react2.default.createElement(
 	        'div',
@@ -1398,11 +1400,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'switch', style: style },
-	        _react2.default.createElement('input', { type: 'checkbox', id: state.id, checked: state.checked }),
+	        _react2.default.createElement('input', { type: 'checkbox', id: state.id, checked: state.checked,
+	          onChange: state.disabled ? undefined : this.onChange }),
 	        _react2.default.createElement(
 	          'label',
-	          { htmlFor: state.id, className: 'switch-inner',
-	            onClick: state.disabled ? undefined : this.onChange },
+	          { htmlFor: state.id, className: 'switch-inner' },
 	          state.checked ? props.labelOn : props.labelOff
 	        )
 	      );
