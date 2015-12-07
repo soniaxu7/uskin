@@ -4,7 +4,9 @@ class CheckboxWithLabel extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {isChecked: false};
+    this.state = {
+      isChecked: false
+    };
 
     // since auto-binding is disabled for React's class model
     // we can prebind methods here
@@ -13,7 +15,9 @@ class CheckboxWithLabel extends React.Component {
   }
 
   onChange() {
-    this.setState({isChecked: !this.state.isChecked});
+    this.setState({
+      isChecked: !this.state.isChecked
+    });
   }
 
   render() {

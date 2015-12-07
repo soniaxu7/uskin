@@ -10,7 +10,7 @@
     "comma-dangle": [2, "never"],
     "func-names": 0,
     "guard-for-in": 0,
-    "one-var": [2, "always"],
+    "one-var": [0],
     "prefer-const": 0,
     "key-spacing": 0,
     "no-eq-null": 0,
@@ -19,7 +19,6 @@
     "no-this-before-super": 2,
     "no-undef": 2,
     "no-unused-vars": [2, { "vars": "all", "args": "none" }],
-    "babel/object-shorthand": 1,
     "react/jsx-boolean-value": 0,
     "react/jsx-no-duplicate-props": 2,
     "react/prop-types": [2, { "ignore": [ "children", "className", "style" ] }],
@@ -32,7 +31,7 @@
     "space-before-function-paren": 0,
     "spaced-comment": 0,
     "vars-on-top": 0,
-    "eol-last": 0,
+    "eol-last": 2,
     "no-var": 0,
     "no-unused-expressions": 0
   }

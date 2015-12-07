@@ -6,17 +6,25 @@ class Switch extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {checked: false};
+    this.state = {
+      id: hash()
+    };
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  componentWillMount() {
+    var props = this.props;
+    this.setState({
+      checked: props.checked ? true : false,
+      disabled: props.disabled ? true : false
+    });
   }
 
   onChange(e) {
     var checked = !this.state.checked;
     this.setState({
-      checked,
-      name: 1,
-      age: 23
+      checked: checked
     });
     this.props.onClick && this.props.onClick.apply(this, [e, checked]);
   }
@@ -24,15 +32,20 @@ class Switch extends React.Component {
   render() {
     var props = this.props,
       state = this.state;
+
+    var style = props.width ? {
+      width: props.width
+    } : {};
+
     return (
-      <div className="switch">
-        <input type="checkbox" id={props.id} checked={state.checked} />
-        <label htmlFor={props.id} className="switch-inner" onClick={props.disabled ? undefined : this.onChange}>{state.checked ? props.labelOn : props.labelOff}</label>
+      <div className="switch" style={style}>
+        <input type="checkbox" id={state.id} checked={state.checked} />
+        <label htmlFor={state.id} className="switch-inner"
+          onClick={state.disabled ? undefined : this.onChange}>{state.checked ? props.labelOn : props.labelOff}
+        </label>
       </div>
     );
   }
 }
-
-Switch.defaultProps = {id: hash(), disabled: false};
 
 export default Switch;
