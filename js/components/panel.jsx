@@ -8,7 +8,9 @@ class Panel extends React.Component {
 
   render() {
     var props = this.props,
-      style = props.width ? { 'width': props.width } : {};
+      style = props.width ? {
+        'width': props.width
+      } : {};
 
     return (
       <div className="panel" style={style}>

@@ -41,7 +41,8 @@ class Switch extends React.Component {
       <div className="switch" style={style}>
         <input type="checkbox" id={state.id} checked={state.checked} />
         <label htmlFor={state.id} className="switch-inner"
-          onClick={state.disabled ? undefined : this.onChange}>{state.checked ? props.labelOn : props.labelOff}
+          onClick={state.disabled ? undefined : this.onChange}>
+          {state.checked ? props.labelOn : props.labelOff}
         </label>
       </div>
     );

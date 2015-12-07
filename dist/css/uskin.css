@@ -1155,6 +1155,9 @@ input[type="checkbox"][readonly] {
   border: 1px solid #252f3d;
   border-radius: 2px;
 }
+.tip strong {
+  margin-right: 5px;
+}
 .tip-info {
   background-color: #e5f7fa;
   border: 1px solid #00afc8;
@@ -1192,6 +1195,9 @@ input[type="checkbox"][readonly] {
   border: 1px solid #252f3d;
   border-radius: 2px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .2);
+}
+.notification strong {
+  margin-right: 5px;
 }
 .notification-info {
   background-color: #e5f7fa;
@@ -1488,6 +1494,11 @@ input[type="checkbox"][readonly] {
   text-overflow: ellipsis;
   white-space: nowrap;
   background-color: #f3f6f8;
+}
+.panel .panel-hd > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .panel .panel-bd {
   padding: 18px;

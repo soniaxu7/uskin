@@ -1507,26 +1507,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	  (0, _createClass3.default)(Tip, [{
 	    key: 'render',
 	    value: function render() {
-	      var props = this.props,
-	          className = props.type && this.TYPES.indexOf(props.type) > -1 ? 'tip tip-' + props.type : 'tip',
-	          style = props.width ? {
+	      var props = this.props;
+	
+	      var className = props.type && this.TYPES.indexOf(props.type) > -1 ? 'tip tip-' + props.type : 'tip';
+	
+	      var style = props.width ? {
 	        'width': props.width
-	      } : {},
-	          contents = props.title ? _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'strong',
-	          null,
-	          props.title
-	        ),
-	        props.content
-	      ) : props.content;
+	      } : {};
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: className, style: style },
-	        contents
+	        props.title ? _react2.default.createElement(
+	          'strong',
+	          null,
+	          props.title
+	        ) : '',
+	        props.content
 	      );
 	    }
 	  }]);

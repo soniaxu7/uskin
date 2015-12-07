@@ -9,17 +9,19 @@ class Tip extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      className = props.type && (this.TYPES.indexOf(props.type) > -1) ?
-      `tip tip-${props.type}` : 'tip',
-      style = props.width ? {
-        'width': props.width
-      } : {},
-      contents = props.title ? <div><strong>{props.title}</strong>{props.content}</div> : props.content;
+    var props = this.props;
+
+    var className = props.type && (this.TYPES.indexOf(props.type) > -1) ?
+      `tip tip-${props.type}` : 'tip';
+
+    var style = props.width ? {
+      'width': props.width
+    } : {};
 
     return (
       <div className={className} style={style}>
-        { contents }
+        {props.title ? <strong>{props.title}</strong> : ''}
+        {props.content}
       </div>
     );
   }
