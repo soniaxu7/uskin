@@ -1,4 +1,5 @@
 .DS_Store
 node_modules
 css/**/*.css
-npm-debug.log
+*.log
+coverage
