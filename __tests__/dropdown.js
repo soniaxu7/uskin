@@ -1,4 +1,4 @@
-jest.dontMock('../js/components/dropdown.jsx');
+jest.autoMockOff();
 
 import React from 'react';
 import ReactDOM from 'react-dom';

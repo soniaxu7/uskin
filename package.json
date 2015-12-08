@@ -15,7 +15,9 @@
   "scripts": {
     "build": "grunt build",
     "test": "jest",
-    "eslint": "eslint js/** --ext '.js,.jsx'"
+    "eslint": "eslint js/** --ext '.js,.jsx'",
+    "devjs": "webpack --config dev.webpack.config.js",
+    "devcss": "echo 'stay tuned' && exit 0"
   },
   "repository": {
     "type": "git",
@@ -83,6 +85,7 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/"
-    ]
+    ],
+    "collectCoverage": true
   }
 }

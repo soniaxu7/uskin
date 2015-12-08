@@ -1385,7 +1385,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.setState({
 	        checked: checked
 	      });
-	      this.props.onClick && this.props.onClick.apply(this, [e, checked]);
+	      this.props.onChange && this.props.onChange.apply(this, [e, checked]);
 	    }
 	  }, {
 	    key: 'render',
@@ -1556,7 +1556,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		"scripts": {
 			"build": "grunt build",
 			"test": "jest",
-			"eslint": "eslint js/** --ext '.js,.jsx'"
+			"eslint": "eslint js/** --ext '.js,.jsx'",
+			"devjs": "webpack --config dev.webpack.config.js",
+			"devcss": "echo 'stay tuned' && exit 0"
 		},
 		"repository": {
 			"type": "git",
@@ -1614,7 +1616,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			"testFileExtensions": ["js", "jsx"],
 			"unmockedModulePathPatterns": ["<rootDir>/node_modules/"],
 			"moduleFileExtensions": ["js", "jsx"],
-			"testPathIgnorePatterns": ["<rootDir>/node_modules/"]
+			"testPathIgnorePatterns": ["<rootDir>/node_modules/"],
+			"collectCoverage": true
 		}
 	};
 

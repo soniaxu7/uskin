@@ -1,5 +1,4 @@
-jest.dontMock('../js/components/switch.jsx');
-jest.dontMock('../js/mixins/hash.js');
+jest.autoMockOff();
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -23,6 +22,7 @@ describe('Test switch component', () => {
     expect(checkboxNode.textContent).toEqual('ON');
 
     TestUtils.Simulate.change(TestUtils.findRenderedDOMComponentWithTag(checkbox, 'input'));
+
     expect(checkboxNode.textContent).toEqual('OFF');
   });
 
@@ -38,15 +38,15 @@ describe('Test switch component', () => {
 
   it('adds change event handler', () => {
 
-    function listener(e, checked) {
-      expect(checked).toEqual(true);
-    }
+    var listener = jest.genMockFunction();
 
     var checkbox = TestUtils.renderIntoDocument(
-      <Switch labelOn="ON" labelOff="OFF" onClick={listener} />
+      <Switch labelOn="ON" labelOff="OFF" checked={true} onChange={listener} />
     );
 
     TestUtils.Simulate.change(TestUtils.findRenderedDOMComponentWithTag(checkbox, 'input'));
+
+    expect(listener).toBeCalledWith(jasmine.any(Object), false);
 
   });
 

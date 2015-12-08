@@ -21,17 +21,17 @@
     <script type="text/babel">
       var Switch = uskin.Switch;
       ReactDOM.render(
-        <Switch onClick={listener} labelOn="ON" labelOff="OFF" disabled={false} />,
+        <Switch onChange={listener} labelOn="ON" labelOff="OFF" disabled={false} />,
         document.getElementById('example')
       );
 
       ReactDOM.render(
-        <Switch onClick={listener} disabled={false} width="45" checked={true} />,
+        <Switch onChange={listener} disabled={false} width="45" checked={true} />,
         document.getElementById('example2')
       );
 
       ReactDOM.render(
-        <Switch onClick={listener} disabled={true} />,
+        <Switch onChange={listener} disabled={true} />,
         document.getElementById('example3')
       );
 
