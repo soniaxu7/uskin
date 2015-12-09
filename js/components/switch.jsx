@@ -1,5 +1,6 @@
 import React from 'react';
 import hash from '../mixins/hash';
+import styles from '../mixins/styles';
 
 class Switch extends React.Component {
 
@@ -33,9 +34,7 @@ class Switch extends React.Component {
     var props = this.props,
       state = this.state;
 
-    var style = props.width ? {
-      width: props.width
-    } : {};
+    var style = styles.getWidth(props.width);
 
     return (
       <div className="switch" style={style}>

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../mixins/styles';
 
 class Notification extends React.Component {
 
@@ -9,12 +10,11 @@ class Notification extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      className = props.type && (this.TYPES.indexOf(props.type) > -1) ?
-      `notification notification-${props.type}` : 'notification',
-      style = props.width ? {
-        'width': props.width
-      } : {},
+    var props = this.props;
+
+    var className = props.type && (this.TYPES.indexOf(props.type) > -1) ?
+      'notification notification-' + props.type : 'notification',
+      style = styles.getWidth(props.width),
       contents = props.title ? <div><strong>{props.title}</strong>{props.content}</div> : props.content;
 
     return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../mixins/styles';
 
 class Panel extends React.Component {
 
@@ -7,11 +8,9 @@ class Panel extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      style = props.width ? {
-        'width': props.width
-      } : {};
+    var props = this.props;
 
+    var style = styles.getWidth(props.width);
     return (
       <div className="panel" style={style}>
         <div className="panel-hd">
