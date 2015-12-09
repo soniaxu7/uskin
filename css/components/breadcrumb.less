@@ -1,8 +1,13 @@
 @breadcrub_dest_color: @color_font_light_title;
 
 .breadcrumb {
-  span {
-    font-weight: bold;
-    color: @breadcrub_dest_color;
+  .breadcrumb-item {
+    > span {
+      font-weight: bold;
+      color: @breadcrub_dest_color;
+    }
+    > span.breadcrumb-item-next {
+      margin: 0 4px;
+    }
   }
 }
