@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Step</title>
+    <link href="../../dist/css/uskin.min.css" rel="stylesheet">
+    <script src="../../node_modules/react/dist/react.min.js"></script>
+    <script src="../../node_modules/react-dom/dist/react-dom.min.js"></script>
+    <script src="../../node_modules/babel/dist/browser.min.js"></script>
+    <script src="../../dist/js/uskin.js"></script>
+    <style type="text/css">
+      .steps { height: 40px; margin: 40px; }
+    </style>
+  </head>
+  <body>
+    <div id="example"></div>
+    <div id="example2"></div>
+
+    <script type="text/babel">
+      var Step = uskin.Step,
+        items1 = [{ name: 'step 1', value: '0', selected: true},
+                { name: 'step 2', value: '1' },
+                { name: 'step 3', value: '2' }],
+        items2 = [{ name: 'title 1', value: '0' },
+                { name: 'title 2', value: '1' },
+                { name: 'title 3', value: '2' , selected: true},
+                { name: 'title 4', value: '3' }];
+
+      ReactDOM.render(
+          <Step items={items1} onClick={listener}/>,
+        document.getElementById('example')
+      );
+
+      ReactDOM.render(
+          <Step items={items2} onClick={listener} width="572"/>,
+        document.getElementById('example2')
+      );
+
+      function listener(e, status) {
+        console.debug('click triggered!', e, status);
+      }
+    </script>
+  </body>
+</html>

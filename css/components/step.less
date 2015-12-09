@@ -3,6 +3,7 @@
 @step_item_selected_bg_color: @color_green_dark;
 @step_item_selected_border_color: @color_default_gray;
 @step_line_color: @color_step_item_bg;
+@step_name_selected_font_color: @color_font;
 
 .steps {
   .step-item {
@@ -20,12 +21,14 @@
       border: 3px solid @step_item_border_color;
       background-color: @step_item_bg_color;
       z-index: 9;
+      cursor: pointer;
     }
 
     &.selected {
       span {
         border: 3px solid @step_item_selected_border_color;
         background-color: @step_item_selected_bg_color;
+        cursor: default;
       }
     }
 
