@@ -27,6 +27,10 @@ class Step extends React.Component {
       this.setState({
         selected: selected
       });
+    } else {
+      this.setState({
+        selected: undefined
+      });
     }
   }
 
@@ -48,8 +52,8 @@ class Step extends React.Component {
     return (
       <ol className="steps">
         {items.map((item, index) =>
-          <li className={state.selected === item.value ? 'step-item selected' : 'step-item'} style={style}>
-            <span value={index} onClick={state.selected === item.value ? undefined : this.onClick}></span>
+          <li key={index} className={state.selected === item.value ? 'step-item selected' : 'step-item'} style={style}>
+            <span ref={'step' + index} value={index} onClick={state.selected === item.value ? undefined : this.onClick}></span>
             <div className="delimiter"></div>
             <div className="name">{item.name}</div>
           </li>
