@@ -12,10 +12,11 @@
   ],
   "homepage": "https://github.com/icecreamliker/uskin",
   "author": "Lee Yao <yaoli111144@gmail.com>",
+  "main": "index.js",
   "scripts": {
     "build": "grunt build",
     "test": "jest",
-    "eslint": "eslint js/** --ext '.js,.jsx'",
+    "eslint": "eslint *.js __tests__/ js/** --ext '.js,.jsx'",
     "devjs": "webpack --config dev.webpack.config.js",
     "devcss": "echo 'stay tuned' && exit 0"
   },

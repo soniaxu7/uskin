@@ -11,7 +11,7 @@ describe('Test notification component', () => {
   it('generates with title and content', () => {
 
     var title = 'Title',
-     content = 'this is content';
+      content = 'this is content';
     var notification = TestUtils.renderIntoDocument(
       <Notification title={title} content={content}/>
     );
@@ -19,7 +19,7 @@ describe('Test notification component', () => {
     var notificationNode = ReactDOM.findDOMNode(notification);
 
     expect(notificationNode.textContent).toEqual(title + content);
-    
+
   });
 
   it('generates with type and width', () => {
@@ -37,7 +37,7 @@ describe('Test notification component', () => {
     expect(notificationNode.textContent).toEqual(content);
     expect(notificationNode.getAttribute('class')).toEqual(classNamePrefix + type);
     expect(notificationNode.style.width).toEqual(width);
-    
+
   });
 
 });

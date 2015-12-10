@@ -1,8 +1,7 @@
-
 module.exports = {
   progress: true,
   entry: {
-    uskin: './js/uskin.js'
+    uskin: './index.js'
   },
   output: {
     path: './dist/js',

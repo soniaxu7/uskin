@@ -54,7 +54,7 @@ module.exports = function(grunt) {
             browsers: ['> 1%', 'last 2 versions']
           }),
           require('postcss-class-prefix')(''),
-          require("stylelint")()
+          require('stylelint')()
         ]
       },
       dist: {
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       options: webpackConfig,
       build: {
         output: {
-          filename: '[name].min.js',
+          filename: '[name].min.js'
         },
         plugins: [new webpack.optimize.UglifyJsPlugin()]
       },

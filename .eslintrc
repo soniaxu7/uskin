@@ -1,6 +1,12 @@
 {
   "extends": ["eslint-config-airbnb"],
   "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true,
+    "jasmine": true
+  },
   "plugins": [
     "react",
     "babel"
@@ -8,6 +14,7 @@
   "rules": {
     "constructor-super": 2,
     "comma-dangle": [2, "never"],
+    "eol-last": 2,
     "func-names": 0,
     "guard-for-in": 0,
     "one-var": [0],
@@ -19,6 +26,10 @@
     "no-this-before-super": 2,
     "no-undef": 2,
     "no-unused-vars": [2, { "vars": "all", "args": "none" }],
+    "no-var": 0,
+    "no-unused-expressions": 0,
+    "no-shadow": [2, {"allow": ["xhr"]}],
+    "padded-blocks": 0,
     "react/jsx-boolean-value": 0,
     "react/jsx-no-duplicate-props": 2,
     "react/prop-types": [2, { "ignore": [ "children", "className", "style" ] }],
@@ -30,9 +41,6 @@
     "space-before-blocks": 0,
     "space-before-function-paren": 0,
     "spaced-comment": 0,
-    "vars-on-top": 0,
-    "eol-last": 2,
-    "no-var": 0,
-    "no-unused-expressions": 0
+    "vars-on-top": 0
   }
 }
