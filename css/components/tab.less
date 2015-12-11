@@ -59,6 +59,7 @@
       line-height: @tab_link_height;
       font-size: @tab_link_font_size;
       color: @tab_link_color;
+      cursor: pointer;
     }
   }
 }
@@ -89,10 +90,18 @@
       }
     }
 
+    &.disabled {
+      a {
+        background-color: @tab_mini_bg_color;
+        cursor: default;
+      }
+    }
+
     a {
       display: block;
       padding: 0 16px;
       color: @tab_mini_font_color;
+      cursor: pointer;
     }
   }
 }
