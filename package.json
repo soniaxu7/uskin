@@ -15,6 +15,7 @@
   "main": "index.js",
   "scripts": {
     "build": "grunt build",
+    "prepublish": "grunt build",
     "test": "jest",
     "eslint": "eslint *.js __tests__/ js/** --ext '.js,.jsx'",
     "devjs": "webpack --config dev.webpack.config.js",
