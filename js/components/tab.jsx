@@ -19,7 +19,7 @@ class Tab extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this._data = this._isArray(nextProps.items);
-    this._class = (this.props.size === 'small') ? 'tabs-mini' : 'tabs';
+    this._class = (nextProps.size === 'small') ? 'tabs-mini' : 'tabs';
     this._findDefaultTab();
   }
 
@@ -49,7 +49,7 @@ class Tab extends React.Component {
   _getItemClassName(item, index, selectedIndex) {
     if (item.disabled) {
       return 'tab disabled';
-    } else if (index.toString() === selectedIndex.toString()) {
+    } else if (typeof selectedIndex !== 'undefined' && selectedIndex.toString() === index.toString()) {
       return 'tab selected';
     } else {
       return 'tab';

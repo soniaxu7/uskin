@@ -174,11 +174,16 @@ describe('Test tab component', () => {
 
     TestUtils.Simulate.click(clickNode);
 
-    ReactDOM.render(<Tab items={newItems} />, divNode);
+    var type = 'small';
+    ReactDOM.render(<Tab items={newItems} size={type}/>, divNode);
     TestUtils.Simulate.click(clickNode);
+
+    ReactDOM.render(<Tab items={newItems}/>, divNode);
+    tabNode = ReactDOM.findDOMNode(tab);
 
     expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
     expect(listener.mock.calls[1][1]).toBe(newItems[clickIndex]);
+    expect(tabNode.getAttribute('class')).toBe('tabs');
   });
 
 });
