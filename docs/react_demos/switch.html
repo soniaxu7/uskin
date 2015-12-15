@@ -7,7 +7,6 @@
     <link href="../../dist/css/uskin.min.css" rel="stylesheet">
     <script src="../../node_modules/react/dist/react.min.js"></script>
     <script src="../../node_modules/react-dom/dist/react-dom.min.js"></script>
-    <script src="../../node_modules/babel/dist/browser.min.js"></script>
     <script src="../../dist/js/uskin.js"></script>
     <style type="text/css">
       #example, #example2, #example3 {margin: 40px;}
@@ -17,27 +16,6 @@
     <div id="example"></div>
     <div id="example2"></div>
     <div id="example3"></div>
-
-    <script type="text/babel">
-      var Switch = uskin.Switch;
-      ReactDOM.render(
-        <Switch onChange={listener} labelOn="ON" labelOff="OFF" disabled={false} />,
-        document.getElementById('example')
-      );
-
-      ReactDOM.render(
-        <Switch onChange={listener} disabled={false} width="45" checked={true} />,
-        document.getElementById('example2')
-      );
-
-      ReactDOM.render(
-        <Switch onChange={listener} disabled={true} />,
-        document.getElementById('example3')
-      );
-
-      function listener(e, status) {
-        console.debug('click triggered!', e, status);
-      }
-    </script>
+    <script src="./dist/switch.js"></script>
   </body>
 </html>
