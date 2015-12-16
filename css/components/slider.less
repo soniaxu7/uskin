@@ -10,6 +10,8 @@
   height: 16px;
   background-color: @slider_bg_color;
   border-radius: 2px;
+  user-select: none;
+  cursor: pointer;
 
   .slider-track {
     width: 0;
@@ -17,6 +19,9 @@
     background-color: @slider_track_bg_color;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
+    &.animate {
+      transition:width .5s;
+    }
   }
 
   .slider-default {
@@ -40,5 +45,9 @@
     border-radius: 1px;
     background-color: @slider_thumb_color;
     cursor: pointer;
+    margin-left: -5px;
+    &.animate {
+      transition:left .5s;
+    }
   }
 }

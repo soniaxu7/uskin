@@ -4,3 +4,4 @@ css/**/*.css
 *.log
 coverage
 dist
+!docs/react_demos/dist
