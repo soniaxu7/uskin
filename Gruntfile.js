@@ -98,6 +98,20 @@ module.exports = function(grunt) {
       dev: {}
     },
 
+    rev: {
+      options: {
+        length: 6
+      },
+      assets: {
+        files: [{
+          src: [
+            'dist/css/*.css',
+            'dist/js/*.js'
+          ]
+        }]
+      }
+    },
+
     webfont: {
       icons: {
         src: 'fonts_svg/*.svg',
@@ -170,6 +184,9 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('build', ['clean', 'css', 'js', 'usebanner', 'copy']);
+
+  // Release with hash.
+  grunt.registerTask('release', ['build', 'rev']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);
