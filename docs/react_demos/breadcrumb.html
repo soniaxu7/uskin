@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Notification</title>
+    <title>Breadcrumb</title>
     <link href="../../dist/css/uskin.min.css" rel="stylesheet">
     <script src="../../node_modules/react/dist/react.min.js"></script>
     <script src="../../node_modules/react-dom/dist/react-dom.min.js"></script>
-    <script src="../../node_modules/babel/dist/browser.min.js"></script>
     <script src="../../dist/js/uskin.js"></script>
     <style type="text/css">
       body { padding: 20px; }
@@ -17,22 +16,6 @@
     <div id="example"></div>
     <div id="example2"></div>
 
-    <script type="text/babel">        
-      var Breadcrumb = uskin.Breadcrumb;
-      var items1 = [{ name: 'Home', href: '#home' },
-                { name: 'Store', href: '#store' }],
-          items2 = [{ name: 'Home', href: '#home' },
-                { name: 'Store', href: '#store' },
-                { name: 'Phones', href: '#phone' }];
-
-      ReactDOM.render(
-        <Breadcrumb items={items1}/>,
-        document.getElementById('example')
-      );
-      ReactDOM.render(
-        <Breadcrumb items={items2}/>,
-        document.getElementById('example2')
-      );
-    </script>
+    <script src="./dist/breadcrumb.js"></script>
   </body>
 </html>

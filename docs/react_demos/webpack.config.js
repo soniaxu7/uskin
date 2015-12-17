@@ -1,8 +1,15 @@
+var fs = require('fs');
+var path = require('path');
+var entry = {};
+
+var files = fs.readdirSync(path.resolve('./js'));
+files.forEach(function(file) {
+  entry[file.replace('.js','')] = './js/' + file;
+});
+
 module.exports = {
   progress: true,
-  entry: {
-    'switch': './js/switch.js'
-  },
+  entry: entry,
   output: {
     path: './dist',
     filename: '[name].js'
