@@ -12,8 +12,7 @@ describe('Test button component', () => {
 
     var value = 'button',
       type = 'create',
-      size = 'lg',
-      className = 'btn' + ' btn-' + type + ' btn-' + size;
+      size = 'lg';
 
     var button = TestUtils.renderIntoDocument(
       <Button value={value} type={type} size={size}/>
@@ -22,15 +21,16 @@ describe('Test button component', () => {
     var buttonNode = ReactDOM.findDOMNode(button);
 
     expect(buttonNode.innerHTML).toBe(value);
-    expect(buttonNode.getAttribute('class')).toBe(className);
+    expect(buttonNode.classList.contains('btn')).toBe(true);
+    expect(buttonNode.classList.contains('btn-' + type)).toBe(true);
+    expect(buttonNode.classList.contains('btn-' + size)).toBe(true);
   });
 
   it('is generated with value, initial type and selected status', () => {
 
     var value = 'button',
       initial = true,
-      selected = true,
-      className = 'btn' + ' btn-initial' + ' selected';
+      selected = true;
 
     var button = TestUtils.renderIntoDocument(
       <Button value={value} initial={initial} selected={selected}/>
@@ -39,7 +39,9 @@ describe('Test button component', () => {
     var buttonNode = ReactDOM.findDOMNode(button);
 
     expect(buttonNode.innerHTML).toBe(value);
-    expect(buttonNode.getAttribute('class')).toBe(className);
+    expect(buttonNode.classList.contains('btn')).toBe(true);
+    expect(buttonNode.classList.contains('btn-initial')).toBe(true);
+    expect(buttonNode.classList.contains('selected')).toBe(true);
   });
 
   it('is generated with div tag', () => {
@@ -60,38 +62,30 @@ describe('Test button component', () => {
 
   it('is triggered with beforeClick, onClick and afterClick', () => {
     var value = 'button',
-      listener = jest.genMockFunction(),
-      beforeListener = jest.genMockFunction(),
-      afterListener = jest.genMockFunction();
+      listener = jest.genMockFunction();
 
     var button = TestUtils.renderIntoDocument(
-      <Button value={value} beforeClick={beforeListener} onClick={listener} afterClick={afterListener}/>
+      <Button value={value} onClick={listener} />
     );
 
     var buttonNode = ReactDOM.findDOMNode(button);
     TestUtils.Simulate.click(buttonNode);
 
     expect(listener).toBeCalled();
-    expect(beforeListener).toBeCalled();
-    expect(afterListener).toBeCalled();
   });
 
   it('won\'t be triggered when button is disabled', () => {
     var value = 'button',
-      listener = jest.genMockFunction(),
-      beforeListener = jest.genMockFunction(),
-      afterListener = jest.genMockFunction();
+      listener = jest.genMockFunction();
 
     var button = TestUtils.renderIntoDocument(
-      <Button value={value} disabled={true} beforeClick={beforeListener} onClick={listener} afterClick={afterListener}/>
+      <Button value={value} disabled={true} onClick={listener}/>
     );
 
     var buttonNode = ReactDOM.findDOMNode(button);
     TestUtils.Simulate.click(buttonNode);
 
     expect(listener).not.toBeCalled();
-    expect(beforeListener).not.toBeCalled();
-    expect(afterListener).not.toBeCalled();
   });
 
 });
