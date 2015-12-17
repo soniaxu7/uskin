@@ -30,6 +30,14 @@ class Switch extends React.Component {
     this.props.onChange && this.props.onChange.apply(this, [e, checked]);
   }
 
+  _getClass() {
+    var ret = ['switch'];
+    if (this.props.disabled) {
+      ret.push('disabled');
+    }
+    return ret.join(' ');
+  }
+
   render() {
     var props = this.props,
       state = this.state;
@@ -37,7 +45,7 @@ class Switch extends React.Component {
     var style = styles.getWidth(props.width);
 
     return (
-      <div className="switch" style={style}>
+      <div className={this._getClass()} style={style}>
         <input type="checkbox" id={state.id} checked={state.checked}
           onChange={state.disabled ? undefined : this.onChange} />
         <label htmlFor={state.id} className="switch-inner">
@@ -47,5 +55,14 @@ class Switch extends React.Component {
     );
   }
 }
+
+Switch.propTypes = {
+  labelOn: React.PropTypes.string,
+  labelOff: React.PropTypes.string,
+  width: React.PropTypes.number,
+  disabled: React.PropTypes.bool,
+  checked: React.PropTypes.bool,
+  onChange: React.PropTypes.func
+};
 
 export default Switch;

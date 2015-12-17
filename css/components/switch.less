@@ -4,10 +4,13 @@
 @switch_on_bg_color: @color_blue;
 @switch_on_btn_bg_color: @color_switch_blue_bg;
 @switch_on_font_color: @color_blue;
+@switch_disabled_bg_color: @color_default_gray;
+@switch_disabled_btn_bg_color: @color_menu_item_gray;
 
 .switch {
   width: 60px;
   user-select: none;
+
   input {
     position: absolute;
     visibility: hidden;
@@ -51,6 +54,16 @@
     &::after {
       left: calc(100% - 20px);
       background-color: @switch_on_bg_color;
+    }
+  }
+
+  &.disabled {
+    input + .switch-inner {
+      color: @color_btn_disabled_gray_font;
+      background-color: @switch_disabled_bg_color;
+      &::after {
+        background-color: @switch_disabled_btn_bg_color;
+      }
     }
   }
 }

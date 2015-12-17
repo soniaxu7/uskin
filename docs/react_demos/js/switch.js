@@ -5,12 +5,12 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Switch onChange={listener} disabled={false} width="45" checked={true} />,
+  <Switch onChange={listener} disabled={false} width={45} checked={true} />,
   document.getElementById('example2')
 );
 
 ReactDOM.render(
-  <Switch onChange={listener} disabled={true} />,
+  <Switch onChange={listener} disabled={true} width={50} labelOn="开" labelOff="关" />,
   document.getElementById('example3')
 );
 
