@@ -22,13 +22,7 @@ class Button extends React.Component {
   }
 
   onClick(e) {
-    var arg = [this.props.onClick];
-    (typeof this.props.afterClick === 'function') && arg.push(this.props.afterClick);
-    (typeof this.props.beforeClick === 'function') && arg.unshift(this.props.beforeClick);
-
-    arg.forEach(func => {
-      func.apply(this, [e]);
-    });
+    (typeof this.props.onClick === 'function') && this.props.onClick.apply(this, [e]);
   }
 
   render() {
@@ -54,9 +48,7 @@ Button.propTypes = {
   size: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   initial: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  beforeClick: React.PropTypes.func,
-  afterClick: React.PropTypes.func
+  onClick: React.PropTypes.func
 };
 
 export default Button;

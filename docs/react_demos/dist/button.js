@@ -53,55 +53,39 @@
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Normal" }),
-	    React.createElement(Button, { value: "Create", type: "create" }),
-	    React.createElement(Button, { value: "Delete", type: "delete" }),
-	    React.createElement(Button, { value: "Cancel", type: "cancel" }),
-	    React.createElement(Button, { value: "Disabled", type: "cancel", disabled: true })
+	    React.createElement(Button, { value: "Normal", onClick: listener }),
+	    React.createElement(Button, { value: "Create", type: "create", onClick: listener }),
+	    React.createElement(Button, { value: "Delete", type: "delete", onClick: listener }),
+	    React.createElement(Button, { value: "Cancel", type: "cancel", onClick: listener }),
+	    React.createElement(Button, { value: "Disabled", type: "cancel", disabled: true, onClick: listener })
 	  ),
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Initial", beforeClick: beforeListener, onClick: listener, afterClick: afterlistener, initial: true }),
-	    React.createElement(Button, { value: "Initial", type: "create", initial: true }),
-	    React.createElement(Button, { value: "Initial", type: "delete", initial: true }),
-	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true }),
-	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, disabled: true })
+	    React.createElement(Button, { value: "Initial", initial: true, onClick: listener }),
+	    React.createElement(Button, { value: "Initial", type: "create", initial: true, onClick: listener }),
+	    React.createElement(Button, { value: "Initial", type: "delete", initial: true, onClick: listener }),
+	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, onClick: listener }),
+	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, disabled: true, onClick: listener })
 	  ),
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Size xl", size: "xl" }),
-	    React.createElement(Button, { value: "Size lg", type: "create", size: "lg" }),
-	    React.createElement(Button, { value: "Size sm", type: "delete", size: "sm" }),
-	    React.createElement(Button, { value: "Size xs", type: "cancel", size: "xs" })
+	    React.createElement(Button, { value: "Size xl", size: "xl", onClick: listener }),
+	    React.createElement(Button, { value: "Size lg", type: "create", size: "lg", onClick: listener }),
+	    React.createElement(Button, { value: "Size sm", type: "delete", size: "sm", onClick: listener }),
+	    React.createElement(Button, { value: "Size xs", type: "cancel", size: "xs", onClick: listener })
 	  ),
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Status", type: "status" }),
-	    React.createElement(Button, { value: "Status Selected", type: "status", selected: true })
-	  ),
-	  React.createElement(
-	    "div",
-	    null,
-	    React.createElement(Button, { value: "onClick", onClick: listener }),
-	    React.createElement(Button, { value: "before onClick", beforeClick: beforeListener, onClick: listener }),
-	    React.createElement(Button, { value: "before onClick after", beforeClick: beforeListener, onClick: listener, afterClick: afterlistener }),
-	    React.createElement(Button, { value: "onClick after", onClick: listener, afterClick: afterlistener }),
-	    React.createElement(Button, { value: "no onClick prop won't work", type: "cancel", beforeClick: beforeListener, afterClick: afterlistener }),
-	    React.createElement(Button, { value: "disabled", type: "cancel", disabled: true, onClick: listener })
+	    React.createElement(Button, { value: "Status", type: "status", onClick: listener }),
+	    React.createElement(Button, { value: "Status Selected", type: "status", selected: true, onClick: listener })
 	  )
 	), document.getElementById('example'));
 
-	function beforeListener(e) {
-	  console.debug('before click triggered!', e);
-	}
 	function listener(e) {
 	  console.debug('click triggered!', e);
-	}
-	function afterlistener(e) {
-	  console.debug('after click triggered!', e);
 	}
 
 /***/ }
