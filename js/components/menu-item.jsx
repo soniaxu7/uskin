@@ -24,8 +24,6 @@ class MenuItem extends React.Component {
       var maxHeight = this.props.item.submenu.length * 38;
       var frames = 50;
 
-      var that = this;
-
       if (this.state.toggle) {
         let count = 1;
 
