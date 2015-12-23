@@ -9,8 +9,9 @@
 .menu {
   background-color: @menu_category_color;
   width: 200px;
+  user-select: none;
 
-  > li {
+  > li, > li > div {
     a {
       display: block;
       padding-left: 20px;
@@ -40,10 +41,11 @@
     h6 {
       height: 38px;
       line-height: 38px;
-      padding-left: 20px;
+      padding: 0 20px;
       color: #93b1bb;
       font-weight: normal;
       cursor: pointer;
+      background: @menu_category_color;
 
       &:hover {
         background-color: @menu_category_hover_color;
@@ -55,8 +57,13 @@
       width: 10px;
       height: 10px;
       font-size: 10px;
-      margin-left: 70px;
+      margin-top: 14px;
+      float: right;
       vertical-align: baseline;
+      transition: 0.5s ease-in-out;
+      &.rotate {
+        transform: rotate(180deg);
+      }
     }
 
     li {
