@@ -1,37 +1,43 @@
 import React from 'react';
 
-class CheckboxWithLabel extends React.Component {
+class Dropdown extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      isChecked: false
-    };
-
-    // since auto-binding is disabled for React's class model
-    // we can prebind methods here
-    // http://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding
-    this.onChange = this.onChange.bind(this);
   }
 
-  onChange() {
-    this.setState({
-      isChecked: !this.state.isChecked
-    });
+  onClick(item, e) {
+    item.onClick(e, item);
+  }
+
+  _itemClassType(item) {
+    if (item.disabled) {
+      return 'disabled';
+    }
+    if (item.danger) {
+      return 'danger';
+    }
+    return null;
   }
 
   render() {
+    var items = this.props.items;
+
     return (
-      <label>
-        <input
-          type="checkbox"
-          checked={this.state.isChecked}
-          onChange={this.onChange}
-        />
-        {this.state.isChecked ? this.props.labelOn : this.props.labelOff}
-      </label>
+      <div className="dropdown">
+        {items.map((block, parentIndex) =>
+          <ul key={parentIndex}>
+            {block.title ? <li key={block.title} className="dropdown-header">{block.title}</li> : null}
+            {block.items.map((item, index) =>
+              <li className={this._itemClassType(item)} key={index} onClick={item.onClick && !item.disabled ? this.onClick.bind(null, item) : null}>
+                <a>{item.title}</a>
+              </li>
+            )}
+          </ul>
+        )}
+      </div>
     );
   }
 }
 
-module.exports = CheckboxWithLabel;
+export default Dropdown;

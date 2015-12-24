@@ -6,7 +6,6 @@ import TestUtils from 'react-addons-test-utils';
 
 const Menu = require('../js/components/menu.jsx').default;
 
-
 describe('Test menu component', () => {
 
   var listener = jest.genMockFunction();
