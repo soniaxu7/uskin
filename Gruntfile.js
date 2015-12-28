@@ -121,7 +121,7 @@ module.exports = function(grunt) {
           syntax: 'bem',
           stylesheet: 'less',
           relativeFontPath: 'fonts',
-          destHtml: 'docs/examples',
+          destHtml: 'docs/raw_demos',
           templateOptions: {
             baseClass: 'glyphicon',
             classPrefix: 'icon-'

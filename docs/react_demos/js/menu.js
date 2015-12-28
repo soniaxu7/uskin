@@ -72,4 +72,3 @@ ReactDOM.render(
   <Menu items={items}/>,
   document.getElementById('example')
 );
-

@@ -1,0 +1,77 @@
+@arrow-box-border-color: @color_disabled_bg;
+@arrow-color: @color_disabled_dark_bg;
+@arrow-hover-color: @color_disabled_border;
+
+.input-number {
+  width: 80px;
+  position: relative;
+  input {
+    outline: 0;
+    padding-right: 30px;
+    width: 38px;
+  }
+  &.disabled {
+    .arrow-up, .arrow-down {
+      cursor: not-allowed !important;
+    }
+  }
+  .arrow {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    width: 19px;
+    height: 30px;
+    border-left: 1px solid @arrow-box-border-color;
+    .arrow-up, .arrow-down {
+      position: relative;
+      height: 15px;
+      cursor: pointer;
+      &.disabled {
+        cursor: default;
+      }
+      > div {
+        position: absolute;
+        left: 4px;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+      }
+    }
+    .arrow-up {
+      > div {
+        bottom: 2px;
+        border-bottom: 5px solid @arrow-color;
+      }
+      &.disabled {
+        &:hover {
+          > div {
+            border-bottom: 5px solid @arrow-color;
+          }
+        }        
+      }
+      &:hover {
+        > div {
+          border-bottom: 5px solid @color_disabled_font;
+        }
+      }
+    }
+    .arrow-down {
+      > div {
+        top: 2px;
+        border-top: 5px solid @arrow-color;
+      }
+      &.disabled {
+        &:hover {
+          > div {
+            border-top: 5px solid @arrow-color;
+          }
+        }        
+      }
+      &:hover {
+        > div {
+          border-top: 5px solid @color_disabled_font;
+        }
+      }
+    }
+  }
+}
+

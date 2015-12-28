@@ -6,7 +6,7 @@ import TestUtils from 'react-addons-test-utils';
 
 const Dropdown = require('../js/components/dropdown.jsx').default;
 
-describe('CheckboxWithLabel', () => {
+describe('Test dropdown component', () => {
 
   var listener = jest.genMockFunction();
   var items = [{
