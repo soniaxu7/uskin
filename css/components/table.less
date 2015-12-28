@@ -14,6 +14,9 @@
 @table_padding_left: 16px;
 @table_ft_color: @color_btn_disabled_gray_font;
 
+@col-arrow-color: @color_disabled_font;
+@col-arrow-hover-color: @color_disabled_dark_font;
+@col-arrow-selected: @color_font_dark_title;
 
 .table {
   width: 100%;
@@ -87,6 +90,72 @@
       &:last-child {
         border-right: none;
       }
+
+      &.checkbox {
+        width: 20px;
+        flex: none;
+        padding-left: 10px;
+        input {
+          height: 36px;
+          line-height: 36px;
+        }
+      }
+
+      .sortable {
+        margin-left: 4px;
+        display: inline-block;
+        height: 16px;
+        vertical-align: middle;
+        text-align: center;
+        .sort-up, .sort-down {
+          height: 50%;
+          display: block;
+          cursor: pointer;
+          position: relative;
+        }
+        .sort-up {
+          .arrow-up {
+            position: absolute;
+            bottom: 1px;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-bottom: 4px solid @col-arrow-color;
+          }
+
+          &:hover {
+            .arrow-up {
+              border-bottom: 4px solid @col-arrow-hover-color;
+            }
+          }
+
+          &.selected {
+            .arrow-up {
+              border-bottom: 4px solid @col-arrow-selected;
+            }
+          }
+        }
+        .sort-down {
+          .arrow-down {
+            position: absolute;
+            top: 1px;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid @col-arrow-color;
+          }
+
+          &:hover {
+            .arrow-down {
+              border-top: 4px solid @col-arrow-hover-color;
+            }
+          }
+
+          &.selected {
+            .arrow-down {
+              border-top: 4px solid @col-arrow-selected;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -106,12 +175,21 @@
         &:last-child {
           border-right: none;
         }
+
+        &.checkbox {
+          width: 20px;
+          flex: none;
+          padding-left: 10px;
+          input {
+            height: 36px;
+            line-height: 36px;
+          }
+        }
       }
 
       &.selected {
         background-color: @table_selected_bg_color !important;
       }
-
     }
   }
 

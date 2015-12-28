@@ -3,7 +3,7 @@ var Table = uskin.Table,
 
 var column = [{
   title: 'ID',
-  key: 'id',
+  width: '150px',
   dataIndex: 'id',
   sortBy: 'number',
   filter: [{
@@ -23,18 +23,42 @@ var column = [{
   }]
 }, {
   title: 'Category',
-  key: 'category',
+  width: '120px',
   dataIndex: 'category',
   sortBy: 'string'
 }, {
   title: 'Flavor',
-  key: 'flavor',
+  width: '70px',
   dataIndex: 'flavor',
   sortBy: 'string'
 }, {
   title: 'Level',
-  key: 'level',
   dataIndex: 'level',
+  filter: [{
+    name: 'level 1',
+    key: '1',
+    filter: function(item) {
+      return item.level.localeCompare('First Level') === 0 ? true : false;
+    }
+  }, {
+    name: 'level 2',
+    key: '2',
+    filter: function(item) {
+      return item.level.localeCompare('Second Level') === 0 ? true : false;
+    }
+  }, {
+    name: 'level 3',
+    key: '3',
+    filter: function(item) {
+      return item.level.localeCompare('Third Level') === 0 ? true : false;
+    }
+  }, {
+    name: 'level 4',
+    key: '4',
+    filter: function(item) {
+      return item.level.localeCompare('Fourth Level') === 0 ? true : false;
+    }
+  }],
   sortBy: function(item1, item2) {
     var weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];
     if (weight.indexOf(item1.level) > weight.indexOf(item2.level)) {
@@ -47,17 +71,15 @@ var column = [{
   }
 }, {
   title: 'CPU',
-  key: 'cpu',
   dataIndex: 'cpu',
-  sortBy: 'number'
+  sortBy: 'number',
+  width: '50px'
 }, {
   title: 'Price',
-  key: 'price',
   dataIndex: 'price',
   sortBy: 'number'
 }, {
   title: 'Double Price',
-  key: 'double_price',
   sortBy: function(item1, item2) {
     if (item1.price * 2 > item2.price * 2) {
       return 1;
@@ -72,7 +94,6 @@ var column = [{
   }
 }, {
   title: 'Data Print',
-  key: 'print',
   printData: function(col, item, e) {
     console.log('event:', e, 'GET COLUMN:', col, ' DATA:', item);
   },
@@ -129,25 +150,82 @@ var data = [{
   cpu: '7',
   price: '0.444'
 }];
+var data2 = [{
+  id: 1,
+  category: 'Micro-1',
+  flavor: 'Micro',
+  level: 'First Level',
+  cpu: '1',
+  price: '0.056'
+}, {
+  id: 2,
+  category: 'Standard-3',
+  flavor: 'Standard',
+  level: 'Second Level',
+  cpu: '3',
+  price: '0.444'
+}, {
+  id: 3,
+  category: 'Micro-2',
+  flavor: 'Micro',
+  level: 'Third Level',
+  cpu: '5',
+  price: '0.056'
+}, {
+  id: 4,
+  category: 'Standard-2',
+  flavor: 'Standard',
+  level: 'Fourth Level',
+  cpu: '4',
+  price: '0.444'
+}, {
+  id: 5,
+  category: 'Micro-3',
+  flavor: 'Micro',
+  level: 'Second Level',
+  cpu: '1',
+  price: '0.056'
+}, {
+  id: 6,
+  category: 'Standard-1',
+  flavor: 'Standard',
+  level: 'Third Level',
+  cpu: '7',
+  price: '0.444'
+}, {
+  id: 7,
+  category: 'Standard-1',
+  flavor: 'Standard',
+  level: 'Third Level',
+  cpu: '7',
+  price: '0.444'
+}];
 
-function checkboxOnClick(e, status, checkedData, data) {
+function checkboxOnChange(e, status, checkedData, data) {
   console.debug('click triggered!', status, checkedData, data);
+}
+
+function checkboxInitialize(item) {
+  return item.level.localeCompare('Second Level') ? false : true;
 }
 
 ReactDOM.render(
   <div>
-    <Table column={column}
-        data={data}  dataKey={'id'} 
-        checkbox={true} checkboxOnClick={checkboxOnClick}
-        width={900} striped={true} hover={true}/>
     <div style={{margin: '20px auto', width: 100}}>
       <Button value="更新数据" onClick={updateData}/>
     </div>
+    <Table
+      column={column}
+      data={data}
+      dataKey={'id'}
+      checkbox={true}
+      checkboxInitialize={checkboxInitialize}
+      checkboxOnChange={checkboxOnChange}
+      striped={true}
+      hover={true}/>
   </div>,
   document.getElementById('example')
 );
-
-
 
 function updateData() {
   data.map(item => {
@@ -157,13 +235,17 @@ function updateData() {
 
   ReactDOM.render(
     <div>
-      <Table column={column}
-          data={data}  dataKey={'id'} 
-          checkbox={true} checkboxOnClick={checkboxOnClick}
-          width={900} striped={true} hover={true}/>
       <div style={{margin: '20px auto', width: 100}}>
         <Button value="恢复数据" onClick={recoverData}/>
       </div>
+      <Table
+        column={column}
+        data={data2}
+        dataKey={'id'} 
+        checkbox={true}
+        checkboxOnChange={checkboxOnChange}
+        striped={true}
+        hover={true}/>
     </div>,
     document.getElementById('example')
   );
@@ -177,13 +259,17 @@ function recoverData() {
 
   ReactDOM.render(
     <div>
-      <Table column={column}
-          data={data}  dataKey={'id'} 
-          checkbox={true} checkboxOnClick={checkboxOnClick}
-          width={900} striped={true} hover={true}/>
       <div style={{margin: '20px auto', width: 100}}>
         <Button value="更新数据" onClick={updateData}/>
       </div>
+      <Table 
+        column={column}
+        data={data}
+        dataKey={'id'} 
+        checkbox={true}
+        checkboxOnChange={checkboxOnChange}
+        striped={true}
+        hover={true}/>
     </div>,
     document.getElementById('example')
   );

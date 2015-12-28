@@ -9,7 +9,7 @@ dirs.forEach(function(dir) {
     var jsFile = /.js$/;
     enterDir.forEach(function(file) {
       if(jsFile.exec(file)) {
-        entry[file.replace('.js','')] = './' + dir + '/' + file;
+        entry[file.replace('.js', '')] = './' + dir + '/' + file;
       }
     });
   }

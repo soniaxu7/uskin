@@ -138,12 +138,17 @@ function checkboxOnClick(e, status, checkedData, data) {
   console.debug('click triggered!', status, checkedData, data);
 }
 
+function checkboxInitialize(item) {
+  return item.level.localeCompare('Second Level') ? false : true;
+}
+
 ReactDOM.render(
   <Table 
     column={column}
     data={data}
     dataKey={'id'} 
     checkbox={true}
+    checkboxInitialize={checkboxInitialize}
     checkboxOnClick={checkboxOnClick}
     width={900}
     striped={true}
@@ -213,7 +218,13 @@ ReactDOM.render(
       <td>是否附带checkbox</td>
     </tr>
     <tr>
-      <td>checkboxOnclick</td>
+      <td>checkboxInitialize</td>
+      <td>Funtion</td>
+      <td></td>
+      <td>table初始化时指定选中的row</td>
+    </tr>
+    <tr>
+      <td>checkboxOnchange</td>
       <td>Function</td>
       <td></td>
       <td>table中的checkbox被点击时返回信息Function(e, status, checkedData, data)，依次为被点击的DOM节点，被点击的状态，被点击的data元素信息，所有以选中的数据集合</td>

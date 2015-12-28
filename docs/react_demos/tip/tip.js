@@ -1,9 +1,9 @@
 var text = [{
-    'title': "Note:",
-    'content': "Life is tough, but I'm tougher"
-  }, {
-    'content': <div>Professor Cardenas says his recent study shows that more than 99 percent of the river's water does pass through the river's sediment which is on the shore or bottom of the river. But he says the study found that there is so much nitrogen in the river system that is simply can not filter all of it</div>
-  }];
+  'title': 'Note:',
+  'content': 'Life is tough, but I\'m tougher'
+}, {
+  'content': <div>Professor Cardenas says his recent study shows that more than 99 percent of the river's water does pass through the river's sediment which is on the shore or bottom of the river. But he says the study found that there is so much nitrogen in the river system that is simply can not filter all of it</div>
+}];
 var Tip = uskin.Tip;
 ReactDOM.render(
   <div>
