@@ -2,9 +2,17 @@ var fs = require('fs');
 var path = require('path');
 var entry = {};
 
-var files = fs.readdirSync(path.resolve('./js'));
-files.forEach(function(file) {
-  entry[file.replace('.js','')] = './js/' + file;
+var dirs = fs.readdirSync(path.resolve('./'));
+dirs.forEach(function(dir) {
+  if (!dir.split('.')[1] && dir.localeCompare('dist')) {
+    var enterDir = fs.readdirSync(path.resolve('./' + dir));
+    var jsFile = /.js$/;
+    enterDir.forEach(function(file) {
+      if(jsFile.exec(file)) {
+        entry[file.replace('.js','')] = './' + dir + '/' + file;
+      }
+    });
+  }
 });
 
 module.exports = {
