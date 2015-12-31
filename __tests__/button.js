@@ -8,19 +8,21 @@ const Button = require('../js/components/button.jsx').default;
 
 describe('Test button component', () => {
 
-  it('is generated with value, type and size', () => {
+  it('is generated with value, type, icon and size', () => {
 
     var value = 'button',
       type = 'create',
-      size = 'lg';
+      size = 'lg',
+      iconClass = 'glyphicon icon-create';
 
     var button = TestUtils.renderIntoDocument(
-      <Button value={value} type={type} size={size}/>
+      <Button value={value} type={type} size={size} iconClass={iconClass}/>
     );
 
     var buttonNode = ReactDOM.findDOMNode(button);
 
-    expect(buttonNode.innerHTML).toBe(value);
+    expect(buttonNode.childNodes[0].className).toBe(iconClass);
+    expect(buttonNode.childNodes[1].innerHTML).toBe(value);
     expect(buttonNode.classList.contains('btn')).toBe(true);
     expect(buttonNode.classList.contains('btn-' + type)).toBe(true);
     expect(buttonNode.classList.contains('btn-' + size)).toBe(true);
@@ -38,7 +40,7 @@ describe('Test button component', () => {
 
     var buttonNode = ReactDOM.findDOMNode(button);
 
-    expect(buttonNode.innerHTML).toBe(value);
+    expect(buttonNode.childNodes[0].innerHTML).toBe(value);
     expect(buttonNode.classList.contains('btn')).toBe(true);
     expect(buttonNode.classList.contains('btn-initial')).toBe(true);
     expect(buttonNode.classList.contains('selected')).toBe(true);
@@ -48,15 +50,17 @@ describe('Test button component', () => {
 
     var value = 'button',
       listener = jest.genMockFunction(),
-      tag = 'div';
+      tag = 'div',
+      iconClass = 'glyphicon icon-create';
 
     var button = TestUtils.renderIntoDocument(
-      <Button value={value} tag={tag} onClick={listener}/>
+      <Button value={value} tag={tag} onClick={listener} iconClass={iconClass}/>
     );
 
     var buttonNode = ReactDOM.findDOMNode(button);
 
-    expect(buttonNode.innerHTML).toBe(value);
+    expect(buttonNode.childNodes[0].className).toBe(iconClass);
+    expect(buttonNode.childNodes[1].innerHTML).toBe(value);
     expect(buttonNode.tagName.toLowerCase()).toBe(tag);
   });
 

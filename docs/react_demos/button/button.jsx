@@ -21,6 +21,13 @@ ReactDOM.render(
       <Button value="Initial" type="cancel" initial={true} disabled={true} onClick={listener}/>
     </div>
     <div>
+      <Button value="Initial" initial={true} onClick={listener} iconClass="glyphicon icon-region"/>
+      <Button value="Initial" type="create" initial={true} onClick={listener} iconClass="glyphicon icon-create"/>
+      <Button value="Initial" type="delete" initial={true} onClick={listener} iconClass="glyphicon icon-more"/>
+      <Button value="Initial" type="cancel" initial={true} onClick={listener} iconClass="glyphicon icon-edit"/>
+      <Button value="Initial" type="cancel" initial={true} disabled={true} onClick={listener} iconClass="glyphicon icon-disable"/>
+    </div>
+    <div>
       <Button value="Size xl" size="xl" onClick={listener}/>
       <Button value="Size lg" type="create" size="lg" onClick={listener}/>
       <Button value="Size sm" type="delete" size="sm" onClick={listener}/>
