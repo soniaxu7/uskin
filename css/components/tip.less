@@ -1,9 +1,8 @@
 // Mixins
 
 // Variables
-@tip_v_padding: 7px;
-@tip_h_padding: 12px;
-@tip_line_height: 20px;
+@tip_padding: 20px;
+@tip_line_height: 18px;
 @tip_border_radius: @border_radius;
 
 @tip_info_bg_color: @color_blue_lighter;
@@ -22,14 +21,58 @@
 @tip_danger_border_color: @color_red;
 @tip_danger_strong_color: @color_red;
 
+@tip_hd_close_size: 14px;
+@tip_hd_close_color: @color_font_dark_title;
+@tip_hd_close_hover_color: @color_red;
+@tip_hd_close_active_color: @color_red;
+
+@tip_content_width: 270px;
+@tip_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+
 .tip {
-  padding: @tip_v_padding @tip_h_padding;
+  padding: @tip_padding;
   line-height: @tip_line_height;
   border-radius: @tip_border_radius;
-  border: 1px solid @color_font;
+  position: relative;
+
   strong {
     margin-right: 5px;
+    font-size: 14px;
+    i {
+      margin-right: 6px;
+    }
   }
+
+  .tip-content {
+    display: inline-block;
+    width: @tip_content_width;
+  }
+  .icon-close {
+    position: absolute;
+    display: inline-block;
+    width: @tip_hd_close_size;
+    height: @tip_hd_close_size;
+    color: @tip_hd_close_color;
+    cursor: pointer;
+    right: 10px;
+    top: 21px;
+    &:before {
+      font-size: @tip_hd_close_size;
+    }
+    &:hover {
+      color: @tip_hd_close_hover_color;
+    }
+    &:active {
+      color: @tip_hd_close_active_color;
+    }
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+.tip-shadow {
+  box-shadow: @tip_shadow;
 }
 
 .tip-info {

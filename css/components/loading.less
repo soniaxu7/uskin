@@ -1,0 +1,14 @@
+.loading-tip {
+  .loading-style(14px);
+}
+.loading-notification {
+  .loading-style(30px);
+}
+.loading {
+  .loading-style(32px);
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+          only screen and (min--moz-device-pixel-ratio: 2),
+          only screen and (min-device-pixel-ratio: 2) {
+            .loading-style(64px);
+          }
+}

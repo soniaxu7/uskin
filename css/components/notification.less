@@ -3,11 +3,11 @@
 // Mixins
 
 // Variables
-@notification_padding: 12px 12px 12px 20px;
-@notification_width: 200px;
+@notification_padding: 20px;
+@notification_width: 270px;
 @notification_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
 
-
+@notification_icon_size: 30px;
 
 .notification {
   .tip();
@@ -15,6 +15,19 @@
   width: @notification_width;
   box-shadow: @notification_shadow;
   overflow: hidden;
+
+  .tip-icon {
+    display: inline-block;
+    vertical-align: top;
+    strong i {
+      font-size: @notification_icon_size;
+      margin-right: 15px;
+    }
+  }
+  .tip-content strong {
+    color: inherit;
+    font-weight: normal;
+  }
 }
 
 .notification-info {
