@@ -152,6 +152,7 @@ var data = [{
   cpu: '7',
   price: '0.444'
 }];
+
 var data2 = [{
   id: 1,
   category: 'Micro-1',
