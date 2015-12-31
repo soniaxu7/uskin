@@ -1,4 +1,9 @@
 var Button = uskin.Button;
+
+function listener(e) {
+  console.debug('click triggered!', e);
+}
+
 ReactDOM.render(
   <div>
     <div>
@@ -14,7 +19,7 @@ ReactDOM.render(
       <Button value="Initial" type="delete" initial={true} onClick={listener}/>
       <Button value="Initial" type="cancel" initial={true} onClick={listener}/>
       <Button value="Initial" type="cancel" initial={true} disabled={true} onClick={listener}/>
-    </div>          
+    </div>
     <div>
       <Button value="Size xl" size="xl" onClick={listener}/>
       <Button value="Size lg" type="create" size="lg" onClick={listener}/>
@@ -28,7 +33,3 @@ ReactDOM.render(
   </div>,
   document.getElementById('example')
 );
-
-function listener(e) {
-  console.debug('click triggered!', e);
-}

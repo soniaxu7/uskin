@@ -47,8 +47,8 @@
 	'use strict';
 
 	var text = [{
-	  'title': "Note:",
-	  'content': "Life is tough, but I'm tougher"
+	  'title': 'Note:',
+	  'content': 'Life is tough, but I\'m tougher'
 	}, {
 	  'content': React.createElement(
 	    'div',
@@ -58,6 +58,7 @@
 	}];
 
 	var Notification = uskin.Notification;
+
 	ReactDOM.render(React.createElement(
 	  'div',
 	  null,
@@ -67,6 +68,7 @@
 	  React.createElement(Notification, { title: text[0].title, content: text[0].content, type: 'warning' }),
 	  React.createElement(Notification, { title: text[0].title, content: text[0].content, type: 'danger' })
 	), document.getElementById('example'));
+
 	ReactDOM.render(React.createElement(Notification, { title: text[1].title, content: text[1].content, type: 'danger', width: '300' }), document.getElementById('example2'));
 
 /***/ }

@@ -6,10 +6,10 @@ var dirs = fs.readdirSync(path.resolve('./'));
 dirs.forEach(function(dir) {
   if (!dir.split('.')[1] && dir.localeCompare('dist')) {
     var enterDir = fs.readdirSync(path.resolve('./' + dir));
-    var jsFile = /.js$/;
+    var jsFile = /.jsx$/;
     enterDir.forEach(function(file) {
       if(jsFile.exec(file)) {
-        entry[file.replace('.js', '')] = './' + dir + '/' + file;
+        entry[file.replace('.jsx', '')] = './' + dir + '/' + file;
       }
     });
   }

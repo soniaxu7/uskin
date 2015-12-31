@@ -47,8 +47,8 @@
 	'use strict';
 
 	var text = [{
-	  'title': "Note:",
-	  'content': "Life is tough, but I'm tougher"
+	  'title': 'Note:',
+	  'content': 'Life is tough, but I\'m tougher'
 	}, {
 	  'content': React.createElement(
 	    'div',

@@ -1,11 +1,25 @@
-var Slider = uskin.Slider,
-  value = 0,
+var Slider = uskin.Slider;
+
+var value = 0,
   value2 = -20,
   value3 = 0.54;
 
 document.getElementById('value1').innerHTML = value;
 document.getElementById('value2').innerHTML = value2;
 document.getElementById('value3').innerHTML = value3;
+
+
+function listener(e, status) {
+  document.getElementById('value1').innerHTML = status;
+}
+
+function listener2(e, status) {
+  document.getElementById('value2').innerHTML = status;
+}
+
+function listener3(e, status) {
+  document.getElementById('value3').innerHTML = status;
+}
 
 ReactDOM.render(
   <Slider min="0" max="100" value={value} onChange={listener}/>,
@@ -21,15 +35,3 @@ ReactDOM.render(
   <Slider min="0" max="3" value={value3} step="0.01" width="500" onChange={listener3}/>,
   document.getElementById('example3')
 );
-
-function listener(e, status) {
-  document.getElementById('value1').innerHTML = status;
-};
-
-function listener2(e, status) {
-  document.getElementById('value2').innerHTML = status;
-};
-
-function listener3(e, status) {
-  document.getElementById('value3').innerHTML = status;
-};

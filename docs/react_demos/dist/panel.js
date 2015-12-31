@@ -46,6 +46,8 @@
 
 	'use strict';
 
+	var Panel = uskin.Panel;
+
 	var text = [{
 	  'title': React.createElement(
 	    'div',
@@ -81,8 +83,8 @@
 	  )
 	}];
 
-	var Panel = uskin.Panel;
 	ReactDOM.render(React.createElement(Panel, { title: text[0].title, content: text[0].content }), document.getElementById('example'));
+
 	ReactDOM.render(React.createElement(Panel, { title: text[1].title, content: text[1].content, width: '600' }), document.getElementById('example2'));
 
 /***/ }

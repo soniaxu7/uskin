@@ -1,5 +1,9 @@
 var Dropdown = uskin.Dropdown;
 
+function listener(e, status) {
+  console.debug('click triggered!', e, status);
+}
+
 //key value should be exclusive
 var items1 = [{
   items: [{
@@ -101,7 +105,7 @@ var items2 = [{
     key: '7',
     onClick: listener
   }]
-}, {  
+}, {
   title: 'Volume Ops',
   key: 'volume',
   items: [{
@@ -124,10 +128,6 @@ var items2 = [{
     onClick: listener
   }]
 }];
-
-function listener(e, status) {
-  console.debug('click triggered!', e, status);
-}
 
 ReactDOM.render(
   <Dropdown items={items1}/>,

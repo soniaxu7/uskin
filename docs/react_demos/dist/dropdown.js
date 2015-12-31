@@ -48,6 +48,10 @@
 
 	var Dropdown = uskin.Dropdown;
 
+	function listener(e, status) {
+	  console.debug('click triggered!', e, status);
+	}
+
 	//key value should be exclusive
 	var items1 = [{
 	  items: [{
@@ -172,10 +176,6 @@
 	    onClick: listener
 	  }]
 	}];
-
-	function listener(e, status) {
-	  console.debug('click triggered!', e, status);
-	}
 
 	ReactDOM.render(React.createElement(Dropdown, { items: items1 }), document.getElementById('example'));
 

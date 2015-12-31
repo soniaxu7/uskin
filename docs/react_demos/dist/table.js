@@ -58,13 +58,17 @@
 	    name: 'id大于等于4',
 	    key: '1',
 	    filter: function filter(item) {
-	      if (item.id >= 4) return true;
+	      if (item.id >= 4) {
+	        return true;
+	      }
 	    }
 	  }, {
 	    name: 'id小于4',
 	    key: '2',
 	    filter: function filter(item) {
-	      if (item.id < 4) return true;
+	      if (item.id < 4) {
+	        return true;
+	      }
 	    }
 	  }]
 	}, {
@@ -259,12 +263,37 @@
 	  price: '0.444'
 	}];
 
-	function checkboxOnChange(e, status, checkedData, data) {
-	  console.debug('click triggered!', status, checkedData, data);
+	function checkboxOnChange(e, status, checkedItem, checkedData) {
+	  console.debug('click triggered!', status, checkedItem, checkedData);
 	}
 
 	function checkboxInitialize(item) {
 	  return item.level.localeCompare('Second Level') ? false : true;
+	}
+
+	function updateData() {
+	  data.map(function (item) {
+	    item.id += 10;
+	    item.category += ' updated';
+	  });
+
+	  ReactDOM.render(React.createElement(
+	    'div',
+	    null,
+	    React.createElement(
+	      'div',
+	      { style: { margin: '20px auto', width: 100, visibility: 'hidden' } },
+	      React.createElement(Button, { value: '更新数据' })
+	    ),
+	    React.createElement(Table, {
+	      column: column,
+	      data: data2,
+	      dataKey: 'id',
+	      checkbox: true,
+	      checkboxOnChange: checkboxOnChange,
+	      striped: true,
+	      hover: true })
+	  ), document.getElementById('example'));
 	}
 
 	ReactDOM.render(React.createElement(
@@ -285,56 +314,6 @@
 	    striped: true,
 	    hover: true })
 	), document.getElementById('example'));
-
-	function updateData() {
-	  data.map(function (item) {
-	    item.id += 10;
-	    item.category += ' updated';
-	  });
-
-	  ReactDOM.render(React.createElement(
-	    'div',
-	    null,
-	    React.createElement(
-	      'div',
-	      { style: { margin: '20px auto', width: 100 } },
-	      React.createElement(Button, { value: '恢复数据', onClick: recoverData })
-	    ),
-	    React.createElement(Table, {
-	      column: column,
-	      data: data2,
-	      dataKey: 'id',
-	      checkbox: true,
-	      checkboxOnChange: checkboxOnChange,
-	      striped: true,
-	      hover: true })
-	  ), document.getElementById('example'));
-	}
-
-	function recoverData() {
-	  data.map(function (item) {
-	    item.id += -10;
-	    item.category = item.category.split(' ')[0];
-	  });
-
-	  ReactDOM.render(React.createElement(
-	    'div',
-	    null,
-	    React.createElement(
-	      'div',
-	      { style: { margin: '20px auto', width: 100 } },
-	      React.createElement(Button, { value: '更新数据', onClick: updateData })
-	    ),
-	    React.createElement(Table, {
-	      column: column,
-	      data: data,
-	      dataKey: 'id',
-	      checkbox: true,
-	      checkboxOnChange: checkboxOnChange,
-	      striped: true,
-	      hover: true })
-	  ), document.getElementById('example'));
-	}
 
 /***/ }
 /******/ ]);

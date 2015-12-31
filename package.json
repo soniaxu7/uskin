@@ -18,7 +18,7 @@
     "release": "grunt release",
     "prepublish": "grunt build",
     "test": "jest",
-    "eslint": "eslint *.js __tests__/ js/** --ext '.js,.jsx'",
+    "eslint": "eslint *.js __tests__/ js/** docs/react_demos/** --ext '.js,.jsx'",
     "devjs": "webpack --config dev.webpack.config.js",
     "devcss": "echo 'stay tuned' && exit 0"
   },

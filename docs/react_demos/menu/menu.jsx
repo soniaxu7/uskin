@@ -1,5 +1,9 @@
 var Menu = uskin.Menu;
 
+function listener(e, status) {
+  console.debug('click triggered!', e, status);
+}
+
 var items = [{
   title: 'Fruits',
   key: 'fruits',
@@ -63,10 +67,6 @@ var items = [{
     iconClass: 'glyphicon icon-overview'
   }]
 }];
-
-function listener(e, status) {
-  console.debug('click triggered!', e, status);
-}
 
 ReactDOM.render(
   <Menu items={items}/>,

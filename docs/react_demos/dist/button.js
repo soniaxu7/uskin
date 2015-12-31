@@ -47,6 +47,11 @@
 	"use strict";
 
 	var Button = uskin.Button;
+
+	function listener(e) {
+	  console.debug('click triggered!', e);
+	}
+
 	ReactDOM.render(React.createElement(
 	  "div",
 	  null,
@@ -83,10 +88,6 @@
 	    React.createElement(Button, { value: "Status Selected", type: "status", selected: true, onClick: listener })
 	  )
 	), document.getElementById('example'));
-
-	function listener(e) {
-	  console.debug('click triggered!', e);
-	}
 
 /***/ }
 /******/ ]);

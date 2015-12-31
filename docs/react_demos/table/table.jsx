@@ -10,15 +10,17 @@ var column = [{
     name: 'id大于等于4',
     key: '1',
     filter: function(item) {
-      if (item.id >= 4)
+      if (item.id >= 4) {
         return true;
+      }
     }
   }, {
     name: 'id小于4',
     key: '2',
     filter: function(item) {
-      if (item.id < 4)
+      if (item.id < 4) {
         return true;
+      }
     }
   }]
 }, {
@@ -99,10 +101,10 @@ var column = [{
   },
   render: function(col, item, index) {
     if (item.id > 4) {
-      return <div>Printing Disabled</div>
+      return <div>Printing Disabled</div>;
     } else {
-      return <div style={{fontWeight: 500, cursor: 'pointer'}} 
-        onClick={this.printData.bind(this, col, item)}>{'Print ID ' + item.id}</div>
+      return <div style={{fontWeight: 500, cursor: 'pointer'}}
+        onClick={this.printData.bind(this, col, item)}>{'Print ID ' + item.id}</div>;
     }
   }
 }];
@@ -201,12 +203,36 @@ var data2 = [{
   price: '0.444'
 }];
 
-function checkboxOnChange(e, status, checkedData, data) {
-  console.debug('click triggered!', status, checkedData, data);
+function checkboxOnChange(e, status, checkedItem, checkedData) {
+  console.debug('click triggered!', status, checkedItem, checkedData);
 }
 
 function checkboxInitialize(item) {
   return item.level.localeCompare('Second Level') ? false : true;
+}
+
+function updateData() {
+  data.map(item => {
+    item.id += 10;
+    item.category += ' updated';
+  });
+
+  ReactDOM.render(
+    <div>
+      <div style={{margin: '20px auto', width: 100, visibility: 'hidden'}}>
+        <Button value="更新数据"/>
+      </div>
+      <Table
+        column={column}
+        data={data2}
+        dataKey={'id'}
+        checkbox={true}
+        checkboxOnChange={checkboxOnChange}
+        striped={true}
+        hover={true}/>
+    </div>,
+    document.getElementById('example')
+  );
 }
 
 ReactDOM.render(
@@ -226,51 +252,3 @@ ReactDOM.render(
   </div>,
   document.getElementById('example')
 );
-
-function updateData() {
-  data.map(item => {
-    item.id += 10;
-    item.category += ' updated';
-  });
-
-  ReactDOM.render(
-    <div>
-      <div style={{margin: '20px auto', width: 100}}>
-        <Button value="恢复数据" onClick={recoverData}/>
-      </div>
-      <Table
-        column={column}
-        data={data2}
-        dataKey={'id'} 
-        checkbox={true}
-        checkboxOnChange={checkboxOnChange}
-        striped={true}
-        hover={true}/>
-    </div>,
-    document.getElementById('example')
-  );
-}
-
-function recoverData() {
-  data.map(item => {
-    item.id += -10;
-    item.category = item.category.split(' ')[0];
-  });
-
-  ReactDOM.render(
-    <div>
-      <div style={{margin: '20px auto', width: 100}}>
-        <Button value="更新数据" onClick={updateData}/>
-      </div>
-      <Table 
-        column={column}
-        data={data}
-        dataKey={'id'} 
-        checkbox={true}
-        checkboxOnChange={checkboxOnChange}
-        striped={true}
-        hover={true}/>
-    </div>,
-    document.getElementById('example')
-  );
-}
