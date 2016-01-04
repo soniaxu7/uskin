@@ -30,13 +30,21 @@ class Button extends React.Component {
 
     if (props.tag === 'div') {
       return (
-        <div className={this._getClassName(props)} disabled={props.disabled}
-          onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>{props.value}</div>
+        <div className={this._getClassName(props)}
+             disabled={props.disabled}
+             onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
+          {props.iconClass ? <i className={props.iconClass}/> : null}
+          {props.value}
+        </div>
       );
     } else {
       return (
-        <button className={this._getClassName(props)} disabled={props.disabled}
-          onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>{props.value}</button>
+        <button className={this._getClassName(props)}
+                disabled={props.disabled}
+                onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
+          {props.iconClass ? <i className={props.iconClass}/> : null}
+          {props.value}
+        </button>
       );
     }
   }

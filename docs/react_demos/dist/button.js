@@ -76,6 +76,15 @@
 	  React.createElement(
 	    "div",
 	    null,
+	    React.createElement(Button, { value: "Initial", initial: true, onClick: listener, iconClass: "glyphicon icon-region" }),
+	    React.createElement(Button, { value: "Initial", type: "create", initial: true, onClick: listener, iconClass: "glyphicon icon-create" }),
+	    React.createElement(Button, { value: "Initial", type: "delete", initial: true, onClick: listener, iconClass: "glyphicon icon-more" }),
+	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, onClick: listener, iconClass: "glyphicon icon-edit" }),
+	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, disabled: true, onClick: listener, iconClass: "glyphicon icon-disable" })
+	  ),
+	  React.createElement(
+	    "div",
+	    null,
 	    React.createElement(Button, { value: "Size xl", size: "xl", onClick: listener }),
 	    React.createElement(Button, { value: "Size lg", type: "create", size: "lg", onClick: listener }),
 	    React.createElement(Button, { value: "Size sm", type: "delete", size: "sm", onClick: listener }),
