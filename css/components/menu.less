@@ -1,31 +1,44 @@
-@menu_category_color: @color_menu_category_gray;
-@menu_category_hover_color: @color_menu_item_gray;
-@menu_category_select_color: @color_menu_item_gray;
+@menu_font_color: @color_font;
+@menu_font_title_color: @color_gray_new_menu_title_font;
+@menu_font_item_color: @color_gray_new_menu_item_font;
+@menu_font_selected_color: @color_blue_new_menu_font;
 
-@menu_item_color: @color_menu_item_gray;
-@menu_item_hover_color: @color_blue_light;
-@menu_item_select_color: @color_blue;
+@menu_bg_color: #ffffff;
+@menu_line_color: @color_gray_new_menu_line;
+@menu_category_select_color: @color_blue_new_menu_font;
 
 .menu {
-  background-color: @menu_category_color;
+  background-color: @menu_bg_color; /* For browsers that do not support gradients */
+  background: linear-gradient(to right, @menu_bg_color, @menu_line_color 240%);
   width: 200px;
+  height: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
   user-select: none;
+  border-right: 1px solid @menu_line_color;
 
   > li, > li > div {
     a {
       display: block;
       padding-left: 20px;
-      height: 38px;
-      line-height: 38px;
+      height: 40px;
+      line-height: 40px;
       font-size: 13px;
-      color: #527583;
+      color: @menu_font_item_color;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
 
       &:hover {
-        background-color: @menu_category_hover_color;
+        color: @menu_font_selected_color;
       }
       &.selected {
-        background-color: @menu_item_select_color;
-        color: #fff;
+        height: 38px;
+        line-height: 38px;
+        color: @menu_font_selected_color;
+        background-color: @menu_bg_color;
+        border-top: 1px solid @menu_line_color;
+        border-bottom: 1px solid @menu_line_color;
       }
       .glyphicon {
         margin-right: 12px;
@@ -39,17 +52,11 @@
     }
 
     h6 {
-      height: 38px;
-      line-height: 38px;
+      height: 52px;
+      line-height: 52px;
       padding: 0 20px;
-      color: #93b1bb;
+      color: @menu_font_title_color;
       font-weight: normal;
-      cursor: pointer;
-      background: @menu_category_color;
-
-      &:hover {
-        background-color: @menu_category_hover_color;
-      }
     }
 
     .icon-arrow-up,
@@ -67,16 +74,17 @@
     }
 
     li {
-      height: 38px;
-      line-height: 38px;
-      background-color: @menu_item_color;
+      height: 40px;
+      line-height: 40px;
 
-      a {
-        &:hover {
-          background-color: @menu_item_hover_color;
-        }
-        &.selected {
-          background-color: @menu_item_select_color;
+      a.selected {
+        &:after {
+          content: "";
+          width: 1px;
+          height: 38px;
+          background-color: @menu_bg_color;
+          float: right;
+          margin-right: -1px;
         }
       }
     }

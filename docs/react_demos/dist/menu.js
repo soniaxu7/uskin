@@ -78,7 +78,6 @@
 	}, {
 	  title: 'Vegetables',
 	  key: 'vegetables',
-	  fold: true,
 	  submenu: [{
 	    subtitle: 'Potato',
 	    key: '1',
