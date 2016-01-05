@@ -4,10 +4,11 @@
 
 // Variables
 @notification_padding: 20px;
-@notification_width: 270px;
+@notification_width: 300px;
 @notification_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
 
 @notification_icon_size: 30px;
+@notification_content_width: 260px;
 
 .notification {
   .tip();
@@ -17,8 +18,6 @@
   overflow: hidden;
 
   .tip-icon {
-    display: inline-block;
-    vertical-align: top;
     strong i {
       font-size: @notification_icon_size;
       margin-right: 15px;

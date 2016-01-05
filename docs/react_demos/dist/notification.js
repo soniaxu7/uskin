@@ -54,7 +54,7 @@
 	  'success': 'I am a success notification',
 	  'warning': 'I am a warning notification',
 	  'danger': 'I am a danger notification',
-	  'para': 'I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph'
+	  'para': 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
 	};
 
 	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.content, showIcon: true }), document.getElementById('example'));
@@ -71,15 +71,15 @@
 
 	ReactDOM.render(React.createElement(Notification, { content: text.content, isAutoHide: true }), document.getElementById('example7'));
 
-	ReactDOM.render(React.createElement(Notification, { content: text.info, isAutoHide: true, type: 'info' }), document.getElementById('example8'));
+	ReactDOM.render(React.createElement(Notification, { content: text.info, icon: 'loading-notification', type: 'info' }), document.getElementById('example8'));
 
-	ReactDOM.render(React.createElement(Notification, { content: text.success, isAutoHide: true, type: 'success' }), document.getElementById('example9'));
+	ReactDOM.render(React.createElement(Notification, { content: text.success, icon: 'icon-overview', type: 'success' }), document.getElementById('example9'));
 
-	ReactDOM.render(React.createElement(Notification, { content: text.warning, isAutoHide: true, type: 'warning' }), document.getElementById('example10'));
+	ReactDOM.render(React.createElement(Notification, { content: text.warning, type: 'warning' }), document.getElementById('example10'));
 
-	ReactDOM.render(React.createElement(Notification, { content: text.danger, isAutoHide: true, type: 'danger' }), document.getElementById('example11'));
+	ReactDOM.render(React.createElement(Notification, { content: text.danger, type: 'danger' }), document.getElementById('example11'));
 
-	ReactDOM.render(React.createElement(Notification, { content: text.para, isAutoHide: true, type: 'danger' }), document.getElementById('example12'));
+	ReactDOM.render(React.createElement(Notification, { content: text.para, type: 'danger' }), document.getElementById('example12'));
 
 /***/ }
 /******/ ]);

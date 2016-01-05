@@ -43,23 +43,26 @@ class Notification extends React.Component {
     }
 
     var iconType = null;
-    if (props.showIcon) {
+    if (props.icon) {
+      iconType = 'glyphicon ' + props.icon;
+    } else if (props.showIcon) {
       if (props.type) {
         if (props.type === 'success') {
-          iconType = 'glyphicon icon-status-active'
+          iconType = 'glyphicon icon-status-active';
         } else {
-          iconType = 'glyphicon icon-status-warning'
+          iconType = 'glyphicon icon-status-warning';
         }
       } else {
         iconType = 'glyphicon loading-notification';
       }
     }
-    var style = iconType ? styles.getWidth('320') : {};
+    var style = iconType ? styles.getWidth('300') : {},
+      contentStyle = iconType ? styles.getWidth('250') : {};
 
     return (
       <div className={className} style={style}>
         {iconType ? <div className='tip-icon'><strong><i className={iconType}></i></strong></div> : ''}
-        <div className='tip-content'>
+        <div className='tip-content' style={contentStyle}>
           {props.title ? <div><strong>{props.title}</strong></div> : ''}
           {props.content}
         </div>
@@ -74,7 +77,8 @@ Notification.propTypes = {
   content: React.PropTypes.string,
   type: React.PropTypes.string,
   showIcon: React.PropTypes.bool,
-  isAutoHide: React.PropTypes.bool
+  isAutoHide: React.PropTypes.bool,
+  icon: React.PropTypes.string
 };
 
 export default Notification;

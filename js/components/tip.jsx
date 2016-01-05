@@ -42,12 +42,14 @@ class Tip extends React.Component {
     }
 
     var iconType = null;
-    if (props.showIcon) {
+    if (props.icon) {
+      iconType = 'glyphicon ' + props.icon;
+    } else if (props.showIcon) {
       if (props.type) {
         if (props.type === 'success') {
-          iconType = 'glyphicon icon-status-active'
+          iconType = 'glyphicon icon-status-active';
         } else {
-          iconType = 'glyphicon icon-status-warning'
+          iconType = 'glyphicon icon-status-warning';
         }
       } else {
         iconType = 'glyphicon loading-tip';
@@ -57,11 +59,14 @@ class Tip extends React.Component {
     var style = props.width ? {
       'width': parseInt(props.width) - 40
     } : {};
+    var contentStyle = (props.width && iconType) ? {
+      'width': parseInt(props.width) - 70
+    } : {};
 
     return ( 
       <div className={className} style={style}>
-        <div className='tip-content'>
-          {iconType ? <strong><i className={iconType}></i></strong> : ''}
+        {iconType ? <div className='tip-icon'><strong><i className={iconType}></i></strong></div> : ''}
+        <div className='tip-content' style={contentStyle}>
           {props.title ? <strong>{props.title}</strong> : ''}
           {props.content}
         </div>
@@ -78,7 +83,8 @@ Tip.propTypes = {
   width: React.PropTypes.number,
   showIcon: React.PropTypes.bool,
   enableClose: React.PropTypes.bool,
-  isAutoHide: React.PropTypes.bool
+  isAutoHide: React.PropTypes.bool,
+  icon: React.PropTypes.string
 };
 
 export default Tip;

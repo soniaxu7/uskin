@@ -6,7 +6,7 @@ var text = {
   'success': 'I am a success notification',
   'warning': 'I am a warning notification',
   'danger': 'I am a danger notification',
-  'para': 'I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph'
+  'para': 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
 };
 
 ReactDOM.render(
@@ -45,26 +45,26 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Notification content={text.info} isAutoHide={true} type='info' />,
+  <Notification content={text.info} icon='loading-notification' type='info' />,
   document.getElementById('example8')
 );
 
 ReactDOM.render(
-  <Notification content={text.success} isAutoHide={true} type='success' />,
+  <Notification content={text.success} icon='icon-overview' type='success' />,
   document.getElementById('example9')
 );
 
 ReactDOM.render(
-  <Notification content={text.warning} isAutoHide={true} type='warning' />,
+  <Notification content={text.warning} type='warning' />,
   document.getElementById('example10')
 );
 
 ReactDOM.render(
-  <Notification content={text.danger} isAutoHide={true} type='danger' />,
+  <Notification content={text.danger} type='danger' />,
   document.getElementById('example11')
 );
 
 ReactDOM.render(
-  <Notification content={text.para} isAutoHide={true} type='danger' />,
+  <Notification content={text.para} type='danger' />,
   document.getElementById('example12')
 );

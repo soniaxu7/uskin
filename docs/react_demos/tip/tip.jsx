@@ -6,7 +6,7 @@ var text = {
   'success': 'I am a success tip',
   'warning': 'I am a warning tip',
   'danger': 'I am a danger tip',
-  'para': 'I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph I am a paragraph'
+  'para': 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
 };
 
 ReactDOM.render(
@@ -35,17 +35,17 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Tip title={text.title} content={text.para} type='danger' width='300' />,
+  <Tip title={text.title} content={text.para} type='danger' width='400' />,
   document.getElementById('example6')
 );
 
 ReactDOM.render(
-  <Tip content={text.content} showIcon={true} enableClose={true} />,
+  <Tip content={text.content} icon='loading-tip' enableClose={true} />,
   document.getElementById('example7')
 );
 
 ReactDOM.render(
-  <Tip content={text.info} showIcon={true} enableClose={true} type='info' />,
+  <Tip content={text.info} icon='loading-tip' enableClose={true} type='info' />,
   document.getElementById('example8')
 );
 
@@ -65,6 +65,6 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Tip content={text.para} showIcon={true} enableClose={true} type='danger' width='300' />,
+  <Tip content={text.para} showIcon={true} enableClose={true} type='danger' width='500' />,
   document.getElementById('example12')
 );
