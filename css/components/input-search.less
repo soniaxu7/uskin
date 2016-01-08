@@ -1,0 +1,74 @@
+@input_search_font_color: @color_font;
+@input_search_icon_color: #78838f;
+@input_search_icon_hover_color: #1797c6;
+@input_search_border_color: #e3e4e5;
+@input_search_border_hover_color: #42b9e5;
+@input_search_border_active_color: #1797c6;
+
+.input-search {
+  width: 147px;
+  height: 30px;
+  border-radius: 2px;
+  border: 1px solid @input_search_border_hover_color;
+  &:hover {
+    border: 1px solid @input_search_border_active_color;
+    .search-icon {
+      color: @input_search_border_hover_color;
+    }
+  }
+  input {
+    outline: 0;
+    border: 0;
+    width: 97px;
+  }
+  .search-icon {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    float: right;
+    cursor: pointer;
+    text-align: center;
+    background-color: @input_search_border_hover_color;
+    > i {
+      color: white;
+      font-weight: bold;
+    }
+    &:hover {
+      background-color: @input_search_border_active_color;
+    }
+  }
+}
+
+.input-search-light {
+  width: 147px;
+  height: 30px;
+  border: 1px solid @input_search_border_color;
+  border-radius: 2px;
+  &:hover {
+    border: 1px solid @input_search_border_hover_color;
+    .search-icon {
+      color: @input_search_border_hover_color;
+    }
+  }
+  input {
+    outline: 0;
+    border: 0;
+    width: 107px;
+  }
+  .search-icon {
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    float: right;
+    cursor: pointer;
+    color: @input_search_icon_color;
+    > i {
+      font-weight: bold;
+    }
+    &:hover {
+      color: @input_search_icon_hover_color;
+    }
+  }
+}
