@@ -1,6 +1,9 @@
-@arrow-box-border-color: @color_disabled_bg;
-@arrow-color: @color_disabled_dark_bg;
-@arrow-hover-color: @color_disabled_border;
+@arrow_box_border_color: @color_gray_beige_dark;
+@arrow_box_border_hover_color: @color_gray_darker;
+@arrow_color: @color_gray_dark;
+@arrow_bg_color: @color_gray_beige;
+@arrow_hover_color: @color_font_dark;
+@input_disabled_bg_color: @color_gray_beige;
 
 .input-number {
   width: 80px;
@@ -9,19 +12,18 @@
     outline: 0;
     padding-right: 30px;
     width: 38px;
-  }
-  &.disabled {
-    .arrow-up, .arrow-down {
-      cursor: not-allowed !important;
+    &:hover, &:focus {
+      border: 1px solid @arrow_box_border_hover_color;
     }
   }
   .arrow {
     position: absolute;
     top: 1px;
-    right: 0;
+    right: 1px;
     width: 19px;
     height: 30px;
-    border-left: 1px solid @arrow-box-border-color;
+    border-left: 1px solid @arrow_box_border_color;
+    background-color: @arrow_bg_color;
     .arrow-up, .arrow-down {
       position: relative;
       height: 15px;
@@ -39,39 +41,36 @@
     .arrow-up {
       > div {
         bottom: 2px;
-        border-bottom: 5px solid @arrow-color;
+        border-bottom: 5px solid @arrow_color;
       }
-      &.disabled {
-        &:hover {
-          > div {
-            border-bottom: 5px solid @arrow-color;
-          }
-        }        
+      &:hover > div {
+        border-bottom: 5px solid @arrow_hover_color;
       }
-      &:hover {
-        > div {
-          border-bottom: 5px solid @color_disabled_font;
-        }
+      &.disabled > div, &.disabled:hover > div {
+        border-bottom: 5px solid @arrow_color;
       }
     }
     .arrow-down {
       > div {
         top: 2px;
-        border-top: 5px solid @arrow-color;
+        border-top: 5px solid @arrow_color;
       }
-      &.disabled {
-        &:hover {
-          > div {
-            border-top: 5px solid @arrow-color;
-          }
-        }        
+      &:hover > div {
+        border-top: 5px solid @arrow_hover_color;
       }
-      &:hover {
-        > div {
-          border-top: 5px solid @color_disabled_font;
-        }
+      &.disabled > div, &.diabled:hover > div {
+        border-top: 5px solid @arrow_color;
       }
     }
   }
+  &.disabled {
+    input {
+      &:hover, &:focus {
+        border: 1px solid @arrow_box_border_color;
+      }
+    }
+    .arrow {
+      display: none;
+    }
+  }
 }
-

@@ -15,27 +15,27 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Notification title={text.title} content={text.info} showIcon={true} type='info' />,
+  <Notification title={text.title} content={text.info} showIcon={true} type="info" />,
   document.getElementById('example2')
 );
 
 ReactDOM.render(
-  <Notification title={text.title} content={text.success} showIcon={true} type='success' />,
+  <Notification title={text.title} content={text.success} showIcon={true} type="success" />,
   document.getElementById('example3')
 );
 
 ReactDOM.render(
-  <Notification title={text.title} content={text.warning} showIcon={true} type='warning' />,
+  <Notification title={text.title} content={text.warning} showIcon={true} type="warning" />,
   document.getElementById('example4')
 );
 
 ReactDOM.render(
-  <Notification title={text.title} content={text.danger} showIcon={true} type='danger' />,
+  <Notification title={text.title} content={text.danger} showIcon={true} type="danger" />,
   document.getElementById('example5')
 );
 
 ReactDOM.render(
-  <Notification title={text.title} content={text.para} showIcon={true} type='danger'  />,
+  <Notification title={text.title} content={text.para} showIcon={true} type="danger" width="280" />,
   document.getElementById('example6')
 );
 
@@ -45,26 +45,26 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Notification content={text.info} icon='loading-notification' type='info' />,
+  <Notification content={text.info} icon="loading-notification" type="info" />,
   document.getElementById('example8')
 );
 
 ReactDOM.render(
-  <Notification content={text.success} icon='icon-overview' type='success' />,
+  <Notification content={text.success} icon="icon-overview" type="success" />,
   document.getElementById('example9')
 );
 
 ReactDOM.render(
-  <Notification content={text.warning} type='warning' />,
+  <Notification content={text.warning} type="warning" />,
   document.getElementById('example10')
 );
 
 ReactDOM.render(
-  <Notification content={text.danger} type='danger' />,
+  <Notification content={text.danger} type="danger" />,
   document.getElementById('example11')
 );
 
 ReactDOM.render(
-  <Notification content={text.para} type='danger' />,
+  <Notification content={text.para} type="danger" />,
   document.getElementById('example12')
 );

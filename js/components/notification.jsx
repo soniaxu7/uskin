@@ -56,17 +56,17 @@ class Notification extends React.Component {
         iconType = 'glyphicon loading-notification';
       }
     }
-    var style = iconType ? styles.getWidth('300') : {},
-      contentStyle = iconType ? styles.getWidth('250') : {};
+    var style = styles.getWidth(parseInt(props.width, 10) - 40),
+      contentStyle = iconType ? styles.getWidth(parseInt(props.width, 10) - 90) : styles.getWidth(parseInt(props.width, 10) - 50);
 
     return (
       <div className={className} style={style}>
-        {iconType ? <div className='tip-icon'><strong><i className={iconType}></i></strong></div> : ''}
-        <div className='tip-content' style={contentStyle}>
+        {iconType ? <div className="tip-icon"><strong><i className={iconType}></i></strong></div> : ''}
+        <div className="tip-content" style={contentStyle}>
           {props.title ? <div><strong>{props.title}</strong></div> : ''}
           {props.content}
         </div>
-        <i className='glyphicon icon-close' onClick={this.tick}></i>
+        <i className="glyphicon icon-close" onClick={this.tick}></i>
       </div>
     );
   }

@@ -1,11 +1,12 @@
-@switch_off_color: @color_white;
-@switch_off_bg_color: @color_switch_gray_btn;
-@switch_off_btn_bg_color: @color_switch_gray_bg;
-@switch_on_bg_color: @color_blue;
-@switch_on_btn_bg_color: @color_switch_blue_bg;
+@switch_off_color: white;
+@switch_off_bg_color: @color_gray_darker;
+@switch_off_btn_bg_color: @color_gray;
+@switch_on_bg_color: @color_blue_dark;
+@switch_on_btn_bg_color: @color_blue_lighter;
 @switch_on_font_color: @color_blue;
-@switch_disabled_bg_color: @color_default_gray;
-@switch_disabled_btn_bg_color: @color_menu_item_gray;
+@switch_bg_color: @color_gray_darker;
+@switch_disabled_bg_color: @color_gray_beige;
+@switch_disabled_btn_bg_color: @color_gray;
 
 .switch {
   width: 60px;
@@ -59,7 +60,7 @@
 
   &.disabled {
     input + .switch-inner {
-      color: @color_btn_disabled_gray_font;
+      color: @switch_bg_color;
       background-color: @switch_disabled_bg_color;
       &::after {
         background-color: @switch_disabled_btn_bg_color;

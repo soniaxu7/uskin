@@ -1,7 +1,8 @@
-@pagination_item_color: @color_font_dark_title;
-@pagination_item_hover_color: @color_blue_dark;
-@pagination_item_active_color: @color_blue_darker;
+@pagination_item_color: @color_gray_beige_dark;
+@pagination_item_hover_color: @color_blue;
+@pagination_item_active_color: @color_blue_x_dark;
 @pagination_item_selected_color: @color_blue;
+@pagination_btn_disabled_color: @color_gray_light;
 
 .pagination {
   display: inline-block;
@@ -13,10 +14,14 @@
       float: left;
       display: block;
       padding: 0;
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
       text-align: center;
+      border-radius: 2px;
+      border: 1px solid;
+      margin: 0 4px;
+      user-select: none;
     }
     .item {
       color: @pagination_item_color;
@@ -27,13 +32,35 @@
         color: @pagination_item_active_color;
       }
       &.active {
-        color: @pagination_item_selected_color;
+        color: white;
+        background-color: @pagination_item_selected_color;
+        border-color: @pagination_item_selected_color;
         cursor: default;
       }
     }
+    .omit {
+      color: @pagination_item_color;
+      cursor: default;
+      border: 0;
+      height: 24px;
+      line-height: 24px;
+    }
     .prev,
     .next {
-      line-height: 22px;
+      background-color: white;
+      color: @color_gray_beige_dark;
+      border: 1px solid @color_gray_beige_dark;
+      &:hover {
+        color: white;
+        border-color: @pagination_item_hover_color;
+        background-color: @pagination_item_hover_color;
+      }
+      &.disabled, &.disabled:hover {
+        cursor: not-allowed !important;
+        color: @pagination_btn_disabled_color !important;
+        border-color: @pagination_btn_disabled_color !important;
+        background-color: white !important;
+      }
     }
 
   }

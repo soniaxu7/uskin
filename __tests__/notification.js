@@ -27,7 +27,7 @@ describe('Test notification component', () => {
     var content = 'this is content',
       type = 'info',
       classNamePrefix = 'notification notification-',
-      width = '600px';
+      width = 600;
     var notification = TestUtils.renderIntoDocument(
       <Notification content={content} type={type} width={width}/>
     );
@@ -36,7 +36,7 @@ describe('Test notification component', () => {
 
     expect(notificationNode.textContent).toEqual(content);
     expect(notificationNode.getAttribute('class')).toEqual(classNamePrefix + type);
-    expect(notificationNode.style.width).toEqual(width);
+    expect(notificationNode.style.width).toEqual(width - 40 + 'px');
 
   });
 

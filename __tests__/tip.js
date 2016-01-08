@@ -27,7 +27,7 @@ describe('Test tip component', () => {
     var content = 'this is content',
       type = 'info',
       classNamePrefix = 'tip tip-',
-      width = '600px';
+      width = 600;
     var tip = TestUtils.renderIntoDocument(
       <Tip content={content} type={type} width={width}/>
     );
@@ -36,7 +36,7 @@ describe('Test tip component', () => {
 
     expect(tipNode.textContent).toEqual(content);
     expect(tipNode.getAttribute('class')).toEqual(classNamePrefix + type);
-    expect(tipNode.style.width).toEqual(width);
+    expect(tipNode.style.width).toEqual(width - 40 + 'px');
 
   });
 

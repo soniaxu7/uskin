@@ -57,16 +57,16 @@ class Tip extends React.Component {
     }
 
     var style = props.width ? {
-      'width': parseInt(props.width) - 40
+      width: parseInt(props.width, 10) - 40
     } : {};
     var contentStyle = (props.width && iconType) ? {
-      'width': parseInt(props.width) - 70
+      width: parseInt(props.width, 10) - 70
     } : {};
 
-    return ( 
+    return (
       <div className={className} style={style}>
-        {iconType ? <div className='tip-icon'><strong><i className={iconType}></i></strong></div> : ''}
-        <div className='tip-content' style={contentStyle}>
+        {iconType ? <div className="tip-icon"><strong><i className={iconType}></i></strong></div> : ''}
+        <div className="tip-content" style={contentStyle}>
           {props.title ? <strong>{props.title}</strong> : ''}
           {props.content}
         </div>

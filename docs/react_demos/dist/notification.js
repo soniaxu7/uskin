@@ -67,7 +67,7 @@
 
 	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.danger, showIcon: true, type: 'danger' }), document.getElementById('example5'));
 
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.para, showIcon: true, type: 'danger' }), document.getElementById('example6'));
+	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.para, showIcon: true, type: 'danger', width: '280' }), document.getElementById('example6'));
 
 	ReactDOM.render(React.createElement(Notification, { content: text.content, isAutoHide: true }), document.getElementById('example7'));
 

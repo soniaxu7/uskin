@@ -2,10 +2,10 @@
  *  TODO: use flex to avoid minimal dimension style bug (overlapping)
  *
  */
-@nav_bg_color: @color_nav_bg;
-@nav_item_border_color: @color_nav_item_border; 
-@nav_item_color: @color_blue;
-@nav_item_selected_color: @color_white;
+@nav_bg_color: @color_gray_beige_light;
+@nav_item_border_color: @color_blue;
+@nav_item_color: @color_font_dark;
+@nav_item_selected_color: white;
 
 .navbar {
   height: 50px;
@@ -22,7 +22,7 @@
   }
 
   .nav-item {
-    border-right: 1px solid @nav_item_border_color;
+    // border-right: 1px solid @nav_item_border_color;
     display: block;
     float: left;
     line-height: 50px;
@@ -34,7 +34,7 @@
     }
 
     &:first-child {
-      border-left: 1px solid @nav_item_border_color;
+      // border-left: 1px solid @nav_item_border_color;
     }
 
     &.selected {

@@ -1,15 +1,14 @@
-@menu_font_color: @color_font;
-@menu_font_title_color: @color_gray_new_menu_title_font;
-@menu_font_item_color: @color_gray_new_menu_item_font;
-@menu_font_selected_color: @color_blue_new_menu_font;
+@menu_font_color: @color_menu_font;
+@menu_font_title_color: @color_menu_gray_font_title;
+@menu_font_item_color: @color_menu_font;
+@menu_font_selected_color: @color_menu_font_hover;
 
-@menu_bg_color: #ffffff;
-@menu_line_color: @color_gray_new_menu_line;
-@menu_category_select_color: @color_blue_new_menu_font;
+@menu_bg_color: white;
+@menu_line_color: @color_menu_gray_border;
+@menu_category_select_color: @color_menu_gray_border;
 
 .menu {
   background-color: @menu_bg_color; /* For browsers that do not support gradients */
-  background: linear-gradient(to right, @menu_bg_color, @menu_line_color 240%);
   width: 200px;
   height: inherit;
   overflow-y: auto;

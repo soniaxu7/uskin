@@ -55,16 +55,16 @@ class Pagination extends React.Component {
 
     if (current > 4) {
       pagi.unshift(
-        <li key="prevs">
-          <a href="#">···</a>
+        <li key="prevs omit">
+          <a href="#" className="omit">···</a>
         </li>
       );
     }
 
     if (current + 4 <= totalPage) {
       pagi.push(
-        <li key="nexts">
-          <a href="#">···</a>
+        <li key="nexts omit">
+          <a href="#" className="omit">···</a>
         </li>
       );
     }
@@ -79,7 +79,7 @@ class Pagination extends React.Component {
     pagi.unshift(
       <li key="prev">
         <a href="#"
-          className={current === 1 ? 'btn btn-xs btn-initial disabled prev' : 'btn btn-xs btn-initial prev'}
+          className={current === 1 ? 'prev disabled' : 'prev'}
           onClick={current === 1 ? null : this.paging.bind(null, current - 1)}>&lt;</a>
       </li>
     );
@@ -94,7 +94,7 @@ class Pagination extends React.Component {
     pagi.push(
       <li key="next">
         <a href="#"
-          className={current === totalPage ? 'btn btn-xs btn-initial disabled next' : 'btn btn-xs btn-initial next'}
+          className={current === totalPage ? 'next disabled' : 'next'}
           onClick={current === totalPage ? null : this.paging.bind(null, current + 1)}>&gt;</a>
       </li>
     );
