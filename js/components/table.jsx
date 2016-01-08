@@ -70,7 +70,11 @@ class Table extends React.Component {
     var colLength = this.props.column.length + (this.props.checkbox ? 1 : 0);
 
     if (tbodyHeight < tbodyFixedHeight) {
+      tbodyDOM.style.height = tbodyHeight + 'px';
+
       if (colLength === this.refs.thead.childNodes.length) {
+        tbodyDOM.style.overflowY = 'scroll';
+
         if (tbodyDOM.offsetWidth - tbodyDOM.clientWidth) {
           var scrollColumn = document.createElement('div');
           scrollColumn.style.flex = 'none';
@@ -79,11 +83,6 @@ class Table extends React.Component {
 
           this.refs.thead.appendChild(scrollColumn);
         }
-
-        tbodyDOM.style.overflowY = 'scroll';
-        tbodyDOM.style.height = tbodyHeight + 'px';
-      } else {
-        tbodyDOM.style.height = tbodyHeight + 'px';
       }
     } else {
       if (colLength < this.refs.thead.childNodes.length) {
