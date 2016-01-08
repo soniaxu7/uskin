@@ -11,7 +11,6 @@ class Menu extends React.Component {
       selectedSubkey: undefined
     };
 
-    this._setResize = this._setResize.bind(this);
     this.menuOnClick = this.menuOnClick.bind(this);
   }
 
@@ -23,20 +22,6 @@ class Menu extends React.Component {
         submenu.selected ? (this.menuOnClick(null, item.key, submenu.key), true) : false
       )
     );
-  }
-
-  componentDidMount() {
-    window.onresize = this._setResize;
-    this._setResize();
-  }
-
-  _setResize() {
-    var menuDOM = this.refs.menu,
-      menuTopDistance = menuDOM.offsetTop,
-      screenHeight = window.innerHeight;
-
-    var menuHeight = screenHeight - menuTopDistance;
-    menuDOM.style.height = menuHeight + 'px';
   }
 
   menuOnClick(e, key, subkey) {
