@@ -22,6 +22,8 @@
   width: 100%;
   max-width: 100%;
   background-color: @table_bg_color;
+  display: flex;
+  flex-direction: column;
 
   > thead {
     height: @table_hd_height;
@@ -75,6 +77,9 @@
   .table-header {
     display: flex;
     user-select: none;
+    min-height: 36px;
+    height: 36px;
+    max-height: 36px;
     > div {
       flex: 1;
       height: 36px;
@@ -160,6 +165,9 @@
   }
 
   .table-body {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
     .row {
       display: flex;
       border-bottom: @table_bd_border;

@@ -57,39 +57,32 @@ class Table extends React.Component {
       sortDirection: undefined,
       filter: undefined,
       checkedKey: []
+    }, () => {
+      this._setResize();
     });
   }
 
   _setResize() {
-    var tbodyDOM = this.refs.tbody,
-      tbodyTopDistance = tbodyDOM.offsetTop,
-      tbodyFixedHeight = this.props.data.length * this._rowHeight,
-      screenHeight = window.innerHeight;
+    var theadDOM = this.refs.thead,
+      tbodyDOM = this.refs.tbody;
 
-    var tbodyHeight = screenHeight - tbodyTopDistance;
     var colLength = this.props.column.length + (this.props.checkbox ? 1 : 0);
 
-    if (tbodyHeight < tbodyFixedHeight) {
-      tbodyDOM.style.height = tbodyHeight + 'px';
+    if (tbodyDOM.scrollHeight > tbodyDOM.clientHeight) {
+      if (colLength === theadDOM.childNodes.length) {
+        var scrollColumn = document.createElement('div');
+        var width = tbodyDOM.offsetWidth - tbodyDOM.clientWidth + 'px';
 
-      if (colLength === this.refs.thead.childNodes.length) {
-        tbodyDOM.style.overflowY = 'scroll';
+        scrollColumn.style.flex = 1;
+        scrollColumn.style.width = width;
+        scrollColumn.style.maxWidth = width;
+        scrollColumn.style.minWidth = width;
+        scrollColumn.style.padding = 0;
 
-        if (tbodyDOM.offsetWidth - tbodyDOM.clientWidth) {
-          var scrollColumn = document.createElement('div');
-          scrollColumn.style.flex = 'none';
-          scrollColumn.style.width = tbodyDOM.offsetWidth - tbodyDOM.clientWidth + 'px';
-          scrollColumn.style.padding = 0;
-
-          this.refs.thead.appendChild(scrollColumn);
-        }
+        theadDOM.appendChild(scrollColumn);
       }
-    } else {
-      if (colLength < this.refs.thead.childNodes.length) {
-        var theadDOM = this.refs.thead;
-        theadDOM.removeChild(theadDOM.lastChild);
-        tbodyDOM.style.overflowY = null;
-      }
+    } else if (colLength < this.refs.thead.childNodes.length) {
+      theadDOM.removeChild(theadDOM.lastChild);
     }
   }
 

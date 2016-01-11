@@ -204,6 +204,33 @@ var data2 = [{
   price: '0.444'
 }];
 
+var boxStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%'
+};
+
+var bottomStyle = {
+  margin: '0 auto',
+  paddingTop: 40,
+  width: 80,
+  height: 36,
+  minHeight: 36,
+  maxHeight: 36
+};
+
+var btnStyle = {
+  margin: '0 auto',
+  padding: '20px 0',
+  width: 80,
+  height: 36,
+  minHeight: 36,
+  maxHeight: 36
+};
+
+var updateBtnStyle = Object.assign({}, btnStyle);
+updateBtnStyle.visibility = 'hidden';
+
 function checkboxOnChange(e, status, checkedItem, checkedData) {
   console.debug('click triggered!', status, checkedItem, checkedData);
 }
@@ -219,9 +246,9 @@ function updateData() {
   });
 
   ReactDOM.render(
-    <div>
-      <div style={{margin: '20px auto', width: 100, visibility: 'hidden'}}>
-        <Button value="更新数据"/>
+    <div style={boxStyle}>
+      <div style={updateBtnStyle}>
+        <Button value="更新数据" onClick={updateData}/>
       </div>
       <Table
         column={column}
@@ -231,14 +258,17 @@ function updateData() {
         checkboxOnChange={checkboxOnChange}
         striped={true}
         hover={true}/>
+      <div style={bottomStyle}>
+        <span>This is bottom</span>
+      </div>
     </div>,
     document.getElementById('example')
   );
 }
 
 ReactDOM.render(
-  <div>
-    <div style={{margin: '20px auto', width: 100}}>
+  <div style={boxStyle}>
+    <div style={btnStyle}>
       <Button value="更新数据" onClick={updateData}/>
     </div>
     <Table
@@ -250,6 +280,9 @@ ReactDOM.render(
       checkboxOnChange={checkboxOnChange}
       striped={true}
       hover={true}/>
+    <div style={bottomStyle}>
+      <span>This is bottom</span>
+    </div>
   </div>,
   document.getElementById('example')
 );
