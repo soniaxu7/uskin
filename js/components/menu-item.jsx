@@ -55,7 +55,7 @@ class MenuItem extends React.Component {
   }
 
   submenuOnClick(key, submenu, e) {
-    this.props.menuOnClick && this.props.menuOnClick.apply(this, [e, key, submenu.key]);
+    this.props.selectMenu && this.props.selectMenu.apply(this, [e, key, submenu.key]);
     submenu.onClick && submenu.onClick.apply(this, [e, submenu]);
   }
 
@@ -81,12 +81,10 @@ class MenuItem extends React.Component {
         <ul ref="item" style={item.fold ? {height: '0', overflow: 'hidden'} : null}>
           {item.submenu.map((submenu) =>
             <li key={submenu.subtitle}
+              className={this._isSelectedMenu(submenu) ? 'selected' : null}
               onClick={this._isSelectedMenu(submenu) ? null : this.submenuOnClick.bind(this, item.key, submenu)}>
-              <a className={this._isSelectedMenu(submenu) ? 'selected' : null}
-                href={submenu.href ? submenu.href : '#'}>
-                {submenu.iconClass ? <i className={submenu.iconClass}></i> : null}
-                {submenu.subtitle}
-              </a>
+              {submenu.iconClass ? <i className={submenu.iconClass}></i> : null}
+              {submenu.subtitle}
             </li>
           )}
         </ul>

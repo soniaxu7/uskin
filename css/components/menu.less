@@ -17,7 +17,7 @@
   border-right: 1px solid @menu_line_color;
 
   > li, > li > div {
-    a {
+    ul > li {
       display: block;
       padding-left: 20px;
       height: 40px;
@@ -27,6 +27,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      cursor: pointer;
 
       &:hover {
         color: @menu_font_selected_color;
@@ -38,6 +39,7 @@
         background-color: @menu_bg_color;
         border-top: 1px solid @menu_line_color;
         border-bottom: 1px solid @menu_line_color;
+        cursor: default;
       }
       .glyphicon {
         margin-right: 12px;
@@ -76,7 +78,7 @@
       height: 40px;
       line-height: 40px;
 
-      a.selected {
+      ul > li .selected {
         &:after {
           content: "";
           width: 1px;
