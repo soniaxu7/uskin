@@ -1,3 +1,6 @@
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   progress: true,
   entry: {
@@ -5,7 +8,7 @@ module.exports = {
   },
   output: {
     path: './dist/js',
-    filename: '[name].js',
+    filename: '[hash:6].[name].min.js',
     library: 'uskin',
     libraryTarget: 'umd'
   },
@@ -31,8 +34,20 @@ module.exports = {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
+    }, {
+      test: /\.less$/,
+      loader: ExtractTextPlugin.extract(
+        'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?sourceMap'
+      )
+    }, {
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract(
+        'css?sourceMap&-minimize!' + 'autoprefixer-loader'
+      )
+    }, {
+      test: /\.(woff|svg|eot|ttf)\??.*$/,
+      loader: 'url?limit=10000&name=../css/fonts/icon.[ext]?[hash]'
     }]
   },
-  plugins: [],
-  devtool: 'source-map'
+  plugins: []
 };
