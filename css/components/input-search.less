@@ -1,9 +1,10 @@
 @input_search_font_color: @color_font;
-@input_search_icon_color: @color_inputsearch_icon_color;
-@input_search_icon_hover_color: @color_inputsearch_icoon_hover_color;
-@input_search_border_color: @color_inputsearch_border_color;
-@input_search_border_hover_color: @color_inputsearch_border_hover_color;
-@input_search_border_active_color: @color_inputsearch_icoon_hover_color;
+@input_search_icon_color: @color_blue;
+@input_search_icon_hover_color: @color_blue_dark;
+@input_search_icon_light_color: @color_font_dark;
+@input_search_border_color: @color_gray_beige;
+@input_search_border_hover_color: @color_blue;
+@input_search_border_active_color: @color_blue_dark;
 
 .input-search {
   width: 147px;
@@ -43,34 +44,29 @@
 }
 
 .input-search-light {
-  width: 147px;
-  height: 30px;
-  border: 1px solid @input_search_border_color;
-  border-radius: 2px;
+  border-color: @input_search_border_color;
   &:hover {
-    border: 1px solid @input_search_border_hover_color;
+    border-color: @input_search_border_hover_color;
     .search-icon {
       color: @input_search_border_hover_color;
     }
   }
   input {
-    outline: 0;
-    border: 0;
     width: 107px;
   }
   .search-icon {
     width: 20px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
-    float: right;
-    cursor: pointer;
-    color: @input_search_icon_color;
+    text-align: left;
+    background-color: white;
     > i {
-      font-weight: bold;
+      color: @input_search_icon_light_color;
+      &:hover {
+        color: @input_search_border_active_color;
+      }
     }
     &:hover {
-      color: @input_search_icon_hover_color;
+      background-color: white;
+      color: @input_search_border_hover_color;
     }
   }
 }

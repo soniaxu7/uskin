@@ -55,8 +55,16 @@
 	ReactDOM.render(React.createElement(
 	  "div",
 	  null,
-	  React.createElement(InputSearch, { onClick: listener, width: "200" }),
-	  React.createElement(InputSearch, { onClick: listener, width: "300", type: "light" })
+	  React.createElement(
+	    "div",
+	    null,
+	    React.createElement(InputSearch, { onClick: listener, width: "200" })
+	  ),
+	  React.createElement(
+	    "div",
+	    null,
+	    React.createElement(InputSearch, { onClick: listener, width: "300", type: "light" })
+	  )
 	), document.getElementById('example'));
 
 /***/ }

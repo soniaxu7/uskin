@@ -6,8 +6,12 @@ function listener(status) {
 
 ReactDOM.render(
   <div>
-    <InputSearch onClick={listener} width="200" />
-    <InputSearch onClick={listener} width="300" type="light"/>
+    <div>
+      <InputSearch onClick={listener} width="200" />
+    </div>
+    <div>
+      <InputSearch onClick={listener} width="300" type="light"/>
+    </div>
   </div>,
   document.getElementById('example')
 );

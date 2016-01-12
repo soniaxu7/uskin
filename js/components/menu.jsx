@@ -23,11 +23,13 @@ class Menu extends React.Component {
   }
 
   _updateSelectedMenu(items) {
-    items.some(item =>
+    var isSelected = items.some(item =>
       item.submenu.some(submenu =>
         submenu.selected ? (this.selectMenu(null, item.key, submenu.key), true) : false
       )
     );
+
+    !isSelected && this.selectMenu(null, undefined, undefined);
   }
 
   selectMenu(e, key, subkey) {
