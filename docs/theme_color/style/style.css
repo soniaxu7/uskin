@@ -1,0 +1,186 @@
+/*
+*  Mixins
+*/
+/**
+ * Default theme
+ */
+body {
+  font-size: 13px;
+  font_family: Arial, "Microsoft Yahei", "微软雅黑", "宋体", sans-serif;
+  padding: 30px;
+}
+.theme {
+  width: 100%;
+  height: 72px;
+}
+.theme .theme-intro {
+  width: 160px;
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  margin: 0;
+}
+.theme .color-block {
+  float: left;
+}
+.theme .color-block > div {
+  width: 100px;
+  height: 36px;
+  border-top: 5px solid #626f7e;
+  border-bottom: 5px solid #626f7e;
+}
+.theme .color-block > p {
+  width: 100px;
+  /*background-color: red;*/
+  margin: 4px 0;
+  text-align: center;
+}
+.theme .color-block:nth-child(2) > div {
+  border-left: 5px solid #626f7e;
+}
+.theme .color-block:last-child > div {
+  border-right: 5px solid #626f7e;
+}
+/*
+*   color palette
+*/
+/*
+*   Font Color
+*/
+.color_font_dark {
+  background-color: #626f7e;
+  border-color: #fff!important;
+}
+.color_font {
+  background-color: #252f3d;
+  border-color: #fff!important;
+}
+/*
+*   Gray Beige Color
+*/
+.color_gray_beige_light {
+  background-color: #fafdff;
+}
+.color_gray_beige {
+  background-color: #ecf0f2;
+}
+.color_gray_beige_dark {
+  background-color: #c9c9c9;
+}
+.color_gray_beige_x_dark {
+  background-color: #e6ebee;
+}
+.color_gray_beige_x_darker {
+  background-color: #e0e6ea;
+}
+/*
+*   Gray Color
+*/
+.color_gray_lighter {
+  background-color: #eff8ff;
+}
+.color_gray_light {
+  background-color: #e2e7ea;
+}
+.color_gray {
+  background-color: #d5dddf;
+}
+.color_gray_dark {
+  background-color: #b2c1cc;
+}
+.color_gray_darker {
+  background-color: #92a0a9;
+}
+/*
+*   Blue Color
+*/
+.color_blue_x_lighter {
+  background-color: #f5fdfe;
+}
+.color_blue_x_light {
+  background-color: #e1f4f7;
+}
+.color_blue_lighter {
+  background-color: #b9f1f9;
+}
+.color_blue_light {
+  background-color: #9de6f1;
+}
+.color_blue {
+  background-color: #00afc8;
+}
+.color_blue_dark {
+  background-color: #159fb8;
+}
+.color_blue_x_dark {
+  background-color: #00a6be;
+}
+.color_blue_x_darker {
+  background-color: #009db4;
+}
+/*
+*   Green Color
+*/
+.color_green_light {
+  background-color: #def9f6;
+}
+.color_green {
+  background-color: #1eb9a5;
+}
+.color_green_dark {
+  background-color: #19af95;
+}
+.color_green_x_dark {
+  background-color: #1db09d;
+}
+.color_green_x_darker {
+  background-color: #1ba795;
+}
+/*
+*   Red Color
+*/
+.color_red_lighter {
+  background-color: #fdc4c8;
+}
+.color_red_light {
+  background-color: #fff5f5;
+}
+.color_red {
+  background-color: #e05c69;
+}
+.color_red_dark {
+  background-color: #d04354;
+}
+.color_red_x_dark {
+  background-color: #de5361;
+}
+.color_red_x_darker {
+  background-color: #dd4b59;
+}
+/*
+*   Orange Color
+*/
+.color_orange_light {
+  background-color: #fff7ec;
+}
+.color_orange {
+  background-color: #f2994b;
+}
+.color_orange_dark {
+  background-color: #f78913;
+}
+/*
+*   New Version
+*/
+.color_menu_gray_font_title {
+  background-color: #bbbfc5;
+}
+.color_menu_gray_border {
+  background-color: #e3e4e5;
+}
+.color_menu_font {
+  background-color: #78838f;
+}
+.color_menu_font_hover {
+  background-color: #42b9e5;
+}
