@@ -15,8 +15,14 @@ class Menu extends React.Component {
   }
 
   componentWillMount() {
-    var items = this.props.items;
+    this._updateSelectedMenu(this.props.items);
+  }
 
+  componentWillReceiveProps(nextProps) {
+    this._updateSelectedMenu(nextProps.items);
+  }
+
+  _updateSelectedMenu(items) {
     items.some(item =>
       item.submenu.some(submenu =>
         submenu.selected ? (this.selectMenu(null, item.key, submenu.key), true) : false

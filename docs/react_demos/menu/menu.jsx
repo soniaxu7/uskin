@@ -1,4 +1,5 @@
-var Menu = uskin.Menu;
+var Menu = uskin.Menu,
+  Button = uskin.Button;
 
 function listener(e, status) {
   console.debug('click triggered!', e, status);
@@ -59,7 +60,28 @@ var items = [{
   }]
 }];
 
+function updateData() {
+  var newItems = [];
+  for (let i = 0; i < items.length; i++) {
+    newItems[i] = Object.assign({}, items[i]);
+  }
+  newItems[0].submenu[0].selected = false;
+  newItems[1].submenu[1].selected = true;
+
+  ReactDOM.render(
+    <div style={{height: '100%'}}>
+      <Menu items={newItems}/>
+    </div>,
+    document.getElementById('example')
+  );
+}
+
 ReactDOM.render(
-  <Menu items={items}/>,
+  <div style={{height: '100%'}}>
+    <Menu items={items}/>
+    <div style={{margin: '40px'}}>
+      <Button value="更新数据" onClick={updateData}/>
+    </div>
+  </div>,
   document.getElementById('example')
 );
