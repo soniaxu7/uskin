@@ -47,7 +47,7 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    window.onresize = this._setResize;
+    window.addEventListener('resize', this._setResize);
     this._setResize();
   }
 
@@ -60,6 +60,10 @@ class Table extends React.Component {
     }, () => {
       this._setResize();
     });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._setResize);
   }
 
   _setResize() {
