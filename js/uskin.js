@@ -6,6 +6,7 @@ import Breadcrumb from '../js/components/breadcrumb';
 import Button from '../js/components/button';
 import ButtonGroup from '../js/components/button-group';
 import Dropdown from '../js/components/dropdown';
+import DropdownButton from '../js/components/dropdown-button';
 import InputNumber from '../js/components/input-number';
 import InputSearch from '../js/components/input-search';
 import Menu from '../js/components/menu';
@@ -26,6 +27,7 @@ var uskin = {
   Button,
   ButtonGroup,
   Dropdown,
+  DropdownButton,
   InputNumber,
   InputSearch,
   Menu,

@@ -13,7 +13,8 @@ describe('Test button component', () => {
     var value = 'button',
       type = 'create',
       size = 'lg',
-      iconClass = 'glyphicon icon-create';
+      iconPrefix = 'glyphicon icon-',
+      iconClass = 'create';
 
     var button = TestUtils.renderIntoDocument(
       <Button value={value} type={type} size={size} iconClass={iconClass}/>
@@ -21,7 +22,7 @@ describe('Test button component', () => {
 
     var buttonNode = ReactDOM.findDOMNode(button);
 
-    expect(buttonNode.childNodes[0].className).toBe(iconClass);
+    expect(buttonNode.childNodes[0].className).toBe(iconPrefix + iconClass);
     expect(buttonNode.childNodes[1].innerHTML).toBe(value);
     expect(buttonNode.classList.contains('btn')).toBe(true);
     expect(buttonNode.classList.contains('btn-' + type)).toBe(true);
@@ -50,32 +51,31 @@ describe('Test button component', () => {
 
     var value = 'button',
       listener = jest.genMockFunction(),
-      tag = 'div',
-      iconClass = 'glyphicon icon-create';
+      tag = 'div';
 
     var button = TestUtils.renderIntoDocument(
-      <Button value={value} tag={tag} onClick={listener} iconClass={iconClass}/>
+      <Button value={value} tag={tag} onClick={listener} />
     );
 
     var buttonNode = ReactDOM.findDOMNode(button);
 
-    expect(buttonNode.childNodes[0].className).toBe(iconClass);
-    expect(buttonNode.childNodes[1].innerHTML).toBe(value);
+    expect(buttonNode.childNodes[0].innerHTML).toBe(value);
     expect(buttonNode.tagName.toLowerCase()).toBe(tag);
   });
 
   it('is triggered with beforeClick, onClick and afterClick', () => {
     var value = 'button',
-      listener = jest.genMockFunction();
+      listener = jest.genMockFunction(),
+      btnKey = 'btn-1';
 
     var button = TestUtils.renderIntoDocument(
-      <Button value={value} onClick={listener} />
+      <Button value={value} onClick={listener} btnKey={btnKey} />
     );
 
     var buttonNode = ReactDOM.findDOMNode(button);
     TestUtils.Simulate.click(buttonNode);
 
-    expect(listener).toBeCalled();
+    expect(listener.mock.calls[0][1]).toEqual(btnKey);
   });
 
   it('won\'t be triggered when button is disabled', () => {

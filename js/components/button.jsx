@@ -7,6 +7,7 @@ class Button extends React.Component {
 
     this._type = ['create', 'delete', 'cancel', 'status'];
     this._size = ['xl', 'lg', 'sm', 'xs'];
+    this._iconClassPrefix = 'glyphicon icon-';
     this.onClick = this.onClick.bind(this);
   }
 
@@ -22,18 +23,19 @@ class Button extends React.Component {
   }
 
   onClick(e) {
-    (typeof this.props.onClick === 'function') && this.props.onClick.apply(this, [e]);
+    (typeof this.props.onClick === 'function') && this.props.onClick(e, this.props.btnKey);
   }
 
   render() {
-    var props = this.props;
+    var props = this.props,
+      iconPrefix = this._iconClassPrefix;
 
     if (props.tag === 'div') {
       return (
         <div className={this._getClassName(props)}
              disabled={props.disabled}
              onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
-          {props.iconClass ? <i className={props.iconClass}/> : null}
+          {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
           {props.value}
         </div>
       );
@@ -42,8 +44,9 @@ class Button extends React.Component {
         <button className={this._getClassName(props)}
                 disabled={props.disabled}
                 onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
-          {props.iconClass ? <i className={props.iconClass}/> : null}
+          {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
           {props.value}
+          {props.dropdown ? <i className={iconPrefix + 'dropdown'}/> : null}
         </button>
       );
     }

@@ -48,8 +48,8 @@
 
 	var Button = uskin.Button;
 
-	function listener(e) {
-	  console.debug('click triggered!', e);
+	function listener(e, btnValue) {
+	  console.debug('click triggered!', e, btnValue);
 	}
 
 	ReactDOM.render(React.createElement(
@@ -58,11 +58,11 @@
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Normal", onClick: listener }),
-	    React.createElement(Button, { value: "Create", type: "create", onClick: listener }),
-	    React.createElement(Button, { value: "Delete", type: "delete", onClick: listener }),
-	    React.createElement(Button, { value: "Cancel", type: "cancel", onClick: listener }),
-	    React.createElement(Button, { value: "Disabled", type: "cancel", disabled: true, onClick: listener })
+	    React.createElement(Button, { value: "Normal", btnKey: "normal", onClick: listener }),
+	    React.createElement(Button, { value: "Create", btnKey: "create", type: "create", onClick: listener }),
+	    React.createElement(Button, { value: "Delete", btnKey: "delete", type: "delete", onClick: listener }),
+	    React.createElement(Button, { value: "Cancel", btnKey: "cancel", type: "cancel", onClick: listener }),
+	    React.createElement(Button, { value: "Disabled", btnKey: "disabled", type: "cancel", disabled: true, onClick: listener })
 	  ),
 	  React.createElement(
 	    "div",
@@ -76,25 +76,25 @@
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Initial", initial: true, onClick: listener, iconClass: "glyphicon icon-region" }),
-	    React.createElement(Button, { value: "Initial", type: "create", initial: true, onClick: listener, iconClass: "glyphicon icon-create" }),
-	    React.createElement(Button, { value: "Initial", type: "delete", initial: true, onClick: listener, iconClass: "glyphicon icon-more" }),
-	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, onClick: listener, iconClass: "glyphicon icon-edit" }),
-	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, disabled: true, onClick: listener, iconClass: "glyphicon icon-disable" })
+	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-1", initial: true, onClick: listener, iconClass: "region" }),
+	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-2", type: "create", initial: true, onClick: listener, iconClass: "create" }),
+	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-3", type: "delete", initial: true, onClick: listener, iconClass: "more" }),
+	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-4", type: "cancel", initial: true, onClick: listener, iconClass: "edit" }),
+	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-5", type: "cancel", initial: true, disabled: true, onClick: listener, iconClass: "disable" })
 	  ),
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Size xl", size: "xl", onClick: listener }),
-	    React.createElement(Button, { value: "Size lg", type: "create", size: "lg", onClick: listener }),
-	    React.createElement(Button, { value: "Size sm", type: "delete", size: "sm", onClick: listener }),
-	    React.createElement(Button, { value: "Size xs", type: "cancel", size: "xs", onClick: listener })
+	    React.createElement(Button, { value: "Size xl", btnKey: "xl", size: "xl", onClick: listener }),
+	    React.createElement(Button, { value: "Size lg", btnKey: "lg", type: "create", size: "lg", onClick: listener }),
+	    React.createElement(Button, { value: "Size sm", btnKey: "sm", type: "delete", size: "sm", onClick: listener }),
+	    React.createElement(Button, { value: "Size xs", btnKey: "xs", type: "cancel", size: "xs", onClick: listener })
 	  ),
 	  React.createElement(
 	    "div",
 	    null,
-	    React.createElement(Button, { value: "Status", type: "status", onClick: listener }),
-	    React.createElement(Button, { value: "Status Selected", type: "status", selected: true, onClick: listener })
+	    React.createElement(Button, { value: "Status", btnKey: "status-1", type: "status", onClick: listener }),
+	    React.createElement(Button, { value: "Status Selected", btnKey: "status-2", type: "status", selected: true, onClick: listener })
 	  )
 	), document.getElementById('example'));
 

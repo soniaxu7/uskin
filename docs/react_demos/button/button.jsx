@@ -1,17 +1,17 @@
 var Button = uskin.Button;
 
-function listener(e) {
-  console.debug('click triggered!', e);
+function listener(e, btnValue) {
+  console.debug('click triggered!', e, btnValue);
 }
 
 ReactDOM.render(
   <div>
     <div>
-      <Button value="Normal" onClick={listener}/>
-      <Button value="Create" type="create" onClick={listener}/>
-      <Button value="Delete" type="delete" onClick={listener}/>
-      <Button value="Cancel" type="cancel" onClick={listener}/>
-      <Button value="Disabled" type="cancel" disabled={true} onClick={listener}/>
+      <Button value="Normal" btnKey="normal" onClick={listener}/>
+      <Button value="Create" btnKey="create" type="create" onClick={listener}/>
+      <Button value="Delete" btnKey="delete" type="delete" onClick={listener}/>
+      <Button value="Cancel" btnKey="cancel" type="cancel" onClick={listener}/>
+      <Button value="Disabled" btnKey="disabled" type="cancel" disabled={true} onClick={listener}/>
     </div>
     <div>
       <Button value="Initial" initial={true} onClick={listener}/>
@@ -21,21 +21,21 @@ ReactDOM.render(
       <Button value="Initial" type="cancel" initial={true} disabled={true} onClick={listener}/>
     </div>
     <div>
-      <Button value="Initial" initial={true} onClick={listener} iconClass="glyphicon icon-region"/>
-      <Button value="Initial" type="create" initial={true} onClick={listener} iconClass="glyphicon icon-create"/>
-      <Button value="Initial" type="delete" initial={true} onClick={listener} iconClass="glyphicon icon-more"/>
-      <Button value="Initial" type="cancel" initial={true} onClick={listener} iconClass="glyphicon icon-edit"/>
-      <Button value="Initial" type="cancel" initial={true} disabled={true} onClick={listener} iconClass="glyphicon icon-disable"/>
+      <Button value="Initial" btnKey="btnIcon-1" initial={true} onClick={listener} iconClass="region"/>
+      <Button value="Initial" btnKey="btnIcon-2" type="create" initial={true} onClick={listener} iconClass="create"/>
+      <Button value="Initial" btnKey="btnIcon-3" type="delete" initial={true} onClick={listener} iconClass="more"/>
+      <Button value="Initial" btnKey="btnIcon-4" type="cancel" initial={true} onClick={listener} iconClass="edit"/>
+      <Button value="Initial" btnKey="btnIcon-5" type="cancel" initial={true} disabled={true} onClick={listener} iconClass="disable"/>
     </div>
     <div>
-      <Button value="Size xl" size="xl" onClick={listener}/>
-      <Button value="Size lg" type="create" size="lg" onClick={listener}/>
-      <Button value="Size sm" type="delete" size="sm" onClick={listener}/>
-      <Button value="Size xs" type="cancel" size="xs" onClick={listener}/>
+      <Button value="Size xl" btnKey="xl" size="xl" onClick={listener}/>
+      <Button value="Size lg" btnKey="lg" type="create" size="lg" onClick={listener}/>
+      <Button value="Size sm" btnKey="sm" type="delete" size="sm" onClick={listener}/>
+      <Button value="Size xs" btnKey="xs" type="cancel" size="xs" onClick={listener}/>
     </div>
     <div>
-      <Button value="Status" type="status" onClick={listener}/>
-      <Button value="Status Selected" type="status" selected={true} onClick={listener}/>
+      <Button value="Status" btnKey="status-1" type="status" onClick={listener}/>
+      <Button value="Status Selected" btnKey="status-2" type="status" selected={true} onClick={listener}/>
     </div>
   </div>,
   document.getElementById('example')

@@ -4,10 +4,12 @@ class Dropdown extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick(item, e) {
-    item.onClick(e, item);
+    this.props.onClick && this.props.onClick(e, item);
   }
 
   _itemClassType(item) {
@@ -21,15 +23,18 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    var items = this.props.items;
+    var props = this.props;
+
+    var items = props.items,
+      style = props.style;
 
     return (
-      <div className="dropdown">
+      <div className="dropdown" style={style}>
         {items.map((block, parentIndex) =>
           <ul key={parentIndex}>
             {block.title ? <li key={block.title} className="dropdown-header">{block.title}</li> : null}
             {block.items.map((item, index) =>
-              <li className={this._itemClassType(item)} key={index} onClick={item.onClick && !item.disabled ? this.onClick.bind(null, item) : null}>
+              <li className={this._itemClassType(item)} key={index} onClick={props.onClick && !item.disabled ? this.onClick.bind(null, item) : null}>
                 <a>{item.title}</a>
               </li>
             )}
