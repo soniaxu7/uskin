@@ -10,7 +10,8 @@ class Table extends React.Component {
     this.state = {
       sortCol: undefined,
       sortDirection: undefined,
-      filter: undefined,
+      filterCol: undefined,
+      filterBy: undefined,
       checkedKey: []
     };
 
@@ -18,6 +19,7 @@ class Table extends React.Component {
     this._rowHeight = 41;
     this._setResize = this._setResize.bind(this);
     this._displayData = [];
+    this.clearState = this.clearState.bind(this);
     this.sortRow = this.sortRow.bind(this);
     this.onFilter = this.onFilter.bind(this);
     this.checkboxOnChange = this.checkboxOnChange.bind(this);
@@ -51,19 +53,21 @@ class Table extends React.Component {
     this._setResize();
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate() {
+    this._setResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._setResize);
+  }
+
+  clearState() {
     this.setState({
       sortCol: undefined,
       sortDirection: undefined,
       filter: undefined,
       checkedKey: []
-    }, () => {
-      this._setResize();
     });
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this._setResize);
   }
 
   _setResize() {
@@ -140,7 +144,8 @@ class Table extends React.Component {
       col = this.props.column[colIndex];
 
     this.setState({
-      filter: index === -1 ? undefined : col.filter[index].filter
+      filterCol: index === -1 ? undefined : col,
+      filterBy: index === -1 ? undefined : col.filter[index].filterBy
     });
   }
 
@@ -159,7 +164,6 @@ class Table extends React.Component {
         checkedKey = {};
       }
     } else {
-      this.refs.checkall.checked = false;
       if (e.target.checked) {
         checkedKey[data[index][dataKey]] = true;
       } else {
@@ -171,8 +175,9 @@ class Table extends React.Component {
     this._displayData.map(item => {
       checkedKey[item.data[dataKey]] && checkedData.push(item.data);
     });
-    this.props.checkboxOnChange(e, e.target.checked, data[index], checkedData);
+    this.refs.checkall.checked = (checkedData.length === this._displayData.length) ? true : false;
 
+    this.props.checkboxOnChange && this.props.checkboxOnChange(e, e.target.checked, data[index], checkedData);
     this.setState({
       checkedKey: checkedKey
     });
@@ -206,92 +211,6 @@ class Table extends React.Component {
     };
   }
 
-  renderFilterGroup(col, colIndex) {
-    return (
-      <select data-index={colIndex} onChange={this.onFilter}>
-        <option key="-1" value="-1">All</option>
-        {col.filter.map((item, index) =>
-          <option key={index} value={index}>{item.name}</option>
-        )}
-      </select>
-    );
-  }
-
-  renderSortGroup(col, index) {
-    var state = this.state;
-
-    return (
-      <div className="sortable">
-        <span className={(col === state.sortCol) && (state.sortDirection === 1) ? 'sort-up selected' : 'sort-up'}>
-          <span className="arrow-up" value={index} data-direction="up"></span>
-        </span>
-        <span className={(col === state.sortCol) && (state.sortDirection === -1) ? 'sort-down selected' : 'sort-down'}>
-          <span className="arrow-down" value={index} data-direction="down"></span>
-        </span>
-      </div>
-    );
-  }
-
-  renderColumnGroup(column, checkbox) {
-    var colgroup = [];
-
-    if (checkbox) {
-      colgroup.push(
-        <div key="checkbox" className="checkbox">
-          <input ref="checkall" value="-1" onChange={this.checkboxOnChange} type="checkbox"/>
-        </div>
-      );
-    }
-
-    column.map((col, index) => {
-      colgroup.push(
-        <div key={index} style={col.width ? this._fixedWidth(col.width) : null}>
-          <span>{col.title}</span>
-          {col.filter ? <span>{this.renderFilterGroup(col, index)}</span> : null}
-          {col.sortBy ? <span>{this.renderSortGroup(col, index)}</span> : null}
-        </div>
-      );
-    });
-
-    return colgroup;
-  }
-
-  renderDataGroup(column, data, checkbox) {
-    var datagroup = [],
-      props = this.props,
-      state = this.state,
-      dataKey = props.dataKey;
-
-    data.map((item, dataIndex) => {
-      if (state.filter === undefined || state.filter(item)) {
-        datagroup.push({
-          data: item,
-          render: <div key={item[dataKey]} className={state.checkedKey[item[dataKey]] ? 'row selected' : 'row'}>
-              {props.checkbox ?
-                <div className="checkbox">
-                  <input ref={'check' + dataIndex} value={dataIndex} onChange={this.checkboxOnChange} type="checkbox"
-                         checked={state.checkedKey[item[dataKey]]}/>
-                </div> : null}
-              {column.map((col, colIndex) =>
-                <div key={colIndex} style={col.width ? this._fixedWidth(col.width) : null}>
-                  {col.render ? col.render(col, item, dataIndex) : item[col.dataIndex]}
-                </div>
-              )}
-            </div>
-        });
-      }
-    });
-
-    if (state.sortCol) {
-      datagroup.sort((item1, item2) =>
-        this.sortData(item1.data, item2.data, state.sortCol.sortBy) * state.sortDirection
-      );
-    }
-
-    this._displayData = datagroup;
-    return datagroup;
-  }
-
   render() {
     var props = this.props,
       data = props.data,
@@ -307,13 +226,103 @@ class Table extends React.Component {
     });
     var style = styles.getWidth(props.width);
 
+    var renderFilterGroup = (col, colIndex) =>
+      <select data-index={colIndex} onChange={this.onFilter} defaultValue="-1">
+        <option key="-1" value="-1">All</option>
+        {col.filter.map((item, index) =>
+          <option key={index} value={index}>{item.name}</option>
+        )}
+      </select>
+    ;
+
+    var renderSortGroup = (col, index) => {
+      var state = this.state;
+
+      return (
+        <div className="sortable">
+          <span className={(col === state.sortCol) && (state.sortDirection === 1) ? 'sort-up selected' : 'sort-up'}>
+            <span className="arrow-up" value={index} data-direction="up"></span>
+          </span>
+          <span className={(col === state.sortCol) && (state.sortDirection === -1) ? 'sort-down selected' : 'sort-down'}>
+            <span className="arrow-down" value={index} data-direction="down"></span>
+          </span>
+        </div>
+      );
+    };
+
+    var renderColumnGroup = (columngroup, checkbox) => {
+      var colgroup = [];
+
+      if (checkbox) {
+        colgroup.push(
+          <div key="checkbox" className="checkbox">
+            <input ref="checkall" value="-1" onChange={this.checkboxOnChange} type="checkbox"/>
+          </div>
+        );
+      }
+
+      column.map((col, index) => {
+        colgroup.push(
+          <div key={index} style={col.width ? this._fixedWidth(col.width) : null}>
+            <span>{col.title}</span>
+            {col.filter ? <span>{renderFilterGroup(col, index)}</span> : null}
+            {col.sortBy ? <span>{renderSortGroup(col, index)}</span> : null}
+          </div>
+        );
+      });
+
+      return colgroup;
+    };
+
+    var renderDataGroup = (rcolumn, rdata, checkbox) => {
+      var datagroup = [],
+        state = this.state,
+        dataKey = props.dataKey;
+
+      rdata.map((item, dataIndex) => {
+        var isFiltered = true;
+        if (typeof state.filterBy === 'function') {
+          isFiltered = state.filterBy(item);
+        } else if (typeof state.filterBy === 'string') {
+          isFiltered = (state.filterBy === item[state.filterCol.dataIndex]);
+        }
+
+        if (isFiltered) {
+          datagroup.push({
+            data: item,
+            render: <div key={item[dataKey]} className={state.checkedKey[item[dataKey]] ? 'row selected' : 'row'}>
+                {props.checkbox ?
+                  <div className="checkbox">
+                    <input ref={'check' + dataIndex} value={dataIndex} onChange={this.checkboxOnChange} type="checkbox"
+                           checked={state.checkedKey[item[dataKey]]}/>
+                  </div> : null}
+                {rcolumn.map((col, colIndex) =>
+                  <div key={colIndex} style={col.width ? this._fixedWidth(col.width) : null}>
+                    {col.render ? col.render(col, item, dataIndex) : item[col.dataIndex]}
+                  </div>
+                )}
+              </div>
+          });
+        }
+      });
+
+      if (state.sortCol) {
+        datagroup.sort((item1, item2) =>
+          this.sortData(item1.data, item2.data, state.sortCol.sortBy) * state.sortDirection
+        );
+      }
+
+      this._displayData = datagroup;
+      return datagroup;
+    };
+
     return (
       <div style={style} className={className}>
         <div ref="thead" className="table-header" onClick={this.tableHeadOnClick}>
-          {this.renderColumnGroup(column, props.checkbox).map(col => col)}
+          {renderColumnGroup(column, props.checkbox).map(col => col)}
         </div>
         <div ref="tbody" className="table-body">
-          {this.renderDataGroup(column, data, props.checkbox).map(item => item.render)}
+          {renderDataGroup(column, data, props.checkbox).map(item => item.render)}
         </div>
       </div>
     );

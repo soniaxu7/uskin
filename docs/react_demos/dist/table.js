@@ -63,7 +63,7 @@
 	  filter: [{
 	    name: 'id大于等于4',
 	    key: '1',
-	    filter: function filter(item) {
+	    filterBy: function filterBy(item) {
 	      if (item.id >= 4) {
 	        return true;
 	      }
@@ -71,7 +71,7 @@
 	  }, {
 	    name: 'id小于4',
 	    key: '2',
-	    filter: function filter(item) {
+	    filterBy: function filterBy(item) {
 	      if (item.id < 4) {
 	        return true;
 	      }
@@ -93,27 +93,19 @@
 	  filter: [{
 	    name: 'level 1',
 	    key: '1',
-	    filter: function filter(item) {
-	      return item.level.localeCompare('First Level') === 0 ? true : false;
-	    }
+	    filterBy: 'First Level'
 	  }, {
 	    name: 'level 2',
 	    key: '2',
-	    filter: function filter(item) {
-	      return item.level.localeCompare('Second Level') === 0 ? true : false;
-	    }
+	    filterBy: 'Second Level'
 	  }, {
 	    name: 'level 3',
 	    key: '3',
-	    filter: function filter(item) {
-	      return item.level.localeCompare('Third Level') === 0 ? true : false;
-	    }
+	    filterBy: 'Third Level'
 	  }, {
 	    name: 'level 4',
 	    key: '4',
-	    filter: function filter(item) {
-	      return item.level.localeCompare('Fourth Level') === 0 ? true : false;
-	    }
+	    filterBy: 'Fourth Level'
 	  }],
 	  sortBy: function sortBy(item1, item2) {
 	    var weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];

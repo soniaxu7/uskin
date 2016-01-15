@@ -56,14 +56,16 @@
     .button-hue(@btn_disable_font_color; @btn_disable_bg_color; @btn_disable_hover_bg_color; @btn_disable_active_bg_color);
     cursor: not-allowed;
   }
+  > i + span{
+    margin-left: 6px;
+  }
+  > span + i {
+    margin-left: 6px;
+  }
   .glyphicon {
-    margin-right: @btn_glyph_margin_right;
     vertical-align: text-bottom;
     font-weight: bold;
     width: 13px;
-    &.icon-dropdown {
-      margin-right: 0;
-    }
   }
 }
 

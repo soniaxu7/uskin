@@ -101,7 +101,7 @@ describe('Test dropdown component', () => {
   it('should return item data when clicked and should not trigger click when item is disabled', () => {
 
     var dropdown = TestUtils.renderIntoDocument(
-      <Dropdown items={items}/>
+      <Dropdown items={items} onClick={listener}/>
     );
     var dropdownNode = ReactDOM.findDOMNode(dropdown);
 
