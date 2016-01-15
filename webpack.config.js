@@ -1,10 +1,10 @@
-var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   progress: true,
   entry: {
-    uskin: './index.js'
+    uskin: ['./js/uskin.js', './css/uskin.less']
+
   },
   output: {
     path: './dist/js',
