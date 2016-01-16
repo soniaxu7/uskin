@@ -8,14 +8,14 @@ const InputSearch = require('../js/components/input-search.jsx').default;
 
 describe('Test input-search component', () => {
   const props = {
-    onClick: jest.genMockFunction(),
+    onChange: jest.genMockFunction(),
     width: 200,
     type: 'light'
   };
 
   const inputSearch = TestUtils.renderIntoDocument(
     <InputSearch
-      onClick={props.onClick}
+      onChange={props.onChange}
       width={props.width}
       type={props.type}/>);
 
@@ -40,7 +40,7 @@ describe('Test input-search component', () => {
 
     TestUtils.Simulate.click(searchIcon);
 
-    expect(props.onClick.mock.calls[0][0]).toEqual(searchContext);
+    expect(props.onChange.mock.calls[0][0]).toEqual(searchContext);
 
   });
 

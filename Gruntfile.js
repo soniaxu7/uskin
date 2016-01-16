@@ -27,7 +27,7 @@ module.exports = function(grunt) {
     // Task configuration.
     clean: {
       dist: ['dist'],
-      legacy: ['dist/js/fonts', 'dist/js/css.js','dist/js/css.js.map', 'dist/js/*.css.min.js']
+      legacy: ['dist/js/fonts', 'dist/js/css.js', 'dist/js/css.js.map', 'dist/js/*.css.min.js']
     },
 
     webpack: {

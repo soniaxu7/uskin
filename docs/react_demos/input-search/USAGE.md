@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>onClick</td>
+      <td>onChange</td>
       <td>Function</td>
       <td></td>
       <td>返回搜索框内的文字段</td>
