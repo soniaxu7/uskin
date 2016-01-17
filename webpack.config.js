@@ -3,8 +3,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   progress: true,
   entry: {
-    uskin: ['./js/uskin.js', './css/uskin.less']
-
+    uskin: './js/uskin.js',
+    css: './css/uskin.less'
   },
   output: {
     path: './dist/js',
@@ -46,7 +46,7 @@ module.exports = {
       )
     }, {
       test: /\.(woff|svg|eot|ttf)\??.*$/,
-      loader: 'url?limit=10000&name=../css/fonts/icon.[ext]?[hash]'
+      loader: 'url?limit=1000&name=./fonts/[hash:8].icon.[ext]'
     }]
   },
   plugins: []

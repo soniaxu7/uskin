@@ -26,7 +26,8 @@ module.exports = function(grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist']
+      dist: ['dist'],
+      legacy: ['dist/js/fonts', 'dist/js/css.js','dist/js/css.js.map', 'dist/js/*.css.min.js']
     },
 
     webpack: {
@@ -36,13 +37,13 @@ module.exports = function(grunt) {
           filename: '[name].js'
         },
         plugins: [
-          new ExtractTextPlugin('../css/[name].min.css')
+          new ExtractTextPlugin('../css/uskin.min.css')
         ],
         devtool: 'source-map'
       },
       build: {
         plugins: [
-          new ExtractTextPlugin('../css/[hash:6].[name].min.css'),
+          new ExtractTextPlugin('../css/[hash:6].uskin.min.css'),
           new webpack.optimize.UglifyJsPlugin()
         ]
       }
@@ -71,6 +72,15 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      fonts: {
+        expand: true,
+        cwd: './dist/js',
+        src: 'fonts/*',
+        dest: './dist/css'
+      }
+    },
+
     usebanner: {
       options: {
         position: 'top',
@@ -95,10 +105,10 @@ module.exports = function(grunt) {
   grunt.registerTask('js', ['webpack:build', 'webpack:dev']);
 
   // Default task.
-  grunt.registerTask('build', ['clean', 'js', 'usebanner']);
+  grunt.registerTask('build', ['clean:dist', 'js', 'copy', 'clean:legacy', 'usebanner']);
 
   // Release with hash.
-  grunt.registerTask('release', ['clean', 'webpack:build', 'usebanner']);
+  grunt.registerTask('release', ['clean:dist', 'webpack:build', 'copy', 'clean:legacy', 'usebanner']);
 
   // Generate web font
   grunt.registerTask('font', ['webfont']);

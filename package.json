@@ -19,7 +19,7 @@
     "prepublish": "grunt build",
     "test": "jest",
     "eslint": "eslint *.js __tests__/ js/** docs/react_demos/** --ext '.js,.jsx'",
-    "dev": "webpack --config dev.webpack.config.js"
+    "dev": "rm -rf dist && webpack --config dev.webpack.config.js"
   },
   "repository": {
     "type": "git",

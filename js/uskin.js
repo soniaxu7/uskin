@@ -44,6 +44,4 @@ var uskin = {
   Tooltip
 };
 
-uskin.version = require('../package.json').version;
-
 module.exports = uskin;
