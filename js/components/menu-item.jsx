@@ -79,8 +79,8 @@ class MenuItem extends React.Component {
           {props.toggle ? <i ref="arrow" className={item.fold ? this.arrow.down : this.arrow.up}></i> : null}
         </h6>
         <ul ref="item" style={item.fold ? {height: '0', overflow: 'hidden'} : null}>
-          {item.submenu.map((submenu) =>
-            <li key={submenu.subtitle}
+          {item.submenu.map((submenu, i) =>
+            <li key={i}
               className={this._isSelectedMenu(submenu) ? 'selected' : null}
               onClick={this._isSelectedMenu(submenu) ? null : this.submenuOnClick.bind(this, item.key, submenu)}>
               {submenu.iconClass ? <i className={submenu.iconClass}></i> : null}
