@@ -9,7 +9,7 @@ class Tab extends React.Component {
       selected: undefined
     };
     this._data = this._isArray(this.props.items);
-    this._class = (this.props.size === 'small') ? 'tabs-mini' : 'tabs';
+    this._class = (this.props.type === 'sm') ? 'tabs-mini' : 'tabs';
     this.onClick = this.onClick.bind(this);
   }
 
@@ -19,7 +19,7 @@ class Tab extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     this._data = this._isArray(nextProps.items);
-    this._class = (nextProps.size === 'small') ? 'tabs-mini' : 'tabs';
+    this._class = (nextProps.type === 'sm') ? 'tabs-mini' : 'tabs';
     this._findDefaultTab();
   }
 
@@ -57,12 +57,14 @@ class Tab extends React.Component {
   }
 
   onClick(e) {
+    e.preventDefault();
+
     var selected = e.target.getAttribute('value');
     this.setState({
       selected: selected
     });
 
-    this._data[selected].onClick && this._data[selected].onClick.apply(this, [e, this._data[selected]]);
+    this.props.onClick && this.props.onClick.apply(this, [e, this._data[selected]]);
   }
 
   render() {
