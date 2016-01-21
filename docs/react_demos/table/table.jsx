@@ -1,14 +1,16 @@
 var Table = uskin.Table,
-  Button = uskin.Button;
+  Button = uskin.Button,
+  InputSearch = uskin.InputSearch;
 
 var column = [{
   title: 'ID',
+  key: 'id',
   width: '150px',
   dataIndex: 'id',
   sortBy: 'number',
+  filterAll: '全部',
   filter: [{
     name: 'id大于等于4',
-    key: '1',
     filterBy: function(item) {
       if (item.id >= 4) {
         return true;
@@ -16,7 +18,6 @@ var column = [{
     }
   }, {
     name: 'id小于4',
-    key: '2',
     filterBy: function(item) {
       if (item.id < 4) {
         return true;
@@ -25,32 +26,31 @@ var column = [{
   }]
 }, {
   title: 'Category',
+  key: 'category',
   width: '120px',
   dataIndex: 'category',
   sortBy: 'string'
 }, {
   title: 'Flavor',
+  key: 'flavor',
   width: '70px',
   dataIndex: 'flavor',
   sortBy: 'string'
 }, {
   title: 'Level',
+  key: 'level',
   dataIndex: 'level',
   filter: [{
     name: 'level 1',
-    key: '1',
     filterBy: 'First Level'
   }, {
     name: 'level 2',
-    key: '2',
     filterBy: 'Second Level'
   }, {
     name: 'level 3',
-    key: '3',
     filterBy: 'Third Level'
   }, {
     name: 'level 4',
-    key: '4',
     filterBy: 'Fourth Level'
   }],
   sortBy: function(item1, item2) {
@@ -65,15 +65,18 @@ var column = [{
   }
 }, {
   title: 'CPU',
+  key: 'cpu',
   dataIndex: 'cpu',
   sortBy: 'number',
   width: '50px'
 }, {
   title: 'Price',
+  key: 'price',
   dataIndex: 'price',
   sortBy: 'number'
 }, {
   title: 'Double Price',
+  key: 'double_price',
   sortBy: function(item1, item2) {
     if (item1.price * 2 > item2.price * 2) {
       return 1;
@@ -88,6 +91,7 @@ var column = [{
   }
 }, {
   title: 'Data Print',
+  key: 'data_print',
   printData: function(col, item, e) {
     console.log('event:', e, 'GET COLUMN:', col, ' DATA:', item);
   },
@@ -101,7 +105,7 @@ var column = [{
   }
 }];
 
-var data = [{
+var data1 = [{
   id: 1,
   category: 'Micro-1',
   flavor: 'Micro',
@@ -196,85 +200,74 @@ var data2 = [{
   price: '0.444'
 }];
 
-var boxStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%'
-};
+var TableForm = React.createClass({
+  getInitialState: function() {
+    return ({
+      update: true
+    });
+  },
 
-var bottomStyle = {
-  margin: '0 auto',
-  paddingTop: 40,
-  width: 80,
-  height: 36,
-  minHeight: 36,
-  maxHeight: 36
-};
+  checkboxInitialize: function(item) {
+    return item.level.localeCompare('Second Level') ? false : true;
+  },
 
-var btnStyle = {
-  margin: '0 auto',
-  padding: '20px 0',
-  width: 80,
-  height: 36,
-  minHeight: 36,
-  maxHeight: 36
-};
+  checkboxOnChange: function(e, status, checkedItem, checkedData) {
+    console.debug('click triggered!', status, checkedItem, checkedData);
+  },
 
-var updateBtnStyle = Object.assign({}, btnStyle);
-updateBtnStyle.visibility = 'hidden';
+  inputSearchOnChange: function(text, status) {
+    var filterCol = { category: true, level: true, price: true };
 
-function checkboxOnChange(e, status, checkedItem, checkedData) {
-  console.debug('click triggered!', status, checkedItem, checkedData);
-}
+    this.refs.table.setState({
+      filterCol: filterCol,
+      filterBy: function(item, fcolumn) {
+        return fcolumn.some((col) => {
+          if (filterCol[col.key]) {
+            var td = item[col.dataIndex].toLowerCase();
+            return td.indexOf(text.toLowerCase()) > -1 ? true : false;
+          }
+        });
+      }
+    });
+  },
 
-function checkboxInitialize(item) {
-  return item.level.localeCompare('Second Level') ? false : true;
-}
+  updateData: function() {
+    this.setState({
+      update: !this.state.update
+    });
+  },
 
-function updateData() {
-  data.map(item => {
-    item.id += 10;
-    item.category += ' updated';
-  });
+  clearState: function() {
+    this.refs.table.clearState();
+  },
 
-  ReactDOM.render(
-    <div style={boxStyle}>
-      <div style={updateBtnStyle}>
-        <Button value="更新数据" onClick={updateData}/>
+  render: function() {
+    var data = this.state.update ? data1 : data2;
+
+    return (
+      <div className="main-box">
+        <div className="button-box">
+          <Button value="更新数据" onClick={this.updateData}/>
+          <Button value="清空状态" onClick={this.clearState}/>
+          <InputSearch onChange={this.inputSearchOnChange} />
+          <span>search in Category, Level and Price</span>
+        </div>
+        <Table
+          ref="table"
+          column={column}
+          data={data}
+          dataKey={'id'}
+          checkbox={true}
+          checkboxInitialize={this.checkboxInitialize}
+          checkboxOnChange={this.checkboxOnChange}
+          striped={true}
+          hover={true}/>
+        <div className="bottom">
+          <span>This is bottom</span>
+        </div>
       </div>
-      <Table
-        column={column}
-        data={data2}
-        dataKey={'id'}
-        checkbox={true}
-        checkboxOnChange={checkboxOnChange}
-        striped={true}
-        hover={true}/>
-      <div style={bottomStyle}>
-        <span>This is bottom</span>
-      </div>
-    </div>,
-    document.getElementById('example')
-  );
-}
+    );
+  }
+});
 
-ReactDOM.render(
-  <div style={boxStyle}>
-    <div style={btnStyle}>
-      <Button value="更新数据" onClick={updateData}/>
-    </div>
-    <Table
-      column={column}
-      data={data}
-      dataKey={'id'}
-      checkbox={true}
-      checkboxInitialize={checkboxInitialize}
-      checkboxOnChange={checkboxOnChange}
-      striped={true}
-      hover={true}/>
-    <div style={bottomStyle}>
-      <span>This is bottom</span>
-    </div>
-  </div>,
-  document.getElementById('example')
-);
+ReactDOM.render(<TableForm />, document.getElementById('example'));

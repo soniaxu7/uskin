@@ -8,34 +8,6 @@ const Tab = require('../js/components/tab.jsx').default;
 
 describe('Test tab component', () => {
 
-  it('checks when props item is not an array', () => {
-
-    var items = {
-      item1: {
-        name: 'Overview',
-        value: '0'
-      },
-      item2: {
-        name: 'Account Recharge',
-        value: '1',
-        default: true
-      },
-      item3: {
-        name: 'Recharge Record',
-        value: '2'
-      }
-    };
-
-    var tab = TestUtils.renderIntoDocument(
-      <Tab items={items}/>
-    );
-
-    var tabNode = ReactDOM.findDOMNode(tab);
-
-    expect(tabNode.textContent).toEqual('');
-
-  });
-
   it('generates with small size', () => {
 
     var items = [{
@@ -49,10 +21,10 @@ describe('Test tab component', () => {
         name: 'Recharge Record',
         value: '2'
       }],
-      type = 'small';
+      type = 'sm';
 
     var tab = TestUtils.renderIntoDocument(
-      <Tab items={items} size={type}/>
+      <Tab items={items} type={type}/>
     );
 
     var tabNode = ReactDOM.findDOMNode(tab);
@@ -95,25 +67,22 @@ describe('Test tab component', () => {
     var listener = jest.genMockFunction();
     var items = [{
         name: 'Overview',
-        value: '0',
-        href: '#overview',
-        onClick: listener
+        key: '0',
+        href: '#overview'
       }, {
         name: 'Account Recharge',
-        value: '1',
-        href: '#accout',
-        onClick: listener
+        key: '1',
+        href: '#accout'
       }, {
         name: 'Disabled Tab',
-        value: '2',
+        key: '2',
         href: '#',
-        disabled: true,
-        onClick: listener
+        disabled: true
       }],
       clickIndex = 1;
 
     var tab = TestUtils.renderIntoDocument(
-      <Tab items={items}/>
+      <Tab items={items} onClick={listener} />
     );
 
     var tabNode = ReactDOM.findDOMNode(tab);
@@ -133,52 +102,46 @@ describe('Test tab component', () => {
     var listener = jest.genMockFunction();
     var items = [{
         name: 'Overview',
-        value: '0',
-        href: '#overview',
-        onClick: listener
+        key: '0',
+        href: '#overview'
       }, {
         name: 'Account Recharge',
-        value: '1',
-        href: '#accout',
-        onClick: listener
+        key: '1',
+        href: '#accout'
       }, {
         name: 'Disabled Tab',
-        value: '2',
+        key: '2',
         href: '#',
-        disabled: true,
-        onClick: listener
+        disabled: true
       }],
       clickIndex = 1;
 
     var newItems = [{
       name: 'new Overview',
-      value: '10',
-      default: true,
-      onClick: listener
+      key: '10',
+      default: true
     }, {
       name: 'new Account Recharge',
-      value: '11',
-      onClick: listener
+      key: '11'
     }, {
       name: 'Recharge Record',
-      value: '2',
-      onClick: listener
+      key: '2'
     }];
 
 
     var divNode = document.createElement('div'),
-      tab = ReactDOM.render(<Tab items={items} />, divNode);
+      tab = ReactDOM.render(<Tab items={items} onClick={listener}/>, divNode);
 
     var tabNode = ReactDOM.findDOMNode(tab),
       clickNode = tabNode.childNodes[clickIndex].firstChild;
 
     TestUtils.Simulate.click(clickNode);
 
-    var type = 'small';
-    ReactDOM.render(<Tab items={newItems} size={type}/>, divNode);
+    var type = 'sm';
+    ReactDOM.render(<Tab items={newItems} type={type} onClick={listener}/>, divNode);
     TestUtils.Simulate.click(clickNode);
 
-    ReactDOM.render(<Tab items={newItems}/>, divNode);
+    ReactDOM.render(<Tab items={newItems} onClick={listener}/>, divNode);
     tabNode = ReactDOM.findDOMNode(tab);
 
     expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);

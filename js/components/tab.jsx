@@ -8,8 +8,7 @@ class Tab extends React.Component {
     this.state = {
       selected: undefined
     };
-    this._data = this._isArray(this.props.items);
-    this._class = (this.props.type === 'sm') ? 'tabs-mini' : 'tabs';
+
     this.onClick = this.onClick.bind(this);
   }
 
@@ -18,17 +17,11 @@ class Tab extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this._data = this._isArray(nextProps.items);
-    this._class = (nextProps.type === 'sm') ? 'tabs-mini' : 'tabs';
     this._findDefaultTab();
   }
 
-  _isArray(arr) {
-    return Object.prototype.toString.call(arr) === '[object Array]' ? arr : [];
-  }
-
   _findDefaultTab() {
-    var items = this._data,
+    var items = this.props.items,
       selected = undefined;
 
     function findSelected(item, index) {
@@ -61,20 +54,20 @@ class Tab extends React.Component {
 
     var selected = e.target.getAttribute('value');
     this.setState({
-      selected: selected
+      selected: Number(selected)
     });
 
-    this.props.onClick && this.props.onClick.apply(this, [e, this._data[selected]]);
+    this.props.onClick && this.props.onClick.apply(this, [e, this.props.items[selected]]);
   }
 
   render() {
-    var data = this._data,
-      className = this._class,
+    var items = this.props.items,
+      className = (this.props.type === 'sm') ? 'tabs-mini' : 'tabs',
       selectedIndex = this.state.selected;
 
     return (
-      <ul className={className}>
-        {data.map((item, index) =>
+      <ul className={this.props.className ? this.props.className : className}>
+        {items.map((item, index) =>
           <li key={index} className={this._getItemClassName(item, index, selectedIndex)}>
             <a href={(item.href && !item.disabled) ? item.href : null}
               onClick={(item.disabled || selectedIndex === index) ? null : this.onClick}

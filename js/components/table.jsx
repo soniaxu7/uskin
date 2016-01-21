@@ -10,7 +10,7 @@ class Table extends React.Component {
     this.state = {
       sortCol: undefined,
       sortDirection: undefined,
-      filterCol: undefined,
+      filterCol: {},
       filterBy: undefined,
       checkedKey: []
     };
@@ -68,6 +68,8 @@ class Table extends React.Component {
       filter: undefined,
       checkedKey: []
     });
+
+    this.refs.checkall.checked = false;
   }
 
   _setResize() {
@@ -143,8 +145,12 @@ class Table extends React.Component {
       colIndex = Number(e.currentTarget.getAttribute('data-index')),
       col = this.props.column[colIndex];
 
+    var filterCol = {};
+    if (index !== -1) {
+      filterCol[col.key] = true;
+    }
     this.setState({
-      filterCol: index === -1 ? undefined : col,
+      filterCol: filterCol,
       filterBy: index === -1 ? undefined : col.filter[index].filterBy
     });
   }
@@ -228,7 +234,7 @@ class Table extends React.Component {
 
     var renderFilterGroup = (col, colIndex) =>
       <select data-index={colIndex} onChange={this.onFilter} defaultValue="-1">
-        <option key="-1" value="-1">All</option>
+        <option key="-1" value="-1">{col.filterAll ? col.filterAll : 'All'}</option>
         {col.filter.map((item, index) =>
           <option key={index} value={index}>{item.name}</option>
         )}
@@ -280,11 +286,17 @@ class Table extends React.Component {
         dataKey = props.dataKey;
 
       rdata.map((item, dataIndex) => {
-        var isFiltered = true;
+        var isFiltered = true,
+          filterCol = state.filterCol;
+
         if (typeof state.filterBy === 'function') {
-          isFiltered = state.filterBy(item);
+          isFiltered = state.filterBy(item, column);
         } else if (typeof state.filterBy === 'string') {
-          isFiltered = (state.filterBy === item[state.filterCol.dataIndex]);
+          isFiltered = rcolumn.some((col) => {
+            if (filterCol[col.key]) {
+              return item[col.dataIndex] === state.filterBy ? true : false;
+            }
+          });
         }
 
         if (isFiltered) {
