@@ -203,7 +203,8 @@ var data2 = [{
 var TableForm = React.createClass({
   getInitialState: function() {
     return ({
-      update: true
+      update: true,
+      load: false
     });
   },
 
@@ -237,6 +238,12 @@ var TableForm = React.createClass({
     });
   },
 
+  toggleLoading: function() {
+    this.setState({
+      loading: !this.state.loading
+    });
+  },
+
   clearState: function() {
     this.refs.table.clearState();
   },
@@ -249,6 +256,7 @@ var TableForm = React.createClass({
         <div className="button-box">
           <Button value="更新数据" onClick={this.updateData}/>
           <Button value="清空状态" onClick={this.clearState}/>
+          <Button value="Loading Toggle" iconClass="refresh" initial={true} onClick={this.toggleLoading}/>
           <InputSearch onChange={this.inputSearchOnChange} />
           <span>search in Category, Level and Price</span>
         </div>
@@ -257,6 +265,7 @@ var TableForm = React.createClass({
           column={column}
           data={data}
           dataKey={'id'}
+          loading={this.state.loading}
           checkbox={true}
           checkboxInitialize={this.checkboxInitialize}
           checkboxOnChange={this.checkboxOnChange}

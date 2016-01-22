@@ -333,7 +333,12 @@ class Table extends React.Component {
         <div ref="thead" className="table-header" onClick={this.tableHeadOnClick}>
           {renderColumnGroup(column, props.checkbox).map(col => col)}
         </div>
-        <div ref="tbody" className="table-body">
+        {this.props.loading ?
+          <div className="loading-data">
+            <i className="glyphicon icon-loading" />
+          </div>
+          : null}
+        <div ref="tbody" style={{display: this.props.loading ? 'none' : 'block'}} className="table-body">
           {renderDataGroup(column, data, props.checkbox).map(item => item.render)}
         </div>
       </div>

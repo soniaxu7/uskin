@@ -265,7 +265,8 @@
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      update: true
+	      update: true,
+	      load: false
 	    };
 	  },
 
@@ -282,8 +283,8 @@
 
 	    this.refs.table.setState({
 	      filterCol: filterCol,
-	      filterBy: function filterBy(item, column) {
-	        return column.some(function (col) {
+	      filterBy: function filterBy(item, fcolumn) {
+	        return fcolumn.some(function (col) {
 	          if (filterCol[col.key]) {
 	            var td = item[col.dataIndex].toLowerCase();
 	            return td.indexOf(text.toLowerCase()) > -1 ? true : false;
@@ -296,6 +297,12 @@
 	  updateData: function updateData() {
 	    this.setState({
 	      update: !this.state.update
+	    });
+	  },
+
+	  toggleLoading: function toggleLoading() {
+	    this.setState({
+	      loading: !this.state.loading
 	    });
 	  },
 
@@ -314,6 +321,7 @@
 	        { className: 'button-box' },
 	        React.createElement(Button, { value: '更新数据', onClick: this.updateData }),
 	        React.createElement(Button, { value: '清空状态', onClick: this.clearState }),
+	        React.createElement(Button, { value: 'Loading Toggle', iconClass: 'refresh', initial: true, onClick: this.toggleLoading }),
 	        React.createElement(InputSearch, { onChange: this.inputSearchOnChange }),
 	        React.createElement(
 	          'span',
@@ -326,6 +334,7 @@
 	        column: column,
 	        data: data,
 	        dataKey: 'id',
+	        loading: this.state.loading,
 	        checkbox: true,
 	        checkboxInitialize: this.checkboxInitialize,
 	        checkboxOnChange: this.checkboxOnChange,

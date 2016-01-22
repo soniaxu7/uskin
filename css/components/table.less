@@ -17,6 +17,7 @@
 @col-arrow-color: @color_gray_dark;
 @col-arrow-hover-color: @color_font_dark;
 @col-arrow-selected: @color_font_dark;
+@loading-color: @color_font_dark;
 
 .table {
   width: 100%;
@@ -161,6 +162,22 @@
           }
         }
       }
+    }
+  }
+
+  .loading-data {
+    flex: 1;
+    width: 100%;
+    overflow-y: hidden;
+    position: relative;
+    .icon-loading {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      margin-left: -18px;
+      width: 36px;
+      color: @loading-color;
+      .loading-style(36px);
     }
   }
 
