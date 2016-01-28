@@ -1,0 +1,5 @@
+[gerrit]
+host=review.ustack.com
+port=29418
+project=uskin.git
+defaultbranch=gh-pages
