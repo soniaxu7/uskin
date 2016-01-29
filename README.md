@@ -2,7 +2,7 @@
 
 # USkin
 
-![Project Progress](http://progressed.io/bar/50?title=progress) 
+![Project Progress](http://progressed.io/bar/90?title=progress)
 [![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin) 
 [![bitHound Score](https://www.bithound.io/github/icecreamliker/uskin/badges/score.svg)](https://www.bithound.io/github/icecreamliker/uskin) 
 [![Join the chat at https://gitter.im/icecreamliker/uskin](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/icecreamliker/uskin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
@@ -12,32 +12,42 @@ USkin is a front-end framework which provides stunning web components based on C
 
 ## Quick start
 
-Three steps to go:
+- [Download the latest release](http://git.ustack.com/ustack/uskin/repository/archive.zip), or clone the repo `git clone http://git.ustack.com/ustack/uskin.git`.
 
-- [Download the latest release](https://github.com/icecreamliker/uskin/archive/master.zip). Or clone the repo: `git clone https://github.com/icecreamliker/uskin.git`.
-  
-- You can first compile the scripts via [Grunt](http://gruntjs.com/) or make command (make sure Grunt is installed).
+- Install all the denpendecies by `npm install`, and your first compile will also be completed by this command.
 
-- Under the folder docs, we provide versatile samples that you can learn the baisc usage from them. And in the short future, a overview-introduction page will be shown.
+- You can compile your code via [Grunt](http://gruntjs.com/) using `grunt build` or `make build` at any time you need.
+
+- You can find demos in folder `docs`, showing the basic usage of the components. Congratulations, an overview-introduction page is coming soon.
 
 ## Available commands
 
-When Grunt is installed, go ahead and compile all the files:
+Before using the commands, please make sure all the dependencies are well installed.
 
+Compile all the files:
 ```
-grunt build or make build
+grunt build
 ```
-Run the script below to clean the generated files:
+In most of the situations, you can use make command instead. In this case, `make build`.
+
+Clean all generated files:
 ```
-grunt clean or make clean
+grunt clean
 ```
+Equivalent command, `make clean`.
+
 When test is needed:
 ```
-grunt test or make test
+npm run test
 ```
-If you want to make some slight changes, start up the following script which will compile the files when the changes are saved.
+Use ESLint for code parsing:
 ```
-grunt watch or make watch
+npm run eslint
+```
+
+Watch changes of your code real time while developing, you can run the dev mode:
+```
+npm run dev
 ```
 
 ## Note
@@ -45,14 +55,6 @@ grunt watch or make watch
 Details for each release are documented in the [release notes](https://github.com/icecreamliker/uskin/releases).
 
 Any questions to the releases are welcome, feel free to [create issues](https://github.com/icecreamliker/uskin/issues).
-
-## Author
-
-**Lee Yao**
-
-- Weibo: <http://weibo.com/icecreamliker>
-- Email: yaoli111144@gmail.com
-
 
 ## License
 
