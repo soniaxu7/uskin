@@ -16,10 +16,6 @@ class Tab extends React.Component {
     this._findDefaultTab();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this._findDefaultTab();
-  }
-
   _findDefaultTab() {
     var items = this.props.items,
       selected = undefined;
