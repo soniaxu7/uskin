@@ -6,7 +6,7 @@ class Tab extends React.Component {
     super(props);
 
     this.state = {
-      selected: undefined
+      selectedKey: undefined
     };
 
     this.onClick = this.onClick.bind(this);
@@ -16,29 +16,37 @@ class Tab extends React.Component {
     this._findDefaultTab();
   }
 
+  componentWillReceiveProps(nextProps) {
+    this._findDefaultTab();
+  }
+
   _findDefaultTab() {
     var items = this.props.items,
-      selected = undefined;
+      selectedKey = undefined;
 
     function findSelected(item, index) {
-      return item.default ? (selected = index, true) : false;
+      if (item.default) {
+        selectedKey = item.key;
+        return true;
+      }
+      return false;
     }
 
     if (items.some(findSelected)) {
       this.setState({
-        selected: selected
+        selectedKey: selectedKey
       });
     } else {
       this.setState({
-        selected: undefined
+        selectedKey: undefined
       });
     }
   }
 
-  _getItemClassName(item, index, selectedIndex) {
+  _getItemClassName(item, key, selectedKey) {
     if (item.disabled) {
       return 'tab disabled';
-    } else if (typeof selectedIndex !== 'undefined' && selectedIndex.toString() === index.toString()) {
+    } else if (typeof selectedKey !== 'undefined' && selectedKey === key) {
       return 'tab selected';
     } else {
       return 'tab';
@@ -48,26 +56,27 @@ class Tab extends React.Component {
   onClick(e) {
     e.preventDefault();
 
-    var selected = e.target.getAttribute('value');
+    var selectedKey = e.target.getAttribute('value');
     this.setState({
-      selected: Number(selected)
+      selectedKey: selectedKey
     });
 
-    this.props.onClick && this.props.onClick.apply(this, [e, this.props.items[selected]]);
+    var selectedItem = this.props.items.filter((tab) => selectedKey === tab.key)[0];
+    this.props.onClick && this.props.onClick.apply(this, [e, selectedItem]);
   }
 
   render() {
     var items = this.props.items,
       className = (this.props.type === 'sm') ? 'tabs-mini' : 'tabs',
-      selectedIndex = this.state.selected;
+      selectedKey = this.state.selectedKey;
 
     return (
       <ul className={this.props.className ? this.props.className : className}>
         {items.map((item, index) =>
-          <li key={index} className={this._getItemClassName(item, index, selectedIndex)}>
+          <li key={item.key} className={this._getItemClassName(item, item.key, selectedKey)}>
             <a href={(item.href && !item.disabled) ? item.href : null}
-              onClick={(item.disabled || selectedIndex === index) ? null : this.onClick}
-              value={index}>{item.name}</a>
+              onClick={(item.disabled || selectedKey === index) ? null : this.onClick}
+              value={item.key}>{item.name}</a>
           </li>
         )}
       </ul>
