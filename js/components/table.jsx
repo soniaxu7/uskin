@@ -232,54 +232,6 @@ class Table extends React.Component {
     });
     var style = styles.getWidth(props.width);
 
-    var renderFilterGroup = (col, colIndex) =>
-      <select data-index={colIndex} onChange={this.onFilter} defaultValue="-1">
-        <option key="-1" value="-1">{col.filterAll ? col.filterAll : 'All'}</option>
-        {col.filter.map((item, index) =>
-          <option key={index} value={index}>{item.name}</option>
-        )}
-      </select>
-    ;
-
-    var renderSortGroup = (col, index) => {
-      var state = this.state;
-
-      return (
-        <div className="sortable">
-          <span className={(col === state.sortCol) && (state.sortDirection === 1) ? 'sort-up selected' : 'sort-up'}>
-            <span className="arrow-up" value={index} data-direction="up"></span>
-          </span>
-          <span className={(col === state.sortCol) && (state.sortDirection === -1) ? 'sort-down selected' : 'sort-down'}>
-            <span className="arrow-down" value={index} data-direction="down"></span>
-          </span>
-        </div>
-      );
-    };
-
-    var renderColumnGroup = (columngroup, checkbox) => {
-      var colgroup = [];
-
-      if (checkbox) {
-        colgroup.push(
-          <div key="checkbox" className="checkbox">
-            <input ref="checkall" value="-1" onChange={this.checkboxOnChange} type="checkbox"/>
-          </div>
-        );
-      }
-
-      column.map((col, index) => {
-        colgroup.push(
-          <div key={index} style={col.width ? this._fixedWidth(col.width) : null}>
-            <span>{col.title}</span>
-            {col.filter ? <span>{renderFilterGroup(col, index)}</span> : null}
-            {col.sortBy ? <span>{renderSortGroup(col, index)}</span> : null}
-          </div>
-        );
-      });
-
-      return colgroup;
-    };
-
     var renderDataGroup = (rcolumn, rdata, checkbox) => {
       var datagroup = [],
         state = this.state,
@@ -328,6 +280,70 @@ class Table extends React.Component {
       return datagroup;
     };
 
+    var dataGroup = renderDataGroup(column, data, props.checkbox);
+    var checkAllStatus = true;
+
+    if (!dataGroup.length) {
+      checkAllStatus = false;
+    }
+
+    var checkedKey = this.state.checkedKey,
+      dataKey = this.props.dataKey;
+    dataGroup.forEach((item) => {
+      if (!checkedKey[item.data[dataKey]]) {
+        checkAllStatus = false;
+        return;
+      }
+    });
+
+    var renderFilterGroup = (col, colIndex) =>
+      <select data-index={colIndex} onChange={this.onFilter} defaultValue="-1">
+        <option key="-1" value="-1">{col.filterAll ? col.filterAll : 'All'}</option>
+        {col.filter.map((item, index) =>
+          <option key={index} value={index}>{item.name}</option>
+        )}
+      </select>
+    ;
+
+    var renderSortGroup = (col, index) => {
+      var state = this.state;
+
+      return (
+        <div className="sortable">
+          <span className={(col === state.sortCol) && (state.sortDirection === 1) ? 'sort-up selected' : 'sort-up'}>
+            <span className="arrow-up" value={index} data-direction="up"></span>
+          </span>
+          <span className={(col === state.sortCol) && (state.sortDirection === -1) ? 'sort-down selected' : 'sort-down'}>
+            <span className="arrow-down" value={index} data-direction="down"></span>
+          </span>
+        </div>
+      );
+    };
+
+    var renderColumnGroup = (columngroup, checkbox) => {
+      var colgroup = [];
+
+      if (checkbox) {
+        colgroup.push(
+          <div key="checkbox" className="checkbox">
+            <input ref="checkall" value="-1" onChange={this.checkboxOnChange} type="checkbox" checked={checkAllStatus}/>
+          </div>
+        );
+      }
+
+      column.map((col, index) => {
+        colgroup.push(
+          <div key={index} style={col.width ? this._fixedWidth(col.width) : null}>
+            <span>{col.title}</span>
+            {col.filter ? <span>{renderFilterGroup(col, index)}</span> : null}
+            {col.sortBy ? <span>{renderSortGroup(col, index)}</span> : null}
+          </div>
+        );
+      });
+
+      return colgroup;
+    };
+
     return (
       <div style={style} className={className}>
         <div ref="thead" className="table-header" onClick={this.tableHeadOnClick}>
@@ -339,7 +355,7 @@ class Table extends React.Component {
           </div>
           : null}
         <div ref="tbody" style={{display: this.props.loading ? 'none' : 'block'}} className="table-body">
-          {renderDataGroup(column, data, props.checkbox).map(item => item.render)}
+          {dataGroup.map(item => item.render)}
         </div>
       </div>
     );
