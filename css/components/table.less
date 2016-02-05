@@ -206,8 +206,8 @@
           flex: none;
           padding-left: 10px;
           input {
-            height: 36px;
-            line-height: 36px;
+            height: 40px;
+            line-height: 40px;
           }
         }
       }
@@ -252,6 +252,12 @@
       height: 28px;
       line-height: 28px;
       background-color: white;
+      &.checkbox {
+        input {
+          height: 28px;
+          line-height: 28px;
+        }
+      }
     }
   }
   .table-body {
@@ -259,9 +265,13 @@
       > div {
         height: 36px;
         line-height: 36px;
+        &.checkbox {
+          input {
+            height: 36px;
+            line-height: 36px;
+          }
+        }
       }
     }
   }
 }
-
-
