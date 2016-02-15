@@ -13,6 +13,7 @@ class InputSearch extends React.Component {
     this._onChange = this._onChange.bind(this);
     this._onClick = this._onClick.bind(this);
     this.updateValue = this.updateValue.bind(this);
+    this.clearState = this.clearState.bind(this);
   }
 
   _onChange(e) {
@@ -29,6 +30,13 @@ class InputSearch extends React.Component {
     });
 
     this.props.onChange && this.props.onChange(val, isSubmitted);
+  }
+
+  clearState() {
+    this.setState({
+      value: ''
+    });
+    this.refs.search.value = '';
   }
 
   render() {
