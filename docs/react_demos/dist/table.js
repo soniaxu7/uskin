@@ -342,6 +342,20 @@
 	        hover: true }),
 	      React.createElement(
 	        'div',
+	        { className: 'desc' },
+	        React.createElement(
+	          'p',
+	          null,
+	          'The following is mini table'
+	        )
+	      ),
+	      React.createElement(Table, {
+	        mini: true,
+	        column: column,
+	        data: data,
+	        dataKey: 'id' }),
+	      React.createElement(
+	        'div',
 	        { className: 'bottom' },
 	        React.createElement(
 	          'span',

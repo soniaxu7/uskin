@@ -271,6 +271,14 @@ var TableForm = React.createClass({
           checkboxOnChange={this.checkboxOnChange}
           striped={true}
           hover={true}/>
+        <div className="desc">
+          <p>The following is mini table</p>
+        </div>
+        <Table
+          mini={true}
+          column={column}
+          data={data}
+          dataKey={'id'}/>
         <div className="bottom">
           <span>This is bottom</span>
         </div>

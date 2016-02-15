@@ -226,6 +226,7 @@ class Table extends React.Component {
       default: 'table',
       prefix: 'table-',
       props: {
+        mini: props.mini,
         hover: props.hover,
         striped: props.striped
       }
