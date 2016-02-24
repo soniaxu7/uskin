@@ -10,7 +10,7 @@ import DropdownButton from '../js/components/dropdown-button';
 import InputNumber from '../js/components/input-number';
 import InputSearch from '../js/components/input-search';
 import Menu from '../js/components/menu';
-import Modal from '../js/components/modal';
+import Modal from '../js/components/modal/index';
 import Notification from '../js/components/notification';
 import Pagination from '../js/components/pagination';
 import Panel from '../js/components/panel';

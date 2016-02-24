@@ -2,7 +2,7 @@
 
 
 // Variables
-@modal_width: 550px;
+@modal_width: 540px;
 @modal_bg_color: #fff;
 @modal_border_radius: 2px;
 @modal_box_shadow: 0 0 18px rgba(0,0,0,.2);
@@ -19,7 +19,8 @@
 @modal_hd_close_hover_color: @color_font_dark;
 @modal_hd_close_active_color: @color_font_dark;
 
-@modal_bd_v_padding: 20px;
+@modal_bd_v_top_padding: 30px;
+@modal_bd_v_bottom_padding: 46px;
 @modal_bd_h_padding: 48px;
 
 @modal_ft_padding: 8px 48px;
@@ -28,11 +29,16 @@
 
 
 .modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: @modal_width;
+  transform: translate3d(-50%, -50%, 0) scale(1, 1);
   overflow: hidden;
   background-color: @modal_bg_color;
   border-radius: @modal_border_radius;
   box-shadow: @modal_box_shadow;
+  z-index:999;
 
   .modal-hd {
     position: relative;
@@ -68,7 +74,7 @@
   }
 
   .modal-bd {
-    padding: @modal_bd_v_padding @modal_bd_h_padding;
+    padding: @modal_bd_v_top_padding @modal_bd_h_padding @modal_bd_v_bottom_padding;
     min-height: 40px;
   }
 
@@ -82,6 +88,67 @@
 
     > .btn:not(:last-child) {
       margin-right: 12px;
+    }
+  }
+
+  &.modal-enter {
+    opacity: 0;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(.08, .82, .17, 1);
+    animation-play-state: paused;
+
+    &.modal-enter-active {
+      animation-name: modalZoomIn;
+      animation-play-state: running;
+    }
+  }
+
+  &.modal-leave {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(.78, .14, .15, .86);
+    animation-play-state: paused;
+
+    &.modal-leave-active {
+      animation-name: modalZoomOut;
+      animation-play-state: running;
+    }
+  }
+}
+
+.modal-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.55);
+  height: 100%;
+  z-index: 998;
+
+  &.modal-mask-enter {
+    opacity: 0;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(.08, .82, .17, 1);
+    animation-play-state: paused;
+
+    &.modal-mask-enter-active {
+      animation-name: modalFadeIn;
+      animation-play-state: running;
+    }
+  }
+
+  &.modal-mask-leave {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(.78, .14, .15, .86);
+    animation-play-state: paused;
+
+    &.modal-mask-leave-active {
+      animation-name: modalFadeOut;
+      animation-play-state: running;
     }
   }
 }

@@ -1,36 +1,51 @@
 @keyframes spin {
   from {
-    -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   20% {
-    -ms-transform: rotate(135deg);
     transform: rotate(135deg);
   }
   to {
-    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
   }
 }
-@-webkit-keyframes spin {
-  from {
-    -webkit-transform: rotate(0deg);
+
+@keyframes modalZoomIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8, 0.8);
   }
-  20% {
-    -webkit-transform: rotate(135deg);
-  }
-  to {
-    -webkit-transform: rotate(180deg);
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1, 1);
   }
 }
-@-moz-keyframes spin {
-  from {
-    -moz-transform: rotate(0deg);
+
+@keyframes modalZoomOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1, 1);
   }
-  20% {
-     -moz-transform: rotate(135deg);
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8, 0.8);
   }
-  to {
-    -moz-transform: rotate(180deg);
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

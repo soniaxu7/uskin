@@ -1,7 +1,8 @@
 // Mixins
 
 // Variables
-@tip_padding: 20px;
+@tip_v_padding: 18px;
+@tip_h_padding: 20px;
 @tip_line_height: 18px;
 @tip_border_radius: @border_radius;
 
@@ -29,7 +30,7 @@
 @tip_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
 
 .tip {
-  padding: @tip_padding;
+  padding: @tip_v_padding @tip_h_padding;
   line-height: @tip_line_height;
   border-radius: @tip_border_radius;
   position: relative;
