@@ -93,6 +93,27 @@
       text-overflow: ellipsis;
       white-space: nowrap;
 
+      .table-filter {
+        position: absolute;
+        border: 1px solid @table_hd_bg_color;
+        width: 150px;
+        text-align: center;
+        background: white;
+        cursor: pointer;
+        box-shadow: 0 0 15px @table_hd_bg_color;
+        > div {
+          margin: 2px;
+          height: 36px;
+          line-height:36px;
+          &:hover {
+            background: @table_hover_bg_hover
+          }
+          &.selected {
+            background: @table_selected_bg_color !important;
+          }
+        }
+      }
+
       &:last-child {
         border-right: none;
       }

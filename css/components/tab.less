@@ -12,7 +12,7 @@
 @tab_selected_border_bottom: 3px solid @color_blue;
 
 @tab_link_height: 35px;
-@tab_link_font_size: 14px;
+@tab_link_font_size: 16px;
 @tab_link_color: @color_gray_darker;
 @tab_link_padding: 6px 12px 4px;
 
@@ -42,7 +42,14 @@
     &.selected {
       border-bottom: @tab_selected_border_bottom;
       a {
-        color: @tab_selected_color;
+        color: @color_blue;
+        cursor: default;
+      }
+    }
+    &.unique {
+      border-bottom: @tabs_border_bottom;
+      a {
+        color: @color_blue;
         cursor: default;
       }
     }
