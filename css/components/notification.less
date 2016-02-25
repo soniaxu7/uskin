@@ -3,44 +3,109 @@
 // Mixins
 
 // Variables
-@notification_padding: 20px;
-@notification_width: 300px;
-@notification_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+@notice_padding: 20px;
+@notice_width: 300px;
+@notice_shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+@notice_icon_size: 30px;
+@notice_margin_bottom: 10px;
 
-@notification_icon_size: 30px;
-@notification_content_width: 260px;
+@notification_z_index: 1000;
+@notification_top: 20px;
+@notification_right: 20px;
 
 .notification {
-  .tip();
-  padding: @notification_padding;
-  width: @notification_width;
-  box-shadow: @notification_shadow;
-  overflow: hidden;
+  position: fixed;
+  top: @notification_top;
+  right: 0;
+  margin-right: @notification_right;
+  z-index: @notification_z_index;
 
-  .tip-icon {
-    strong i {
-      font-size: @notification_icon_size;
-      margin-right: 15px;
+  .notice {
+    .tip();
+    position: relative;
+    margin-bottom: @notice_margin_bottom;
+    padding: @notice_padding;
+    width: @notice_width;
+    box-shadow: @notice_shadow;
+    overflow: hidden;
+    transform-origin: 0 0;
+
+    .tip-icon {
+      strong i {
+        font-size: @notice_icon_size;
+        margin-right: 15px;
+      }
     }
-  }
-  .tip-content strong {
-    color: inherit;
-    font-weight: normal;
+    .tip-content strong {
+      color: inherit;
+      font-weight: normal;
+    }
   }
 }
 
-.notification-info {
+.notice-info {
   .tip-info();
 }
 
-.notification-success {
+.notice-success {
   .tip-success();
 }
 
-.notification-warning {
+.notice-warning {
   .tip-warning();
 }
 
-.notification-danger {
+.notice-danger {
   .tip-danger();
+}
+
+.notice-enter {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  animation-play-state: paused;
+
+  &.notice-enter-active {
+    animation-name: noticeFadeIn;
+    animation-play-state: running;
+  }
+}
+
+.notice-leave {
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+  animation-play-state: paused;
+
+  &.notice-leave-active {
+    animation-name: noticeFadeOut;
+    animation-play-state: running;
+  }
+}
+
+@keyframes noticeFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@keyframes noticeFadeOut {
+  0% {
+    opacity: 1;
+    margin-bottom: @notice_margin_bottom;
+    padding-top: @notice_padding;
+    padding-bottom: @notice_padding;
+    max-height: 150px;
+  }
+  100% {
+    opacity: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-height: 0;
+  }
 }
