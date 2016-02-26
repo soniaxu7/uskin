@@ -1,8 +1,4 @@
 import React from 'react';
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
-// var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-// console.log(ReactCSSTransitionGroup);
 
 class Modal extends React.Component {
 
@@ -10,19 +6,28 @@ class Modal extends React.Component {
     super(props);
 
     this.state = {
-      className: 'modal'
+      className: 'modal',
+      visible: true,
+      close: false
     };
     this.onClose = this.onClose.bind(this);
     this.hide = this.hide.bind(this);
+    this.show = this.show.bind(this);
     this.mask = document.querySelector('.modal-mask');
   }
 
   onClose() {
-    if (!this.props.parent) {
+    this.hide();
+  }
+
+  hide() {
+    var props = this.props;
+
+    if (!props.parent) {
       this.mask.classList.add('modal-mask-leave');
       this.mask.classList.add('modal-mask-leave-active');
     } else {
-      this.props.parent.show();
+      props.parent.show();
     }
 
     var that = this;
@@ -33,51 +38,19 @@ class Modal extends React.Component {
         that.setState({
           className: 'modal hide'
         });
-        if (!that.props.parent) {
+        if (!props.parent) {
           that.mask.classList.remove('modal-mask-leave');
           that.mask.classList.remove('modal-mask-leave-active');
           that.mask.classList.add('hide');
         }
-
-        that.props.onAfterClose();
-      }, this.props.animationDuration);
-    });
-  }
-
-  hide() {
-    var that = this;
-    this.setState({
-      className: 'modal modal-leave modal-leave-active'
-    }, () => {
-      setTimeout(function() {
-        that.setState({
-          className: 'modal hide'
-        });
-      }, this.props.animationDuration);
+        if (props.isClose && !props.parent) {
+          props.onAfterClose && props.onAfterClose();
+        }
+      }, props.animationDuration);
     });
   }
 
   show() {
-    var that = this;
-    this.setState({
-      className: 'modal modal-enter modal-enter-active'
-    }, () => {
-      setTimeout(function() {
-        that.setState({
-          className: 'modal'
-        });
-      }, this.props.animationDuration);
-    });
-  }
-
-  componentWillMount() {
-    this.setState({
-      className: 'modal modal-enter'
-    });
-    this.props.parent && this.props.parent.hide();
-  }
-
-  componentDidMount() {
     var that = this;
     if (!this.props.parent) {
       that.mask.classList.remove('hide');
@@ -99,8 +72,15 @@ class Modal extends React.Component {
     });
   }
 
-  componentWillUnmount() {
+  componentWillMount() {
+    this.setState({
+      className: 'modal modal-enter'
+    });
+    this.props.parent && this.props.parent.hide();
+  }
 
+  componentDidMount() {
+    this.show();
   }
 
   getStyle() {
@@ -110,8 +90,16 @@ class Modal extends React.Component {
     };
   }
 
-  computeClassName() {
-    return 'modal modal-enter';
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.visible === this.props.visible) {
+      return;
+    }
+    console.log('change visible')
+    if (nextProps.visible === true) {
+      this.show();
+    } else {
+      this.hide();
+    }
   }
 
   render() {
@@ -129,13 +117,9 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  visible: React.PropTypes.bool,
   title: React.PropTypes.string,
-  closable: React.PropTypes.bool,
-  confirmLoading: React.PropTypes.bool,
   width: React.PropTypes.number,
-  onOk: React.PropTypes.func,
-  onCancel: React.PropTypes.func
+  animationDuration: React.PropTypes.number
 };
 
 Modal.defaultProps = {

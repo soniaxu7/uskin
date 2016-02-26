@@ -1,59 +1,43 @@
-import ReactDOM from 'react-dom';
+import React from 'react';
 import Modal from './modal';
 import Button from '../button'
 
-export default function(props) {
-  var container = null,
-    mask = null,
-    doc = document,
-    ref = null;
+class ModalBase extends React.Component {
 
-  (function() {
-    var root = doc.getElementById('modal-container');
-    if (!root) {
-      root = doc.createElement('div');
-      root.id = 'modal-container';
+  constructor(props) {
+    super(props);
 
-      mask = doc.createElement('div');
-      mask.classList.add('modal-mask');
-      root.appendChild(mask);
+    this.state = {
+      disabled: false,
+      isClose: true
+    };
 
-      doc.body.appendChild(root);
-    }
-    container = doc.createElement('div');
-    root.appendChild(container);
-  })();
-
-  function destory() {
-    ReactDOM.unmountComponentAtNode(container);
-    container.parentNode.removeChild(container);
+    this.onConfirm = this.onConfirm.bind(this);
   }
 
-  function onAfterClose() {
-    destory();
+  onConfirm() {
+    this.setState({
+      visible: false
+    });
+    this.props.onConfirm && this.props.onConfirm();
   }
 
-  function onClickFooter() {
-    ref.onClose();
+  render() {
+    var props = this.props,
+      state = this.state;
+
+    return (
+      <Modal {...props} visible={state.visible} isClose={state.isClose}>
+        <div className="modal-bd">
+          {props.content}
+        </div>
+        <div className="modal-ft">
+          <Button value={props.okText} disabled={state.disabled} btnKey="create" type={props.btnType} onClick={this.onConfirm}/>
+        </div>
+      </Modal>
+    );
   }
+}
 
-  var bd  = (
-    <div className="modal-bd">
-      {props.content}
-    </div>
-  );
-  var ft = (
-    <div className="modal-ft">
-      <Button value={props.okText} btnKey="create" type={props.btnType} onClick={onClickFooter}/>
-    </div>
-  );
+module.exports = ModalBase;
 
-
-  var _props = Object.assign({}, props, {
-    onAfterClose: onAfterClose
-  });
-
-  return ReactDOM.render(<Modal {..._props}>{bd}{ft}</Modal>, container, function () {
-    ref = this;
-  });
-  };

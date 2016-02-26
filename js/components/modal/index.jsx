@@ -1,8 +1,7 @@
 import ReactDOM from 'react-dom';
 import Modal from './modal';
 import Tip from '../tip';
-import confirm from './confirm';
-import custom from './custom';
+import shim from './shim';
 
 var btnMap = {
   warning: 'delete',
@@ -16,20 +15,8 @@ var btnMap = {
       content: <Tip content={props.content} type={m} />,
       btnType: btnMap[m]
     });
-    return confirm(_props);
+    return shim(_props);
   };
 });
-
-Modal.confirm = function(props) {
-  var _props = Object.assign({}, props, {
-    content: props.content,
-    btnType: 'create'
-  });
-  return confirm(_props);
-};
-
-Modal.custom = function(props) {
-  return custom(props);
-};
 
 export default Modal;
