@@ -8,8 +8,7 @@ class ModalBase extends React.Component {
     super(props);
 
     this.state = {
-      disabled: false,
-      isClose: true
+      disabled: false
     };
 
     this.onConfirm = this.onConfirm.bind(this);
@@ -27,7 +26,7 @@ class ModalBase extends React.Component {
       state = this.state;
 
     return (
-      <Modal {...props} visible={state.visible} isClose={state.isClose}>
+      <Modal {...props} visible={state.visible}>
         <div className="modal-bd">
           {props.content}
         </div>
