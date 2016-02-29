@@ -11,15 +11,30 @@ class Button extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  _getClassName(props) {
+  _getClassName(props, state) {
     var className = 'btn';
     (this._type.indexOf(props.type) > -1) && (className += ' btn-' + props.type);
     (this._size.indexOf(props.size) > -1) && (className += ' btn-' + props.size);
     props.initial && (className += ' btn-initial');
     props.selected && (className += ' selected');
-    props.disabled && (className += ' disabled');
+    state.disabled && (className += ' disabled');
 
     return className;
+  }
+
+  componentWillMount() {
+    this.setState({
+      disabled: this.props.disabled
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.state.disabled === nextProps.disabled) {
+      return;
+    }
+    this.setState({
+      disabled: nextProps.disabled
+    });
   }
 
   onClick(e) {
@@ -28,22 +43,22 @@ class Button extends React.Component {
 
   render() {
     var props = this.props,
+      state = this.state,
       iconPrefix = this._iconClassPrefix;
 
     if (props.tag === 'div') {
       return (
-        <div className={this._getClassName(props)}
-             disabled={props.disabled}
-             onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
+        <div className={this._getClassName(props, state)}
+             onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
           {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
           {props.value}
         </div>
       );
     } else {
       return (
-        <button className={this._getClassName(props)}
-                disabled={props.disabled}
-                onClick={!props.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
+        <button className={this._getClassName(props, state)}
+                disabled={state.disabled}
+                onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
           {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
           {props.value}
           {props.dropdown ? <i className={iconPrefix + 'dropdown'}/> : null}
