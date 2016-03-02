@@ -1,8 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styles from '../mixins/styles';
 
 var seed = 0;
 var now = Date.now();
+var TYPES = ['info', 'success', 'warning', 'danger'];
 
 function getUuid() {
   return 'notification_' + now + '_' + (seed++);
@@ -11,7 +13,6 @@ function getUuid() {
 var Notice = React.createClass({
   getInitialState() {
     var props = this.props;
-    var TYPES = ['info', 'success', 'warning', 'danger'];
     return {
       className: props.type && (TYPES.indexOf(props.type) > -1) ? 'notice notice-' + props.type : 'notice'
     };
@@ -23,10 +24,20 @@ var Notice = React.createClass({
     };
   },
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.type !== nextProps.type) {
+      this.setState({
+        className: nextProps.type && (TYPES.indexOf(nextProps.type) > -1) ? 'notice notice-' + nextProps.type : 'notice'
+      });
+    }
+    if (nextProps.close) {
+      this.close();
+    }
+  },
+
   componentDidMount() {
     var props = this.props;
     this.clearCloseTimer();
-
     this.fadeIn();
 
     if (props.isAutoHide) {
@@ -116,7 +127,7 @@ var Notice = React.createClass({
       contentStyle = iconType ? styles.getWidth(parseInt(props.width, 10) - 90) : styles.getWidth(parseInt(props.width, 10) - 50);
 
     return (
-      <div ref="notice" className={className} style={style}>
+      <div className={className} style={style}>
         {iconType ? <div className="tip-icon"><strong><i className={iconType}></i></strong></div> : ''}
         <div className="tip-content" style={contentStyle}>
           {props.title ? <div><strong>{props.title}</strong></div> : ''}
@@ -141,19 +152,44 @@ class Notification extends React.Component {
   }
 
   add(notice) {
-    var key = notice.key = notice.key || getUuid();
+    var id = notice.id = notice.id || getUuid();
 
     var notices = this.state.notices;
-    if (!notices.filter((v) => v.key === key).length) {
+    if (!notices.filter((v) => v.id === id).length) {
       this.setState({
         notices: notices.concat(notice)
       });
     }
   }
 
-  remove(key) {
+  remove(id) {
     var notices = this.state.notices.filter((notice) => {
-      return notice.key !== key;
+      return notice.id !== id;
+    });
+    this.setState({
+      notices: notices
+    });
+  }
+
+  close(id) {
+    this.state.notices.some((notice) => {
+      if (notice.id === id) {
+        notice.close = true;
+        this.update(notice);
+        return true;
+      }
+      return false;
+    });
+  }
+
+  update(newNotice) {
+    var notices = [];
+    this.state.notices.forEach((oldNotice, index) => {
+      if (newNotice.id === oldNotice.id) {
+        notices[index] = newNotice;
+      } else {
+        notices[index] = oldNotice;
+      }
     });
     this.setState({
       notices: notices
@@ -162,7 +198,7 @@ class Notification extends React.Component {
 
   render() {
     var noticeNodes = this.state.notices.map((notice) => {
-      return (<Notice {...notice} onClose={this.remove.bind(this, notice.key)} key={notice.key}>{notice.content}</Notice>);
+      return (<Notice {...notice} onClose={this.remove.bind(this, notice.id)} key={notice.id}>{notice.content}</Notice>);
     });
 
     return (
@@ -173,24 +209,33 @@ class Notification extends React.Component {
   }
 }
 
-Notification.newInstance = function(properties) {
+Notification.addNotice = (noticeProps) => {
   var div = document.getElementById('notification-container');
   if (!div) {
     div = document.createElement('div');
     div.id = 'notification-container';
     document.body.appendChild(div);
   }
-
   var notification = ReactDOM.render(<Notification />, div);
-  return {
-    addNotice(noticeProps) {
-      notification.add(noticeProps);
-    },
-    destroy() {
-      ReactDOM.unmountComponentAtNode(div);
-      document.body.removeChild(div);
-    }
-  };
-};
+  notification.add(noticeProps);
+}
+
+Notification.removeNotice = (id) => {
+  var div = document.getElementById('notification-container');
+  if (!div) {
+    return;
+  }
+  var notification = ReactDOM.render(<Notification />, div);
+  notification.close(id);
+}
+
+Notification.updateNotice = (newNotice) => {
+  var div = document.getElementById('notification-container');
+  if (!div) {
+    return;
+  }
+  var notification = ReactDOM.render(<Notification />, div);
+  notification.update(newNotice);
+}
 
 export default Notification;
