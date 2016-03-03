@@ -66,7 +66,7 @@ class Table extends React.Component {
       sortCol: undefined,
       sortDirection: undefined,
       filter: undefined,
-      checkedKey: []
+      checkedKey: {}
     });
 
     this.refs.checkall.checked = false;
@@ -94,6 +94,15 @@ class Table extends React.Component {
     } else if (colLength < this.refs.thead.childNodes.length) {
       theadDOM.removeChild(theadDOM.lastChild);
     }
+  }
+
+  getRows() {
+    var k = this.state.checkedKey,
+      _dataKey = this.props.dataKey;
+
+    return this._displayData.filter(function(m) {
+      return k[m.data[_dataKey]];
+    });
   }
 
   sortRow(col, direction) {
