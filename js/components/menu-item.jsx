@@ -74,10 +74,14 @@ class MenuItem extends React.Component {
 
     return (
       <div>
-        <h6 onClick={props.toggle ? this.toggle : null}>
-          {item.title}
-          {props.toggle ? <i ref="arrow" className={item.fold ? this.arrow.down : this.arrow.up}></i> : null}
-        </h6>
+        {
+          item.title ? (
+            <h6 onClick={props.toggle ? this.toggle : null}>
+              {item.title}
+              {props.toggle ? <i ref="arrow" className={item.fold ? this.arrow.down : this.arrow.up}></i> : null}
+            </h6>
+          ) : null
+        }
         <ul ref="item" style={item.fold ? {height: '0', overflow: 'hidden'} : null}>
           {item.submenu.map((submenu, i) =>
             <li key={i}
