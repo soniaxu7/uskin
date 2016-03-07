@@ -46,7 +46,7 @@ class Tab extends React.Component {
   _getItemClassName(item, key, selectedKey) {
     if (item.disabled) {
       return 'tab disabled';
-    } else if (this.props.type != 'sm' && this.props.items.length == 1) {
+    } else if (this.props.type !== 'sm' && this.props.items.length === 1) {
       return 'tab unique';
     } else if (typeof selectedKey !== 'undefined' && selectedKey === key) {
       return 'tab selected';

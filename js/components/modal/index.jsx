@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import Modal from './modal';
 import Tip from '../tip';
 import shim from './shim';

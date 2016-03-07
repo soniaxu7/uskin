@@ -4,8 +4,7 @@ var Base = require('./confirm');
 
 function modal(props) {
 
-  var container = null,
-    ref = null;
+  var container = null;
 
   (function() {
     var mask = null,
@@ -39,9 +38,7 @@ function modal(props) {
     onAfterClose: onAfterClose
   });
 
-  return ReactDOM.render(<Base {..._props}/>, container, function () {
-    ref = this;
-  });
+  return ReactDOM.render(<Base {..._props}/>, container);
 }
 
 module.exports = modal;

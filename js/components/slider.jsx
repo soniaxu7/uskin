@@ -76,7 +76,7 @@ class Slider extends React.Component {
   }
 
   _trackOffsetPerc(e) {
-    return this._inbound((e.clientX - this.refs.slider.offsetLeft) / this.refs.slider.offsetWidth);
+    return this._inbound((e.clientX - this.refs.slider.getBoundingClientRect().left) / this.refs.slider.offsetWidth);
   }
 
   _trackOffsetCloserPerc(e) {

@@ -48,7 +48,7 @@ var Notice = React.createClass({
         duration = props.duration;
       }
       this.closeTimer = setTimeout(()=> {
-        this.close()
+        this.close();
       }, duration * 1000);
     }
   },
@@ -202,7 +202,7 @@ class Notification extends React.Component {
     });
 
     return (
-      <div className='notification'>
+      <div className="notification">
         {noticeNodes}
       </div>
     );

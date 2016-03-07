@@ -3,6 +3,15 @@ var Modal = uskin.Modal,
 
 var mountNode = document.getElementById('example');
 
+function listener(v) {
+  let props = {
+    title: v.toUpperCase(),
+    content: 'this is my modal2',
+    okText: 'OK'
+  };
+  Modal[v](props);
+}
+
 ReactDOM.render(
   <div>
     <Button value="Info Caller" btnKey="info" onClick={listener.bind(this, 'info')}/>
@@ -12,14 +21,3 @@ ReactDOM.render(
   </div>,
   mountNode
 );
-
-var d = null;
-
-function listener(v) {
-  let props = {
-    title: v.toUpperCase(),
-    content: 'this is my modal2',
-    okText: 'OK'
-  };
-  Modal[v](props);
-}

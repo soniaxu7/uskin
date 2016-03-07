@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './modal';
-import Button from '../button'
+import Button from '../button';
 
 class ModalBase extends React.Component {
 
@@ -39,4 +39,3 @@ class ModalBase extends React.Component {
 }
 
 module.exports = ModalBase;
-
