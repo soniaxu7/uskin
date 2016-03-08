@@ -218,7 +218,7 @@ Notification.addNotice = (noticeProps) => {
   }
   var notification = ReactDOM.render(<Notification />, div);
   notification.add(noticeProps);
-}
+};
 
 Notification.removeNotice = (id) => {
   var div = document.getElementById('notification-container');
@@ -227,7 +227,7 @@ Notification.removeNotice = (id) => {
   }
   var notification = ReactDOM.render(<Notification />, div);
   notification.close(id);
-}
+};
 
 Notification.updateNotice = (newNotice) => {
   var div = document.getElementById('notification-container');
@@ -236,6 +236,6 @@ Notification.updateNotice = (newNotice) => {
   }
   var notification = ReactDOM.render(<Notification />, div);
   notification.update(newNotice);
-}
+};
 
 export default Notification;

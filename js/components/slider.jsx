@@ -100,7 +100,7 @@ class Slider extends React.Component {
       value: value
     });
 
-    this.props.onChange(e, value);
+    this.props.onChange && this.props.onChange(e, value);
   }
 
   finishSlide(e) {
@@ -114,7 +114,7 @@ class Slider extends React.Component {
       value: value
     });
 
-    this.props.onChange(e, value);
+    this.props.onChange && this.props.onChange(e, value);
   }
 
   render() {
@@ -130,7 +130,7 @@ class Slider extends React.Component {
         onMouseDown={this.startSlide}
         style={{width: style.width}}>
         <div ref="track" className="slider-track" style={{width: state.perc * 100 + '%'}}></div>
-        <div ref="thumb" className="slider-thumb" style={{left: state.perc * 100 + '%'}}></div>
+        <div ref="thumb" className={'slider-thumb' + (props.hideThumb ? ' hide' : '')} style={{left: state.perc * 100 + '%'}}></div>
       </div>
     );
   }
@@ -157,7 +157,8 @@ Slider.propTypes = {
     React.PropTypes.number,
     React.PropTypes.string
   ]),
-  onChange: React.PropTypes.func
+  onChange: React.PropTypes.func,
+  hideThumb: React.PropTypes.bool
 };
 
 export default Slider;
