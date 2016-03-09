@@ -33,6 +33,8 @@ var Notice = React.createClass({
     if (nextProps.close) {
       this.close();
     }
+
+    this.setAutoHide(nextProps);
   },
 
   componentDidMount() {
@@ -40,7 +42,11 @@ var Notice = React.createClass({
     this.clearCloseTimer();
     this.fadeIn();
 
-    if (props.isAutoHide) {
+    this.setAutoHide(props);
+  },
+
+  setAutoHide(props) {
+    if (props.isAutoHide && !this.closeTimer) {
       var duration;
       if (props.duration === undefined) {
         duration = 3;
