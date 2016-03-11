@@ -43,6 +43,8 @@ class Slider extends React.Component {
   }
 
   startSlide(e) {
+    e.preventDefault();
+
     document.addEventListener('mousemove', this.updateSlide, false);
     document.addEventListener('mouseup', this.endSlide, false);
   }
