@@ -19,12 +19,10 @@
 @col-arrow-selected: @color_font_dark;
 @loading-color: @color_font_dark;
 
-.table {
+table {
   width: 100%;
   max-width: 100%;
   background-color: @table_bg_color;
-  display: flex;
-  flex-direction: column;
 
   > thead {
     height: @table_hd_height;
@@ -75,6 +73,15 @@
 
   }
 
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  background-color: @table_bg_color;
+  display: flex;
+  flex-direction: column;
+
   .table-header {
     display: flex;
     user-select: none;
@@ -88,7 +95,7 @@
       padding-left: 16px;
       background-color: @table_hd_bg_color;
       color: #626f7e;
-      border-right: 1px solid white;
+      border-right: 1px solid #fff;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -122,10 +129,6 @@
         width: 20px;
         flex: none;
         padding-left: 10px;
-        input {
-          height: 36px;
-          line-height: 36px;
-        }
       }
 
       .sortable {
@@ -226,10 +229,6 @@
           width: 20px;
           flex: none;
           padding-left: 10px;
-          input {
-            height: 40px;
-            line-height: 40px;
-          }
         }
       }
 
@@ -238,13 +237,7 @@
       }
     }
   }
-
-  .table-footer {
-  }
-
 }
-
-
 
 .table-striped {
   > tbody > tr:nth-child(even) {
@@ -273,12 +266,6 @@
       height: 28px;
       line-height: 28px;
       background-color: white;
-      &.checkbox {
-        input {
-          height: 28px;
-          line-height: 28px;
-        }
-      }
     }
   }
   .table-body {
@@ -286,12 +273,6 @@
       > div {
         height: 36px;
         line-height: 36px;
-        &.checkbox {
-          input {
-            height: 36px;
-            line-height: 36px;
-          }
-        }
       }
     }
   }

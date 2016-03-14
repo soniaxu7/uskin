@@ -47,9 +47,12 @@ textarea[readonly] {
   user-select: none;
 }
 // Explicitly reset the colors here
+input[type="radio"],
+input[type="checkbox"],
 input[type="radio"][disabled],
 input[type="checkbox"][disabled],
 input[type="radio"][readonly],
 input[type="checkbox"][readonly] {
   background-color: transparent;
+  height: auto;
 }
