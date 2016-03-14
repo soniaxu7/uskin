@@ -5,7 +5,7 @@
 @table_hd_bg_color: @color_gray_beige;
 @table_hd_color: @color_gray_darker;
 @table_hd_height: 36px;
-@table_bg_color: white;
+@table_bg_color: #fff;
 @table_hover_bg_hover: @color_blue_x_light;
 @table_striped_bg_color: @color_blue_x_lighter;
 @table_selected_bg_color: @color_blue_lighter;
@@ -19,7 +19,8 @@
 @col-arrow-selected: @color_font_dark;
 @loading-color: @color_font_dark;
 
-table {
+table.table {
+  display: table;
   width: 100%;
   max-width: 100%;
   background-color: @table_bg_color;
@@ -39,7 +40,7 @@ table {
         font-weight: normal;
 
         &:not(:first-child) {
-          border-left: 1px solid white;
+          border-left: 1px solid #fff;
         }
       }
     }
@@ -58,19 +59,6 @@ table {
         padding-left: @table_padding_left;
       }
     }
-
-  }
-
-  > tfoot {
-    >tr {
-      height: @table_bd_height;
-      color: @table_ft_color;
-
-      >td {
-        padding-left: @table_padding_left;
-      }
-    }
-
   }
 
 }
@@ -105,7 +93,7 @@ table {
         border: 1px solid @table_hd_bg_color;
         width: 150px;
         text-align: center;
-        background: white;
+        background: #fff;
         cursor: pointer;
         box-shadow: 0 0 15px @table_hd_bg_color;
         > div {
@@ -265,7 +253,7 @@ table {
     > div {
       height: 28px;
       line-height: 28px;
-      background-color: white;
+      background-color: #fff;
     }
   }
   .table-body {
