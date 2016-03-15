@@ -12,7 +12,7 @@ class Table extends React.Component {
       sortDirection: undefined,
       filterCol: {},
       filterBy: undefined,
-      checkedKey: []
+      checkedKey: {}
     };
 
     this._sortDefaultType = ['number', 'boolean', 'date', 'string'];
@@ -65,7 +65,8 @@ class Table extends React.Component {
     this.setState({
       sortCol: undefined,
       sortDirection: undefined,
-      filter: undefined,
+      filterCol: {},
+      filterBy: undefined,
       checkedKey: {}
     });
 
