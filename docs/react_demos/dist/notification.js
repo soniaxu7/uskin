@@ -46,40 +46,189 @@
 
 	'use strict';
 
-	var Notification = uskin.Notification;
-	var text = {
-	  'title': 'Note:',
-	  'content': 'I am content',
-	  'info': 'I am a info notification',
-	  'success': 'I am a success notification',
-	  'warning': 'I am a warning notification',
-	  'danger': 'I am a danger notification',
-	  'para': 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
-	};
+	var Notification = uskin.Notification,
+	    Button = uskin.Button;
 
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.content, showIcon: true }), document.getElementById('example'));
+	var notices = [{
+	  title: 'Note:',
+	  content: 'I am content',
+	  showIcon: true,
+	  isAutoHide: true,
+	  duration: 5,
+	  width: 300,
+	  id: 1
+	}, {
+	  title: 'Note:',
+	  content: 'I am a info notification',
+	  type: 'info',
+	  showIcon: true,
+	  isAutoHide: false,
+	  width: 300,
+	  id: 2
+	}, {
+	  title: 'Note:',
+	  content: 'I am a success notification',
+	  type: 'success',
+	  showIcon: true,
+	  isAutoHide: true,
+	  width: 300,
+	  id: 3
+	}, {
+	  title: 'Note:',
+	  content: 'I am a warning notification',
+	  type: 'warning',
+	  showIcon: true,
+	  isAutoHide: true,
+	  width: 300,
+	  id: 4
+	}, {
+	  title: 'Note:',
+	  content: 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system',
+	  type: 'danger',
+	  showIcon: true,
+	  isAutoHide: true,
+	  width: 300,
+	  id: 5
+	}, {
+	  title: 'Note:',
+	  content: 'I am a notification',
+	  icon: 'loading-notification',
+	  showIcon: true,
+	  isAutoHide: true,
+	  width: 300,
+	  id: 6
+	}, {
+	  title: 'Note:',
+	  content: 'I am a danger notification',
+	  type: 'danger',
+	  showIcon: false,
+	  isAutoHide: true,
+	  width: 300,
+	  id: 7
+	}];
 
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.info, showIcon: true, type: 'info' }), document.getElementById('example2'));
+	var NotificationDemo = React.createClass({
+	  displayName: 'NotificationDemo',
+	  showNotification: function showNotification(noticeVar) {
+	    var notice = {};
 
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.success, showIcon: true, type: 'success' }), document.getElementById('example3'));
+	    for (var key in noticeVar) {
+	      notice[key] = noticeVar[key];
+	    }
 
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.warning, showIcon: true, type: 'warning' }), document.getElementById('example4'));
+	    Notification.addNotice(notice);
+	  },
+	  removeNotification: function removeNotification() {
+	    Notification.removeNotice(2);
+	  },
+	  updateNotification: function updateNotification() {
+	    var notice = [];
+	    for (var key in notices[0]) {
+	      notice[key] = notices[0][key];
+	    }
+	    notice.id = 2;
+	    Notification.updateNotice(notice);
+	  },
+	  render: function render() {
+	    var style = { margin: 20 };
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo1', onClick: this.showNotification.bind(this, notices[0]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show notification with user defined duration'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo2', onClick: this.showNotification.bind(this, notices[1]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show info type notification with icon, do not hide automatic'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo3', onClick: this.showNotification.bind(this, notices[2]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show success type notification with icon'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo4', onClick: this.showNotification.bind(this, notices[3]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show warning type notification with icon'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo5', onClick: this.showNotification.bind(this, notices[4]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show danger type notification with icon'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo6', onClick: this.showNotification.bind(this, notices[5]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show notification with user defined icon'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo7', onClick: this.showNotification.bind(this, notices[6]) }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'Show notification with no icon'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo8', onClick: this.removeNotification }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'remove demo2'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { style: style },
+	        React.createElement(Button, { value: 'demo9', onClick: this.updateNotification }),
+	        React.createElement(
+	          'span',
+	          null,
+	          'update demo2 to demo1'
+	        )
+	      )
+	    );
+	  }
+	});
 
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.danger, showIcon: true, type: 'danger' }), document.getElementById('example5'));
-
-	ReactDOM.render(React.createElement(Notification, { title: text.title, content: text.para, showIcon: true, type: 'danger', width: '280' }), document.getElementById('example6'));
-
-	ReactDOM.render(React.createElement(Notification, { content: text.content, isAutoHide: true }), document.getElementById('example7'));
-
-	ReactDOM.render(React.createElement(Notification, { content: text.info, icon: 'loading-notification', type: 'info' }), document.getElementById('example8'));
-
-	ReactDOM.render(React.createElement(Notification, { content: text.success, icon: 'icon-overview', type: 'success' }), document.getElementById('example9'));
-
-	ReactDOM.render(React.createElement(Notification, { content: text.warning, type: 'warning' }), document.getElementById('example10'));
-
-	ReactDOM.render(React.createElement(Notification, { content: text.danger, type: 'danger' }), document.getElementById('example11'));
-
-	ReactDOM.render(React.createElement(Notification, { content: text.para, type: 'danger' }), document.getElementById('example12'));
+	ReactDOM.render(React.createElement(NotificationDemo, null), document.getElementById('example'));
 
 /***/ }
 /******/ ]);

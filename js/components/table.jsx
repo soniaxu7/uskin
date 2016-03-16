@@ -17,13 +17,12 @@ class Table extends React.Component {
 
     this._sortDefaultType = ['number', 'boolean', 'date', 'string'];
     this._rowHeight = 41;
-    this._setResize = this._setResize.bind(this);
     this._displayData = [];
-    this.clearState = this.clearState.bind(this);
-    this.sortRow = this.sortRow.bind(this);
-    this.onFilter = this.onFilter.bind(this);
-    this.checkboxOnChange = this.checkboxOnChange.bind(this);
-    this.tableHeadOnClick = this.tableHeadOnClick.bind(this);
+
+    var methods = ['_setResize', 'clearState', 'sortRow', 'clickFilterIcon', 'onFilter', 'checkboxOnChange', 'tableHeadOnClick'];
+    methods.forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   componentWillMount() {
@@ -150,8 +149,67 @@ class Table extends React.Component {
     return a[key] > b[key] ? 1 : -1;
   }
 
+  destroyFilter() {
+    var container = document.getElementById('uskin-filter-container');
+    if (container) {
+      var root = container.parentNode;
+
+      ReactDOM.unmountComponentAtNode(container);
+      root.removeChild(container);
+    }
+  }
+
+  createFilter(column, index, e) {
+    var root = e.target.parentNode;
+
+    var filterBy = this.state.filterBy,
+      filterCol = this.state.filterCol;
+
+    var filter = (
+      <div className="filter" data-index={index} onClick={this.onFilter}>
+        <div className={!filterBy ? 'selected' : null} key="-1" data-value="-1">
+          {<span data-value="-1">{column.filterAll ? column.filterAll : 'All'}</span>}
+          {!filterBy ? <i className="glyphicon icon-active-yes" data-value="-1"/> : null}
+        </div>
+        {column.filter.map((item, i) => {
+          var isSelected = filterCol[column.key] && (filterBy === item.filterBy);
+          return (
+            <div className={isSelected ? 'selected' : null} key={i} data-value={i}>
+              <span data-value={i}>{item.name}</span>
+              {isSelected ? <i className="glyphicon icon-active-yes" data-value={i}/> : null}
+            </div>
+          );
+        })}
+      </div>
+    );
+
+    var container = document.createElement('div');
+    container.id = 'uskin-filter-container';
+    root.appendChild(container);
+
+    ReactDOM.render(filter, container);
+  }
+
+  clickFilterIcon(column, index, e) {
+    var prevContainer = document.getElementById('uskin-filter-container');
+    if (prevContainer) {
+      this.destroyFilter();
+    }
+
+    this.createFilter(column, index, e);
+
+    var that = this;
+    document.addEventListener('click', function shouldDestroyFilter(event) {
+      if (!(e.target.isEqualNode(event.target) && event.target.className === 'filter-icon')) {
+        that.destroyFilter();
+      }
+
+      document.removeEventListener('click', shouldDestroyFilter, false);
+    }, false);
+  }
+
   onFilter(e) {
-    var index = Number(e.target.value),
+    var index = Number(e.target.getAttribute('data-value')),
       colIndex = Number(e.currentTarget.getAttribute('data-index')),
       col = this.props.column[colIndex];
 
@@ -307,15 +365,6 @@ class Table extends React.Component {
       }
     });
 
-    var renderFilterGroup = (col, colIndex) =>
-      <select data-index={colIndex} onChange={this.onFilter} defaultValue="-1">
-        <option key="-1" value="-1">{col.filterAll ? col.filterAll : 'All'}</option>
-        {col.filter.map((item, index) =>
-          <option key={index} value={index}>{item.name}</option>
-        )}
-      </select>
-    ;
-
     var renderSortGroup = (col, index) => {
       var state = this.state;
 
@@ -346,8 +395,13 @@ class Table extends React.Component {
         colgroup.push(
           <div key={index} style={col.width ? this._fixedWidth(col.width) : null}>
             <span>{col.title}</span>
-            {col.filter ? <span>{renderFilterGroup(col, index)}</span> : null}
-            {col.sortBy ? <span>{renderSortGroup(col, index)}</span> : null}
+            {col.sortBy ? renderSortGroup(col, index) : null}
+            {col.filter ?
+              <div className="filter-box">
+                <div className="filter-icon" onClick={this.clickFilterIcon.bind(this, col, index)} />
+              </div>
+              : null
+            }
           </div>
         );
       });
