@@ -60,6 +60,18 @@ var items = [{
   }]
 }];
 
+var items2 = Object.assign([], items);
+items2.unshift({
+  key:'overview',
+  submenu: [{
+    subtitle: 'Overview',
+    key: 'overview',
+    onClick: listener,
+    iconClass: 'glyphicon icon-overview',
+    selected: true
+  }]
+});
+
 function updateData() {
   var newItems = [];
   for (let i = 0; i < items.length; i++) {
@@ -78,9 +90,14 @@ function updateData() {
 
 ReactDOM.render(
   <div style={{height: '100%'}}>
-    <Menu items={items}/>
-    <div style={{margin: '40px'}}>
-      <Button value="更新数据" onClick={updateData}/>
+    <div style={{height: '100%', float: 'left'}}>
+      <Menu items={items}/>
+      <div style={{margin: '40px'}}>
+        <Button value="更新数据" onClick={updateData}/>
+      </div>
+    </div>
+    <div style={{height: '100%', float: 'left'}}>
+      <Menu items={items2}/>
     </div>
   </div>,
   document.getElementById('example')

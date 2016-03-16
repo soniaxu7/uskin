@@ -114,6 +114,18 @@
 	  }]
 	}];
 
+	var items2 = (0, _assign2.default)([], items);
+	items2.unshift({
+	  key: 'overview',
+	  submenu: [{
+	    subtitle: 'Overview',
+	    key: 'overview',
+	    onClick: listener,
+	    iconClass: 'glyphicon icon-overview',
+	    selected: true
+	  }]
+	});
+
 	function updateData() {
 	  var newItems = [];
 	  for (var i = 0; i < items.length; i++) {
@@ -132,11 +144,20 @@
 	ReactDOM.render(React.createElement(
 	  'div',
 	  { style: { height: '100%' } },
-	  React.createElement(Menu, { items: items }),
 	  React.createElement(
 	    'div',
-	    { style: { margin: '40px' } },
-	    React.createElement(Button, { value: '更新数据', onClick: updateData })
+	    { style: { height: '100%', float: 'left' } },
+	    React.createElement(Menu, { items: items }),
+	    React.createElement(
+	      'div',
+	      { style: { margin: '40px' } },
+	      React.createElement(Button, { value: '更新数据', onClick: updateData })
+	    )
+	  ),
+	  React.createElement(
+	    'div',
+	    { style: { height: '100%', float: 'left' } },
+	    React.createElement(Menu, { items: items2 })
 	  )
 	), document.getElementById('example'));
 
