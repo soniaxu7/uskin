@@ -192,6 +192,7 @@ class Table extends React.Component {
   }
 
   clickFilterIcon(column, index, e) {
+    e = e.nativeEvent;
     var prevContainer = document.getElementById('uskin-filter-container');
     if (prevContainer) {
       this.destroyFilter();
