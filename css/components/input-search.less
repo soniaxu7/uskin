@@ -1,27 +1,27 @@
-@input_search_font_color: @color_font;
-@input_search_icon_color: @color_blue;
-@input_search_icon_hover_color: @color_blue_dark;
-@input_search_icon_light_color: @color_font_dark;
-@input_search_border_color: @color_gray_beige;
-@input_search_border_hover_color: @color_blue;
-@input_search_border_active_color: @color_blue_dark;
+@search_border_color: @color_info;
+@search_border_focus_color: @color_info_600;
+@search_icon_bg_color: @color_info;
+@search_icon_bg_hover_color: @color_info_600;
+@search_icon_bg_active_color: @color_info_700;
+
+@search_light_border_color: @color_grey_700;
+@search_light_border_focus_color: @color_info;
+@search_light_icon_color: @color_font_700;
+@search_light_icon_hover_color: @color_info;
+@search_light_icon_active_color: @color_info_600;
 
 .input-search {
-  width: 147px;
-  height: 30px;
+  border: 0;
   border-radius: 2px;
-  border: 1px solid @input_search_border_hover_color;
+  height: 32px;
+  width: 150px;
   display: inline-block;
   vertical-align: middle;
-  &:hover {
-    border: 1px solid @input_search_border_active_color;
-    .search-icon {
-      color: @input_search_border_hover_color;
-    }
-  }
+  position: relative;
   input {
     outline: 0;
-    border: 0;
+    padding-right: 36px;
+    border: 1px solid @search_border_color;
     width: 97px;
   }
   .search-icon {
@@ -29,44 +29,45 @@
     height: 30px;
     line-height: 30px;
     font-size: 14px;
-    float: right;
     cursor: pointer;
     text-align: center;
-    background-color: @input_search_border_hover_color;
+    overflow: hidden;
+    background-color: @search_icon_bg_color;
+    position: absolute;
+    top: 1px;
+    right: 1px;
     > i {
       color: white;
       font-weight: bold;
     }
     &:hover {
-      background-color: @input_search_border_active_color;
+      background-color: @search_icon_bg_hover_color;
+    }
+    &:active {
+      background-color: @search_icon_bg_active_color;
     }
   }
 }
 
 .input-search-light {
-  border-color: @input_search_border_color;
-  &:hover {
-    border-color: @input_search_border_hover_color;
-    .search-icon {
-      color: @input_search_border_hover_color;
+  input {
+    border: 1px solid @search_light_border_color;
+    &:hover, &:focus {
+      border-color: @search_light_border_focus_color;
     }
   }
-  input {
-    width: 107px;
-  }
   .search-icon {
-    width: 20px;
-    text-align: left;
-    background-color: white;
+    color: @search_light_icon_color;
+    background-color: transparent;
     > i {
-      color: @input_search_icon_light_color;
+      color: @search_light_icon_color;
       &:hover {
-        color: @input_search_border_active_color;
+        color: @search_light_icon_hover_color;
       }
     }
     &:hover {
-      background-color: white;
-      color: @input_search_border_hover_color;
+      background-color: transparent;
+      color: @search_light_icon_active_color;
     }
   }
 }

@@ -47,7 +47,7 @@ class Tab extends React.Component {
     if (item.disabled) {
       return 'tab disabled';
     } else if (this.props.type !== 'sm' && this.props.items.length === 1) {
-      return 'tab unique';
+      return 'tab sole';
     } else if (typeof selectedKey !== 'undefined' && selectedKey === key) {
       return 'tab selected';
     } else {
@@ -77,7 +77,7 @@ class Tab extends React.Component {
         {items.map((item, index) =>
           <li key={item.key} className={this._getItemClassName(item, item.key, selectedKey)}>
             <a href={(item.href && !item.disabled) ? item.href : null}
-              onClick={(item.disabled || selectedKey === index) ? null : this.onClick}
+              onClick={(item.disabled || selectedKey === item.key) ? null : this.onClick}
               value={item.key}>{item.name}</a>
           </li>
         )}

@@ -6,10 +6,11 @@
 @dropdown_border_radius: 2px;
 @dropdown_v_padding: 10px;
 @dropdown_h_padding: 0;
-@dropdown_normal_bg_color: @color_blue;
-@dropdown_danger_bg_color: @color_red_lighter;
+@dropdown_header_bg_color: @color_info;
+@dropdown_normal_bg_color: @color_info_200;
+@dropdown_danger_bg_color: @color_delete_200;
 @dropdown_color: @color_font;
-@dropdown_disabled_color: @color_gray_darker;
+@dropdown_disabled_font_color: @color_font_400;
 
 .dropdown {
   position: absolute;
@@ -28,7 +29,7 @@
     right: 0;
     top: 0;
     height: 3px;
-    background-color: @dropdown_normal_bg_color;
+    background-color: @dropdown_header_bg_color;
     content: "";
   }
 
@@ -73,10 +74,10 @@
         &:hover,
         &:active,
         &:focus {
-          background-color: #b9f1f9;
+          background-color: @dropdown_normal_bg_color;
         }
         &.disabled {
-          color: @dropdown_disabled_color;
+          color: @dropdown_disabled_font_color;
           background-color: transparent !important;
           cursor: not-allowed;
         }
@@ -91,7 +92,7 @@
       }
 
       &.disabled a {
-        color: @dropdown_disabled_color;
+        color: @dropdown_disabled_font_color;
         background-color: transparent;
         cursor: not-allowed;
       }

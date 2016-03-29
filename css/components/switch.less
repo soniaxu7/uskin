@@ -1,12 +1,13 @@
-@switch_off_color: white;
-@switch_off_bg_color: @color_gray_darker;
-@switch_off_btn_bg_color: @color_gray;
-@switch_on_bg_color: @color_blue_dark;
-@switch_on_btn_bg_color: @color_blue_lighter;
-@switch_on_font_color: @color_blue;
-@switch_bg_color: @color_gray_darker;
-@switch_disabled_bg_color: @color_gray_beige;
-@switch_disabled_btn_bg_color: @color_gray;
+@switch_off_color: #fff;
+@switch_off_bg_color: #fff;
+@switch_off_btn_bg_color: @color_grey_700;
+@switch_on_bg_color: @color_info;
+@switch_on_btn_bg_color: @color_info_200;
+@switch_on_font_color: @color_info;
+
+@switch_disabled_font_color: @color_font_400;
+@switch_disabled_bg_color: @color_disabled_400;
+@switch_disabled_btn_bg_color: @color_disabled_700;
 
 .switch {
   width: 60px;
@@ -53,14 +54,15 @@
     text-align: left;
 
     &::after {
-      left: calc(100% - 20px);
+      left: calc(~"100% - 20px");
       background-color: @switch_on_bg_color;
     }
   }
 
   &.disabled {
     input + .switch-inner {
-      color: @switch_bg_color;
+      cursor: not-allowed;
+      color: @switch_disabled_font_color;
       background-color: @switch_disabled_bg_color;
       &::after {
         background-color: @switch_disabled_btn_bg_color;

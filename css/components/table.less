@@ -2,22 +2,25 @@
 
 
 // Variables
-@table_hd_bg_color: @color_gray_beige;
-@table_hd_color: @color_gray_darker;
+@table_hd_bg_color: @color_grey;
+@table_hd_color: @color_grey;
 @table_hd_height: 36px;
 @table_bg_color: #fff;
-@table_hover_bg_hover: @color_blue_x_light;
-@table_striped_bg_color: @color_blue_x_lighter;
-@table_selected_bg_color: @color_blue_lighter;
+@table_hover_bg_hover: @color_info_100;
+@table_striped_bg_color: @color_info_100;
+@table_selected_bg_color: @color_info_200;
 @table_bd_height: 40px;
-@table_bd_border: 1px solid @color_gray_beige;
+@table_bd_border: 1px solid @color_grey;
 @table_padding_left: 16px;
-@table_ft_color: @color_gray_beige;
+@table_ft_color: @color_grey;
 
-@col-arrow-color: @color_gray_dark;
-@col-arrow-hover-color: @color_font_dark;
-@col-arrow-selected: @color_font_dark;
-@loading-color: @color_font_dark;
+@filter_selected_color: @color_info;
+
+@col_arrow_color: @color_font_700;
+@col_arrow_hover_color: @color_font_800;
+@col_arrow_selected: @color_font_800;
+@loading_color: @color_font_800;
+
 
 table.table {
   display: table;
@@ -93,12 +96,12 @@ table.table {
         .filter-icon {
           border-top: 3px solid transparent;
           border-left: 3px solid transparent;
-          border-bottom: 3px solid @col-arrow-color;
-          border-right: 3px solid @col-arrow-color;
+          border-bottom: 3px solid @col_arrow_color;
+          border-right: 3px solid @col_arrow_color;
           cursor: pointer;
           &:hover {
-            border-bottom: 3px solid @col-arrow-hover-color;
-            border-right: 3px solid @col-arrow-hover-color;
+            border-bottom: 3px solid @col_arrow_hover_color;
+            border-right: 3px solid @col_arrow_hover_color;
           }
         }
         .filter {
@@ -130,7 +133,7 @@ table.table {
                 top: 12px;
                 right: 6px;
                 font-weight: bold;
-                color: @color_blue;
+                color: @filter_selected_color;
               }
             }
           }
@@ -166,18 +169,18 @@ table.table {
             bottom: 1px;
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
-            border-bottom: 4px solid @col-arrow-color;
+            border-bottom: 4px solid @col_arrow_color;
           }
 
           &:hover {
             .arrow-up {
-              border-bottom: 4px solid @col-arrow-hover-color;
+              border-bottom: 4px solid @col_arrow_hover_color;
             }
           }
 
           &.selected {
             .arrow-up {
-              border-bottom: 4px solid @col-arrow-selected;
+              border-bottom: 4px solid @col_arrow_selected;
             }
           }
         }
@@ -187,18 +190,18 @@ table.table {
             top: 1px;
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
-            border-top: 4px solid @col-arrow-color;
+            border-top: 4px solid @col_arrow_color;
           }
 
           &:hover {
             .arrow-down {
-              border-top: 4px solid @col-arrow-hover-color;
+              border-top: 4px solid @col_arrow_hover_color;
             }
           }
 
           &.selected {
             .arrow-down {
-              border-top: 4px solid @col-arrow-selected;
+              border-top: 4px solid @col_arrow_selected;
             }
           }
         }
@@ -217,7 +220,7 @@ table.table {
       left: 50%;
       margin-left: -18px;
       width: 36px;
-      color: @loading-color;
+      color: @loading_color;
       .loading-style(36px);
     }
   }

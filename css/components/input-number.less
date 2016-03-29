@@ -1,9 +1,11 @@
-@arrow_box_border_color: @color_gray_beige_dark;
-@arrow_box_border_hover_color: @color_gray_darker;
-@arrow_color: @color_gray_dark;
-@arrow_bg_color: @color_gray_beige;
-@arrow_hover_color: @color_font_dark;
-@input_disabled_bg_color: @color_gray_beige;
+@arrow_box_border_color: @color_grey_700;
+@arrow_box_border_hover_color: @color_grey_700;
+@arrow_color: @color_font_700;
+@arrow_hover_color: @color_font;
+@arrow_bg_color: @color_grey_400;
+
+@input_disabled_border_color: @color_disabled_700;
+@input_disabled_bg_color: @color_disabled_400;
 
 .input-number {
   width: 80px;
@@ -49,7 +51,7 @@
         border-bottom: 5px solid @arrow_hover_color;
       }
       &.disabled > div, &.disabled:hover > div {
-        border-bottom: 5px solid @arrow_color;
+        border-bottom: 5px solid @input_disabled_bg_color;
       }
     }
     .arrow-down {
@@ -61,14 +63,14 @@
         border-top: 5px solid @arrow_hover_color;
       }
       &.disabled > div, &.diabled:hover > div {
-        border-top: 5px solid @arrow_color;
+        border-top: 5px solid @input_disabled_bg_color;
       }
     }
   }
   &.disabled {
     input {
       &:hover, &:focus {
-        border: 1px solid @arrow_box_border_color;
+        border: 1px solid @input_disabled_border_color!important;
       }
     }
     .arrow {

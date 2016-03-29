@@ -51,7 +51,7 @@
 
 	var column = [{
 	  title: 'ID',
-	  width: '150px',
+	  width: 120,
 	  dataIndex: 'id',
 	  sortBy: 'number',
 	  filter: [{
@@ -73,7 +73,7 @@
 	  }]
 	}, {
 	  title: 'Category',
-	  width: '120px',
+	  width: 120,
 	  dataIndex: 'category',
 	  sortBy: 'string'
 	}, {
@@ -249,7 +249,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'block' },
-	        React.createElement(InputSearch, { onChange: this.searchFlavor, width: '300', type: 'light' }),
+	        React.createElement(InputSearch, { onChange: this.searchFlavor, width: '200', type: 'light' }),
 	        React.createElement(
 	          'div',
 	          { style: { display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px' } },

@@ -17,20 +17,14 @@ var items1 = [{
   default: true
 }, {
   name: 'Recharge Record',
-  key: '2'
+  key: '2',
+  disabled: true
 }];
 
 var items2 = [{
   name: 'Overview',
   key: '0',
   default: true
-}, {
-  name: 'Account Recharge',
-  key: '0'
-}, {
-  name: 'Disabled Tab',
-  key: '0',
-  disabled: true
 }];
 
 var items3 = [{

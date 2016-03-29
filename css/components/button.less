@@ -8,33 +8,33 @@
 @btn_border_width: 1px;
 
 @btn_font_color: white;
-@btn_bg_color: @color_blue;
-@btn_hover_bg_color: @color_blue_x_dark;
-@btn_active_bg_color: @color_blue_x_darker;
+@btn_bg_color: @color_info;
+@btn_hover_bg_color: @color_info_600;
+@btn_active_bg_color: @color_info_700;
 
-@btn_create_bg_color: @color_green; 
-@btn_create_hover_bg_color: @color_green_x_dark;
-@btn_create_active_bg_color: @color_green_x_darker;
+@btn_create_bg_color: @color_success;
+@btn_create_hover_bg_color: @color_success_600;
+@btn_create_active_bg_color: @color_success_700;
 
-@btn_del_bg_color: @color_red; 
-@btn_del_hover_bg_color: @color_red_x_dark;
-@btn_del_active_bg_color: @color_red_x_darker;
+@btn_del_bg_color: @color_delete;
+@btn_del_hover_bg_color: @color_delete_600;
+@btn_del_active_bg_color: @color_delete_700;
 
-@btn_cancel_font_color: @color_font_dark;
-@btn_cancel_bg_color: @color_gray_beige;
-@btn_cancel_hover_bg_color: @color_gray_beige_x_dark;
-@btn_cancel_active_bg_color: @color_gray_beige_x_darker;
+@btn_cancel_font_color: @color_font_800;
+@btn_cancel_bg_color: @color_cancel;
+@btn_cancel_hover_bg_color: @color_cancel_600;
+@btn_cancel_active_bg_color: @color_cancel_700;
 
-@btn_disable_font_color: @color_gray_darker;
-@btn_disable_bg_color: @color_gray;
-@btn_disable_hover_bg_color: @color_gray;
-@btn_disable_active_bg_color: @color_gray;
+@btn_disable_font_color: @color_font_700;
+@btn_disable_bg_color: @color_disabled_400;
+@btn_disable_hover_bg_color: @color_disabled_400;
+@btn_disable_active_bg_color: @color_disabled_400;
 
-@btn_status_color: @color_gray_darker;
-@btn_status_selected_color: @color_font_dark;
-@btn_status_bg_color: @color_gray_beige;
-@btn_status_hover_bg_color: @color_blue_lighter;
-@btn_status_selected_bg_color: @color_blue_lighter;
+@btn_status_font_color: @color_font;
+@btn_status_selected_color: @color_font;
+@btn_status_bg_color: @color_grey;
+@btn_status_hover_bg_color: @color_info_100;
+@btn_status_selected_bg_color: @color_info_200;
 
 @btn_glyph_size: 16px;
 @btn_glyph_margin_right: 6px;
@@ -49,6 +49,7 @@
   vertical-align: middle;
   cursor: pointer;
   white-space: nowrap;
+  user-select: none;
   .button-size(@btn_v_padding; @btn_h_padding; @btn_font_size; @btn_height; @btn_border_radius);
   .button-hue(@btn_font_color; @btn_bg_color; @btn_hover_bg_color; @btn_active_bg_color);
   &[disabled],
@@ -85,7 +86,7 @@
 
 // Status button
 .btn-status {
-  .button-hue(@btn_status_color; @btn_status_bg_color; @btn_status_hover_bg_color; @btn_status_hover_bg_color);
+  .button-hue(@btn_status_font_color; @btn_status_bg_color; @btn_status_hover_bg_color; @btn_status_hover_bg_color);
   &.selected {
     color: @btn_status_selected_color;
     background-color: @btn_status_selected_bg_color;

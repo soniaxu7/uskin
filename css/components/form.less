@@ -3,15 +3,16 @@
 
 // Variables
 @input_padding:  4px 10px;
-@input_border: 1px solid @color_gray_beige_dark;
+@input_border: 1px solid @color_grey_700;
 @input_height: 22px;
 @input_radius: 2px;
-@input_hover_border_color: @color_blue;
-@input_error_border_color: @color_red;
+@input_hover_border_color: @color_info;
+@input_focus_border_color: @color_info;
+@input_error_border_color: @color_delete;
 
-@input_disabled_color: @color_gray_beige_dark;
-@input_disabled_border_color: @color_gray_beige_dark;
-@input_disabled_bg_color: @color_gray_beige;
+@input_disabled_font_color: @color_font_400;
+@input_disabled_border_color: @color_disabled_700;
+@input_disabled_bg_color: @color_disabled_400;
 
 
 input {
@@ -22,9 +23,12 @@ input {
   line-height: @input_height;
   box-sizing: content-box;
 
-  &:hover,
-  &:focus {
+  &:hover{
     border-color: @input_hover_border_color;
+  }
+
+  &:focus {
+    border-color: @input_focus_border_color;
   }
 
   &.error {
@@ -40,7 +44,7 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-  color: @input_disabled_color;
+  color: @input_disabled_font_color;
   border-color: @input_disabled_border_color;
   background-color: @input_disabled_bg_color;
   cursor: not-allowed !important;

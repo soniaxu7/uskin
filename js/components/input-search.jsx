@@ -44,7 +44,7 @@ class InputSearch extends React.Component {
       state = this.state;
 
     var style = styles.getWidth(parseInt(props.width, 10)),
-      inputWidth = styles.getWidth(props.type === 'light' ? parseInt(props.width, 10) - 40 : parseInt(props.width, 10) - 50);
+      inputWidth = styles.getWidth(parseInt(props.width, 10) - 48);
 
     return (
       <div className={props.type === 'light' ? 'input-search input-search-light' : 'input-search'} style={style}>
@@ -56,5 +56,9 @@ class InputSearch extends React.Component {
     );
   }
 }
+
+InputSearch.defaultProps = {
+  width: 150
+};
 
 export default InputSearch;

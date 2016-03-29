@@ -3,7 +3,7 @@ var InputSearch = uskin.InputSearch,
 
 var column = [{
   title: 'ID',
-  width: '150px',
+  width: 120,
   dataIndex: 'id',
   sortBy: 'number',
   filter: [{
@@ -25,7 +25,7 @@ var column = [{
   }]
 }, {
   title: 'Category',
-  width: '120px',
+  width: 120,
   dataIndex: 'category',
   sortBy: 'string'
 }, {
@@ -180,7 +180,7 @@ var SearchForm = React.createClass({
           </div>
         </div>
         <div className="block">
-          <InputSearch onChange={this.searchFlavor} width="300" type="light"/>
+          <InputSearch onChange={this.searchFlavor} width="200" type="light"/>
           <div style={{display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px'}}>
             Search in Flavor Column With Submit-Icon
           </div>
