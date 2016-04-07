@@ -20,18 +20,34 @@
     <div>
       <input type="search" placeholder="Search" />
       <input type="search" placeholder="Search" value="search" disabled />
+      <input type="search" placeholder="Search" value="" class="error" />
     </div>
     <div>
       <input type="email" placeholder="Email" />
-      <input type="email" placeholder="Email" disabled />
+      <input type="email" placeholder="Email" value="Email" disabled />
+      <input type="email" placeholder="Email" value="" class="error" />
     </div>
     <div>
       <input type="number" placeholder="1" />
-      <input type="number" placeholder="1" disabled />
+      <input type="number" placeholder="1" value="1" disabled />
+      <input type="number" placeholder="1" value="" class="error" />
     </div>
     <div>
       <input type="password" />
-      <input type="password" disabled />
+      <input type="password" placeholder="Password" value="Password" disabled />
+      <input type="password" placeholder="Password" value="" class="error" />
+    </div>
+    <div>
+      <select>
+        <option>Apple</option>
+        <option>Orange</option>
+        <option>Peach</option>
+      </select>
+      <select disabled>
+        <option>Apple</option>
+        <option>Orange</option>
+        <option>Peach</option>
+      </select>
     </div>
     <div>
       <input type="checkbox" name="checkbox" />

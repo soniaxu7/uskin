@@ -14,6 +14,8 @@
 @input_disabled_border_color: @color_disabled_700;
 @input_disabled_bg_color: @color_disabled_400;
 
+@select_width: 125px;
+@select_ff_color: @color_font;
 
 input {
   padding: @input_padding;
@@ -33,6 +35,31 @@ input {
 
   &.error {
     border-color: @input_error_border_color;
+  }
+}
+
+select {
+  padding: @input_padding;
+  width: @select_width;
+  height: @input_height;
+  border: @input_border;
+  border-radius: @input_radius;
+  background-color: transparent;
+  outline: none;
+  appearance:none;
+  box-sizing: content-box;
+
+  &:hover{
+    border-color: @input_hover_border_color;
+  }
+
+  &:focus {
+    border-color: @input_focus_border_color;
+  }
+
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 @select_ff_color;
   }
 }
 
