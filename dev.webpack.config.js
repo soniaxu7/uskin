@@ -1,5 +1,6 @@
 var config = require('./webpack.config.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var theme = 'default';
 
 config.watch = true;
 config.keepAlive = true;
@@ -22,7 +23,7 @@ config.module = {
   }, {
     test: /\.less$/,
     loader: ExtractTextPlugin.extract(
-      'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?sourceMap'
+      'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'./themes/' + theme + '/index.less\'"}}'
     )
   }, {
     test: /\.css$/,
