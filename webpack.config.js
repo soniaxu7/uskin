@@ -1,5 +1,7 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+var theme = process.env.npm_config_theme || 'default';
+
 module.exports = {
   progress: true,
   entry: {
@@ -37,7 +39,7 @@ module.exports = {
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?sourceMap'
+        'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'./themes/' + theme + '/index.less\'"}}'
       )
     }, {
       test: /\.css$/,

@@ -1,6 +1,7 @@
 var config = require('./webpack.config.js');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var theme = 'default';
+
+var theme = process.env.npm_config_theme || 'default';
 
 config.watch = true;
 config.keepAlive = true;
@@ -37,7 +38,7 @@ config.module = {
 };
 
 config.plugins = [
-  new ExtractTextPlugin('../css/uskin.min.css')
+  new ExtractTextPlugin('../css/uskin.css')
 ];
 
 module.exports = config;

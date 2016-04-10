@@ -37,7 +37,7 @@ module.exports = function(grunt) {
           filename: '[name].js'
         },
         plugins: [
-          new ExtractTextPlugin('../css/uskin.min.css')
+          new ExtractTextPlugin('../css/uskin.css')
         ],
         devtool: 'source-map'
       },
