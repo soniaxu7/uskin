@@ -10,32 +10,11 @@ config.debug = true;
 
 config.output.filename = '[name].js';
 
-config.module = {
-  loaders: [{
-    test: /\.js|jsx$/,
-    exclude: /node_modules|__tests__/,
-    loader: 'babel-loader',
-    query: {
-      cacheDirectory: true
-    }
-  }, {
-    test: /\.json$/,
-    loader: 'json-loader'
-  }, {
-    test: /\.less$/,
-    loader: ExtractTextPlugin.extract(
-      'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'./themes/' + theme + '/index.less\'"}}'
-    )
-  }, {
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract(
-      'css?sourceMap&-minimize!' + 'autoprefixer-loader'
-    )
-  }, {
-    test: /\.(woff|svg|eot|ttf)\??.*$/,
-    loader: 'url?limit=1000&name=../css/fonts/[hash:8].icon.[ext]'
-  }]
-};
+config.module.loaders.splice(4, 1, {
+  test: /\.(woff|svg|eot|ttf)\??.*$/,
+  loader: 'url?limit=1000&name=../css/fonts/[hash:8].icon.[ext]'
+});
+console.log(config.module.loaders)
 
 config.plugins = [
   new ExtractTextPlugin('../css/uskin.css')

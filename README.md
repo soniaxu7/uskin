@@ -50,6 +50,16 @@ Watch changes of your code real time while developing, you can run the dev mode:
 npm run dev
 ```
 
+Customize the theme of uskin:
+```
+npm run dev --theme=default
+```
+or
+```
+npm run build --theme=default
+```
+Currently, we only provide two themes: `default` and `premium`.
+
 ## Note
 
 Details for each release are documented in the [release notes](https://github.com/icecreamliker/uskin/releases).

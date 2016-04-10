@@ -1,4 +1,5 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 var theme = process.env.npm_config_theme || 'default';
 
@@ -39,17 +40,20 @@ module.exports = {
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!' + 'autoprefixer-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'./themes/' + theme + '/index.less\'"}}'
+        'css?sourceMap&-minimize!' + 'postcss-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'./themes/' + theme + '/index.less\'"}}'
       )
     }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!' + 'autoprefixer-loader'
+        'css?sourceMap&-minimize!' + 'postcss-loader'
       )
     }, {
       test: /\.(woff|svg|eot|ttf)\??.*$/,
       loader: 'url?limit=1000&name=./fonts/[hash:8].icon.[ext]'
     }]
+  },
+  postcss: function() {
+    return [autoprefixer];
   },
   plugins: []
 };
