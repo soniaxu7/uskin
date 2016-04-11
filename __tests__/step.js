@@ -8,37 +8,20 @@ const Step = require('../js/components/step.jsx').default;
 
 describe('Test step component', () => {
 
-  it('checks when props item is not an array', () => {
-
-    var items = {
-      name: 'title 1',
-      value: '0'
-    };
-
-    var step = TestUtils.renderIntoDocument(
-      <Step items={items}/>
-    );
-
-    var stepNode = ReactDOM.findDOMNode(step);
-
-    expect(stepNode.textContent).toEqual('');
-
-  });
-
   it('generates with title and width', () => {
 
     var items = [{
         name: 'title 1',
-        value: '0'
+        key: '0'
       }, {
         name: 'title 2',
-        value: '1'
+        key: '1'
       }, {
         name: 'title 3',
-        value: '2'
+        key: '2'
       }, {
         name: 'title 4',
-        value: '3'
+        key: '3'
       }],
       width = 600;
 
@@ -64,17 +47,17 @@ describe('Test step component', () => {
 
     var items = [{
       name: 'title 1',
-      value: '0'
+      key: '0'
     }, {
       name: 'title 2',
-      value: '1'
+      key: '1'
     }, {
       name: 'title 3',
-      value: '2',
-      selected: true
+      key: '2',
+      default: true
     }, {
       name: 'title 4',
-      value: '3'
+      key: '3'
     }];
 
     var selectedIndex;
@@ -94,34 +77,31 @@ describe('Test step component', () => {
 
   it('jumps when the step is clicked', () => {
 
+    var listener = jest.genMockFunction();
     var items = [{
         name: 'title 1',
-        value: '0'
+        key: '0'
       }, {
         name: 'title 2',
-        value: '1'
+        key: '1'
       }, {
         name: 'title 3',
-        value: '2',
-        selected: true
+        key: '2',
+        default: true
       }, {
         name: 'title 4',
-        value: '3'
+        key: '3'
       }],
       clickIndex = 1;
 
-    var listener = jest.genMockFunction();
-
-    var step = TestUtils.renderIntoDocument(
-      <Step items={items} onClick={listener} />
-    );
-
-    var clickNode = step.refs['step' + clickIndex];
+    var divNode = document.createElement('div'),
+      step = ReactDOM.render(<Step items={items} onClick={listener} />, divNode),
+      stepNode = ReactDOM.findDOMNode(step),
+      clickNode = stepNode.childNodes[clickIndex].firstChild;
 
     TestUtils.Simulate.click(clickNode);
 
-    expect(listener).toBeCalledWith(jasmine.any(Object), items[clickIndex]);
-
+    expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
   });
 
 });

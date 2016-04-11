@@ -12,14 +12,14 @@ describe('Test tab component', () => {
 
     var items = [{
         name: 'Overview',
-        value: '0'
+        key: '0'
       }, {
         name: 'Account Recharge',
-        value: '1',
+        key: '1',
         default: true
       }, {
         name: 'Recharge Record',
-        value: '2'
+        key: '2'
       }],
       type = 'sm';
 
@@ -37,28 +37,23 @@ describe('Test tab component', () => {
 
     var items = [{
       name: 'Overview',
-      value: '0'
+      key: '0'
     }, {
       name: 'Account Recharge',
-      value: '1',
+      key: '1',
       default: true
     }, {
       name: 'Recharge Record',
-      value: '2'
+      key: '2'
     }];
 
-    var selectedIndex;
-    items.some((item, index) =>
-      item.default ? (selectedIndex = '' + index, true) : false
-    );
-
+    var selectedKey = items.filter((item) => item.default)[0].key;
     var tab = TestUtils.renderIntoDocument(
       <Tab items={items}/>
     );
 
     var itemNode = TestUtils.findRenderedDOMComponentWithClass(tab, 'tab selected');
-
-    expect(itemNode.firstElementChild.getAttribute('value')).toEqual(selectedIndex);
+    expect(itemNode.firstElementChild.getAttribute('data-value')).toEqual(selectedKey);
 
   });
 
@@ -67,15 +62,15 @@ describe('Test tab component', () => {
     var listener = jest.genMockFunction();
     var items = [{
         name: 'Overview',
-        key: '0',
+        key: 'overview',
         href: '#overview'
       }, {
         name: 'Account Recharge',
-        key: '1',
+        key: 'account_recharge',
         href: '#accout'
       }, {
         name: 'Disabled Tab',
-        key: '2',
+        key: 'disalbed_tab',
         href: '#',
         disabled: true
       }],
@@ -102,15 +97,15 @@ describe('Test tab component', () => {
     var listener = jest.genMockFunction();
     var items = [{
         name: 'Overview',
-        key: '0',
+        key: 'overview',
         href: '#overview'
       }, {
         name: 'Account Recharge',
-        key: '1',
+        key: 'account_recharge',
         href: '#accout'
       }, {
         name: 'Disabled Tab',
-        key: '2',
+        key: 'disabled_tab',
         href: '#',
         disabled: true
       }],
@@ -118,35 +113,36 @@ describe('Test tab component', () => {
 
     var newItems = [{
       name: 'new Overview',
-      key: '10',
+      key: 'new_overview',
       default: true
     }, {
       name: 'new Account Recharge',
-      key: '11'
+      key: 'new_accout_recharge'
     }, {
       name: 'Recharge Record',
-      key: '2'
+      key: 'new_recharge_record'
     }];
 
+    var divNode = document.createElement('div');
 
-    var divNode = document.createElement('div'),
-      tab = ReactDOM.render(<Tab items={items} onClick={listener}/>, divNode);
-
-    var tabNode = ReactDOM.findDOMNode(tab),
+    //first update
+    var tab = ReactDOM.render(<Tab items={items} onClick={listener}/>, divNode),
+      tabNode = ReactDOM.findDOMNode(tab),
       clickNode = tabNode.childNodes[clickIndex].firstChild;
 
+    //first click
     TestUtils.Simulate.click(clickNode);
 
-    var type = 'sm';
-    ReactDOM.render(<Tab items={newItems} type={type} onClick={listener}/>, divNode);
-    TestUtils.Simulate.click(clickNode);
+    //second update
+    var newTab = ReactDOM.render(<Tab items={newItems} onClick={listener}/>, divNode),
+      newTabNode = ReactDOM.findDOMNode(newTab),
+      newClickNode = newTabNode.childNodes[clickIndex].firstChild;
 
-    ReactDOM.render(<Tab items={newItems} onClick={listener}/>, divNode);
-    tabNode = ReactDOM.findDOMNode(tab);
+    //second click
+    TestUtils.Simulate.click(newClickNode);
 
     expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
     expect(listener.mock.calls[1][1]).toBe(newItems[clickIndex]);
-    expect(tabNode.getAttribute('class')).toBe('tabs');
   });
 
 });

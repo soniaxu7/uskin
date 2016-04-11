@@ -30,7 +30,7 @@ class Step extends React.Component {
 
     var props = this.props;
 
-    var selectedItem = props.items.filter((item) => item.key === selectedKey);
+    var selectedItem = props.items.filter((item) => item.key === selectedKey)[0];
     props.onClick && props.onClick.apply(this, [e, selectedItem]);
   }
 
