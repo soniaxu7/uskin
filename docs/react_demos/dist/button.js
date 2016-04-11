@@ -95,6 +95,11 @@
 	    null,
 	    React.createElement(Button, { value: "Status", btnKey: "status-1", type: "status", onClick: listener }),
 	    React.createElement(Button, { value: "Status Selected", btnKey: "status-2", type: "status", selected: true, onClick: listener })
+	  ),
+	  React.createElement(
+	    "div",
+	    null,
+	    React.createElement(Button, { initial: true, iconClass: "refresh" })
 	  )
 	), document.getElementById('example'));
 

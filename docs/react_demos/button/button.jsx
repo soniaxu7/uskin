@@ -37,6 +37,9 @@ ReactDOM.render(
       <Button value="Status" btnKey="status-1" type="status" onClick={listener}/>
       <Button value="Status Selected" btnKey="status-2" type="status" selected={true} onClick={listener}/>
     </div>
+    <div>
+      <Button initial={true} iconClass="refresh" />
+    </div>
   </div>,
   document.getElementById('example')
 );
