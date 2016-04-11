@@ -28,6 +28,10 @@ table.table {
   max-width: 100%;
   background-color: @table_bg_color;
 
+  input[type="checkbox"] {
+    vertical-align: middle;
+  }
+
   > thead {
     height: @table_hd_height;
     background-color: @table_hd_bg_color;
@@ -72,6 +76,10 @@ table.table {
   background-color: @table_bg_color;
   display: flex;
   flex-direction: column;
+
+  input[type="checkbox"] {
+    vertical-align: middle;
+  }
 
   .table-header {
     display: flex;
@@ -145,7 +153,7 @@ table.table {
       }
 
       &.checkbox {
-        width: 20px;
+        width: 26px;
         flex: none;
         padding-left: 10px;
       }
@@ -246,7 +254,7 @@ table.table {
         }
 
         &.checkbox {
-          width: 20px;
+          width: 26px;
           flex: none;
           padding-left: 10px;
         }
