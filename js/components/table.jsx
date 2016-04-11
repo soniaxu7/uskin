@@ -260,10 +260,10 @@ class Table extends React.Component {
   }
 
   tableHeadOnClick(e) {
-    if (e.target.getAttribute('value')) {
+    if (e.target.getAttribute('data-value')) {
       var column = this.props.column;
 
-      var colIndex = Number(e.target.getAttribute('value')),
+      var colIndex = Number(e.target.getAttribute('data-value')),
         dir = e.target.getAttribute('data-direction');
 
       switch (dir) {
@@ -373,10 +373,10 @@ class Table extends React.Component {
       return (
         <div className="sortable">
           <span className={(col === state.sortCol) && (state.sortDirection === 1) ? 'sort-up selected' : 'sort-up'}>
-            <span className="arrow-up" value={index} data-direction="up"></span>
+            <span className="arrow-up" data-value={index} data-direction="up"></span>
           </span>
           <span className={(col === state.sortCol) && (state.sortDirection === -1) ? 'sort-down selected' : 'sort-down'}>
-            <span className="arrow-down" value={index} data-direction="down"></span>
+            <span className="arrow-down" data-value={index} data-direction="down"></span>
           </span>
         </div>
       );

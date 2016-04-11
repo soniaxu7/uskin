@@ -58,7 +58,7 @@ class Tab extends React.Component {
   onClick(e) {
     e.preventDefault();
 
-    var selectedKey = e.target.getAttribute('value');
+    var selectedKey = e.target.getAttribute('data-value');
     this.setState({
       selectedKey: selectedKey
     });
@@ -78,7 +78,7 @@ class Tab extends React.Component {
           <li key={item.key} className={this._getItemClassName(item, item.key, selectedKey)}>
             <a href={(item.href && !item.disabled) ? item.href : null}
               onClick={(item.disabled || selectedKey === item.key) ? null : this.onClick}
-              value={item.key}>{item.name}</a>
+              data-value={item.key}>{item.name}</a>
           </li>
         )}
       </ul>

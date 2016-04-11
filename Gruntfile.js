@@ -10,7 +10,6 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = function(grunt) {
-  'use strict';
 
   // Project configuration.
   grunt.initConfig({

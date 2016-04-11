@@ -3,7 +3,7 @@
 
 // Variables
 @table_hd_bg_color: @color_grey;
-@table_hd_color: @color_grey;
+@table_hd_font_color: @color_font_800;
 @table_hd_height: 36px;
 @table_bg_color: #fff;
 @table_hover_bg_hover: @color_info_100;
@@ -31,8 +31,8 @@ table.table {
   > thead {
     height: @table_hd_height;
     background-color: @table_hd_bg_color;
-    color: @table_hd_color;
-    font-size: 13px;
+    font-size: 12px;
+    color: @table_hd_font_color;
     user-select: none;
     >tr {
       height: @table_hd_height;
@@ -85,7 +85,7 @@ table.table {
       line-height: 36px;
       padding-left: 16px;
       background-color: @table_hd_bg_color;
-      color: #626f7e;
+      color: @table_hd_font_color;
       border-right: 1px solid #fff;
       overflow: hidden;
       text-overflow: ellipsis;

@@ -7,53 +7,45 @@ class Step extends React.Component {
     super(props);
 
     this.state = {
-      selected: undefined
+      selectedKey: undefined
     };
 
     this.onClick = this.onClick.bind(this);
-    this._data = (Object.prototype.toString.call(this.props.items) === '[object Array]') ?
-      this.props.items : [];
   }
 
   componentWillMount() {
-    var items = this._data,
-      selected = undefined;
+    var items = this.props.items;
 
-    function findSelected(item) {
-      return item.selected ? (selected = item.value, true) : false;
-    }
-
-    if (items.some(findSelected)) {
-      this.setState({
-        selected: selected
-      });
-    } else {
-      this.setState({
-        selected: undefined
-      });
-    }
+    var selectedItem = items.filter((item) => item.default);
+    this.setState({
+      selectedKey: selectedItem.length > 0 ? selectedItem[0].key : undefined
+    });
   }
 
   onClick(e) {
-    var selected = e.target.getAttribute('value');
+    var selectedKey = e.target.getAttribute('data-value');
     this.setState({
-      selected: selected
+      selectedKey: selectedKey
     });
-    this.props.onClick && this.props.onClick.apply(this, [e, this._data[selected]]);
+
+    var props = this.props;
+
+    var selectedItem = props.items.filter((item) => item.key === selectedKey);
+    props.onClick && props.onClick.apply(this, [e, selectedItem]);
   }
 
   render() {
     var props = this.props,
-      state = this.state,
-      items = this._data;
+      items = props.items,
+      state = this.state;
 
     var style = styles.getWidth(props.width / items.length);
 
     return (
       <ol className="steps">
         {items.map((item, index) =>
-          <li key={index} className={state.selected === item.value ? 'step-item selected' : 'step-item'} style={style}>
-            <span ref={'step' + index} value={index} onClick={state.selected === item.value ? undefined : this.onClick}></span>
+          <li key={index} className={state.selectedKey === item.key ? 'step-item selected' : 'step-item'} style={style}>
+            <span ref={'step' + index} data-value={item.key} onClick={state.selectedKey === item.key ? undefined : this.onClick}></span>
             <div className="delimiter"></div>
             <div className="name">{item.name}</div>
           </li>

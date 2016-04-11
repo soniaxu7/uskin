@@ -51,7 +51,8 @@ class Button extends React.Component {
         <div className={this._getClassName(props, state)}
              onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
           {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
-          {props.value}
+          <span>{props.value}</span>
+          {props.dropdown ? <i className={iconPrefix + 'dropdown'}/> : null}
         </div>
       );
     } else {
@@ -60,7 +61,7 @@ class Button extends React.Component {
                 disabled={state.disabled}
                 onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
           {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
-          {props.value}
+          <span>{props.value}</span>
           {props.dropdown ? <i className={iconPrefix + 'dropdown'}/> : null}
         </button>
       );
