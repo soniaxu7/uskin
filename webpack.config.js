@@ -40,7 +40,7 @@ module.exports = {
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!' + 'postcss-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'./themes/' + theme + '/index.less\'"}}'
+        'css?sourceMap&-minimize!' + 'postcss-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'' + theme + '\'"}}'
       )
     }, {
       test: /\.css$/,
@@ -50,6 +50,9 @@ module.exports = {
     }, {
       test: /\.(woff|svg|eot|ttf)\??.*$/,
       loader: 'url?limit=1000&name=./fonts/[hash:8].icon.[ext]'
+    }, {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loader: 'url?limit=2000&name=./img/[hash:8].[name].[ext]'
     }]
   },
   postcss: function() {
