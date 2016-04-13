@@ -53,7 +53,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.1",
     "grunt-jest": "^0.2.0",
-    "grunt-webfont": "^1.1.0",
+    "grunt-webfont": "1.1.0",
     "grunt-webpack": "^1.0.11",
     "jest-cli": "^0.7.1",
     "json-loader": "^0.5.3",
