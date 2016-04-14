@@ -174,7 +174,7 @@ var SearchForm = React.createClass({
     return (
       <div>
         <div className="block">
-          <InputSearch onChange={this.searchLevel} width="200" />
+          <InputSearch placeholder="Search in Level" onChange={this.searchLevel} width="200" />
           <div style={{display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px'}}>
             Search in Level Column Automatically
           </div>

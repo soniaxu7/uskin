@@ -239,7 +239,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'block' },
-	        React.createElement(InputSearch, { onChange: this.searchLevel, width: '200' }),
+	        React.createElement(InputSearch, { placeholder: 'Search in Level', onChange: this.searchLevel, width: '200' }),
 	        React.createElement(
 	          'div',
 	          { style: { display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px' } },

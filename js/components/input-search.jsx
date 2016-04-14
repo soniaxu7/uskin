@@ -40,15 +40,15 @@ class InputSearch extends React.Component {
   }
 
   render() {
-    var props = this.props,
+    const {width, type} = this.props,
       state = this.state;
 
-    var style = styles.getWidth(parseInt(props.width, 10)),
-      inputWidth = styles.getWidth(parseInt(props.width, 10) - 48);
+    var style = styles.getWidth(parseInt(width, 10)),
+      inputWidth = styles.getWidth(parseInt(width, 10) - 48);
 
     return (
-      <div className={props.type === 'light' ? 'input-search input-search-light' : 'input-search'} style={style}>
-        <input ref="search" style={inputWidth} text={state.value} onChange={this._onChange}/>
+      <div className={type === 'light' ? 'input-search input-search-light' : 'input-search'} style={style}>
+        <input {...this.props} ref="search" style={inputWidth} text={state.value} onChange={this._onChange}/>
         <div className="search-icon" onClick={this._onClick}>
           <i className="glyphicon icon-search"></i>
         </div>
