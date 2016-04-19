@@ -3,16 +3,32 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-<path fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" d="M1.097,27.229"/>
-<path fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" d="M1,1"/>
 <g>
-	<path fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" d="M28,20c0,0.55-0.45,1-1,1H5c-0.55,0-1-0.45-1-1v-8
-		c0-0.55,0.45-1,1-1h22c0.55,0,1,0.45,1,1V20z M28,22c0-0.55-0.45-1-1-1H5c-0.55,0-1,0.45-1,1v8c0,0.55,0.45,1,1,1h22
-		c0.55,0,1-0.45,1-1V22z M28,2c0-0.55-0.45-1-1-1H5C4.45,1,4,1.45,4,2v8c0,0.55,0.45,1,1,1h22c0.55,0,1-0.45,1-1V2z"/>
+	<path fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" d="M1.097,27.229"/>
 </g>
-<line fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" x1="3" y1="11" x2="29" y2="11"/>
-<line fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" x1="3" y1="21" x2="29" y2="21"/>
-<line fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" x1="16" y1="6" x2="24" y2="6"/>
-<line fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" x1="16" y1="16" x2="24" y2="16"/>
-<line fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" x1="16" y1="26" x2="24" y2="26"/>
+<g>
+	<path fill="none" stroke="#5A7B89" stroke-width="2" stroke-miterlimit="10" d="M1,1"/>
+</g>
+<g>
+	<path fill="#5A7B89" d="M27,32H5c-1.103,0-2-0.897-2-2v-8c0-0.364,0.098-0.706,0.269-1C3.098,20.706,3,20.364,3,20v-8
+		c0-0.364,0.098-0.706,0.269-1C3.098,10.706,3,10.364,3,10V2c0-1.103,0.897-2,2-2h22c1.103,0,2,0.897,2,2v8
+		c0,0.364-0.098,0.706-0.269,1C28.902,11.294,29,11.636,29,12v8c0,0.364-0.098,0.706-0.269,1C28.902,21.294,29,21.636,29,22v8
+		C29,31.103,28.103,32,27,32z M27,30v1V30L27,30L27,30z M5,22v8h21.997L27,22H5z M5,20h21.997L27,12H5V20z M5,10h21.997L27,2H5V10z"
+		/>
+</g>
+<g>
+	<rect x="3" y="10" fill="#5A7B89" width="26" height="2"/>
+</g>
+<g>
+	<rect x="3" y="20" fill="#5A7B89" width="26" height="2"/>
+</g>
+<g>
+	<rect x="16" y="5" fill="#5A7B89" width="8" height="2"/>
+</g>
+<g>
+	<rect x="16" y="15" fill="#5A7B89" width="8" height="2"/>
+</g>
+<g>
+	<rect x="16" y="25" fill="#5A7B89" width="8" height="2"/>
+</g>
 </svg>
