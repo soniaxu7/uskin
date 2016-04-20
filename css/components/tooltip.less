@@ -1,4 +1,3 @@
-@tooltip_max_width: 150px;
 @tooltip_line_height: 15px;
 @tooltip_padding: 8px;
 @tooltip_border_radius: @border_radius;
@@ -21,10 +20,10 @@
   background-color: @tooltip_bg_color;
   border-radius: @tooltip_border_radius;
   line-height: @tooltip_line_height;
-  max-width: @tooltip_max_width;
   padding: @tooltip_padding;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     border: solid transparent;
     content: '';
     height: 0;
@@ -38,7 +37,7 @@
     border-width: @tooltip_arrow_width;
   }
 
-  &.tootip-error {
+  &.tooltip-error {
     background-color: @tooltip_error_bg_color;
     border: 1px solid @tooltip_error_border_color;
   }
@@ -65,10 +64,10 @@
   &.tooltip-right,
   &.tooltip-right-top,
   &.tooltip-right-bottom {
-    &.before {
+    &:before {
       border-right-color: @tooltip_arrow_color;
     }
-    &.after {
+    &:after {
       border-right-color: @tooltip_bg_color;
     }
     &.tooltip-error {
@@ -84,10 +83,10 @@
   &.tooltip-bottom,
   &.tooltip-bottom-left,
   &.tooltip-bottom-right {
-    &.before {
+    &:before {
       border-bottom-color: @tooltip_arrow_color;
     }
-    &.after {
+    &:after {
       border-bottom-color: @tooltip_bg_color;
     }
     &.tooltip-error {
@@ -103,10 +102,10 @@
   &.tooltip-left,
   &.tooltip-left-top,
   &.tooltip-left-bottom {
-    &.before {
+    &:before {
       border-left-color: @tooltip_arrow_color;
     }
-    &.after {
+    &:after {
       border-left-color: @tooltip_bg_color;
     }
     &.tooltip-error {

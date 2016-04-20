@@ -2,7 +2,7 @@ var Tooltip = uskin.Tooltip;
 var content = 'I am a tooltip';
 
 ReactDOM.render(
-  <Tooltip content={content} width="400" />,
+  <Tooltip content={content} width="200" />,
   document.getElementById('example')
 );
 
@@ -12,7 +12,7 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Tooltip content={content} shape="top-left" />,
+  <Tooltip content={content} shape="top-left" hide={true} />,
   document.getElementById('example3')
 );
 
