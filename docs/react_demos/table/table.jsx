@@ -209,27 +209,34 @@ var TableForm = React.createClass({
   },
 
   checkboxInitialize: function(item) {
-    return item.level.localeCompare('Second Level') ? false : true;
+    return item.level.indexOf('Second Level') > -1 ? true : false;
   },
 
-  checkboxOnChange: function(e, status, checkedItem, checkedData) {
-    console.debug('click triggered!', status, checkedItem, checkedData);
+  checkboxOnChange: function(status, item, arr) {
+    // console.log('checkbox on change', status, item, arr);
+  },
+
+  checkboxOnChangeAll: function(status, arr) {
+    // console.log('checkbox on change all', status, arr);
   },
 
   inputSearchOnChange: function(text, status) {
     var filterCol = { category: true, level: true, price: true };
 
-    this.refs.table.setState({
-      filterCol: filterCol,
-      filterBy: function(item, fcolumn) {
-        return fcolumn.some((col) => {
-          if (filterCol[col.key]) {
-            var td = item[col.dataIndex].toLowerCase();
-            return td.indexOf(text.toLowerCase()) > -1 ? true : false;
+    if (text !== '') {
+      this.refs.table.filter(filterCol, function (item, columns) {
+        var keys = columns.map((col) => col.dataIndex);
+        var ret = keys.some((key) => {
+          if (item[key]) {
+            var data = item[key].toLowerCase();
+            return data.indexOf(text.toLowerCase()) > -1 ? true : false;
           }
         });
-      }
-    });
+        return ret;
+      });
+    } else {
+      this.refs.table.filter(filterCol, undefined);
+    }
   },
 
   updateData: function() {
@@ -264,11 +271,12 @@ var TableForm = React.createClass({
           ref="table"
           column={column}
           data={data}
-          dataKey={'id'}
+          dataKey="id"
           loading={this.state.loading}
           checkbox={true}
           checkboxInitialize={this.checkboxInitialize}
           checkboxOnChange={this.checkboxOnChange}
+          checkboxOnChangeAll={this.checkboxOnChangeAll}
           striped={true}
           hover={true}/>
         <div className="desc">

@@ -271,27 +271,36 @@
 	  },
 
 	  checkboxInitialize: function checkboxInitialize(item) {
-	    return item.level.localeCompare('Second Level') ? false : true;
+	    return item.level.indexOf('Second Level') > -1 ? true : false;
 	  },
 
-	  checkboxOnChange: function checkboxOnChange(e, status, checkedItem, checkedData) {
-	    console.debug('click triggered!', status, checkedItem, checkedData);
+	  checkboxOnChange: function checkboxOnChange(status, item, arr) {
+	    // console.log('checkbox on change', status, item, arr);
+	  },
+
+	  checkboxOnChangeAll: function checkboxOnChangeAll(status, arr) {
+	    // console.log('checkbox on change all', status, arr);
 	  },
 
 	  inputSearchOnChange: function inputSearchOnChange(text, status) {
 	    var filterCol = { category: true, level: true, price: true };
 
-	    this.refs.table.setState({
-	      filterCol: filterCol,
-	      filterBy: function filterBy(item, fcolumn) {
-	        return fcolumn.some(function (col) {
-	          if (filterCol[col.key]) {
-	            var td = item[col.dataIndex].toLowerCase();
-	            return td.indexOf(text.toLowerCase()) > -1 ? true : false;
+	    if (text !== '') {
+	      this.refs.table.filter(filterCol, function (item, columns) {
+	        var keys = columns.map(function (col) {
+	          return col.dataIndex;
+	        });
+	        var ret = keys.some(function (key) {
+	          if (item[key]) {
+	            var data = item[key].toLowerCase();
+	            return data.indexOf(text.toLowerCase()) > -1 ? true : false;
 	          }
 	        });
-	      }
-	    });
+	        return ret;
+	      });
+	    } else {
+	      this.refs.table.filter(filterCol, undefined);
+	    }
 	  },
 
 	  updateData: function updateData() {
@@ -338,6 +347,7 @@
 	        checkbox: true,
 	        checkboxInitialize: this.checkboxInitialize,
 	        checkboxOnChange: this.checkboxOnChange,
+	        checkboxOnChangeAll: this.checkboxOnChangeAll,
 	        striped: true,
 	        hover: true }),
 	      React.createElement(
