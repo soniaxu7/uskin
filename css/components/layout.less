@@ -1,9 +1,12 @@
 @grid-columns: 24;
 
-.row {
+// traditional row
+.tra-row {
   display: block;
   width: 100%;
   &:extend(.clearfix all);
 }
 
 .generate-columns(1, @grid-columns);
+
+// TODO: flex row
