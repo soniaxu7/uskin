@@ -8,15 +8,14 @@ class InputNumber extends React.Component {
 
     this.state = {
       value: 0,
-      focusValue: undefined
+      focusValue: undefined,
+      error: false
     };
 
-    this.nextStep = this.nextStep.bind(this);
-    this.prevStep = this.prevStep.bind(this);
-    this.goStep = this.goStep.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-    this.checkValue = this.checkValue.bind(this);
+    ['nextStep', 'prevStep', 'goStep', 'onChange', 'onKeyDown', 'checkValue'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
+
     this._setDefaultProps();
   }
 
@@ -76,9 +75,26 @@ class InputNumber extends React.Component {
   }
 
   onChange(e) {
+    var value = e.target.value;
+    var error = false;
+
+    var dot = value[value.length - 1] === '.';
+    if (value && !dot && !isNaN(value)) {
+      value = Number(value);
+      if (value < this.min || value > this.max) {
+        error = true;
+      }
+    } else {
+      error = true;
+    }
+
     this.setState({
-      focusValue: e.target.value
+      value: value,
+      focusValue: value,
+      error: error
     });
+
+    this.props.onChange && this.props.onChange(value, error);
   }
 
   checkValue(e) {
@@ -136,10 +152,11 @@ class InputNumber extends React.Component {
   setValue(value) {
     this.setState({
       focusValue: undefined,
-      value: this._fixNumber(value)
+      value: this._fixNumber(value),
+      error: false
     });
 
-    this.props.onChange && this.props.onChange(value);
+    this.props.onChange && this.props.onChange(value, false);
   }
 
   onKeyDown(e) {
@@ -152,7 +169,8 @@ class InputNumber extends React.Component {
 
   render() {
     var props = this.props,
-      state = this.state;
+      state = this.state,
+      error = state.error;
 
     var value = state.focusValue !== undefined ? state.focusValue : state.value;
 
@@ -174,6 +192,7 @@ class InputNumber extends React.Component {
         </div>
         <input
           style={inputWidth}
+          className={error ? 'error' : null}
           disabled={props.disabled ? 'disabled' : null}
           onChange={this.onChange}
           onBlur={this.checkValue}

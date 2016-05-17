@@ -48,8 +48,8 @@
 
 	var InputNumber = uskin.InputNumber;
 
-	function listener(status) {
-	  console.debug('click triggered!', status);
+	function listener(number, error) {
+	  console.debug('click triggered!', number, error);
 	}
 
 	ReactDOM.render(React.createElement(
