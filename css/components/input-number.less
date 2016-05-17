@@ -1,9 +1,8 @@
 @arrow_box_border_color: @color_grey_600;
-@arrow_box_border_hover_color: @color_grey_600;
 @arrow_color: @color_font_700;
 @arrow_hover_color: @color_font;
 @arrow_bg_color: @color_grey_400;
-
+@input_border_color: @color_info;
 @input_disabled_border_color: @color_disabled_700;
 @input_disabled_bg_color: @color_disabled_400;
 
@@ -16,9 +15,9 @@
     outline: 0;
     padding-right: 30px;
     width: 38px;
-    &:hover, &:focus {
-      border: 1px solid @arrow_box_border_hover_color;
-    }
+  }
+  .arrow:hover + input {
+    border-color: @input_border_color;
   }
   .arrow {
     position: absolute;
