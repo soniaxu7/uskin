@@ -10,13 +10,11 @@ class Slider extends React.Component {
       perc: 0,
       value: 0
     };
-    this.getProps = this.getProps.bind(this);
-    this.startSlide = this.startSlide.bind(this);
-    this.endSlide = this.endSlide.bind(this);
-    this.updateSlide = this.updateSlide.bind(this);
-    this.finishSlide = this.finishSlide.bind(this);
-    this.disableAnimate = this.disableAnimate.bind(this);
-    this.enableAnimate = this.enableAnimate.bind(this);
+
+    ['getProps', 'startSlide', 'endSlide', 'updateSlide', 'finishSlide',
+    'disableAnimate', 'enableAnimate'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   componentWillMount() {
@@ -35,6 +33,16 @@ class Slider extends React.Component {
     this._max = props.max ? parseFloat(props.max).toFixed(this._unit) : 100;
     this._sum = this._max - this._min;
     var value = props.value ? parseFloat(props.value).toFixed(this._unit) : 0;
+
+    this._min = parseFloat(this._min);
+    this._max = parseFloat(this._max);
+    value = parseFloat(value);
+
+    if (value <= this._min) {
+      value = this._min;
+    } else if (value > this._max) {
+      value = this._max;
+    }
 
     this.setState({
       perc: (value - this._min) / this._sum,
@@ -111,6 +119,13 @@ class Slider extends React.Component {
     var perc = this._trackOffsetCloserPerc(e);
     var value = this._trackOffsetValue(perc);
 
+    if (isNaN(perc)) {
+      perc = 0;
+    }
+    if (isNaN(value)) {
+      value = this._min;
+    }
+
     this.setState({
       perc: perc,
       value: value
@@ -123,13 +138,14 @@ class Slider extends React.Component {
     var props = this.props,
       state = this.state,
       min = this._min,
-      max = this._max;
+      max = this._max,
+      disabled = props.disabled;
 
     var style = styles.getWidth(props.width);
 
     return (
-      <div data-min={min} data-max={max} data-value={state.value} ref="slider" className="slider"
-        onMouseDown={this.startSlide}
+      <div className={'slider' + (disabled ? ' disabled' : '')} data-min={min} data-max={max} data-value={state.value} ref="slider"
+        onMouseDown={disabled ? null : this.startSlide}
         style={{width: style.width}}>
         <div ref="track" className="slider-track" style={{width: state.perc * 100 + '%'}}></div>
         <div ref="thumb" className={'slider-thumb' + (props.hideThumb ? ' hide' : '')} style={{left: state.perc * 100 + '%'}}></div>
@@ -160,7 +176,8 @@ Slider.propTypes = {
     React.PropTypes.string
   ]),
   onChange: React.PropTypes.func,
-  hideThumb: React.PropTypes.bool
+  hideThumb: React.PropTypes.bool,
+  disabled: React.PropTypes.bool
 };
 
 export default Slider;

@@ -3,6 +3,8 @@
 @slider_default_bg_color: @color_info_200;
 @slider_thumb_bg_color: @color_info;
 @slider_thumb_color: #fff;
+@slider_disabled_track_bg_color: @color_disabled_400;
+@slider_disabled_thumb_bg_color: @color_disabled_700;
 
 .slider {
   position: relative;
@@ -48,6 +50,17 @@
     margin-left: -5px;
     &.animate {
       transition:left .5s;
+    }
+  }
+
+  &.disabled {
+    cursor: default;
+    .slider-track {
+      background-color: @slider_disabled_track_bg_color;
+    }
+    .slider-thumb {
+      cursor: default;
+      border-color: @slider_disabled_thumb_bg_color;
     }
   }
 }

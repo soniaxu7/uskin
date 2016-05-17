@@ -9,19 +9,35 @@
     <script src="../../../node_modules/react-dom/dist/react-dom.min.js"></script>
     <script src="../../../dist/js/uskin.js"></script>
     <style type="text/css">
-      .example, .value { float: left; margin: 20px; display: inline-block; }
+      .example, .value, span { float: left; margin: 20px; display: inline-block; }
       .box { height: 60px; }
     </style>
   </head>
   <body>
     <div class="box">
-      <div class="example" id="example"></div><div class="value" id="value1"></div>
+      <div class="example" id="example"></div>
+      <div class="value" id="value1"></div>
+      <span>Default: min = 0, max = 100, value = 0</span>
     </div>
     <div class="box">
-      <div class="example" id="example2"></div><div class="value" id="value2"></div>
+      <div class="example" id="example2"></div>
+      <div class="value" id="value2"></div>
+      <span>min = -100, max = 100, value = -20, unit = 40</span>
     </div>
     <div class="box">
-      <div class="example" id="example3"></div><div class="value" id="value3"></div>
+      <div class="example" id="example3"></div>
+      <div class="value" id="value3"></div>
+      <span>min = 0, max = 3, value = 0.54, unit = 0.01</span>
+    </div>
+    <div class="box">
+      <div class="example" id="example4"></div>
+      <div class="value" id="value4"></div>
+      <span>Disabled = true</span>
+    </div>
+    <div class="box">
+      <div class="example" id="example5"></div>
+      <div class="value" id="value5"></div>
+      <span>when min == max == value == 1</span>
     </div>
     <script src="../dist/slider.js"></script>
   </body>
