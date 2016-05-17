@@ -29,10 +29,10 @@ class Slider extends React.Component {
     this._step = isNaN(Math.abs(props.step)) ? 1 : Math.abs(props.step);
     var unit = (this._step).toString().split('.')[1];
     this._unit = unit ? unit.length : 0;
-    this._min = props.min ? parseFloat(props.min).toFixed(this._unit) : 0;
-    this._max = props.max ? parseFloat(props.max).toFixed(this._unit) : 100;
+    this._min = props.min !== undefined ? parseFloat(props.min).toFixed(this._unit) : 0;
+    this._max = props.max !== undefined ? parseFloat(props.max).toFixed(this._unit) : 100;
     this._sum = this._max - this._min;
-    var value = props.value ? parseFloat(props.value).toFixed(this._unit) : 0;
+    var value = props.value !== undefined ? parseFloat(props.value).toFixed(this._unit) : 0;
 
     this._min = parseFloat(this._min);
     this._max = parseFloat(this._max);
