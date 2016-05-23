@@ -59,6 +59,7 @@
 	  filterAll: '全部',
 	  filter: [{
 	    name: 'id大于等于4',
+	    key: 'gt4',
 	    filterBy: function filterBy(item) {
 	      if (item.id >= 4) {
 	        return true;
@@ -66,6 +67,7 @@
 	    }
 	  }, {
 	    name: 'id小于4',
+	    key: 'lt4',
 	    filterBy: function filterBy(item) {
 	      if (item.id < 4) {
 	        return true;

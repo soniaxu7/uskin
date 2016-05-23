@@ -11,6 +11,7 @@ var column = [{
   filterAll: '全部',
   filter: [{
     name: 'id大于等于4',
+    key: 'gt4',
     filterBy: function(item) {
       if (item.id >= 4) {
         return true;
@@ -18,6 +19,7 @@ var column = [{
     }
   }, {
     name: 'id小于4',
+    key: 'lt4',
     filterBy: function(item) {
       if (item.id < 4) {
         return true;
