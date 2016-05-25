@@ -9,24 +9,22 @@
     <script src="../../../node_modules/react-dom/dist/react-dom.js"></script>
     <script src="../../../dist/js/uskin.js"></script>
     <style type="text/css">
-      #example, #example2 { width: 360px; margin: 10px auto;}
+      #example {
+        width: 360px;
+        margin: 10px auto;
+      }
       .page {
-        width: 120px;
-        margin: 30px auto;
+        width: 100%;
+        text-align: center;
         font-size: 18px;
+      }
+      .btn {
+        margin-left: 12px;
       }
     </style>
   </head>
   <body>
-    <div>
-      <div class="page">这里是第<span id="value">1</span>页</div>
-      <div id="example"></div>
-    </div>
-    <div>
-      <div class="page">这里是第<span id="value2">7</span>页</div>
-      <div id="example2"></div>
-    </div>
-
+    <div id="example"></div>
     <script src="../dist/pagination.js"></script>
   </body>
 </html>
