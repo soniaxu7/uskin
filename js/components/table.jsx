@@ -69,8 +69,6 @@ class Table extends React.Component {
       data: data,
       loading: nextProps.loading
     });
-
-    this.checkCheckbox(data, nextProps);
   }
 
   resizeCol() {
@@ -376,12 +374,9 @@ class Table extends React.Component {
   }
 
   setData(data) {
-    var newData = this.getProcessedData(data, this.props.dataKey);
     this.setState({
-      data: newData
+      data: this.getProcessedData(data, this.props.dataKey)
     });
-
-    this.checkCheckbox(newData, this.props);
   }
 
   getProcessedData(oldData, key) {
@@ -400,19 +395,6 @@ class Table extends React.Component {
     }
 
     return data;
-  }
-
-  checkCheckbox(data, nextProps) {
-    var checked = this.state.checkedKey;
-    var newChecked = {};
-    var key = nextProps.dataKey;
-    data.forEach((ele) => {
-      var checkedKey = ele[key];
-      if (checked[checkedKey]) {
-        newChecked[checkedKey] = true;
-      }
-    });
-    this.check(newChecked, data);
   }
 
   loading(status) {
