@@ -15,7 +15,6 @@ class Table extends React.Component {
       data: this.props.data,
       loading: this.props.loading,
       checkedKey: {},
-      checkedAll: false,
       sortCol: undefined,
       sortDirection: undefined,
       filterColKey: {},
@@ -321,18 +320,8 @@ class Table extends React.Component {
       data = this.state.data;
     }
 
-    var key = this.props.dataKey,
-      uncheckedAll;
-
-    if (data.length > 0) {
-      uncheckedAll = data.some((item) => !checkedKey[item[key]]);
-    } else {
-      uncheckedAll = true;
-    }
-
     this.setState({
-      checkedKey: checkedKey,
-      checkedAll: !uncheckedAll
+      checkedKey: checkedKey
     });
   }
 
@@ -408,7 +397,6 @@ class Table extends React.Component {
     this.setState({
       data: this.props.data,
       checkedKey: {},
-      checkedAll: false,
       sortCol: undefined,
       sortDirection: undefined,
       filterColKey: {},
@@ -423,6 +411,10 @@ class Table extends React.Component {
       minWidth: width,
       maxWidth: width
     };
+  }
+
+  checkedAll(data, key, checked) {
+    return data.length > 0 && !data.some((item) => !checked[item[key]]);
   }
 
   render() {
@@ -442,13 +434,15 @@ class Table extends React.Component {
       }
     });
 
+    var checkedAll = this.checkedAll(state.data, dataKey, state.checkedKey);
+
     return (
       <div style={style} className={className}>
         <div ref="thead" className="table-header" onClick={this.tableHeadOnClick}>
           {
             props.checkbox ?
               <div key="checkbox" className="checkbox">
-                <input value="null" onChange={this.onCheck} type="checkbox" checked={state.checkedAll}/>
+                <input value="null" onChange={this.onCheck} type="checkbox" checked={checkedAll}/>
               </div>
             : null
           }
