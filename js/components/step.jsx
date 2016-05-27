@@ -42,7 +42,7 @@ class Step extends React.Component {
     var style = styles.getWidth(props.width / items.length);
 
     return (
-      <ol className="steps">
+      <ol className="steps" style={{width: props.width}}>
         {items.map((item, index) =>
           <li key={index} className={state.selectedKey === item.key ? 'step-item selected' : 'step-item'} style={style}>
             <span ref={'step' + index} data-value={item.key} onClick={state.selectedKey === item.key ? undefined : this.onClick}></span>
@@ -54,5 +54,9 @@ class Step extends React.Component {
     );
   }
 }
+
+Step.defaultProps = {
+  width: 570
+};
 
 export default Step;
