@@ -89,7 +89,7 @@ class InputNumber extends React.Component {
     }
 
     this.setState({
-      value: value,
+      value: error ? this.state.value : value,
       focusValue: value,
       error: error
     });

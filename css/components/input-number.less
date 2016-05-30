@@ -3,6 +3,7 @@
 @arrow_hover_color: @color_font;
 @arrow_bg_color: @color_grey_400;
 @input_border_color: @color_info;
+@input_error_border_color: @color_delete;
 @input_disabled_border_color: @color_disabled_700;
 @input_disabled_bg_color: @color_disabled_400;
 
@@ -18,6 +19,9 @@
   }
   .arrow:hover + input {
     border-color: @input_border_color;
+    &.error {
+      border-color: @input_error_border_color;
+    }
   }
   .arrow {
     position: absolute;
