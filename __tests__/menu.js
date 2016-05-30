@@ -68,7 +68,7 @@ describe('Test menu component', () => {
   it('is generated with items', () => {
 
     var menu = TestUtils.renderIntoDocument(
-      <Menu items={items}/>
+      <Menu items={items} />
     );
 
     var menuNode = ReactDOM.findDOMNode(menu);
@@ -81,7 +81,7 @@ describe('Test menu component', () => {
 
     var clickIndex = [1, 1];
     var menu = TestUtils.renderIntoDocument(
-      <Menu items={items}/>
+      <Menu items={items} />
     );
 
     var menuNode = ReactDOM.findDOMNode(menu);

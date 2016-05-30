@@ -26,7 +26,7 @@ describe('Test step component', () => {
       width = 600;
 
     var step = TestUtils.renderIntoDocument(
-      <Step items={items} width={width}/>
+      <Step items={items} width={width} />
     );
 
     var stepNode = ReactDOM.findDOMNode(step);
@@ -66,7 +66,7 @@ describe('Test step component', () => {
     );
 
     var step = TestUtils.renderIntoDocument(
-      <Step items={items}/>
+      <Step items={items} />
     );
 
     var itemNode = TestUtils.findRenderedDOMComponentWithClass(step, 'step-item selected');

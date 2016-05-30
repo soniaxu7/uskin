@@ -24,7 +24,7 @@ describe('Test tab component', () => {
       type = 'sm';
 
     var tab = TestUtils.renderIntoDocument(
-      <Tab items={items} type={type}/>
+      <Tab items={items} type={type} />
     );
 
     var tabNode = ReactDOM.findDOMNode(tab);
@@ -49,7 +49,7 @@ describe('Test tab component', () => {
 
     var selectedKey = items.filter((item) => item.default)[0].key;
     var tab = TestUtils.renderIntoDocument(
-      <Tab items={items}/>
+      <Tab items={items} />
     );
 
     var itemNode = TestUtils.findRenderedDOMComponentWithClass(tab, 'tab selected');
@@ -126,7 +126,7 @@ describe('Test tab component', () => {
     var divNode = document.createElement('div');
 
     //first update
-    var tab = ReactDOM.render(<Tab items={items} onClick={listener}/>, divNode),
+    var tab = ReactDOM.render(<Tab items={items} onClick={listener} />, divNode),
       tabNode = ReactDOM.findDOMNode(tab),
       clickNode = tabNode.childNodes[clickIndex].firstChild;
 
@@ -134,7 +134,7 @@ describe('Test tab component', () => {
     TestUtils.Simulate.click(clickNode);
 
     //second update
-    var newTab = ReactDOM.render(<Tab items={newItems} onClick={listener}/>, divNode),
+    var newTab = ReactDOM.render(<Tab items={newItems} onClick={listener} />, divNode),
       newTabNode = ReactDOM.findDOMNode(newTab),
       newClickNode = newTabNode.childNodes[clickIndex].firstChild;
 

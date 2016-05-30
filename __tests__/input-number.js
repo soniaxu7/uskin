@@ -31,6 +31,8 @@ describe('Test input-number component', () => {
       upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
       downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
 
+    const isError = true;
+
     it('should render a InputNumber component with specific width', () => {
       var inputNumberNode = ReactDOM.findDOMNode(inputNumber);
 
@@ -47,16 +49,16 @@ describe('Test input-number component', () => {
         which: 40
       });
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.value]);
+      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step, !isError]);
+      expect(props.onChange.mock.calls[1]).toEqual([props.value, !isError]);
     });
 
     it('should work when up or down button is clicked', () => {
       TestUtils.Simulate.click(upButtonNode);
       TestUtils.Simulate.click(downButtonNode);
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.value]);
+      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step, !isError]);
+      expect(props.onChange.mock.calls[1]).toEqual([props.value, !isError]);
     });
   });
 
@@ -80,14 +82,16 @@ describe('Test input-number component', () => {
     const upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
       downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
 
+    const isError = true;
+
     it('test decimal add and subtract', () => {
       TestUtils.Simulate.click(upButtonNode);
       TestUtils.Simulate.click(downButtonNode);
       TestUtils.Simulate.click(downButtonNode);
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.value]);
-      expect(props.onChange.mock.calls[2]).toEqual([props.value - props.step]);
+      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step, !isError]);
+      expect(props.onChange.mock.calls[1]).toEqual([props.value, !isError]);
+      expect(props.onChange.mock.calls[2]).toEqual([props.value - props.step, !isError]);
     });
   });
 
@@ -111,13 +115,15 @@ describe('Test input-number component', () => {
     const upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
       downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
 
+    const isError = true;
+
     it('test upper bound', () => {
       for (let i = 0; i < 5; i++) {
         TestUtils.Simulate.click(upButtonNode);
       }
 
       var callSum = props.onChange.mock.calls.length;
-      expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.max]);
+      expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.max, !isError]);
     });
 
     it('test lower bound', () => {
@@ -126,28 +132,34 @@ describe('Test input-number component', () => {
       }
 
       var callSum = props.onChange.mock.calls.length;
-      expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.min]);
+      expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.min, !isError]);
     });
   });
 
   describe('test input value is changed', () => {
-    const props = {
-      onChange: jest.genMockFunction(),
-      min: 0,
-      max: 10,
-      value: 3,
-      step: 1
-    };
+    var props, inputNode, inputNumber, isError;
 
-    const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber
-            onChange={props.onChange}
-            min={props.min}
-            max={props.max}
-            value={props.value}
-            step={props.step}/>);
+    beforeEach(() => {
+      props = {
+        onChange: jest.genMockFunction(),
+        min: 0,
+        max: 10,
+        value: 3,
+        step: 1
+      };
 
-    const inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
+      inputNumber = TestUtils.renderIntoDocument(
+        <InputNumber
+              onChange={props.onChange}
+              min={props.min}
+              max={props.max}
+              value={props.value}
+              step={props.step}/>);
+
+      inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
+
+      isError = true;
+    });
 
     it('test if value is not a number', () => {
       var focusValue = 'abcd';
@@ -160,7 +172,7 @@ describe('Test input-number component', () => {
       });
       TestUtils.Simulate.blur(inputNode);
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value]);
+      expect(props.onChange.mock.calls[0]).toEqual([focusValue, isError]);
       expect(inputNode.value).toEqual('' + props.value);
     });
 
@@ -172,7 +184,7 @@ describe('Test input-number component', () => {
     });
 
     it('test value is changed', () => {
-      var focusValue = '8';
+      var focusValue = 8;
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -187,11 +199,12 @@ describe('Test input-number component', () => {
 
       expect(inputNumber.state.focusValue).toEqual(undefined);
       expect(inputNumber.state.value).toEqual(Number(focusValue));
-      expect(props.onChange.mock.calls[1]).toEqual([Number(focusValue)]);
+      expect(props.onChange.mock.calls[0]).toEqual([focusValue, !isError]);
+      expect(props.onChange.mock.calls[1]).toEqual([focusValue, !isError]);
     });
 
     it('test value is overstep upper bound', () => {
-      var focusValue = '15';
+      var focusValue = 15;
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -201,11 +214,12 @@ describe('Test input-number component', () => {
       });
       TestUtils.Simulate.blur(inputNode);
 
-      expect(props.onChange.mock.calls[2]).toEqual([props.max]);
+      expect(props.onChange.mock.calls[0]).toEqual([focusValue, isError]);
+      expect(props.onChange.mock.calls[1]).toEqual([props.max, !isError]);
     });
 
     it('test value is overstep lower bound', () => {
-      var focusValue = '-15';
+      var focusValue = -15;
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -215,7 +229,8 @@ describe('Test input-number component', () => {
       });
       TestUtils.Simulate.blur(inputNode);
 
-      expect(props.onChange.mock.calls[2]).toEqual([props.max]);
+      expect(props.onChange.mock.calls[0]).toEqual([focusValue, isError]);
+      expect(props.onChange.mock.calls[1]).toEqual([props.min, !isError]);
     });
 
   });

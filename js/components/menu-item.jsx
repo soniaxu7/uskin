@@ -82,7 +82,7 @@ class MenuItem extends React.Component {
             </h6>
           ) : null
         }
-        <ul ref="item" style={item.fold ? {height: '0', overflow: 'hidden'} : null}>
+        <ul ref="item" style={item.fold ? {height: 0, overflow: 'hidden'} : null}>
           {item.submenu.map((submenu, i) =>
             <li key={i}
               className={this._isSelectedMenu(submenu) ? 'selected' : null}

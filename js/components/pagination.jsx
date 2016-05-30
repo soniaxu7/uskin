@@ -6,10 +6,15 @@ class Pagination extends React.Component {
     super(props);
 
     var current = props.current;
+    var total = props.total;
     if (current < 1) {
       current = 1;
-    } else if (current > props.total) {
-      current = props.total;
+    }
+    if (total < 1) {
+      total = 1;
+    }
+    if (current > total) {
+      current = total;
     }
     this.state = {
       current: current
@@ -87,53 +92,80 @@ class Pagination extends React.Component {
   }
 
   renderPageNumber(total, current) {
-    var midFrom = (current - 4 > 0) ? current - 2 : 2,
-      midTo = (current + 4) <= total ? current + 2 : total - 1;
-
     var pagi = [];
+
     pagi.push(
-      <li key="1">
-        <a className={'item' + (current === 1 ? ' active' : '')}
-          onClick={current === 1 ? null : this.onClick.bind(null, 1)}>1</a>
+      <li key={current}>
+        <a className="item active">{current}</a>
       </li>
     );
 
-    if (current > 4) {
-      pagi.push(
-        <li key="prevs omit">
-          <a className="omit">···</a>
+    for(let i = 1; i <= 2; i++) {
+      let prevSibling = current - i;
+      if (prevSibling >= 1 && prevSibling < current) {
+        pagi.unshift(
+          <li key={prevSibling}>
+            <a className="item" onClick={this.onClick.bind(null, prevSibling)}>{prevSibling}</a>
+          </li>
+        );
+      }
+      let nextSibling = current + i;
+      if (nextSibling <= total && current < nextSibling) {
+        pagi.push(
+          <li key={nextSibling}>
+            <a className="item" onClick={this.onClick.bind(null, nextSibling)}>{nextSibling}</a>
+          </li>
+        );
+      }
+    }
+
+    if (current > 3) {
+      if (current > 4) {
+        pagi.unshift(
+          <li key="prevs omit">
+            <a className="omit">···</a>
+          </li>
+        );
+      }
+      pagi.unshift(
+        <li key="1">
+          <a className="item"
+            onClick={this.onClick.bind(null, 1)}>1</a>
         </li>
       );
     }
 
-    for (let i = midFrom; i <= midTo; i++) {
+    if (current + 3 <= total) {
+      if (current + 4 <= total) {
+        pagi.push(
+          <li key="nexts omit">
+            <a className="omit">···</a>
+          </li>
+        );
+      }
       pagi.push(
-        <li key={i}>
-          <a className={'item' + (current === i ? ' active' : '')}
-            onClick={current === i ? null : this.onClick.bind(null, i)}>{i}</a>
+        <li key={total}>
+          <a className="total"
+            onClick={this.onClick.bind(null, total)}>{total}</a>
         </li>
       );
     }
-
-    if (current + 4 <= total) {
-      pagi.push(
-        <li key="nexts omit">
-          <a className="omit">···</a>
-        </li>
-      );
-    }
-
-    pagi.push(
-      <li key={total}>
-        <a className={'item' + (current === total ? ' active' : '')}
-          onClick={current === total ? null : this.onClick.bind(null, total)}>{total}</a>
-      </li>
-    );
 
     return pagi;
+
   }
 
   renderPagination(total, current) {
+    if (current < 1) {
+      current = 1;
+    }
+    if (total < 1) {
+      total = 1;
+    }
+    if (current > total) {
+      current = total;
+    }
+
     var pagi = [];
 
     pagi.push(
