@@ -16,36 +16,6 @@
 /**
  * color Pallet v.3 , default color is 500
  */
-/*
- *  /--, |  | /--  /-- |-- /--, /--,
- *  |__  |  | |    |   |-- |__  |__
- *   __| \__/ \__  \__ |__  __|  __|
- */
-/*
- *  ---  |  | |--   /-\
- *   |   |\ | |--  |   |
- *  ---  | \| |     \_/
- */
-/*
- *  |-   |-- |   |--  --- |--
- *  |  ) |-- |   |--   |  |--
- *  |_/  |__ |__ |__   |  |__
- */
-/*
- *  |   |   |  /\  |-,  |  | --- |  |  /--
- *   \ / \ /  /--\ |__) |\ |  |  |\ | |  --
- *    |   |   |  | | \  | \| --- | \|  \__|
- */
-/*
- *   /--   /\  |  |  /--  |-- |
- *  |     /--\ |\ | |     |-- |
- *   \__  |  | | \|  \__  |__ |___
- */
-/*
- *   /--  |-,  |--  \  /
- *  |  -- |__) |--   \/
- *   \__| | \  |__   ||
- */
 /**
  * Global mixins
  */
@@ -510,8 +480,8 @@ textarea {
 }
 @font-face {
   font-family: "icons";
-  src: url(./fonts/95a18a22.icon.eot);
-  src: url(./fonts/95a18a22.icon.eot?#iefix) format("embedded-opentype"), url(./fonts/1e306385.icon.woff) format("woff"), url(./fonts/39a4878f.icon.ttf) format("truetype"), url(./fonts/f5309baf.icon.svg#icons) format("svg");
+  src: url(./fonts/5539fd0a.icon.eot);
+  src: url(./fonts/5539fd0a.icon.eot?#iefix) format("embedded-opentype"), url(./fonts/e87addce.icon.woff) format("woff"), url(./fonts/d61c96e6.icon.ttf) format("truetype"), url(./fonts/fc121340.icon.svg#icons) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -2376,6 +2346,7 @@ input[type="checkbox"]:disabled {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  cursor: pointer;
 }
 .pagination > li .item {
   color: #bbbfc5;
@@ -2399,26 +2370,39 @@ input[type="checkbox"]:disabled {
   height: 24px;
   line-height: 24px;
 }
+.pagination > li .first,
 .pagination > li .prev,
-.pagination > li .next {
+.pagination > li .next,
+.pagination > li .last {
   background-color: #fff;
   color: #bbbfc5;
   border: 1px solid #bbbfc5;
 }
+.pagination > li .first:hover,
 .pagination > li .prev:hover,
-.pagination > li .next:hover {
+.pagination > li .next:hover,
+.pagination > li .last:hover {
   color: #fff;
   border-color: #00afc8;
   background-color: #00afc8;
 }
+.pagination > li .first.disabled,
 .pagination > li .prev.disabled,
 .pagination > li .next.disabled,
+.pagination > li .last.disabled,
+.pagination > li .first.disabled:hover,
 .pagination > li .prev.disabled:hover,
-.pagination > li .next.disabled:hover {
+.pagination > li .next.disabled:hover,
+.pagination > li .last.disabled:hover {
   cursor: not-allowed !important;
   color: #bbbfc5 !important;
   border-color: #bbbfc5 !important;
   background-color: #d5dddf !important;
+}
+.pagination > li .prev,
+.pagination > li .next {
+  color: #00afc8;
+  border-color: #00afc8;
 }
 .tra-row {
   display: block;
@@ -2568,6 +2552,9 @@ input[type="checkbox"]:disabled {
 }
 .input-number .arrow:hover + input {
   border-color: #00afc8;
+}
+.input-number .arrow:hover + input.error {
+  border-color: #e05c69;
 }
 .input-number .arrow {
   position: absolute;
