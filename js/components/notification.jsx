@@ -5,6 +5,7 @@ import styles from '../mixins/styles';
 var seed = 0;
 var now = Date.now();
 var TYPES = ['info', 'success', 'warning', 'danger'];
+var notification = null;
 
 function getUuid() {
   return 'notification_' + now + '_' + (seed++);
@@ -53,7 +54,7 @@ var Notice = React.createClass({
       } else {
         duration = props.duration;
       }
-      this.closeTimer = setTimeout(()=> {
+      this.closeTimer = setTimeout(() => {
         this.close();
       }, duration * 1000);
     }
@@ -222,8 +223,9 @@ Notification.addNotice = (noticeProps) => {
     div.id = 'notification-container';
     document.body.appendChild(div);
   }
-  var notification = ReactDOM.render(<Notification />, div);
+  notification = ReactDOM.render(<Notification />, div);
   notification.add(noticeProps);
+  return notification;
 };
 
 Notification.removeNotice = (id) => {
@@ -231,8 +233,9 @@ Notification.removeNotice = (id) => {
   if (!div) {
     return;
   }
-  var notification = ReactDOM.render(<Notification />, div);
+  notification = ReactDOM.render(<Notification />, div);
   notification.close(id);
+  return notification;
 };
 
 Notification.updateNotice = (newNotice) => {
@@ -240,8 +243,18 @@ Notification.updateNotice = (newNotice) => {
   if (!div) {
     return;
   }
-  var notification = ReactDOM.render(<Notification />, div);
+  notification = ReactDOM.render(<Notification />, div);
   notification.update(newNotice);
+  return notification;
 };
+
+Object.defineProperty(Notification, 'len', {
+  get: () => {
+    if (!notification) {
+      return 0;
+    }
+    return notification.state.notices.length;
+  }
+});
 
 export default Notification;
