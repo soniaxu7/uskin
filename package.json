@@ -1,0 +1,84 @@
+{
+  "name": "uskin_api",
+  "description": "A introduction of all uskin components' APIs.",
+  "version": "0.0.1",
+  "contributors": [
+    "wanghuanan <wanghuanan@unitedstack.com>",
+    "cuizhirong <cuizhirong@unitedstack.com>"
+  ],
+  "repository": "http://git.ustack.com/yaoli/uskin_api.git",
+  "keywords": [
+    "css",
+    "less",
+    "react",
+    "babel",
+    "front-end"
+  ],
+  "scripts": {
+    "build": "grunt build",
+    "dev": "webpack --config dev.webpack.config.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.1.2",
+    "autoprefixer-loader": "^3.1.0",
+    "babel": "^6.1.18",
+    "babel-core": "^6.1.4",
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-jest": "6.0.1",
+    "babel-loader": "^6.1.0",
+    "babel-plugin-transform-runtime": "^6.1.18",
+    "babel-preset-es2015": "^6.1.4",
+    "babel-preset-react": "^6.1.4",
+    "babel-runtime": "^6.2.0",
+    "css-loader": "^0.23.1",
+    "cssnano": "^3.4.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^1.0.2",
+    "eslint-plugin-babel": "^3.0.0",
+    "eslint-plugin-react": "^3.11.2",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "grunt": "^0.4.4",
+    "grunt-banner": "^0.5.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-jest": "^0.2.0",
+    "grunt-webfont": "^1.1.0",
+    "grunt-webpack": "^1.0.11",
+    "jest-cli": "^0.7.1",
+    "json-loader": "^0.5.3",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "lesslint": "^0.1.8-beta.1",
+    "load-grunt-tasks": "^3.3.0",
+    "postcss": "^5.0.12",
+    "postcss-class-prefix": "^0.3.0",
+    "react": "^0.14.2",
+    "react-addons-test-utils": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "stylelint": "^1.0.1",
+    "time-grunt": "^1.2.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.4",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest/index.js",
+    "testFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "collectCoverage": true
+  }
+}
