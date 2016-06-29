@@ -25,24 +25,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -50,44 +50,44 @@ var column = [{
 
 var data = [{
   property: 'title',
-  explain: '设置提示框的标题',
-  type: 'string',
+  explain: 'Set title of Tip',
+  type: 'String',
   defaultValue: '-',
   id: 1
 }, {
   property: 'content',
-  explain: '设置提示框的提示信息',
-  type: 'string',
+  explain: 'Set text content of Tip',
+  type: 'String',
   defaultValue: '-',
   id: 2
 }, {
   property: 'showIcon',
-  explain: '设置提示框的自有图标的显示或隐藏',
-  type: 'boolean',
+  explain: 'Set true to show the Tip icon of certain type',
+  type: 'Boolean',
   defaultValue: 'false',
   id: 3
 }, {
   property: 'type',
-  explain: '设置提示框的提示信息类型，可选值为info，success，warning，danger',
-  type: 'string',
+  explain: 'Set Tip type, available value including info, success, warning and danger',
+  type: 'String',
   defaultValue: '-',
   id: 4
 }, {
   property: 'width',
-  explain: '设置提示框的尺寸',
-  type: 'string',
+  explain: 'Set Width of Tip',
+  type: 'String',
   defaultValue: '-',
   id: 5
 }, {
   property: 'isAutoHide',
-  explain: '设置提示框是否默认自动隐藏，可选值true，false',
-  type: 'boolean',
+  explain: 'Set true to enable Tip automatic disapear',
+  type: 'Boolean',
   defaultValue: 'false',
   id: 6
 }, {
   property: 'icon',
-  explain: '设置提示框的图标',
-  type: 'string',
+  explain: 'Set type of icon of Tip',
+  type: 'String',
   defaultValue: '-',
   id: 7
 }];
@@ -113,8 +113,8 @@ class IntroTip extends React.Component {
                 <Tip content={text.danger} type="danger" />
               </div>
               <div>
-                <p className="title">默认文字提示框</p>
-                <p className="content">通过设置type生成info，success，warning，danger四种提示框</p>
+                <p className="title">Type of Tip</p>
+                <p className="content">Types including info, success, warning and danger</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -141,8 +141,8 @@ class IntroTip extends React.Component {
                 <Tip content={text.danger} type="danger" enableClose={true}/>
               </div>
               <div>
-                <p className="title">可关闭的文字提示框</p>
-                <p className="content">通过设置enabledClose产生可关闭的提示框</p>
+                <p className="title">enableClose of Tip</p>
+                <p className="content">Set enabledClose true to show the close icon</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>
@@ -166,8 +166,8 @@ class IntroTip extends React.Component {
                 <Tip icon="loading-tip" content={text.success}  enableClose={true} type="info"/>
               </div>
               <div>
-                <p className="title">图标提示框</p>
-                <p className="content">通过icon设置提示框的图标</p>
+                <p className="title">Icon of Tip</p>
+                <p className="content">Set attribute icon, value including loading-tip, success. Default is warning icon.</p>
                 <p className="code-show" id="code3" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode3" style={{display: 'none'}}>
@@ -193,8 +193,8 @@ class IntroTip extends React.Component {
                 <Tip title={text.title} content={text.danger} type="danger" />
               </div>
               <div>
-                <p className="title">带标题的文字提示框</p>
-                <p className="content">通过title设置带标题的提示框</p>
+                <p className="title">Tip with title</p>
+                <p className="content">Set title value of Tip</p>
                 <p className="code-show" id="code4" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode4" style={{display: 'none'}}>
@@ -214,14 +214,14 @@ class IntroTip extends React.Component {
             </div>
             <div className="contain">
               <div className="component">
-                <Tip content={text.info} icon="loading-tip" enableClose={true} type="info" />
-                <Tip content={text.success} icon="loading-tip" enableClose={true} type="success" />
-                <Tip content={text.warning} icon="loading-tip" enableClose={true} type="warning" />
-                <Tip content={text.danger} icon="loading-tip" enableClose={true} type="danger" />
+                <Tip content={text.info} showIcon={true} enableClose={true} type="info" />
+                <Tip content={text.success} showIcon={true} enableClose={true} type="success" />
+                <Tip content={text.warning} showIcon={true} enableClose={true} type="warning" />
+                <Tip content={text.danger} showIcon={true} enableClose={true} type="danger" />
               </div>
               <div>
-                <p className="title">显示自有图标提示框</p>
-                <p className="content">设置showIcon显示提示框自有的图标</p>
+                <p className="title">showIcon of Tip</p>
+                <p className="content">Set showIcon to true to enable the view of default icon according to Tip type </p>
                 <p className="code-show" id="code5" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode5" style={{display: 'none'}}>
@@ -230,10 +230,10 @@ class IntroTip extends React.Component {
                     var Tip = uskin.Tip;<br/><br/>
 
                     ReactDOM.render(&lt;div><br/>
-                      &nbsp;&nbsp;&lt;Tip content=&#123;text.info} icon="loading-tip" enableClose=&#123;true} type="info" /><br/>
-                      &nbsp;&nbsp;&lt;Tip content=&#123;text.info} icon="loading-tip" enableClose=&#123;true} type="success" /><br/>
-                      &nbsp;&nbsp;&lt;Tip content=&#123;text.info} icon="loading-tip" enableClose=&#123;true} type="warning" /><br/>
-                      &nbsp;&nbsp;&lt;Tip content=&#123;text.info} icon="loading-tip" enableClose=&#123;true} type="danger" /><br/>
+                      &nbsp;&nbsp;&lt;Tip content=&#123;text.info} showIcon=&#123;true} enableClose=&#123;true} type="info" /><br/>
+                      &nbsp;&nbsp;&lt;Tip content=&#123;text.success} showIcon=&#123;true} enableClose=&#123;true} type="success" /><br/>
+                      &nbsp;&nbsp;&lt;Tip content=&#123;text.warning} showIcon=&#123;true} enableClose=&#123;true} type="warning" /><br/>
+                      &nbsp;&nbsp;&lt;Tip content=&#123;text.danger} showIcon=&#123;true} enableClose=&#123;true} type="danger" /><br/>
                     &lt;/div>, mountNode);
                   </code>
                 </pre>

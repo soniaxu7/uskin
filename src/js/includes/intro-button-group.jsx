@@ -16,24 +16,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -41,16 +41,22 @@ var column = [{
 
 var data = [{
   property: 'type',
-  explain: '设置按钮的类型，水平按钮组或者垂直按钮组，可选值vertical或者不设值',
-  type: 'string',
+  explain: 'Set type of each button. Or set the ButtonGroup as vertical or lateral.',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
-  property: 'width',
-  explain: '设置按钮宽度',
-  type: 'string',
-  defaultValue: '104px',
+  property: 'value',
+  explain: 'The text showed on the button.',
+  type: 'String',
+  defaultValue: '-',
   id: '2'
+}, {
+  property: 'width',
+  explain: 'Set the width of the Button or the width of the ButtonGroup.',
+  type: 'String',
+  defaultValue: '104px',
+  id: '3'
 }];
 
 class IntroButtonGroup extends React.Component {
@@ -74,8 +80,8 @@ class IntroButtonGroup extends React.Component {
                 </ButtonGroup>
               </div>
               <div>
-                <p className="title">默认按钮组</p>
-                <p className="content">在ButtonGroup中添加Button就可以生成简单的ButtonGroup</p>
+                <p className="title">Default ButtonGroup</p>
+                <p className="content">Add component Button in wrap of the tag of ButtonGroup, the value of each button is available to be configed.</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -106,8 +112,8 @@ class IntroButtonGroup extends React.Component {
                 </ButtonGroup>
               </div>
               <div>
-                <p className="title">垂直的按钮组</p>
-                <p className="content">通过设置type属性为vertical，生成垂直的按钮组</p>
+                <p className="title">Vertical ButtonGroup</p>
+                <p className="content">Set the type of ButtonGroup as "vertical"</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>
@@ -138,8 +144,8 @@ class IntroButtonGroup extends React.Component {
                 </ButtonGroup>
               </div>
               <div>
-                <p className="title">设置宽度的按钮组</p>
-                <p className="content">通过设置ButtonGroup的width属性，生成不同宽度的按钮组</p>
+                <p className="title">ButtonGroup with Width Set</p>
+                <p className="content">Set the width attribute of ButtonGroup defining the overall width of the aligned buttons.</p>
                 <p className="code-show" id="code3" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode3" style={{display: 'none'}}>
@@ -168,8 +174,8 @@ class IntroButtonGroup extends React.Component {
                 </ButtonGroup>
               </div>
               <div>
-                <p className="title">可设置宽度的垂直按钮组</p>
-                <p className="content">设置属性width和type，生成相应宽度的垂直按钮组</p>
+                <p className="title">Vertical ButtonGroup with Width Set</p>
+                <p className="content">Set attribute type and width of the ButtonGroup</p>
                 <p className="code-show" id="code4" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode4" style={{display: 'none'}}>

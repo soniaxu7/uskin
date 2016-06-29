@@ -14,24 +14,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -39,83 +39,83 @@ var column = [{
 
 var data = [{
   property: 'column',
-  explain: '设置表格标题栏标题',
+  explain: 'Set the table head content',
   type: 'array',
   defaultValue: '-',
   id: 1
 }, {
   property: 'data',
-  explain: '设置表格数据',
-  type: 'array',
+  explain: 'Set the content of each row of the table',
+  type: 'Array',
   defaultValue: '-',
   id: 2
 }, {
   property: 'dataKey',
-  explain: '设置表格数据的唯一标识',
-  type: 'string',
+  explain: 'Set the unique key of the data item',
+  type: 'String',
   defaultValue: '-',
   id: 3
 }, {
   property: 'checkbox',
-  explain: '设置表格是否选中',
-  type: 'boolean',
+  explain: 'Set whether the row of data is selected',
+  type: 'Boolean',
   defaultValue: 'false',
   id: 4
 }, {
   property: 'striped',
-  explain: '设置是否开启隔行颜色改变',
-  type: 'boolean',
+  explain: 'Set true to enable the the color distinguished between each row',
+  type: 'Boolean',
   defaultValue: 'false',
   id: 5
 }, {
   property: 'hover',
-  explain: '设置鼠标经过时样式是否发生改变',
-  type: 'boolean',
+  explain: 'Set true to enable the color changed when hover on the row',
+  type: 'Boolean',
   defaultValue: 'false',
   id: 6
 }, {
   property: 'checkboxInitialize',
-  explain: '初始化选中的表格',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Set the checked rows when initialized',
+  type: 'Function',
+  defaultValue: '-',
   id: 7
 }, {
   property: 'checkboxOnChange',
-  explain: '选中事件change的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of checkbox event',
+  type: 'Function',
+  defaultValue: '-',
   id: 8
 }];
 
 var data2 = [{
   property: 'title',
-  explain: '设置表格标题栏的名称',
-  type: 'string',
+  explain: 'Set title of the table head',
+  type: 'String',
   defaultValue: '-',
   id: 1
 }, {
   property: 'dataIndex',
-  explain: '设置数据索引',
-  type: 'string',
+  explain: 'Set the index to get relative data',
+  type: 'String',
   defaultValue: '-',
   id: 2
 }, {
   property: 'width',
-  explain: '设置开关的尺寸',
-  type: 'string',
+  explain: 'Set width of Table',
+  type: 'String',
   defaultValue: '-',
   id: 3
 }, {
   property: 'sortBy',
-  explain: '定义排序方法',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Sequenced the table data by value of certain column',
+  type: 'Function',
+  defaultValue: '-',
   id: 4
 }, {
   property: 'filter',
-  explain: '定义筛选事件',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Set filter to get data items with certain value of field',
+  type: 'Function',
+  defaultValue: '-',
   id: 5
 }];
 
@@ -126,7 +126,7 @@ var columnTable = [{
   dataIndex: 'id',
   sortBy: 'number',
   filter: [{
-    name: 'id大于等于2',
+    name: 'id >= 2',
     key: '1',
     filterBy: function(item) {
       if (item.id >= 2) {
@@ -134,7 +134,7 @@ var columnTable = [{
       }
     }
   }, {
-    name: 'id小于2',
+    name: 'id < 2',
     key: '2',
     filterBy: function(item) {
       if (item.id < 2) {
@@ -262,8 +262,8 @@ class IntroTable extends React.Component {
                   hover={true}/>
               </div>
               <div>
-                <p className="title">表格</p>
-                <p className="content">通过设置属性生成表格</p>
+                <p className="title">Table</p>
+                <p className="content">Set the column and data of Table</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -311,8 +311,8 @@ class IntroTable extends React.Component {
             <div className="left">
               <div className="contain">
                 <div>
-                  <p className="title">column属性的传参</p>
-                  <p className="content">设置表格的表头部分内容，可添加筛查排序等参数</p>
+                  <p className="title">Parameter "column"</p>
+                  <p className="content">Set the table head content, sortBy and filter can be defined</p>
                 </div>
                 <div className="code">
                   <pre>
@@ -324,12 +324,12 @@ class IntroTable extends React.Component {
                         &nbsp;dataIndex: 'id',<br/>
                         &nbsp;sortBy: 'number',<br/>
                         &nbsp;filter: [&#123;<br/>
-                          &nbsp;&nbsp;name: 'id大于等于2',<br/>
+                          &nbsp;&nbsp;name: 'id >= 2',<br/>
                           &nbsp;&nbsp;key: '1',<br/>
                           &nbsp;&nbsp;filterBy: function(item) &#123;<br/>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (item.id >= 4) &#123;return true;}<br/>
                         &nbsp;}, &#123;<br/>
-                          &nbsp;&nbsp;name: 'id小于2',<br/>
+                          &nbsp;&nbsp;name: 'id &#123; 2',<br/>
                           &nbsp;&nbsp;key: '2',<br/>
                           &nbsp;&nbsp;filterBy: function(item) &#123;<br/>
                             &nbsp;&nbsp;&nbsp;if (item.id &lt; 4) &#123;return true;}<br/>
@@ -409,8 +409,8 @@ class IntroTable extends React.Component {
             <div className="right">
               <div className="contain">
                 <div>
-                  <p className="title">data属性的传参</p>
-                  <p className="content">设置表格的数据</p>
+                  <p className="title">Parameter "data"</p>
+                  <p className="content">Set the rows content of the table</p>
                 </div>
                 <div className="code">
                   <pre>

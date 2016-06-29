@@ -29,47 +29,35 @@ var breadcrumb = [{
   }];
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: 'property',
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: 'explain',
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '150px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
 }];
 
 var data = [{
-  property: 'name',
-  explain: '当前层级对象的名称',
-  type: 'string',
-  defaultValue: '-',
-  id: '1'
-}, {
-  property: 'href',
-  explain: '当前层级对象的href地址',
-  type: 'string',
-  defaultValue: '-',
-  id: '2'
-}, {
   property: 'items',
-  explain: '设置层级结构的对象数组',
-  type: 'object array',
+  explain: 'Config the hierarchy via an array',
+  type: 'Array',
   defaultValue: '-',
-  id: '3'
+  id: '0'
 }];
 
 class IntroBreadcrumb extends React.Component {
@@ -89,8 +77,8 @@ class IntroBreadcrumb extends React.Component {
                 <Breadcrumb items={items2} key="2" />
               </div>
               <div>
-                <p className="title">面包屑导航</p>
-                <p className="content">通过读取传入数组的对象的先后顺序展示层级关系</p>
+                <p className="title">Breadcrumb</p>
+                <p className="content">The sequence of the breadcrumb links are consistent with the sequence of the array named items.</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -124,8 +112,8 @@ class IntroBreadcrumb extends React.Component {
           <div className="left">
             <div className="contain">
               <div>
-                <p className="title">items属性传参</p>
-                <p className="content">设置面包屑层级显示的内容，并定义点击跳转的链接，按照先后顺序最开始是根目录</p>
+                <p className="title">Parameter "items"</p>
+                <p className="content">Define the name of each level in the hierarchy, and the link address.</p>
               </div>
               <div className="code">
                 <pre>

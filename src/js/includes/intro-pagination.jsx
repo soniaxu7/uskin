@@ -11,24 +11,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -36,39 +36,39 @@ var column = [{
 
 var data = [{
   property: 'total',
-  explain: '设置数据的总条数',
-  type: 'string',
+  explain: 'Set the total number of the pages',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'current',
-  explain: '设置当前页码',
-  type: 'string',
+  explain: 'Set the current page number',
+  type: 'String',
   defaultValue: '1',
   id: '2'
 }, {
   property: 'onClick',
-  explain: 'click事件的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of click event',
+  type: 'Function',
+  defaultValue: '-',
   id: '3'
 }, {
   property: 'labelOnly',
-  explain: '传入boolean值，设置是否仅显示翻页按键而不显示页码',
-  type: 'boolean',
+  explain: 'Set "true" to only show the "previous/next" button rather than the number of page',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '4'
 }, {
   property: 'label',
-  explain: '传入object，设置需要显示的翻页按键的键值',
-  type: 'object',
+  explain: 'The text content of the turn over button',
+  type: 'Object',
   defaultValue: '-',
   id: '5'
 }, {
   property: 'onClickLabel',
-  explain: '指定点击翻页按键后触发的事件',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of click the turn over button',
+  type: 'Function',
+  defaultValue: '-',
   id: '6'
 }];
 
@@ -138,8 +138,8 @@ class IntroPagination extends React.Component {
                 <Pagination onClick={this.listener1} total={5} current={this.state.value1}/>
               </div>
               <div>
-                <p className="title">默认分页</p>
-                <p className="content">通过设置total确定生成分页的总数</p>
+                <p className="title">Default Pagination</p>
+                <p className="content">Set the total as the number of all pages</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -161,8 +161,8 @@ class IntroPagination extends React.Component {
                 <Pagination onClick={this.listener2} total={20} current={this.state.value2} />
               </div>
               <div>
-                <p className="title">定位指定页码的分页</p>
-                <p className="content">通过设置current的初始值设置最初所处的分页</p>
+                <p className="title">Initialize current page</p>
+                <p className="content">Set the value of current as the current page when initialed</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>
@@ -185,8 +185,8 @@ class IntroPagination extends React.Component {
                 <Pagination labelOnly={true} label={this.state.changeLabel ? label1 : label2} onClickLabel={this.labelListener}/>
               </div>
               <div>
-                <p className="title">无页码分页</p>
-                <p className="content">不显示分页页码，仅支持点击切换向前页、向后页、最前页、最后页</p>
+                <p className="title">No page numbers Pagination</p>
+                <p className="content">Show button of previous next first last rather than the number of pages</p>
                 <p className="code-show" id="code3" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode3" style={{display: 'none'}}>
@@ -220,8 +220,8 @@ class IntroPagination extends React.Component {
             <div className="left">
               <div className="contain">
                 <div>
-                  <p className="title">label属性传参</p>
-                  <p className="content">设置要显示的翻页按键</p>
+                  <p className="title">Parameter "label"</p>
+                  <p className="content">Set the text content of the turn over button</p>
                 </div>
                 <div className="code">
                   <pre>
@@ -247,8 +247,8 @@ class IntroPagination extends React.Component {
             <div className="right">
               <div className="contain">
                 <div>
-                  <p className="title">onClick及onClickLabel属性传参</p>
-                  <p className="content">设置组件state的存入当前页面的页码值，如this.state.value。用onClick及onClickLabel事件控制state中页码值的更新，设置属性current={this.state.value}，即实现了点击翻页更新当前页。</p>
+                  <p className="title">Parameter "onClick" and "onClickLabel"</p>
+                  <p className="content">Normally we set a component state to store the current page number such as this.state.value. Set the handler of onClick and onClickLabel to refresh this.state.value and set attribute current={this.state.value}. Thus the click turnover button can be functional.</p>
                 </div>
                 <div className="code">
                   <pre>

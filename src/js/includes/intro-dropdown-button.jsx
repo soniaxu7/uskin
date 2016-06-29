@@ -11,24 +11,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -40,26 +40,26 @@ function listener(e) {
 
 var data = [{
   property: 'buttonData',
-  explain: '定义相关属性决定按钮显示的文字和icon',
-  type: 'object',
+  explain: 'Config the value and iconClass of a Button',
+  type: 'Object',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'dropdownItems',
-  explain: '包含下拉菜单内容的数组，下拉菜单为分组显示',
-  type: 'array',
+  explain: 'Array of objects contains the text content and key of the dropdown menu items',
+  type: 'Array',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'dropdownOnClick',
-  explain: '添加点击btn的事件，点击下拉菜单中的任意按钮会触发事件',
-  type: 'function',
+  explain: 'Handler of the click any items in the dropdown button',
+  type: 'Function',
   defaultValue: '-',
   id: '3'
 }, {
   property: 'disabled',
-  explain: '决定按钮是否被禁用',
-  type: 'boolean',
+  explain: 'Config whether the button is able to click or not',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '4'
 }];
@@ -132,8 +132,8 @@ class IntroDropdownButton extends React.Component {
               <DropdownButton disabled={true} buttonData={btn} dropdownItems={dropdownItems} dropdownOnClick={listener}/>
             </div>
             <div>
-              <p className="title">下拉菜单按钮及按钮的禁用</p>
-              <p className="content">点击按钮会弹出下拉菜单，下拉菜单中的条目会分组显示</p>
+              <p className="title">Dropdown menu Button and disabled attribute</p>
+              <p className="content">Show Dropdown menu by click the button, and items in Dropdown menu will display as classified</p>
               <p className="code-show" id="code1" onClick={displayClose}>+</p>
             </div>
             <div className="code" id="scode1" style={{display: 'none'}}>
@@ -171,8 +171,8 @@ class IntroDropdownButton extends React.Component {
           <div className="left">
             <div className="contain">
               <div>
-                <p className="title">buttonData属性的传参</p>
-                <p className="content">传参类型为object，定义按钮的显示信息</p>
+                <p className="title">Parameter "buttonData"</p>
+                <p className="content">Data type Object, config the parameters of the Button</p>
               </div>
               <div className="code">
                 <pre>
@@ -189,8 +189,8 @@ class IntroDropdownButton extends React.Component {
           <div className="right">
             <div className="contain">
               <div>
-                <p className="title">dropdownItems属性的传参</p>
-                <p className="content">传参类型为array，定义下拉菜单的显示内容</p>
+                <p className="title">Parameter "dropdownItems"</p>
+                <p className="content">Data type array, config each item of the dropdown menu</p>
               </div>
               <div className="code">
                 <pre>

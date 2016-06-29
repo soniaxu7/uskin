@@ -62,7 +62,7 @@ function listener(e, status) {
 
 //Main page js.
 var items = [{
-  title: 'Components Introduction',
+  title: 'Components',
   key: 'components',
   submenu: [{
     subtitle: 'Breadcrumb',

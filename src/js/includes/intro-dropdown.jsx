@@ -11,24 +11,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -40,33 +40,33 @@ function listener(e) {
 
 var data = [{
   property: 'title',
-  explain: '设置下拉菜单的各级名称',
-  type: 'string',
+  explain: 'Config the items\' name of the dropdown menu',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'disabled',
-  explain: '设置某级是否可用，可选值true，false',
-  type: 'boolean',
+  explain: 'Config whether the link is able to click',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '2'
 }, {
   property: 'danger',
-  explain: '设置某级菜单是否是danger操作，可选值true，false',
-  type: 'boolean',
+  explain: 'Config the link as danger \"true\" to get a red warning background-color',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '3'
 }, {
   property: 'items',
-  explain: '设置菜单的子级菜单',
-  type: 'object array',
+  explain: 'Config the menu items under certain title of classification',
+  type: 'Array',
   defaultValue: '-',
   id: '4'
 }, {
   property: 'onClick',
-  explain: 'click事件的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of click event',
+  type: 'Function',
+  defaultValue: '-',
   id: '5'
 }];
 
@@ -210,8 +210,8 @@ class IntroDropdown extends React.Component {
                 <Dropdown items={items1} />
               </div>
               <div>
-                <p className="title">下拉菜单</p>
-                <p className="content">设置items的title，key，disabled，onclick等生成菜单</p>
+                <p className="title">Dropdown menu</p>
+                <p className="content">Config object in array items with title, key, disabled and onClick.</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -233,8 +233,8 @@ class IntroDropdown extends React.Component {
                 <Dropdown items={items2} />
               </div>
               <div>
-                <p className="title">带有子级的下拉菜单</p>
-                <p className="content">设置items的items属性生成带有子级的下拉菜单</p>
+                <p className="title">Dropdown menu with named classifications</p>
+                <p className="content">Set title and key in each object in array items</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>
@@ -268,8 +268,8 @@ class IntroDropdown extends React.Component {
             <div className="left">
               <div className="contain">
                 <div>
-                  <p className="title">items属性的传参</p>
-                  <p className="content">定义下拉菜单的内容及点击事件，下拉菜单分组显示</p>
+                  <p className="title">Parameters "items"</p>
+                  <p className="content">Config dropdown menu text contents, links and onClick handler</p>
                 </div>
                 <div className="code">
                   <pre>

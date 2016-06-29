@@ -48,19 +48,19 @@ var column = [{
 var data = [{
   property: 'items',
   explain: 'Set the parameters of each step',
-  type: 'array',
+  type: 'Array',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'width',
   explain: 'Set the overall width of the component',
-  type: 'number',
+  type: 'Number',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'onClick',
   explain: 'handler of the onClick event',
-  type: 'function',
+  type: 'Function',
   defaultValue: '-',
   id: '3'
 }];
@@ -68,19 +68,19 @@ var data = [{
 var data1 = [{
   property: 'name',
   explain: 'Set the name of the step',
-  type: 'string',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'key',
   explain: 'Set the unique key of this step',
-  type: 'string',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'default',
   explain: 'Set the default selected step when initialize',
-  type: 'boolean',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '3'
 }];

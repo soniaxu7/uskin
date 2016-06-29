@@ -12,24 +12,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -51,21 +51,21 @@ function listener(e) {
 
 var data = [{
   property: 'Notification.addNotice',
-  explain: '添加通知提示消息',
-  type: 'function',
-  defaultValue: '传参noticeProps',
+  explain: 'Pop the notification',
+  type: 'Function',
+  defaultValue: 'parameter \"noticeProps\"',
   id: '1'
 }, {
   property: 'Notification.removeNotice',
-  explain: '关闭消息弹框',
-  type: 'function',
-  defaultValue: '传参id',
+  explain: 'Remove the notification',
+  type: 'Function',
+  defaultValue: 'parameter \"id\"',
   id: '2'
 }, {
-  property: 'updateNotice',
-  explain: '改变消息弹框到新的样式',
-  type: 'function',
-  defaultValue: '传参newNotice',
+  property: 'Notification.updateNotice',
+  explain: 'Change notification to new type of style',
+  type: 'Function',
+  defaultValue: 'parameter \"newNotice\"',
   id: '3'
 }];
 
@@ -193,8 +193,8 @@ class IntroNotification extends React.Component{
                 </div>
               </div>
               <div>
-                <p className="title">不同样式的消息提示框及消息提示框的操作</p>
-                <p className="content">通过设置content，type生成默认的通知提示框</p>
+                <p className="title">Various styles of notifications and the operation</p>
+                <p className="content">Set content and type to config certain styled notification</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -262,8 +262,8 @@ class IntroNotification extends React.Component{
             <div className="left">
               <div className="contain">
                 <div>
-                  <p className="title">addNotice函数的传参</p>
-                  <p className="content">传入创建消息提示框的显示文案、icon信息、样式等特性</p>
+                  <p className="title">Parameter "addNotice"</p>
+                  <p className="content">Config the text content, icon type and style type of the notification</p>
                 </div>
                 <div className="code">
                   <pre>

@@ -40,32 +40,32 @@ function listener(e) {
 
 var data = [{
   property: 'content',
-  explain: '输入字符串作为提示显示的文案内容',
-  type: 'string',
+  explain: 'text content of Tooltip',
+  type: 'String',
   defaultValue: '-',
   id: '0'
 }, {
   property: 'width',
-  explain: '设置提示的宽度',
-  type: 'string',
+  explain: 'Width of Tooltip',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'hide',
-  explain: '设置布尔值，决定提示是否显示',
-  type: 'boolean',
+  explain: 'Set hide "true" to hide a Tooltip',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '2'
 }, {
   property: 'type',
-  explain: '设置提示的背景风格，可选值为info，success，warning，danger',
-  type: 'string',
+  explain: 'Set type to switch Tooltip style, available value including info, success, warning and danger',
+  type: 'String',
   defaultValue: 'info',
   id: '3'
 }, {
   property: 'shape',
-  explain: '设置提示指向的位置，以配合提示出现的位置，可选值为top, bottom, right, left等',
-  type: 'string',
+  explain: 'Set the position the Tooltip will show, avaliable value including top, bottom, right, left, etc.',
+  type: 'String',
   defaultValue: '-',
   id: '4'
 }];
@@ -92,8 +92,8 @@ class IntroTooltip extends React.Component {
               <Tooltip content={content} type="error"/>
             </div>
             <div>
-              <p className="title">带有不同属性的提示</p>
-              <p className="content">上述四个例子(设置第三个例子为隐藏，第四个例子为警示提示)，设置width、hide、type属性来改变提示的样式</p>
+              <p className="title">Tooltip of different type and width</p>
+              <p className="content">Four cases showed above, which case 3 set hide "true" and case 4 type "warning". These cases indicate the usage of attributes width, hide and type.</p>
               <p className="code-show" id="code1" onClick={displayClose}>+</p>
             </div>
             <div className="code" id="scode1" style={{display: 'none'}}>
@@ -127,8 +127,8 @@ class IntroTooltip extends React.Component {
               </div>
             </div>
             <div>
-              <p className="title">设置shape属性</p>
-              <p className="content">设置shape属性可以控制提示的指向位置，用以配合提示出现在上下的位置，可选值包括：top-left, top, top-right, bottom-left, bottom, bottom-right</p>
+              <p className="title">Upper or down pointer showed shape value</p>
+              <p className="content">Set shape to control the pointer position of the tip, available value including top-left, top, top-right, bottom-left, bottom and bottom-right.</p>
               <p className="code-show" id="code2" onClick={displayClose}>+</p>
             </div>
             <div className="code" id="scode2" style={{display: 'none'}}>
@@ -166,8 +166,8 @@ class IntroTooltip extends React.Component {
               </div>
             </div>
             <div>
-              <p className="title">设置shape属性</p>
-              <p className="content">设置shape属性使指针出现在侧面，以配合提示出现在左右侧位置，可选值包括：left-top, left, left-bottom, right-top, right, right-bottom</p>
+              <p className="title">Left-side or right-side pointer showed shape value</p>
+              <p className="content">Set shape to control the pointer position of the tip, available value including left-top, left, left-bottom, right-top, right and right-bottom.</p>
               <p className="code-show" id="code3" onClick={displayClose}>+</p>
             </div>
             <div className="code" id="scode3" style={{display: 'none'}}>

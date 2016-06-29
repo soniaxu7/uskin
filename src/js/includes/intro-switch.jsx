@@ -15,24 +15,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -40,39 +40,39 @@ var column = [{
 
 var data = [{
   property: 'labelOn',
-  explain: '设置开关开启时显示的文字',
-  type: 'string',
+  explain: 'Set the text show on the labelOn side',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'labelOff',
-  explain: '设置开关关闭时显示的文字',
-  type: 'string',
+  explain: 'Set the text show on the labelOff side',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'disabled',
-  explain: '设置开关不可用',
-  type: 'boolean',
+  explain: 'Set whether Switch is able to click or not',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '3'
 }, {
   property: 'width',
-  explain: '设置开关的尺寸',
-  type: 'string',
+  explain: 'Set Switch width',
+  type: 'String',
   defaultValue: '-',
   id: '4'
 }, {
   property: 'checked',
-  explain: '设置开关是否开启',
-  type: 'boolean',
+  explain: 'Set Switch at on side or off side',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '5'
 }, {
   property: 'onChange',
   explain: 'change事件的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  type: 'Function',
+  defaultValue: '-',
   id: '6'
 }];
 
@@ -93,8 +93,8 @@ class IntroSwitch extends React.Component{
                 <Switch onChange={listener} labelOn="ON" labelOff="OFF" checked={false} />
               </div>
               <div>
-                <p className="title">默认开关</p>
-                <p className="content">通过设置labelOn，labelOff，checked生成默认样式的开关</p>
+                <p className="title">Default Switch</p>
+                <p className="content">Config attributes labelOn, labelOff, checked to initialize the Switch</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -116,8 +116,8 @@ class IntroSwitch extends React.Component{
                 <Switch onChange={listener} labelOn="ON" labelOff="OFF" disabled={true} />
               </div>
               <div>
-                <p className="title">开关是否可用</p>
-                <p className="content">通过disabled设置开关是否可用</p>
+                <p className="title">Disabled Switch</p>
+                <p className="content">Set disabled "true" to make it unable to click Switch</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>
@@ -141,8 +141,8 @@ class IntroSwitch extends React.Component{
                 <Switch onChange={listener} disabled={false} width={70} />
               </div>
               <div>
-                <p className="title">开关尺寸</p>
-                <p className="content">通过width设置开关的尺寸</p>
+                <p className="title">Width of Switch</p>
+                <p className="content">Set width of Switch</p>
                 <p className="code-show" id="code3" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode3" style={{display: 'none'}}>

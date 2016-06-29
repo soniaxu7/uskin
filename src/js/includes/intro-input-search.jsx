@@ -15,24 +15,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -40,21 +40,21 @@ var column = [{
 
 var data = [{
   property: 'type',
-  explain: '设置搜索框的类型，可选值为light或不设值',
-  type: 'string',
+  explain: 'Set type light or leave it as default to switch different styles of the search bar',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'width',
-  explain: '设置搜索框的尺寸',
-  type: 'string',
+  explain: 'Set the width of the search bar',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'onClick',
-  explain: 'click事件的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of click event',
+  type: 'Function',
+  defaultValue: '-',
   id: '3'
 }];
 
@@ -74,8 +74,8 @@ class IntroInputSearch extends React.Component {
                 <InputSearch onClick={listener} width="200" />
               </div>
               <div>
-                <p className="title">搜索框尺寸</p>
-                <p className="content">设置width属性，改变搜索框的尺寸</p>
+                <p className="title">Width of InputSearch</p>
+                <p className="content">Set the width to change the overall component width</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -97,8 +97,8 @@ class IntroInputSearch extends React.Component {
                 <InputSearch onClick={listener} width="300" type="light" />
               </div>
               <div>
-                <p className="title">简洁的搜索框</p>
-                <p className="content">设置type属性为light，使搜索框以简洁的形式呈现</p>
+                <p className="title">Light styled InputSearch</p>
+                <p className="content">Set type to "light" to get a simplified style</p>
                 <p className="code-show"  id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>

@@ -22,24 +22,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -47,39 +47,39 @@ var column = [{
 
 var data = [{
   property: 'min',
-  explain: '设置滑动输入条的最小值',
-  type: 'string',
+  explain: 'Set min value of Slider',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'max',
-  explain: '设置滑动输入条的最大值',
-  type: 'string',
+  explain: 'Set max value of Slider',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'step',
-  explain: '设置滑动输入条的增幅',
-  type: 'string',
+  explain: 'Set step attribute to control slider value change by step',
+  type: 'String',
   defaultValue: '1',
   id: '3'
 }, {
   property: 'width',
-  explain: '设置滑动输入条的尺寸',
-  type: 'string',
+  explain: 'Width of Slider',
+  type: 'String',
   defaultValue: '-',
   id: '4'
 }, {
   property: 'value',
-  explain: '设置滑动输入条的默认值',
-  type: 'string',
+  explain: 'Initial value of Slider',
+  type: 'String',
   defaultValue: '0',
   id: '5'
 }, {
   property: 'onChange',
-  explain: 'change事件的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of change event',
+  type: 'Function',
+  defaultValue: '-',
   id: '6'
 }];
 
@@ -100,8 +100,8 @@ class IntroSlider extends React.Component {
                 <div style={{float: 'left', marginLeft: '10px'}} className="value" id="value1">{value}</div>
               </div>
               <div>
-                <p className="title">默认输入条</p>
-                <p className="content">通过设置min，max等生成默认的面板</p>
+                <p className="title">Default Slider</p>
+                <p className="content">Set min and max of the Slider</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -125,8 +125,8 @@ class IntroSlider extends React.Component {
                 <div style={{float: 'left', marginLeft: '10px'}} className="value" id="value2">{value2}</div>
               </div>
               <div>
-                <p className="title">滑动输入条尺寸</p>
-                <p className="content">通过width设置滑动输入条的尺寸</p>
+                <p className="title">Width of Slider</p>
+                <p className="content">Set width to control the space Slider ocuppied</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>

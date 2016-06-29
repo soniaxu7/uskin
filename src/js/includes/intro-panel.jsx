@@ -36,20 +36,20 @@ var column = [{
 
 var data = [{
   property: 'title',
-  explain: '设置面板的标题',
-  type: 'string',
+  explain: 'Set the title of Panel',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'content',
-  explain: '设置面板的内容',
-  type: 'string',
+  explain: 'Set the content of Panel',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'width',
-  explain: '设置面板的尺寸',
-  type: 'string',
+  explain: 'Set the width of Panel',
+  type: 'String',
   defaultValue: '-',
   id: '3'
 }];
@@ -78,8 +78,8 @@ class IntroPanel extends React.Component {
                 <Panel title={text[0].title} content={text[0].content} />
               </div>
               <div>
-                <p className="title">默认面板</p>
-                <p className="content">通过设置title，content生成默认的面板</p>
+                <p className="title">Default Panel</p>
+                <p className="content">Set the title and content text of Panel</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -101,8 +101,8 @@ class IntroPanel extends React.Component {
                 <Panel title={text[1].title} content={text[1].content} width={400} />
               </div>
               <div>
-                <p className="title">面板尺寸</p>
-                <p className="content">通过width设置面板的尺寸</p>
+                <p className="title">Width of Panel</p>
+                <p className="content">Set Panel width</p>
                 <p className="code-show" id="code2" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode2" style={{display: 'none'}}>
@@ -136,8 +136,8 @@ class IntroPanel extends React.Component {
             <div className="left">
               <div className="contain">
                 <div>
-                  <p className="title">title和content属性的传参</p>
-                  <p className="content">在这个例子中，定义一个对象，取其中的title和content属性</p>
+                  <p className="title">Parameter "title" and "content"</p>
+                  <p className="content">Set the title and content attributes value as String</p>
                 </div>
                 <div className="code">
                   <pre>

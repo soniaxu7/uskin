@@ -15,24 +15,24 @@ function displayClose(e) {
 }
 
 var column = [{
-  title: '属性',
+  title: 'Attributes',
   width: '150px',
   key: "property",
   dataIndex: 'property'
 }, {
-  title: '说明',
+  title: 'Explanation',
   key: "explain",
   dataIndex: 'explain',
   render: function(col, item, index) {
     return <div style={{wordWrap: 'break-word'}}>{item.explain}</div>;
   }
 }, {
-  title: '类型',
+  title: 'Type',
   width: '100px',
   key: "type",
   dataIndex: 'type',
 }, {
-  title: '默认值',
+  title: 'Default',
   width: '150px',
   key: "defaultValue",
   dataIndex: 'defaultValue',
@@ -40,47 +40,47 @@ var column = [{
 
 var data = [{
   property: 'title',
-  explain: '设置主菜单的标题',
-  type: 'string',
+  explain: 'Set Menu title',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'key',
-  explain: 'item的唯一标识',
-  type: 'string',
+  explain: 'Set the unique key of item',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }];
 
 var data1 = [{
   property: 'subtitle',
-  explain: '设置子菜单的标题',
-  type: 'string',
+  explain: 'Set sub menu title',
+  type: 'String',
   defaultValue: '-',
   id: '1'
 }, {
   property: 'key',
-  explain: 'subItem的唯一标识',
-  type: 'string',
+  explain: 'Set the unique key of subItem',
+  type: 'String',
   defaultValue: '-',
   id: '2'
 }, {
   property: 'iconClass',
-  explain: 'subItem的图标',
-  type: 'string',
+  explain: 'set the icon of subItem',
+  type: 'String',
   defaultValue: '-',
   id: '3'
 }, {
   property: 'selected',
-  explain: 'subItem是否被选中，可选值为true，false',
-  type: 'boolean',
+  explain: 'Set the selected status if subItem',
+  type: 'Boolean',
   defaultValue: 'false',
   id: '4'
 }, {
   property: 'onClick',
-  explain: 'click事件的handler',
-  type: 'function',
-  defaultValue: 'function() {}',
+  explain: 'Handler of the click event',
+  type: 'Function',
+  defaultValue: '-',
   id: '5'
 }];
 
@@ -136,8 +136,8 @@ class IntroMenu extends React.Component{
                 <Menu items={items}/>
               </div>
               <div>
-                <p className="title">菜单</p>
-                <p className="content">为页面和功能提供导航的菜单列表</p>
+                <p className="title">Menu</p>
+                <p className="content">Menu as navigator for page content classification and various functions.</p>
                 <p className="code-show" id="code1" onClick={displayClose}>+</p>
               </div>
               <div className="code" id="scode1" style={{display: 'none'}}>
@@ -185,8 +185,8 @@ class IntroMenu extends React.Component{
             <div className="left">
               <div className="contain">
                 <div>
-                  <p className="title">items属性的传参</p>
-                  <p className="content">定义菜单显示的内容，设置分组，及定义点击事件</p>
+                  <p className="title">Parameter "items"</p>
+                  <p className="content">Set the item content, config the classification of items and bind the click event handler</p>
                 </div>
                 <div className="code">
                   <pre>

@@ -10,14 +10,14 @@ module.exports = function(grunt) {
     //Task configuration.
     clean: {
       dist: ['dist'],
-      legacy: ['dist/js/css.min.js']
+      legacy: ['dist/js/*.css.min.js']
     },
 
     webpack: {
       options: webpackConfig,
       build: {
         plugins: [
-          new ExtractTextPlugin('../css/style.min.css'),
+          new ExtractTextPlugin('../css/[hash:6].style.min.css'),
           new webpack.optimize.UglifyJsPlugin()
         ]
       }

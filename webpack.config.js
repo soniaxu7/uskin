@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: './dist/js',
-    filename: '[name].min.js',
+    filename: '[hash:6].[name].min.js',
     publicPath: '/dist',
     chunkFilename: '[id].bundle.js'
   },
