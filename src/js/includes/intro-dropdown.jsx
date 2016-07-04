@@ -203,7 +203,7 @@ class IntroDropdown extends React.Component {
           <p>A vertical aligned menu usually used as a dropdown menu.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component" style={{height: '400px'}}>
@@ -251,7 +251,7 @@ class IntroDropdown extends React.Component {
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <Table
                 width="90%"
@@ -264,7 +264,7 @@ class IntroDropdown extends React.Component {
             </div>
           </div>
           <div className="param">
-            <h2>Parameters</h2>
+            <h4>Parameters</h4>
             <div className="left">
               <div className="contain">
                 <div>

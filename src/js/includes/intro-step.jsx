@@ -94,7 +94,7 @@ class IntroStep extends React.Component {
           <p>Displaying links of current, previous and next steps.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -121,7 +121,7 @@ class IntroStep extends React.Component {
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <div>
                 <p>Step</p>
@@ -148,7 +148,7 @@ class IntroStep extends React.Component {
             </div>
           </div>
           <div className="param">
-            <h2>Parameters</h2>
+            <h4>Parameters</h4>
             <div className="left">
               <div className="contain">
                 <div>

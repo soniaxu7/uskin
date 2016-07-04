@@ -82,7 +82,7 @@ class IntroTooltip extends React.Component {
           <h1>Tooltip</h1>
           <p>Tips pointing at certain items.</p>
         </article>
-        <h2>Code Demos</h2>
+        <h4>Code Demos</h4>
         <div className="left">
           <div className="contain">
             <div className="component" style={{height: '200px'}}>
@@ -191,7 +191,7 @@ class IntroTooltip extends React.Component {
         </div>
 
         <div className="api">
-          <h2>Attributes</h2>
+          <h4>Attributes</h4>
           <div>
             <p></p>
             <div>

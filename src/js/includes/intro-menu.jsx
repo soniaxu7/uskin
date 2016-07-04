@@ -129,7 +129,7 @@ class IntroMenu extends React.Component{
           <p>Two level structured menu.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -154,7 +154,7 @@ class IntroMenu extends React.Component{
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <div>
                 <p>Menu.items</p>
@@ -181,7 +181,7 @@ class IntroMenu extends React.Component{
             </div>
           </div>
           <div className="param">
-            <h2>Parameters</h2>
+            <h4>Parameters</h4>
             <div className="left">
               <div className="contain">
                 <div>

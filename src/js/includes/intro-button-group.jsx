@@ -67,8 +67,8 @@ class IntroButtonGroup extends React.Component {
           <h1>ButtonGroup</h1>
           <p>Using buttons as a group, horizontally or vertically aligned.</p>
         </article>
-        <div>
-          <h2>Code Demos</h2>
+        <div className="demos">
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -138,7 +138,7 @@ class IntroButtonGroup extends React.Component {
           <div className="right">
             <div className="contain">
               <div className="component">
-                <ButtonGroup width="400">
+                <ButtonGroup width={400}>
                   <Button tag="div" value="Justified Prev"/>
                   <Button tag="div" value="Justified Mid 1" type="delete"/>
                 </ButtonGroup>
@@ -155,7 +155,7 @@ class IntroButtonGroup extends React.Component {
                     var Button = uskin.Button;<br/><br/>
 
                     ReactDOM.render(&lt;div><br/>
-                      &nbsp;&nbsp;&lt;ButtonGroup width="400"><br/>
+                      &nbsp;&nbsp;&lt;ButtonGroup width={400}><br/>
                       &nbsp;&nbsp;&lt;Button tag="div" value="Justified Prev" /><br/>
                       &nbsp;&nbsp;&lt;Button tag="div" value="Justified Mid 1" type="delete" /><br/>
                       &nbsp;&nbsp;&lt;/ButtonGroup><br/>
@@ -166,7 +166,7 @@ class IntroButtonGroup extends React.Component {
             </div>
             <div className="contain">
               <div className="component">
-                <ButtonGroup type="vertical" width="220">
+                <ButtonGroup type="vertical" width={220}>
                   <Button tag="div" value="Vertical Justified Prev" type="status" selected={true}/>
                   <Button tag="div" value="Vertical Justified Mid 1" type="status"/>
                   <Button tag="div" value="Vertical Justified Mid 2" disabled={true}/>
@@ -185,7 +185,7 @@ class IntroButtonGroup extends React.Component {
                     var Button = uskin.Button;<br/><br/>
 
                     ReactDOM.render(&lt;div><br/>
-                      &nbsp;&nbsp;&lt;ButtonGroup type="vertical" width="200"><br/>
+                      &nbsp;&nbsp;&lt;ButtonGroup type="vertical" width={200}><br/>
                       &nbsp;&nbsp;&lt;Button tag="div" value="Prev" type="status"  selected=&#123;true}/><br/>
                       &nbsp;&nbsp;&lt;Button tag="div" value="Mid 1" type="status" /><br/>
                       &nbsp;&nbsp;&lt;Button tag="div" value="Mid 2" disabled=&#123;true} /><br/>
@@ -198,7 +198,7 @@ class IntroButtonGroup extends React.Component {
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <Table
                 width="90%"

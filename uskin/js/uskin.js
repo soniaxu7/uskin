@@ -1,5 +1,5 @@
 /*!
- * USkin v0.3.0 (https://github.com/icecreamliker/uskin)
+ * USkin v0.4.0 (https://github.com/icecreamliker/uskin)
  * Inspired by bootstrap
  * Copyright 2016 Lee Yao <yaoli111144@gmail.com>
  * Licensed under MIT (https://github.com/icecreamliker/uskin/blob/master/LICENSE)
@@ -3011,7 +3011,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ) : null,
 	        _react2.default.createElement(
 	          'ul',
-	          { ref: 'item', style: item.fold ? { height: '0', overflow: 'hidden' } : null },
+	          { ref: 'item', style: item.fold ? { height: 0, overflow: 'hidden' } : null },
 	          item.submenu.map(function (submenu, i) {
 	            return _react2.default.createElement(
 	              'li',
@@ -3045,6 +3045,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _assign2 = _interopRequireDefault(_assign);
 	
+	var _react = __webpack_require__(132);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _modal = __webpack_require__(148);
 	
 	var _modal2 = _interopRequireDefault(_modal);
@@ -3068,7 +3072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	['info', 'success', 'warning', 'danger'].forEach(function (m) {
 	  _modal2.default[m] = function (props) {
 	    var _props = (0, _assign2.default)({}, props, {
-	      content: React.createElement(_tip2.default, { content: props.content, type: m }),
+	      content: _react2.default.createElement(_tip2.default, { content: props.content, type: m }),
 	      btnType: btnMap[m]
 	    });
 	    return (0, _shim2.default)(_props);
@@ -23224,6 +23228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var seed = 0;
 	var now = Date.now();
 	var TYPES = ['info', 'success', 'warning', 'danger'];
+	var notification = null;
 	
 	function getUuid() {
 	  return 'notification_' + now + '_' + seed++;
@@ -23479,8 +23484,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    div.id = 'notification-container';
 	    document.body.appendChild(div);
 	  }
-	  var notification = _reactDom2.default.render(_react2.default.createElement(Notification, null), div);
+	  notification = _reactDom2.default.render(_react2.default.createElement(Notification, null), div);
 	  notification.add(noticeProps);
+	  return notification;
 	};
 	
 	Notification.removeNotice = function (id) {
@@ -23488,8 +23494,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!div) {
 	    return;
 	  }
-	  var notification = _reactDom2.default.render(_react2.default.createElement(Notification, null), div);
+	  notification = _reactDom2.default.render(_react2.default.createElement(Notification, null), div);
 	  notification.close(id);
+	  return notification;
 	};
 	
 	Notification.updateNotice = function (newNotice) {
@@ -23497,9 +23504,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (!div) {
 	    return;
 	  }
-	  var notification = _reactDom2.default.render(_react2.default.createElement(Notification, null), div);
+	  notification = _reactDom2.default.render(_react2.default.createElement(Notification, null), div);
 	  notification.update(newNotice);
+	  return notification;
 	};
+	
+	Object.defineProperty(Notification, 'len', {
+	  get: function get() {
+	    if (!notification) {
+	      return 0;
+	    }
+	    return notification.state.notices.length;
+	  }
+	});
 	
 	exports.default = Notification;
 
@@ -23548,10 +23565,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Pagination).call(this, props));
 	
 	    var current = props.current;
+	    var total = props.total;
 	    if (current < 1) {
 	      current = 1;
-	    } else if (current > props.total) {
-	      current = props.total;
+	    }
+	    if (total < 1) {
+	      total = 1;
+	    }
+	    if (current > total) {
+	      current = total;
 	    }
 	    _this.state = {
 	      current: current
@@ -23640,74 +23662,108 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderPageNumber',
 	    value: function renderPageNumber(total, current) {
-	      var midFrom = current - 4 > 0 ? current - 2 : 2,
-	          midTo = current + 4 <= total ? current + 2 : total - 1;
-	
 	      var pagi = [];
-	      pagi.push(_react2.default.createElement(
-	        'li',
-	        { key: '1' },
-	        _react2.default.createElement(
-	          'a',
-	          { className: 'item' + (current === 1 ? ' active' : ''),
-	            onClick: current === 1 ? null : this.onClick.bind(null, 1) },
-	          '1'
-	        )
-	      ));
-	
-	      if (current > 4) {
-	        pagi.push(_react2.default.createElement(
-	          'li',
-	          { key: 'prevs omit' },
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'omit' },
-	            '···'
-	          )
-	        ));
-	      }
-	
-	      for (var i = midFrom; i <= midTo; i++) {
-	        pagi.push(_react2.default.createElement(
-	          'li',
-	          { key: i },
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'item' + (current === i ? ' active' : ''),
-	              onClick: current === i ? null : this.onClick.bind(null, i) },
-	            i
-	          )
-	        ));
-	      }
-	
-	      if (current + 4 <= total) {
-	        pagi.push(_react2.default.createElement(
-	          'li',
-	          { key: 'nexts omit' },
-	          _react2.default.createElement(
-	            'a',
-	            { className: 'omit' },
-	            '···'
-	          )
-	        ));
-	      }
 	
 	      pagi.push(_react2.default.createElement(
 	        'li',
-	        { key: total },
+	        { key: current },
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'item' + (current === total ? ' active' : ''),
-	            onClick: current === total ? null : this.onClick.bind(null, total) },
-	          total
+	          { className: 'item active' },
+	          current
 	        )
 	      ));
+	
+	      for (var i = 1; i <= 2; i++) {
+	        var prevSibling = current - i;
+	        if (prevSibling >= 1 && prevSibling < current) {
+	          pagi.unshift(_react2.default.createElement(
+	            'li',
+	            { key: prevSibling },
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'item', onClick: this.onClick.bind(null, prevSibling) },
+	              prevSibling
+	            )
+	          ));
+	        }
+	        var nextSibling = current + i;
+	        if (nextSibling <= total && current < nextSibling) {
+	          pagi.push(_react2.default.createElement(
+	            'li',
+	            { key: nextSibling },
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'item', onClick: this.onClick.bind(null, nextSibling) },
+	              nextSibling
+	            )
+	          ));
+	        }
+	      }
+	
+	      if (current > 3) {
+	        if (current > 4) {
+	          pagi.unshift(_react2.default.createElement(
+	            'li',
+	            { key: 'prevs omit' },
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'omit' },
+	              '···'
+	            )
+	          ));
+	        }
+	        pagi.unshift(_react2.default.createElement(
+	          'li',
+	          { key: '1' },
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'item',
+	              onClick: this.onClick.bind(null, 1) },
+	            '1'
+	          )
+	        ));
+	      }
+	
+	      if (current + 3 <= total) {
+	        if (current + 4 <= total) {
+	          pagi.push(_react2.default.createElement(
+	            'li',
+	            { key: 'nexts omit' },
+	            _react2.default.createElement(
+	              'a',
+	              { className: 'omit' },
+	              '···'
+	            )
+	          ));
+	        }
+	        pagi.push(_react2.default.createElement(
+	          'li',
+	          { key: total },
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'total',
+	              onClick: this.onClick.bind(null, total) },
+	            total
+	          )
+	        ));
+	      }
 	
 	      return pagi;
 	    }
 	  }, {
 	    key: 'renderPagination',
 	    value: function renderPagination(total, current) {
+	      if (current < 1) {
+	        current = 1;
+	      }
+	      if (total < 1) {
+	        total = 1;
+	      }
+	      if (current > total) {
+	        current = total;
+	      }
+	
 	      var pagi = [];
 	
 	      pagi.push(_react2.default.createElement(

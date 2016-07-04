@@ -68,8 +68,8 @@ class IntroBreadcrumb extends React.Component {
           <h1>Breadcrumb</h1>
           <p>Displaying a hierarchy of the current page in relation to the website&#39;s structrue.</p>
         </article>
-        <div>
-          <h2>Code Demos</h2>
+        <div className="demos">
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -95,7 +95,7 @@ class IntroBreadcrumb extends React.Component {
           </div>
         </div>
         <div className="api">
-          <h2>Attributes</h2>
+          <h4>Attributes</h4>
           <div>
             <Table
               width="90%"
@@ -108,7 +108,7 @@ class IntroBreadcrumb extends React.Component {
           </div>
         </div>
         <div className="param">
-          <h2>Parameters</h2>
+          <h4>Parameters</h4>
           <div className="left">
             <div className="contain">
               <div>

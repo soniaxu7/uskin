@@ -934,12 +934,10 @@ table.table > tbody > tr > td {
   max-width: 100%;
   background-color: #fff;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
 }
@@ -948,7 +946,6 @@ table.table > tbody > tr > td {
 }
 .table .table-header {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-user-select: none;
@@ -961,7 +958,6 @@ table.table > tbody > tr > td {
 }
 .table .table-header > div {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   height: 36px;
@@ -1028,7 +1024,6 @@ table.table > tbody > tr > td {
 .table .table-header > div.checkbox {
   width: 26px;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   padding-left: 10px;
@@ -1076,7 +1071,6 @@ table.table > tbody > tr > td {
 }
 .table .loading-data {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   width: 100%;
@@ -1103,7 +1097,6 @@ table.table > tbody > tr > td {
 }
 .table .table-body {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   overflow-x: hidden;
@@ -1111,14 +1104,12 @@ table.table > tbody > tr > td {
 }
 .table .table-body .row {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #ecf0f2;
 }
 .table .table-body .row > div {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   height: 40px;
@@ -1134,7 +1125,6 @@ table.table > tbody > tr > td {
 .table .table-body .row > div.checkbox {
   width: 26px;
   -webkit-box-flex: 0;
-  -webkit-flex: none;
       -ms-flex: none;
           flex: none;
   padding-left: 10px;

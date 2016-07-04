@@ -91,7 +91,7 @@ class IntroButton extends React.Component {
           <p>A set of consistent styled buttons. Variours colors and matching icons according to different button functions.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -234,7 +234,7 @@ class IntroButton extends React.Component {
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <Table
                 width="90%"

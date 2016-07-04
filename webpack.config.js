@@ -41,7 +41,7 @@ module.exports = {
     extensions: ['', '.jsx', '.js'],
     root: path.resolve('./'),
     alias: {
-      'uskin': 'uskin/js/uskin',
+      'uskin': 'uskin/js/6d40eb.uskin.min',
       'react': 'node_modules/react',
       'react-dom': 'node_modules/react-dom'
     }

@@ -85,7 +85,7 @@ class IntroSwitch extends React.Component{
           <p>Turn a switch to change the state and trigger an event.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -160,7 +160,7 @@ class IntroSwitch extends React.Component{
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <Table
                 width="90%"

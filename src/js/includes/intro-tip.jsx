@@ -102,7 +102,7 @@ class IntroTip extends React.Component {
           <p>Text tips for reminding current state or catching users attention.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="left">
             <div className="contain">
               <div className="component">
@@ -241,7 +241,7 @@ class IntroTip extends React.Component {
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <Table
                 width="90%"

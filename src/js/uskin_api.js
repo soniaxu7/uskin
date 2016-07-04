@@ -21,6 +21,7 @@ var IntroTab = require('./includes/intro-tab');
 var IntroTable = require('./includes/intro-table');
 var IntroTip = require('./includes/intro-tip');
 var IntroTooltip = require('./includes/intro-tooltip');
+var IntroSimpleModal = require('./includes/intro-simple-modal');
 var uskin_api = [
   IntroBreadcrumb,
   IntroButton,
@@ -41,6 +42,9 @@ var uskin_api = [
   IntroTip,
   IntroTooltip
 ];
+var modal = [
+  IntroSimpleModal
+];
 
 //uskin components.
 var Menu = uskin.Menu;
@@ -48,10 +52,10 @@ var Menu = uskin.Menu;
 var Subtitle = IntroBreadcrumb;
 ReactDOM.render(<Subtitle />, document.getElementById('example1'));
 
-function listener(e, status) {
-  var items_length = uskin_api.length;
-  if(status.key < items_length) {
-    Subtitle = uskin_api[status.key];
+function onClickMenu(pages, e, status) {
+  var len = pages.length;
+  if(status.key < len) {
+    Subtitle = pages[status.key];
     ReactDOM.render(<Subtitle />, document.getElementById('example1'));
   }
   var allCode = document.querySelectorAll('pre code').length;
@@ -62,6 +66,10 @@ function listener(e, status) {
 
 //Main page js.
 var items = [{
+  title: 'Quick Start',
+  key: 'quick_start',
+  submenu: []
+}, {
   title: 'Components',
   key: 'components',
   submenu: [{
@@ -102,11 +110,25 @@ var items = [{
   }, {
     subtitle: 'Tooltip'
   }]
+}, {
+  title: 'Modal',
+  key: 'modal',
+  submenu: [{
+    subtitle: 'Simple Modal'
+  }]
+}, {
+  title: 'Icon',
+  key: 'icon',
+  submenu: []
 }];
-items[0].submenu.forEach((ele, i) => {
+items[1].submenu.forEach((ele, i) => {
   ele.key = i.toString();
-  ele.onClick = listener;
-})
+  ele.onClick = onClickMenu.bind(this, uskin_api);
+});
+items[2].submenu.forEach((ele, i) => {
+  ele.key = i.toString();
+  ele.onClick = onClickMenu.bind(this, modal);
+});
 
 class IntroIndex extends React.Component {
   render(){

@@ -248,7 +248,7 @@ class IntroTable extends React.Component {
           <p>A table with consistent styles of hover, click and check. The function of sequencing and filter are supported.</p>
         </article>
         <div>
-          <h2>Code Demos</h2>
+          <h4>Code Demos</h4>
           <div className="total">
             <div className="contain">
               <div className="component">
@@ -280,7 +280,7 @@ class IntroTable extends React.Component {
             </div>
           </div>
           <div className="api">
-            <h2>Attributes</h2>
+            <h4>Attributes</h4>
             <div>
               <div>
                 <p>Table</p>
@@ -307,7 +307,7 @@ class IntroTable extends React.Component {
             </div>
           </div>
           <div className="param">
-            <h2></h2>
+            <h4></h4>
             <div className="left">
               <div className="contain">
                 <div>
