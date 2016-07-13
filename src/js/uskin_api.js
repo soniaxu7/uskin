@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var uskin = require('uskin');
 
 //All intro pages.
+var IntroUskin = require('./includes/intro-uskin');
 var IntroBreadcrumb = require('./includes/intro-breadcrumb');
 var IntroButton = require('./includes/intro-button');
 var IntroButtonGroup = require('./includes/intro-button-group');
@@ -22,6 +23,8 @@ var IntroTable = require('./includes/intro-table');
 var IntroTip = require('./includes/intro-tip');
 var IntroTooltip = require('./includes/intro-tooltip');
 var IntroSimpleModal = require('./includes/intro-simple-modal');
+var commonIcons = require('./includes/icon');
+
 var uskin_api = [
   IntroBreadcrumb,
   IntroButton,
@@ -49,7 +52,7 @@ var modal = [
 //uskin components.
 var Menu = uskin.Menu;
 
-var Subtitle = IntroBreadcrumb;
+var Subtitle = IntroUskin;
 ReactDOM.render(<Subtitle />, document.getElementById('example1'));
 
 function onClickMenu(pages, e, status) {
@@ -68,13 +71,15 @@ function onClickMenu(pages, e, status) {
 var items = [{
   title: 'Quick Start',
   key: 'quick_start',
-  submenu: []
+  submenu: [{
+    subtitle: 'Get Started',
+    selected: true
+  }]
 }, {
   title: 'Components',
   key: 'components',
   submenu: [{
-    subtitle: 'Breadcrumb',
-    selected: true
+    subtitle: 'Breadcrumb'
   }, {
     subtitle: 'Button'
   }, {
@@ -119,8 +124,14 @@ var items = [{
 }, {
   title: 'Icon',
   key: 'icon',
-  submenu: []
+  submenu: [{
+    subtitle: 'Common Icons'
+  }]
 }];
+items[0].submenu.forEach((ele, i) => {
+  ele.key = i.toString();
+  ele.onClick = onClickMenu.bind(this, [IntroUskin]);
+});
 items[1].submenu.forEach((ele, i) => {
   ele.key = i.toString();
   ele.onClick = onClickMenu.bind(this, uskin_api);
@@ -128,6 +139,10 @@ items[1].submenu.forEach((ele, i) => {
 items[2].submenu.forEach((ele, i) => {
   ele.key = i.toString();
   ele.onClick = onClickMenu.bind(this, modal);
+});
+items[3].submenu.forEach((ele, i) => {
+  ele.key = i.toString();
+  ele.onClick = onClickMenu.bind(this, [commonIcons]);
 });
 
 class IntroIndex extends React.Component {

@@ -61,7 +61,7 @@ var data = [{
 }];
 
 class IntroBreadcrumb extends React.Component {
-  render(){
+  render() {
     return (
       <div>
         <article>
