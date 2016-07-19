@@ -56,7 +56,6 @@ hr.top-bar {
   top: 0;
   float: left;
   padding-bottom: 40px;
-  max-width: 200px;
   flex: 1;
   border-top: 1px solid #e3e4e5;
   .left-menu {
@@ -66,22 +65,23 @@ hr.top-bar {
   }
 
   .menu {
-    width: 180px;
+    width: 100%;
+    padding-bottom: 15px;
+    box-sizing: border-box;
     border-right: 0px;
-    background-color: #fff;
     border-left: 1px solid #e3e4e5;
     border-right: 1px solid #e3e4e5;
-    border-bottom: 1px solid #e3e4e5;
+    background-color: #fff;
   }
 }
 
 #example1 {
   float: left;
   height: 100%;
-  padding: 20px 0 40px 40px;
-  margin-left: -18px;
+  padding: 20px 0 100px 40px;
   overflow-y: auto;
   flex: 4;
+  box-sizing: border-box;
   border-right: 1px solid #e3e4e5;
   border-top: 1px solid #e3e4e5;
   border-bottom: 1px solid #e3e4e5;
@@ -92,8 +92,20 @@ hr.top-bar {
   display: inline-block;
   width: 42%;
   height: 100%;
+  min-width: 480px;
   padding-right: 20px;
   vertical-align: top;
+}
+
+.full-width {
+  width: 80%;
+  height: 100%;
+  &:last-child:after {
+    content: " ";
+    display: block;
+    clear: both;
+    visibility: hidden;
+  }
 }
 
 .contain {
@@ -133,7 +145,11 @@ hr.top-bar {
 .param,
 .references {
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
+}
+
+.api >h4 {
+  margin-bottom: 5px;
 }
 
 .btn-page {
@@ -167,9 +183,6 @@ hr.top-bar {
 .tip {
   margin: 10px;
 }
-.total {
-  width: 80%;
-}
 .tooltip {
   position: relative;
   margin-top: 20px;
@@ -187,10 +200,6 @@ hr.top-bar {
   display: inline-block;
   vertical-align: top;
   margin-right: 80px;
-}
-
-.references {
-  padding-bottom: 100px;
 }
 
 .icon-list {
@@ -217,7 +226,6 @@ hr.top-bar {
 }
 
 .md-content {
-  margin-bottom: 150px;
   .uskin-logo {
     width: 200px;
     height: 200px;

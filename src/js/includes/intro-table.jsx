@@ -247,9 +247,9 @@ class IntroTable extends React.Component {
           <h1>Table</h1>
           <p>A table with consistent styles of hover, click and check. The function of sequencing and filter are supported.</p>
         </article>
-        <div>
+        <div className="demos">
           <h4>Code Demos</h4>
-          <div className="total">
+          <div className="full-width">
             <div className="contain">
               <div className="component">
                 <Table
@@ -279,35 +279,36 @@ class IntroTable extends React.Component {
               </div>
             </div>
           </div>
-          <div className="api">
-            <h4>Attributes</h4>
+        </div>
+        <div className="api">
+          <h4>Attributes</h4>
+          <div>
             <div>
-              <div>
-                <p>Table</p>
-                <Table
-                  width="90%"
-                  column={column}
-                  data={data}
-                  dataKey={'id'}
-                  checkbox={false}
-                  striped={false}
-                  hover={false}/>
-              </div>
-              <div>
-                <p>Table.column</p>
-                <Table
-                  width="90%"
-                  column={column}
-                  data={data2}
-                  dataKey={'id'}
-                  checkbox={false}
-                  striped={false}
-                  hover={false}/>
-              </div>
+              <p>Table</p>
+              <Table
+                width="90%"
+                column={column}
+                data={data}
+                dataKey={'id'}
+                checkbox={false}
+                striped={false}
+                hover={false}/>
+            </div>
+            <div>
+              <p>Table.column</p>
+              <Table
+                width="90%"
+                column={column}
+                data={data2}
+                dataKey={'id'}
+                checkbox={false}
+                striped={false}
+                hover={false}/>
             </div>
           </div>
-          <div className="param">
-            <h4></h4>
+        </div>
+        <div className="param">
+            <h4>Parameter</h4>
             <div className="left">
               <div className="contain">
                 <div>
@@ -441,8 +442,6 @@ class IntroTable extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-
         </div>
       </div>
     );
