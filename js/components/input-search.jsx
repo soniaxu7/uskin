@@ -48,7 +48,7 @@ class InputSearch extends React.Component {
 
     return (
       <div className={type === 'light' ? 'input-search input-search-light' : 'input-search'} style={style}>
-        <input {...this.props} ref="search" style={inputWidth} text={state.value} onChange={this._onChange}/>
+        <input {...this.props} ref="search" style={inputWidth} value={state.value} onChange={this._onChange}/>
         <div className="search-icon" onClick={this._onClick}>
           <i className="glyphicon icon-search"></i>
         </div>
