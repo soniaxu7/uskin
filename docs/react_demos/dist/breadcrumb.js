@@ -66,9 +66,13 @@
 	  href: '#phone'
 	}];
 
-	ReactDOM.render(React.createElement(Breadcrumb, { items: items1 }), document.getElementById('example'));
+	var onClickBreadcrumb = function onClickBreadcrumb(item, e) {
+	  console.log('Testing Breadcrumb onClick event handler.', item, e);
+	};
 
-	ReactDOM.render(React.createElement(Breadcrumb, { items: items2 }), document.getElementById('example2'));
+	ReactDOM.render(React.createElement(Breadcrumb, { items: items1, onClick: onClickBreadcrumb }), document.getElementById('example'));
+
+	ReactDOM.render(React.createElement(Breadcrumb, { items: items2, onClick: onClickBreadcrumb }), document.getElementById('example2'));
 
 /***/ }
 /******/ ]);

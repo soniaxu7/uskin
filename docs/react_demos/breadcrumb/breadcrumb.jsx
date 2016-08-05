@@ -18,12 +18,16 @@ var items1 = [{
     href: '#phone'
   }];
 
+var onClickBreadcrumb = function(item, e) {
+  console.log('Testing Breadcrumb onClick event handler.', item);
+};
+
 ReactDOM.render(
-  <Breadcrumb items={items1}/>,
+  <Breadcrumb items={items1} onClick={onClickBreadcrumb}/>,
   document.getElementById('example')
 );
 
 ReactDOM.render(
-  <Breadcrumb items={items2}/>,
+  <Breadcrumb items={items2} onClick={onClickBreadcrumb}/>,
   document.getElementById('example2')
 );
