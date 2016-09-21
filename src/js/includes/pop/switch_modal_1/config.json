@@ -1,0 +1,18 @@
+{
+  "title": ["Create Volume"],
+  "fields": [{
+    "type": "input",
+    "field": "name",
+    "label": "Name",
+    "required": true
+  }, {
+    "type": "tab",
+    "field": "type",
+    "label": "Volume Type",
+    "data": ["SSD", "Capacity"]
+  }],
+  "btn": {
+    "value": "Next",
+    "disabled": true
+  }
+}

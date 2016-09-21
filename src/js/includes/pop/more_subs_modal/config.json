@@ -1,0 +1,55 @@
+{
+  "title": ["Create Target Resource"],
+  "fields": [{
+    "type": "icon_label",
+    "field": "server",
+    "label": "Server",
+    "icon_type": "instance",
+    "text": "apple"
+  }, {
+    "type": "group_select",
+    "field": "nets",
+    "label": "Network",
+    "empty_text": {
+      "info": "no network"
+    },
+    "data": [{
+      "name": "network-1",
+      "id": "net-1",
+      "data": [{
+        "name": "subnet-1.1",
+        "id": "subnet-1.1"
+      }, {
+        "name": "subnet-1.2",
+        "id": "subnet-1.2"
+      }]
+    }, {
+      "name": "network-2",
+      "id": "net-2",
+      "data": [{
+        "name": "subnet-2.1",
+        "id": "subnet-2.1"
+      }, {
+        "name": "subnet-2.2",
+        "id": "subnet-2.2"
+      }]
+    }]
+  }, {
+    "type": "slider",
+    "field": "quota",
+    "label": "Quota",
+    "min": 0,
+    "max": 1000,
+    "step": 10,
+    "unit": "Mbps"
+  }, {
+    "type": "textarea",
+    "field": "description",
+    "label": "Description"
+  }],
+  "btn": {
+    "value": "Create",
+    "type": "create",
+    "disabled": false
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "title": ["Associate Floating IP"],
+  "fields": [{
+    "type": "icon_label",
+    "field": "server",
+    "label": "Server",
+    "icon_type": "instance",
+    "text": "apple"
+  }, {
+    "type": "select",
+    "field": "fip",
+    "label": "Floating IP",
+    "empty_text": {
+      "info": "no floating-ip"
+    },
+    "data": [{
+      "name": "floating-ip-1",
+      "id": "floating-ip-1"
+    }, {
+      "name": "floating-ip-2",
+      "id": "floating-ip-2"
+    }]
+  }],
+  "btn": {
+    "value": "Associate",
+    "disabled": false
+  }
+}

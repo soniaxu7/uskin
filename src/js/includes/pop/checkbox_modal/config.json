@@ -1,0 +1,49 @@
+{
+  "title": ["Create Network"],
+  "fields": [{
+    "type": "tip",
+    "tip_type": "info",
+    "field": "prv_info",
+    "label": ""
+  }, {
+    "type": "input",
+    "field": "network_name",
+    "label": "Network Name"
+  }, {
+    "type": "checkbox",
+    "field": "enable_vlan",
+    "checked": false,
+    "label": "Enable VLAN"
+  },{
+    "type": "input",
+    "field": "vlan_id",
+    "hide": true,
+    "tip_info": "VLAN ID range is determined by the admin.",
+    "label": "VLAN ID"
+  }, {
+    "type": "checkbox",
+    "field": "enable_security",
+    "checked": true,
+    "label": "Enable Security"
+  }, {
+    "type": "checkbox",
+    "field": "create_subnet",
+    "checked": true,
+    "label": "Create Subnet"
+  }, {
+    "type": "input",
+    "field": "subnet_name",
+    "label": "Subnet Name"
+  }, {
+    "type": "input",
+    "field": "net_address",
+    "tip_info": "Please fill in the blank matching format such as 192.168.1.0/24",
+    "required": true,
+    "label": "Net Address"
+  }],
+  "btn": {
+    "value": "Create",
+    "type": "create",
+    "disabled": true
+  }
+}

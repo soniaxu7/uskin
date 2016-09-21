@@ -23,6 +23,7 @@ var IntroTable = require('./includes/intro-table');
 var IntroTip = require('./includes/intro-tip');
 var IntroTooltip = require('./includes/intro-tooltip');
 var IntroSimpleModal = require('./includes/intro-simple-modal');
+var IntroModal = require('./includes/intro-modal');
 var commonIcons = require('./includes/icon');
 
 var uskin_api = [
@@ -46,7 +47,8 @@ var uskin_api = [
   IntroTooltip
 ];
 var modal = [
-  IntroSimpleModal
+  IntroSimpleModal,
+  IntroModal
 ];
 
 //uskin components.
@@ -120,6 +122,8 @@ var items = [{
   key: 'modal',
   submenu: [{
     subtitle: 'Simple Modal'
+  }, {
+    subtitle: 'Customized Modal'
   }]
 }, {
   title: 'Icon',
