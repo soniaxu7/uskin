@@ -60,6 +60,7 @@
 	    null,
 	    React.createElement(Button, { value: "Normal", btnKey: "normal", onClick: listener }),
 	    React.createElement(Button, { value: "Create", btnKey: "create", type: "create", onClick: listener }),
+	    React.createElement(Button, { value: "Warning", btnKey: "warning", type: "warning", onClick: listener }),
 	    React.createElement(Button, { value: "Delete", btnKey: "delete", type: "delete", onClick: listener }),
 	    React.createElement(Button, { value: "Cancel", btnKey: "cancel", type: "cancel", onClick: listener }),
 	    React.createElement(Button, { value: "Disabled", btnKey: "disabled", type: "cancel", disabled: true, onClick: listener })
@@ -69,6 +70,7 @@
 	    null,
 	    React.createElement(Button, { value: "Initial", initial: true, onClick: listener }),
 	    React.createElement(Button, { value: "Initial", type: "create", initial: true, onClick: listener }),
+	    React.createElement(Button, { value: "Initial", type: "warning", initial: true, onClick: listener }),
 	    React.createElement(Button, { value: "Initial", type: "delete", initial: true, onClick: listener }),
 	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, onClick: listener }),
 	    React.createElement(Button, { value: "Initial", type: "cancel", initial: true, disabled: true, onClick: listener })
@@ -78,6 +80,7 @@
 	    null,
 	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-1", initial: true, onClick: listener, iconClass: "region" }),
 	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-2", type: "create", initial: true, onClick: listener, iconClass: "create" }),
+	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-2", type: "warning", initial: true, onClick: listener, iconClass: "property" }),
 	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-3", type: "delete", initial: true, onClick: listener, iconClass: "more" }),
 	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-4", type: "cancel", initial: true, onClick: listener, iconClass: "edit" }),
 	    React.createElement(Button, { value: "Initial", btnKey: "btnIcon-5", type: "cancel", initial: true, disabled: true, onClick: listener, iconClass: "disable" })
@@ -87,6 +90,7 @@
 	    null,
 	    React.createElement(Button, { value: "Size xl", btnKey: "xl", size: "xl", onClick: listener }),
 	    React.createElement(Button, { value: "Size lg", btnKey: "lg", type: "create", size: "lg", onClick: listener }),
+	    React.createElement(Button, { value: "Size default", btnKey: "default", type: "warning", onClick: listener }),
 	    React.createElement(Button, { value: "Size sm", btnKey: "sm", type: "delete", size: "sm", onClick: listener }),
 	    React.createElement(Button, { value: "Size xs", btnKey: "xs", type: "cancel", size: "xs", onClick: listener })
 	  ),

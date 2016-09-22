@@ -16,6 +16,10 @@
 @btn_create_hover_bg_color: @color_success_600;
 @btn_create_active_bg_color: @color_success_700;
 
+@btn_warning_bg_color: @color_warning;
+@btn_warning_hover_bg_color: @color_warning_600;
+@btn_warning_active_bg_color: @color_warning_700;
+
 @btn_del_bg_color: @color_delete;
 @btn_del_hover_bg_color: @color_delete_600;
 @btn_del_active_bg_color: @color_delete_700;
@@ -74,6 +78,10 @@
 // Color
 .btn-create {
   .button-hue(@btn_font_color; @btn_create_bg_color; @btn_create_hover_bg_color; @btn_create_active_bg_color);
+}
+
+.btn-warning {
+  .button-hue(@btn_font_color; @btn_warning_bg_color; @btn_warning_hover_bg_color; @btn_warning_active_bg_color);
 }
 
 .btn-delete {

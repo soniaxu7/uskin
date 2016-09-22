@@ -5,7 +5,7 @@ class Button extends React.Component {
   constructor(props) {
     super(props);
 
-    this._type = ['create', 'delete', 'cancel', 'status'];
+    this._type = ['create', 'delete', 'warning', 'cancel', 'status'];
     this._size = ['xl', 'lg', 'sm', 'xs'];
     this._iconClassPrefix = 'glyphicon icon-';
     this.onClick = this.onClick.bind(this);

@@ -5,14 +5,16 @@ ReactDOM.render(
   <div>
     <ButtonGroup>
       <Button tag="div" value="Prev"/>
-      <Button tag="div" value="Mid 1" type="delete"/>
-      <Button tag="div" value="Mid 2" disabled={true}/>
+      <Button tag="div" value="Mid 1" type="warning"/>
+      <Button tag="div" value="Mid 2" type="delete"/>
+      <Button tag="div" value="Mid 3" disabled={true}/>
       <Button tag="div" value="Next" type="create"/>
     </ButtonGroup>
     <ButtonGroup width="800">
       <Button tag="div" value="Justified Prev"/>
-      <Button tag="div" value="Justified Mid 1" type="delete"/>
-      <Button tag="div" value="Justified Mid 2" disabled={true}/>
+      <Button tag="div" value="Justified Mid 1" type="warning"/>
+      <Button tag="div" value="Justified Mid 2" type="delete"/>
+      <Button tag="div" value="Justified Mid 3" disabled={true}/>
       <Button tag="div" value="Justified Next" type="create"/>
     </ButtonGroup>
   </div>,

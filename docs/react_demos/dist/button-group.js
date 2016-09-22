@@ -56,16 +56,18 @@
 	    ButtonGroup,
 	    null,
 	    React.createElement(Button, { tag: "div", value: "Prev" }),
-	    React.createElement(Button, { tag: "div", value: "Mid 1", type: "delete" }),
-	    React.createElement(Button, { tag: "div", value: "Mid 2", disabled: true }),
+	    React.createElement(Button, { tag: "div", value: "Mid 1", type: "warning" }),
+	    React.createElement(Button, { tag: "div", value: "Mid 2", type: "delete" }),
+	    React.createElement(Button, { tag: "div", value: "Mid 3", disabled: true }),
 	    React.createElement(Button, { tag: "div", value: "Next", type: "create" })
 	  ),
 	  React.createElement(
 	    ButtonGroup,
 	    { width: "800" },
 	    React.createElement(Button, { tag: "div", value: "Justified Prev" }),
-	    React.createElement(Button, { tag: "div", value: "Justified Mid 1", type: "delete" }),
-	    React.createElement(Button, { tag: "div", value: "Justified Mid 2", disabled: true }),
+	    React.createElement(Button, { tag: "div", value: "Justified Mid 1", type: "warning" }),
+	    React.createElement(Button, { tag: "div", value: "Justified Mid 2", type: "delete" }),
+	    React.createElement(Button, { tag: "div", value: "Justified Mid 3", disabled: true }),
 	    React.createElement(Button, { tag: "div", value: "Justified Next", type: "create" })
 	  )
 	), document.getElementById('example'));
