@@ -151,7 +151,7 @@
 	    React.createElement(
 	      'div',
 	      { style: { margin: '40px' } },
-	      React.createElement(Button, { value: '更新数据', onClick: updateData })
+	      React.createElement(Button, { value: '\u66F4\u65B0\u6570\u636E', onClick: updateData })
 	    )
 	  ),
 	  React.createElement(

@@ -7,7 +7,7 @@ class Step extends React.Component {
     super(props);
 
     this.state = {
-      selectedKey: undefined
+      selectedIndex: -1
     };
 
     this.onClick = this.onClick.bind(this);
@@ -15,41 +15,63 @@ class Step extends React.Component {
 
   componentWillMount() {
     var items = this.props.items;
+    var index = items.findIndex((ele) => ele.default);
 
-    var selectedItem = items.filter((item) => item.default);
     this.setState({
-      selectedKey: selectedItem.length > 0 ? selectedItem[0].key : undefined
+      selectedIndex: index
     });
   }
 
   onClick(e) {
-    var selectedKey = e.target.getAttribute('data-value');
-    this.setState({
-      selectedKey: selectedKey
-    });
-
     var props = this.props;
+    var disabled = props.disabled;
+    var attrValue = e.target.getAttribute('data-value');
 
-    var selectedItem = props.items.filter((item) => item.key === selectedKey)[0];
-    props.onClick && props.onClick.apply(this, [e, selectedItem]);
+    if (!disabled) {
+      var selectedIndex = parseInt(attrValue, 10);
+      this.setState({
+        selectedIndex: isNaN(selectedIndex) ? -1 : selectedIndex
+      });
+
+      var item = props.items.find((ele, index) => index === selectedIndex);
+      props.onClick && props.onClick.apply(this, [e, item]);
+    }
+  }
+
+  getItemClass(item, index, props, state) {
+    var itemStyle = 'step-item';
+    var selected = props.consecutive ? state.selectedIndex >= index : state.selectedIndex === index;
+
+    if (selected) {
+      itemStyle += ' selected';
+    }
+    if (props.disabled) {
+      itemStyle += ' disabled';
+    }
+
+    return itemStyle;
   }
 
   render() {
     var props = this.props,
       items = props.items,
-      state = this.state;
+      disabled = props.disabled;
+    var state = this.state,
+      selectedIndex = state.selectedIndex;
 
     var style = styles.getWidth(props.width / items.length);
 
     return (
       <ol className="steps" style={{width: props.width}}>
-        {items.map((item, index) =>
-          <li key={index} className={state.selectedKey === item.key ? 'step-item selected' : 'step-item'} style={style}>
-            <span ref={'step' + index} data-value={item.key} onClick={state.selectedKey === item.key ? undefined : this.onClick}></span>
-            <div className="delimiter"></div>
-            <div className="name">{item.name}</div>
-          </li>
-        )}
+        {items.map((item, index) => {
+          return (
+            <li key={index} className={this.getItemClass(item, index, props, state)} style={style}>
+              <span data-value={index} onClick={disabled || selectedIndex === index ? null : this.onClick}></span>
+              <div className="delimiter"></div>
+              <div className="name">{item.name}</div>
+            </li>
+          );
+        })}
       </ol>
     );
   }

@@ -67,7 +67,7 @@
 	}];
 
 	var onClickBreadcrumb = function onClickBreadcrumb(item, e) {
-	  console.log('Testing Breadcrumb onClick event handler.', item, e);
+	  console.log('Testing Breadcrumb onClick event handler.', item);
 	};
 
 	ReactDOM.render(React.createElement(Breadcrumb, { items: items1, onClick: onClickBreadcrumb }), document.getElementById('example'));

@@ -77,9 +77,9 @@
 	  'content': React.createElement(
 	    'div',
 	    null,
-	    'ot quite ready to introduce your infant to Taylor Swift? Then ease them into Swiftie-hood with these lullaby versions of her greatest hits, brought you to by Rockabye Baby! The album (which is available for purchase on iTunes) offers gentle, twinkly, super-soothing versions of recent hits like “Bad Blood” and “Blank Space” along with old classics like “Love Story” and “You Belong With Me.”',
+	    'ot quite ready to introduce your infant to Taylor Swift? Then ease them into Swiftie-hood with these lullaby versions of her greatest hits, brought you to by Rockabye Baby! The album (which is available for purchase on iTunes) offers gentle, twinkly, super-soothing versions of recent hits like \u201CBad Blood\u201D and \u201CBlank Space\u201D along with old classics like \u201CLove Story\u201D and \u201CYou Belong With Me.\u201D',
 	    React.createElement('br', null),
-	    'You’ll hear the melodies you know and love reimagined with xylophones, bells and wood blocks. If you don’t have an infant you need to lure to sleep, we recommend just listening on your own. The songs will make great background music to keep you calm while you work or try to figure out how your health insurance works.'
+	    'You\u2019ll hear the melodies you know and love reimagined with xylophones, bells and wood blocks. If you don\u2019t have an infant you need to lure to sleep, we recommend just listening on your own. The songs will make great background music to keep you calm while you work or try to figure out how your health insurance works.'
 	  )
 	}];
 

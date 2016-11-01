@@ -56,7 +56,7 @@
 
 	ReactDOM.render(React.createElement(Switch, { onChange: listener, disabled: false, width: 45, checked: true }), document.getElementById('example2'));
 
-	ReactDOM.render(React.createElement(Switch, { onChange: listener, disabled: true, width: 50, labelOn: "开", labelOff: "关" }), document.getElementById('example3'));
+	ReactDOM.render(React.createElement(Switch, { onChange: listener, disabled: true, width: 50, labelOn: "\u5F00", labelOff: "\u5173" }), document.getElementById('example3'));
 
 /***/ }
 /******/ ]);

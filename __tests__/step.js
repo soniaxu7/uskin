@@ -8,33 +8,41 @@ const Step = require('../js/components/step.jsx').default;
 
 describe('Test step component', () => {
 
+  var items = [{
+    name: 'title 1'
+  }, {
+    name: 'title 2'
+  }, {
+    name: 'title 3',
+    default: true
+  }, {
+    name: 'title 4'
+  }];
+  var defaultIndex = items.findIndex((ele) => ele.default);
+
   it('generates with title and width', () => {
 
-    var items = [{
-        name: 'title 1',
-        key: '0'
+    var newItems = [{
+        name: 'title 1'
       }, {
-        name: 'title 2',
-        key: '1'
+        name: 'title 2'
       }, {
-        name: 'title 3',
-        key: '2'
+        name: 'title 3'
       }, {
-        name: 'title 4',
-        key: '3'
+        name: 'title 4'
       }],
       width = 600;
 
     var step = TestUtils.renderIntoDocument(
-      <Step items={items} width={width} />
+      <Step items={newItems} width={width} />
     );
 
     var stepNode = ReactDOM.findDOMNode(step);
 
-    var itemWidth = width / items.length,
+    var itemWidth = width / newItems.length,
       itemNode = TestUtils.scryRenderedDOMComponentsWithClass(step, 'step-item')[0],
       content = '';
-    items.map((item) =>
+    newItems.map((item) =>
       content += item.name
     );
 
@@ -44,21 +52,6 @@ describe('Test step component', () => {
   });
 
   it('generates with selected step', () => {
-
-    var items = [{
-      name: 'title 1',
-      key: '0'
-    }, {
-      name: 'title 2',
-      key: '1'
-    }, {
-      name: 'title 3',
-      key: '2',
-      default: true
-    }, {
-      name: 'title 4',
-      key: '3'
-    }];
 
     var selectedIndex;
     items.some((item, index) =>
@@ -78,21 +71,7 @@ describe('Test step component', () => {
   it('jumps when the step is clicked', () => {
 
     var listener = jest.genMockFunction();
-    var items = [{
-        name: 'title 1',
-        key: '0'
-      }, {
-        name: 'title 2',
-        key: '1'
-      }, {
-        name: 'title 3',
-        key: '2',
-        default: true
-      }, {
-        name: 'title 4',
-        key: '3'
-      }],
-      clickIndex = 1;
+    var clickIndex = 1;
 
     var divNode = document.createElement('div'),
       step = ReactDOM.render(<Step items={items} onClick={listener} />, divNode),
@@ -102,6 +81,36 @@ describe('Test step component', () => {
     TestUtils.Simulate.click(clickNode);
 
     expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
+
+  });
+
+  it('tests consedutive mode', () => {
+
+    var step = TestUtils.renderIntoDocument(
+      <Step items={items} consecutive={true} />
+    );
+
+    var itemNode = TestUtils.scryRenderedDOMComponentsWithClass(step, 'step-item selected');
+
+    expect(itemNode.length).toBe(defaultIndex + 1);
+
+  });
+
+  it('tests disabled mode', () => {
+
+    var listener = jest.genMockFunction();
+    var divNode = document.createElement('div'),
+      step = ReactDOM.render(<Step items={items} onClick={listener} disabled={true} />, divNode),
+      stepNode = ReactDOM.findDOMNode(step);
+
+    var clickNode1 = stepNode.childNodes[0].firstChild;
+    var clickNode2 = stepNode.childNodes[1].firstChild;
+
+    TestUtils.Simulate.click(clickNode1);
+    TestUtils.Simulate.click(clickNode2);
+
+    expect(listener.mock.calls.length).toBe(0);
+
   });
 
 });

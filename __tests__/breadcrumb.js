@@ -57,23 +57,22 @@ describe('Test breadcrumb component', () => {
 
   it('is triggered with onClick', () => {
     var items = [{
-      name: 'Home',
-      href: '#home'
-    }, {
-      name: 'Store',
-      href: '#store'
-    }, {
-      name: 'Phones',
-      href: '#phone'
-    }],
-    listener = jest.genMockFunction();
+        name: 'Home',
+        href: '#home'
+      }, {
+        name: 'Store',
+        href: '#store'
+      }, {
+        name: 'Phones',
+        href: '#phone'
+      }],
+      listener = jest.genMockFunction();
 
     var breadcrumb = TestUtils.renderIntoDocument(
       <Breadcrumb items={items} onClick={listener}/>
     );
 
-    var breadcrumbNode = ReactDOM.findDOMNode(breadcrumb),
-      breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithTag(breadcrumb, 'a');
+    var breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithTag(breadcrumb, 'a');
     TestUtils.Simulate.click(breadcrumbItemsNode[0]);
     TestUtils.Simulate.click(breadcrumbItemsNode[1]);
 

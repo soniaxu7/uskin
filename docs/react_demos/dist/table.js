@@ -330,8 +330,8 @@
 	      React.createElement(
 	        'div',
 	        { className: 'button-box' },
-	        React.createElement(Button, { value: '更新数据', onClick: this.updateData }),
-	        React.createElement(Button, { value: '清空状态', onClick: this.clearState }),
+	        React.createElement(Button, { value: '\u66F4\u65B0\u6570\u636E', onClick: this.updateData }),
+	        React.createElement(Button, { value: '\u6E05\u7A7A\u72B6\u6001', onClick: this.clearState }),
 	        React.createElement(Button, { value: 'Loading Toggle', iconClass: 'refresh', initial: true, onClick: this.toggleLoading }),
 	        React.createElement(InputSearch, { onChange: this.inputSearchOnChange }),
 	        React.createElement(
