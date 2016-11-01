@@ -95,6 +95,7 @@ describe('Test table component', () => {
       sortBy: 'number'
     }, {
       title: 'Double Price',
+      key: 'double_price',
       sortBy: function(item1, item2) {
         if (item1.price * 2 > item2.price * 2) {
           return 1;
