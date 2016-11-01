@@ -490,7 +490,7 @@ class Table extends React.Component {
           {
             state.data.map((item, index) => {
               var key = item[dataKey],
-                checked = state.checkedKey[key];
+                checked = !!state.checkedKey[key];
 
               return (
                 <div key={key} className={'row' + (checked ? ' selected' : '')}>
