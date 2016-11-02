@@ -6,117 +6,49 @@ function listener(e, status) {
 
 //key value should be exclusive
 var items1 = [{
-  items: [{
-    title: 'Reboot',
-    key: '0',
-    onClick: listener
-  }, {
-    title: 'Take Image Snapshot',
-    key: '1',
-    onClick: listener
-  }]
-}, {
-  items: [{
-    title: 'Associate Public IP',
-    key: '2',
-    onClick: listener
-  }, {
-    title: 'Dissociate Public IP',
-    key: '3',
-    onClick: listener
-  }, {
-    title: 'Join Networks',
-    key: '4',
-    onClick: listener
-  }]
-}, {
-  items: [{
-    title: 'Change Security Group',
-    key: '5',
-    onClick: listener
-  }, {
-    title: 'Change Passoword',
-    key: '6',
-    onClick: listener
-  }, {
-    title: 'Change Keypair',
-    key: '7',
-    onClick: listener
-  }]
-}, {
-  items: [{
-    title: 'Add Volume',
-    key: '8',
-    onClick: listener
-  }, {
-    title: 'Remove Volume',
-    key: '9',
-    disabled: true,
-    onClick: listener
-  }]
-}, {
-  items: [{
-    title: 'Termitate',
-    key: '10',
-    danger: true,
-    onClick: listener
-  }]
-}];
-
-var items2 = [{
   title: 'Basic Ops',
   key: 'basic',
   items: [{
     title: 'Reboot',
-    key: '0',
-    onClick: listener
+    key: '0'
   }, {
     title: 'Take Image Snapshot',
-    key: '1',
-    onClick: listener
+    key: '1'
   }]
 }, {
   title: 'Network Ops',
   key: 'network',
   items: [{
     title: 'Associate Public IP',
-    key: '2',
-    onClick: listener
+    key: '2'
   }, {
     title: 'Dissociate Public IP',
-    key: '3',
-    onClick: listener
+    key: '3'
   }, {
     title: 'Join Networks',
-    key: '4',
-    onClick: listener
+    key: '4'
   }]
 }, {
   items: [{
     title: 'Change Security Group',
-    key: '5',
-    onClick: listener
+    key: '5'
   }, {
     title: 'Change Passoword',
-    key: '6',
-    onClick: listener
+    key: '6'
   }, {
     title: 'Change Keypair',
-    key: '7',
-    onClick: listener
+    key: '7'
   }]
 }, {
   title: 'Volume Ops',
   key: 'volume',
   items: [{
     title: 'Add Volume',
-    key: '8',
-    onClick: listener
+    key: '8'
   }, {
     title: 'Remove Volume',
     key: '9',
-    disabled: true,
-    onClick: listener
+    disabled: true
   }]
 }, {
   title: 'Dangerous Ops',
@@ -124,17 +56,103 @@ var items2 = [{
   items: [{
     title: 'Termitate',
     key: '10',
-    danger: true,
-    onClick: listener
+    danger: true
+  }]
+}];
+
+var items2 = [{
+  items: [{
+    title: 'Reboot',
+    key: '0',
+    children: [{
+      items: [{
+        title: 'Confirm',
+        key: 'confirm'
+      }, {
+        title: 'Cancel',
+        key: 'canel'
+      }]
+    }]
+  }, {
+    title: 'Take Image Snapshot',
+    key: '1'
+  }]
+}, {
+  items: [{
+    title: 'Associate Public IP',
+    key: '2',
+    children: [{
+      title: 'First',
+      items: [{
+        title: 'Associate - 1',
+        key: 'ip-1',
+        children: [{
+          items: [{
+            title: 'Sub Channel - 1',
+            key: 'sub-1'
+          }, {
+            title: 'Sub Channel - 2',
+            key: 'sub-2'
+          }, {
+            title: 'Sub Channel - 3',
+            key: 'sub-3'
+          }]
+        }]
+      }, {
+        title: 'Associate - 2',
+        key: '1'
+      }]
+    }, {
+      title: 'Second',
+      items: [{
+        title: 'Public IP - 1',
+        key: 'ip-1'
+      }, {
+        title: 'Public IP - 2',
+        key: '1'
+      }]
+    }]
+  }, {
+    title: 'Dissociate Public IP',
+    key: '3'
+  }, {
+    title: 'Join Networks',
+    key: '4'
+  }]
+}, {
+  items: [{
+    title: 'Change Security Group',
+    key: '5'
+  }, {
+    title: 'Change Passoword',
+    key: '6'
+  }, {
+    title: 'Change Keypair',
+    key: '7'
+  }]
+}, {
+  items: [{
+    title: 'Add Volume',
+    key: '8'
+  }, {
+    title: 'Remove Volume',
+    key: '9',
+    disabled: true
+  }]
+}, {
+  items: [{
+    title: 'Termitate',
+    key: '10',
+    danger: true
   }]
 }];
 
 ReactDOM.render(
-  <Dropdown items={items1}/>,
+  <Dropdown items={items1} onClick={listener}/>,
   document.getElementById('example')
 );
 
 ReactDOM.render(
-  <Dropdown items={items2}/>,
+  <Dropdown items={items2} onClick={listener}/>,
   document.getElementById('example2')
 );

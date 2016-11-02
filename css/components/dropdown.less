@@ -51,13 +51,33 @@
     }
 
     li {
-
       &.dropdown-header {
         height: 20px;
         line-height: 20px;
         font-weight: normal;
         padding-left: 16px;
         color: gray;
+
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: transparent;
+        }
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: @dropdown_normal_bg_color;
+        > .dropdown-sub {
+          display: block;
+        }
+      }
+
+      &.disabled {
+        color: @dropdown_disabled_font_color;
+        background-color: transparent !important;
+        cursor: not-allowed;
       }
 
       a {
@@ -70,17 +90,6 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-
-        &:hover,
-        &:active,
-        &:focus {
-          background-color: @dropdown_normal_bg_color;
-        }
-        &.disabled {
-          color: @dropdown_disabled_font_color;
-          background-color: transparent !important;
-          cursor: not-allowed;
-        }
       }
 
       &.danger a {
@@ -95,6 +104,13 @@
         color: @dropdown_disabled_font_color;
         background-color: transparent;
         cursor: not-allowed;
+      }
+
+      > .dropdown-sub {
+        left: 100%;
+        top: 0;
+        position: absolute;
+        display: none;
       }
     }
   }

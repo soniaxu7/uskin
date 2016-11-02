@@ -9,10 +9,11 @@ class Dropdown extends React.Component {
   }
 
   onClick(item, e) {
+    e.stopPropagation();
     this.props.onClick && this.props.onClick(e, item);
   }
 
-  _itemClassType(item) {
+  getClassName(item) {
     if (item.disabled) {
       return 'disabled';
     }
@@ -28,18 +29,32 @@ class Dropdown extends React.Component {
     var items = props.items,
       style = props.style;
 
+    var createLists = (element, index) => {
+      return (
+        <ul key={index} ref="dropdown">
+          {element.title ? <li key={element.title} className="dropdown-header">{element.title}</li> : null}
+          {element.items.map((ele, i) =>
+            <li className={this.getClassName(ele)} key={i}
+              onClick={props.onClick && !ele.disabled ? this.onClick.bind(null, ele) : null}>
+              <a>{ele.title}</a>
+              {
+                ele.children ?
+                  <div className="dropdown dropdown-sub">
+                    {ele.children.map((child, key) =>
+                      createLists(child, key)
+                    )}
+                  </div>
+                : null
+              }
+            </li>
+          )}
+        </ul>
+      );
+    };
+
     return (
-      <div className="dropdown" style={style}>
-        {items.map((block, parentIndex) =>
-          <ul key={parentIndex}>
-            {block.title ? <li key={block.title} className="dropdown-header">{block.title}</li> : null}
-            {block.items.map((item, index) =>
-              <li className={this._itemClassType(item)} key={index} onClick={props.onClick && !item.disabled ? this.onClick.bind(null, item) : null}>
-                <a>{item.title}</a>
-              </li>
-            )}
-          </ul>
-        )}
+      <div className="dropdown" style={style} ref="container">
+        {items.map((element, index) => createLists(element, index))}
       </div>
     );
   }
