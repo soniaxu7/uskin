@@ -29,49 +29,66 @@
         padding: 16px 20px 8px;
         color: @menu_font_title_color;
         font-weight: normal;
-      }
-      ul > li {
-        display: block;
-        padding-left: 20px;
-        height: 40px;
-        line-height: 40px;
-        font-size: 13px;
-        color: @menu_font_item_color;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        cursor: pointer;
-
-        &:hover {
-          color: @menu_font_selected_color;
-        }
-        &.selected {
-          height: 38px;
-          line-height: 38px;
-          color: @menu_font_selected_color;
-          background-color: @menu_bg_color;
-          border-top: 1px solid @menu_line_color;
-          border-bottom: 1px solid @menu_line_color;
-          cursor: default;
-
-          &:after {
-            content: "";
-            width: 1px;
-            height: 38px;
-            background-color: @menu_bg_color;
+        &.toggle {
+          cursor: pointer;
+          .icon-arrow-up {
             float: right;
-            margin-right: -1px;
+            transition: all .3s ease;
+            &.rotate {
+              transform: rotate(180deg);
+            }
           }
         }
-        .glyphicon {
-          margin-right: 12px;
-          margin-top: -1px;
-          width: 16px;
-          height: 16px;
-          font-size: 16px;
+      }
+      ul {
+        &.toggle {
+          transition: height .3s ease;
+          overflow: hidden;
         }
-        span {
-          vertical-align: middle;
+
+        > li {
+          display: block;
+          padding-left: 20px;
+          height: 40px;
+          line-height: 40px;
+          font-size: 13px;
+          color: @menu_font_item_color;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          cursor: pointer;
+
+          &:hover {
+            color: @menu_font_selected_color;
+          }
+          &.selected {
+            height: 38px;
+            line-height: 38px;
+            color: @menu_font_selected_color;
+            background-color: @menu_bg_color;
+            border-top: 1px solid @menu_line_color;
+            border-bottom: 1px solid @menu_line_color;
+            cursor: default;
+
+            &::after {
+              content: "";
+              width: 1px;
+              height: 38px;
+              background-color: @menu_bg_color;
+              float: right;
+              margin-right: -1px;
+            }
+          }
+          .glyphicon {
+            margin-right: 12px;
+            margin-top: -1px;
+            width: 16px;
+            height: 16px;
+            font-size: 16px;
+          }
+          span {
+            vertical-align: middle;
+          }
         }
       }
     }

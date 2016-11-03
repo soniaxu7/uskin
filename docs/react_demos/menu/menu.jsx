@@ -28,6 +28,7 @@ var items = [{
 }, {
   title: 'Vegetables',
   key: 'vegetables',
+  fold: true,
   submenu: [{
     subtitle: 'Potato',
     key: '1',
@@ -97,7 +98,7 @@ ReactDOM.render(
       </div>
     </div>
     <div style={{height: '100%', float: 'left'}}>
-      <Menu items={items2}/>
+      <Menu items={items2} toggle={true}/>
     </div>
   </div>,
   document.getElementById('example')

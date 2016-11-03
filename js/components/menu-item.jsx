@@ -6,60 +6,23 @@ class MenuItem extends React.Component {
     super(props);
 
     this.state = {
-      toggle: !this.props.item.fold
+      toggle: props.toggle && !!props.item.fold
     };
     this.toggle = this.toggle.bind(this);
-    this.arrow = {
-      up: 'icon-arrow-up glyphicon',
-      down: 'icon-arrow-up glyphicon rotate'
-    };
   }
 
   toggle(e) {
     this.setState({
       toggle: !this.state.toggle
-    }, function() {
-      var itemDOM = this.refs.item;
-      var arrowDOM = this.refs.arrow;
-      var maxHeight = this.props.item.submenu.length * 38;
-      var frames = 50;
-
-      if (this.state.toggle) {
-        let count = 1;
-
-        let timer = setInterval(function() {
-          itemDOM.style.height = maxHeight / frames * count + 'px';
-          arrowDOM.classList.remove('rotate');
-
-          if (count >= frames) {
-            clearInterval(timer);
-            itemDOM.style.height = '';
-            itemDOM.style.overflow = '';
-          }
-          count++;
-        }, 1);
-      } else {
-        let count = frames;
-        itemDOM.style.overflow = 'hidden';
-        arrowDOM.classList.add('rotate');
-
-        let timer = setInterval(function() {
-          itemDOM.style.height = maxHeight / frames * count + 'px';
-          if (count <= 0) {
-            clearInterval(timer);
-          }
-          count--;
-        }, 1);
-      }
     });
   }
 
-  submenuOnClick(key, submenu, e) {
+  onClick(key, submenu, e) {
     this.props.selectMenu && this.props.selectMenu.apply(this, [e, key, submenu.key]);
     submenu.onClick && submenu.onClick.apply(this, [e, submenu]);
   }
 
-  _isSelectedMenu(menu) {
+  isSelected(menu) {
     var selected = this.props.selected;
     if ((this.props.item.key.localeCompare(selected.key) === 0) && (menu.key.localeCompare(selected.subkey) === 0)) {
       return true;
@@ -69,26 +32,35 @@ class MenuItem extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      item = props.item;
+    var enableToggle = this.props.toggle,
+      item = this.props.item,
+      toggle = this.state.toggle;
 
     return (
       <div>
         {
           item.title ? (
-            <h6 onClick={props.toggle ? this.toggle : null}>
+            <h6 onClick={enableToggle ? this.toggle : null} className={enableToggle ? 'toggle' : null}>
               {item.title}
-              {props.toggle ? <i ref="arrow" className={item.fold ? this.arrow.down : this.arrow.up}></i> : null}
+              {
+                enableToggle ?
+                  <i className={'icon-arrow-up glyphicon' + (toggle ? ' rotate' : '')}></i>
+                : null
+              }
             </h6>
           ) : null
         }
-        <ul ref="item" style={item.fold ? {height: 0, overflow: 'hidden'} : null}>
-          {item.submenu.map((submenu, i) =>
+        <ul style={{height: toggle ? 0: 40 * item.submenu.length}} className="toggle">
+          {item.submenu.map((ele, i) =>
             <li key={i}
-              className={this._isSelectedMenu(submenu) ? 'selected' : null}
-              onClick={this._isSelectedMenu(submenu) ? null : this.submenuOnClick.bind(this, item.key, submenu)}>
-              {submenu.iconClass ? <i className={submenu.iconClass}></i> : null}
-              {submenu.subtitle}
+              className={this.isSelected(ele) ? 'selected' : null}
+              onClick={this.isSelected(ele) ? null : this.onClick.bind(this, item.key, ele)}>
+              {
+                ele.iconClass ?
+                  <i className={ele.iconClass} />
+                : null
+              }
+              {ele.subtitle}
             </li>
           )}
         </ul>

@@ -82,6 +82,7 @@
 	}, {
 	  title: 'Vegetables',
 	  key: 'vegetables',
+	  fold: true,
 	  submenu: [{
 	    subtitle: 'Potato',
 	    key: '1',
@@ -157,7 +158,7 @@
 	  React.createElement(
 	    'div',
 	    { style: { height: '100%', float: 'left' } },
-	    React.createElement(Menu, { items: items2 })
+	    React.createElement(Menu, { items: items2, toggle: true })
 	  )
 	), document.getElementById('example'));
 
