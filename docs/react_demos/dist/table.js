@@ -92,16 +92,20 @@
 	  dataIndex: 'level',
 	  filter: [{
 	    name: 'level 1',
-	    filterBy: 'First Level'
+	    filterBy: 'First Level',
+	    key: 'level 1'
 	  }, {
 	    name: 'level 2',
-	    filterBy: 'Second Level'
+	    filterBy: 'Second Level',
+	    key: 'level 2'
 	  }, {
 	    name: 'level 3',
-	    filterBy: 'Third Level'
+	    filterBy: 'Third Level',
+	    key: 'level 3'
 	  }, {
 	    name: 'level 4',
-	    filterBy: 'Fourth Level'
+	    filterBy: 'Fourth Level',
+	    key: 'level 4'
 	  }],
 	  sortBy: function sortBy(item1, item2) {
 	    var weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];

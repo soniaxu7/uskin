@@ -147,7 +147,9 @@ class Table extends React.Component {
 
   //filter onClick
   onFilter(column, e) {
+    e.stopPropagation();
     e = e.nativeEvent;
+
 
     //create a filter, if it exists, destroy it
     var prevFilter = DOC.getElementById(FILTER_ID);
@@ -242,20 +244,26 @@ class Table extends React.Component {
   }
 
   //sort onClick
-  onSort(column, direction) {
-    if (this.shouldClearSort(column, direction)) {
-      this.state.data = null;
-      let state = this.state;
-      let data = this.getFilteredData(state.filterColKey, state.filterBy, this.props.data);
+  onSort(column, direction, e) {
+    e.stopPropagation();
 
-      this.setState({
-        sortCol: undefined,
-        sortDirection: undefined,
-        data: data
-      });
-    } else {
-      this.sort(column, direction);
+    var filterNode = e.target.parentNode.parentNode;
+    if (filterNode.parentNode.getAttribute('id') !== FILTER_ID && filterNode.getAttribute('id') !== FILTER_ID) {
+      if (this.shouldClearSort(column, direction)) {
+        this.state.data = null;
+        let state = this.state;
+        let data = this.getFilteredData(state.filterColKey, state.filterBy, this.props.data);
+
+        this.setState({
+          sortCol: undefined,
+          sortDirection: direction,
+          data: data
+        });
+      } else {
+        this.sort(column, direction);
+      }
     }
+
   }
 
   //sort helper
@@ -325,7 +333,7 @@ class Table extends React.Component {
     });
   }
 
-  filter(columnKeys, filterBy) {
+  filter(columnKeys, filterBy, e) {
     var data = this.props.data,
       state = this.state;
 
@@ -449,13 +457,23 @@ class Table extends React.Component {
           {
             props.column.map((col) => {
               var isSorted = (col === state.sortCol);
+              var nextDir = (isSorted && state.sortDirection) ? state.sortDirection * -1 : 1;
 
               return (
-                <div key={col.key} style={col.width ? this.getFixedWidth(col.width) : null}>
+                <div key={col.key} style={col.width ? this.getFixedWidth(col.width) : null}
+                  className={col.sortBy ? 'sortable' : null}
+                  onClick={col.sortBy && this.onSort.bind(this, col, nextDir)}>
                   <span>{col.title}</span>
                   {
+                    col.filter ?
+                      <div className="filter-box">
+                        <div className="filter-icon" onClick={this.onFilter.bind(this, col)} />
+                     </div>
+                    : null
+                  }
+                  {
                     col.sortBy ?
-                      <div className="sortable">
+                      <div className="sort-box">
                         <span className={'sort-up' + (isSorted && (state.sortDirection === 1) ? ' selected' : '')}
                             onClick={this.onSort.bind(this, col, 1)} >
                           <span className="arrow-up" data-value={col.key} data-direction="up" />
@@ -464,13 +482,6 @@ class Table extends React.Component {
                             onClick={this.onSort.bind(this, col, -1)} >
                           <span className="arrow-down" data-value={col.key} data-direction="down" />
                         </span>
-                      </div>
-                    : null
-                  }
-                  {
-                    col.filter ?
-                      <div className="filter-box">
-                        <div className="filter-icon" onClick={this.onFilter.bind(this, col)} />
                       </div>
                     : null
                   }

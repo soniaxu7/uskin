@@ -101,15 +101,30 @@ table.table {
 
       .filter-box {
         display: inline-block;
+        cursor: pointer;
         .filter-icon {
-          border-top: 3px solid transparent;
-          border-left: 3px solid transparent;
-          border-bottom: 3px solid @col_arrow_color;
-          border-right: 3px solid @col_arrow_color;
+          display: inline-block;
+          width: 16px;
+          height: 36px;
+          text-align: center;
           cursor: pointer;
+          &::after {
+            content: "";
+            font-size: 0;
+            width: 0;
+            position: relative;
+            top: -2px;
+            border-top: 3px solid transparent;
+            border-left: 3px solid transparent;
+            border-bottom: 3px solid @col_arrow_color;
+            border-right: 3px solid @col_arrow_color;
+          }
+
           &:hover {
-            border-bottom: 3px solid @col_arrow_hover_color;
-            border-right: 3px solid @col_arrow_hover_color;
+            &::after {
+              border-bottom: 3px solid @col_arrow_hover_color;
+              border-right: 3px solid @col_arrow_hover_color;
+            }
           }
         }
         .filter {
@@ -158,58 +173,60 @@ table.table {
         padding-left: 10px;
       }
 
-      .sortable {
-        margin-left: 4px;
-        margin-right: 8px;
+      &.sortable {
         display: inline-block;
-        height: 16px;
-        vertical-align: middle;
-        text-align: center;
-        .sort-up, .sort-down {
-          height: 50%;
-          display: block;
-          cursor: pointer;
-          position: relative;
-        }
-        .sort-up {
-          .arrow-up {
-            position: absolute;
-            bottom: 1px;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-bottom: 4px solid @col_arrow_color;
+        cursor: pointer;
+        .sort-box {
+          width: 20px;
+          height: 36px;
+          float: right;
+          .sort-up, .sort-down {
+            display: block;
+            height: 50%;
+            padding-left: 6px;
+            cursor: pointer;
+            position: relative;
           }
-
-          &:hover {
+          .sort-up {
             .arrow-up {
-              border-bottom: 4px solid @col_arrow_hover_color;
+              position: absolute;
+              bottom: 1px;
+              border-left: 4px solid transparent;
+              border-right: 4px solid transparent;
+              border-bottom: 4px solid @col_arrow_color;
+            }
+
+            &:hover {
+              .arrow-up {
+                border-bottom: 4px solid @col_arrow_hover_color;
+              }
+            }
+
+            &.selected {
+              .arrow-up {
+                border-bottom: 4px solid @col_arrow_selected;
+              }
             }
           }
-
-          &.selected {
-            .arrow-up {
-              border-bottom: 4px solid @col_arrow_selected;
-            }
-          }
-        }
-        .sort-down {
-          .arrow-down {
-            position: absolute;
-            top: 1px;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-top: 4px solid @col_arrow_color;
-          }
-
-          &:hover {
+          .sort-down {
             .arrow-down {
-              border-top: 4px solid @col_arrow_hover_color;
+              position: absolute;
+              top: 1px;
+              border-left: 4px solid transparent;
+              border-right: 4px solid transparent;
+              border-top: 4px solid @col_arrow_color;
             }
-          }
 
-          &.selected {
-            .arrow-down {
-              border-top: 4px solid @col_arrow_selected;
+            &:hover {
+              .arrow-down {
+                border-top: 4px solid @col_arrow_hover_color;
+              }
+            }
+
+            &.selected {
+              .arrow-down {
+                border-top: 4px solid @col_arrow_selected;
+              }
             }
           }
         }
@@ -297,6 +314,19 @@ table.table {
       height: 28px;
       line-height: 28px;
       background-color: #fff;
+      &.sortable {
+        .sort-box {
+          height: 28px;
+          width: 16px;
+        }
+      }
+
+      .filter-box {
+        .filter-icon {
+          width: 12px;
+          height: 28px;
+        }
+      }
     }
   }
   .table-body {
