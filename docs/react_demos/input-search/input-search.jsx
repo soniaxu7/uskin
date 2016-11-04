@@ -3,6 +3,7 @@ var InputSearch = uskin.InputSearch,
 
 var column = [{
   title: 'ID',
+  key: 'id',
   width: 120,
   dataIndex: 'id',
   sortBy: 'number',
@@ -25,16 +26,19 @@ var column = [{
   }]
 }, {
   title: 'Category',
+  key: 'category',
   width: 120,
   dataIndex: 'category',
   sortBy: 'string'
 }, {
   title: 'Flavor',
+  key: 'flavor',
   width: '70px',
   dataIndex: 'flavor',
   sortBy: 'string'
 }, {
   title: 'Level',
+  key: 'level',
   dataIndex: 'level',
   filter: [{
     name: 'level 1',
@@ -65,15 +69,18 @@ var column = [{
   }
 }, {
   title: 'CPU',
+  key: 'cpu',
   dataIndex: 'cpu',
   sortBy: 'number',
   width: '50px'
 }, {
   title: 'Price',
+  key: 'price',
   dataIndex: 'price',
   sortBy: 'number'
 }, {
   title: 'Double Price',
+  key: 'double_price',
   sortBy: function(item1, item2) {
     if (item1.price * 2 > item2.price * 2) {
       return 1;
@@ -88,6 +95,7 @@ var column = [{
   }
 }, {
   title: 'Data Print',
+  key: 'data_print',
   printData: function(col, item, e) {
     console.log('event:', e, 'GET COLUMN:', col, ' DATA:', item);
   },
@@ -147,25 +155,19 @@ var data = [{
 
 var SearchForm = React.createClass({
   searchLevel: function (text, status) {
-    this.refs.table.setState({
-      filterCol: column[3],
-      filterBy: function(item) {
-        var filter = text.toLowerCase(),
-          level = item.level.toLowerCase();
-        return (level.indexOf(filter) > -1) ? true : false;
-      }
+    this.refs.table.filter(column[3], function(item) {
+      var filter = text.toLowerCase(),
+        level = item.level.toLowerCase();
+      return (level.indexOf(filter) > -1) ? true : false;
     });
   },
 
   searchFlavor: function (text, status) {
     if (status) {
-      this.refs.table.setState({
-        filterCol: column[2],
-        filterBy: function(item) {
-          var filter = text.toLowerCase(),
-            flavor = item.flavor.toLowerCase();
-          return (flavor.indexOf(filter) > -1) ? true : false;
-        }
+      this.refs.table.filter(column[2], function(item) {
+        var filter = text.toLowerCase(),
+          flavor = item.flavor.toLowerCase();
+        return (flavor.indexOf(filter) > -1) ? true : false;
       });
     }
   },

@@ -2,10 +2,10 @@
 @arrow_color: @color_font_700;
 @arrow_hover_color: @color_font;
 @arrow_bg_color: @color_grey_400;
-@input_border_color: @color_info;
-@input_error_border_color: @color_delete;
-@input_disabled_border_color: @color_disabled_700;
-@input_disabled_bg_color: @color_disabled_400;
+@input_number_border_color: @color_info;
+@input_number_error_border_color: @color_delete;
+@input_number_disabled_border_color: @color_disabled_300;
+@input_number_disabled_bg_color: @color_disabled_200;
 
 .input-number {
   width: 80px;
@@ -18,9 +18,9 @@
     width: 38px;
   }
   .arrow:hover + input {
-    border-color: @input_border_color;
+    border-color: @input_number_border_color;
     &.error {
-      border-color: @input_error_border_color;
+      border-color: @input_number_error_border_color;
     }
   }
   .arrow {
@@ -54,7 +54,7 @@
         border-bottom: 5px solid @arrow_hover_color;
       }
       &.disabled > div, &.disabled:hover > div {
-        border-bottom: 5px solid @input_disabled_bg_color;
+        border-bottom: 5px solid @input_number_disabled_bg_color;
       }
     }
     .arrow-down {
@@ -66,14 +66,14 @@
         border-top: 5px solid @arrow_hover_color;
       }
       &.disabled > div, &.diabled:hover > div {
-        border-top: 5px solid @input_disabled_bg_color;
+        border-top: 5px solid @input_number_disabled_bg_color;
       }
     }
   }
   &.disabled {
     input {
       &:hover, &:focus {
-        border: 1px solid @input_disabled_border_color!important;
+        border: 1px solid @input_number_disabled_border_color!important;
       }
     }
     .arrow {
