@@ -26,6 +26,11 @@
 @modal_ft_height: 50px;
 @modal_ft_border_top: 1px solid @color_grey;
 
+@modal_tip_icon_info: @color_info;
+@modal_tip_icon_success: @color_success;
+@modal_tip_icon_warning: @color_warning;
+@modal_tip_icon_danger: @color_delete;
+
 .modal {
   position: absolute;
   left: 50%;
@@ -111,6 +116,40 @@
     &.modal-leave-active {
       animation-name: modalZoomOut;
       animation-play-state: running;
+    }
+  }
+}
+
+.modal {
+  .modal-bd {
+    padding: 36px;
+    .modal-reminder-content {
+      .modal-reminder-title {
+        height: 36px;
+        line-height: 36px;
+        font-size: 24px;
+        margin-bottom: 8px;
+
+        i {
+          margin-right: 8px;
+          &.info {
+            color: @modal_tip_icon_info;
+          }
+          &.success {
+            color: @modal_tip_icon_success;
+          }
+          &.warning {
+            color: @modal_tip_icon_warning;
+          }
+          &.danger {
+            color: @modal_tip_icon_danger;
+          }
+        }
+      }
+      .modal-reminder-message {
+        max-height: 100px;
+        overflow-y: auto;
+      }
     }
   }
 }

@@ -111,10 +111,14 @@ class Modal extends React.Component {
     var props = this.props;
     return (
       <div className={this.state.className} style={{width: props.width}}>
-        <div className="modal-hd">
-          <h6>{props.title}</h6>
-          <span className="glyphicon icon-close close" onClick={this.onClose}></span>
-        </div>
+        {
+          props.title ?
+            <div className="modal-hd">
+              <h6>{props.title}</h6>
+              <span className="glyphicon icon-close close" onClick={this.onClose}></span>
+            </div>
+          : null
+        }
         {props.children}
       </div>
     );
