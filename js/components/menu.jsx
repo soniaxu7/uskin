@@ -11,28 +11,28 @@ class Menu extends React.Component {
       selectedSubkey: undefined
     };
 
-    this.selectMenu = this.selectMenu.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentWillMount() {
-    this._updateSelectedMenu(this.props.items);
+    this.update(this.props.items);
   }
 
   componentWillReceiveProps(nextProps) {
-    this._updateSelectedMenu(nextProps.items);
+    this.update(nextProps.items);
   }
 
-  _updateSelectedMenu(items) {
+  update(items) {
     var isSelected = items.some(item =>
       item.submenu.some(submenu =>
-        submenu.selected ? (this.selectMenu(null, item.key, submenu.key), true) : false
+        submenu.selected ? (this.onChange(null, item.key, submenu.key), true) : false
       )
     );
 
-    !isSelected && this.selectMenu(null, undefined, undefined);
+    !isSelected && this.onChange(null, undefined, undefined);
   }
 
-  selectMenu(e, key, subkey) {
+  onChange(e, key, subkey) {
     this.setState({
       selectedKey: key,
       selectedSubkey: subkey
@@ -53,7 +53,7 @@ class Menu extends React.Component {
       <ul ref="menu" className="menu">
         {items.map((item, index) =>
           <li key={index}>
-            <MenuItem item={item} selectMenu={this.selectMenu} selected={selected} toggle={props.toggle}/>
+            <MenuItem item={item} selectMenu={this.onChange} selected={selected} toggle={props.toggle}/>
           </li>
         )}
       </ul>

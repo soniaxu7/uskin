@@ -1,5 +1,7 @@
 import React from 'react';
 
+const ITEM_HEIGHT = 40;
+
 class MenuItem extends React.Component {
 
   constructor(props) {
@@ -50,7 +52,7 @@ class MenuItem extends React.Component {
             </h6>
           ) : null
         }
-        <ul style={{height: toggle ? 0: 40 * item.submenu.length}} className="toggle">
+        <ul style={{height: toggle ? 0: ITEM_HEIGHT * item.submenu.length}} className="toggle">
           {item.submenu.map((ele, i) =>
             <li key={i}
               className={this.isSelected(ele) ? 'selected' : null}
