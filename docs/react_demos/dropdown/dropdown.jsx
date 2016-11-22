@@ -148,11 +148,11 @@ var items2 = [{
 }];
 
 ReactDOM.render(
-  <Dropdown items={items1} onClick={listener}/>,
+  <Dropdown items={items1} onClick={listener} />,
   document.getElementById('example')
 );
 
 ReactDOM.render(
-  <Dropdown items={items2} onClick={listener}/>,
+  <Dropdown items={items2} onClick={listener} />,
   document.getElementById('example2')
 );

@@ -83,7 +83,7 @@ function updateData() {
 
   ReactDOM.render(
     <div style={{height: '100%'}}>
-      <Menu items={newItems}/>
+      <Menu items={newItems} />
     </div>,
     document.getElementById('example')
   );
@@ -92,13 +92,13 @@ function updateData() {
 ReactDOM.render(
   <div style={{height: '100%'}}>
     <div style={{height: '100%', float: 'left'}}>
-      <Menu items={items}/>
+      <Menu items={items} />
       <div style={{margin: '40px'}}>
-        <Button value="更新数据" onClick={updateData}/>
+        <Button value="更新数据" onClick={updateData} />
       </div>
     </div>
     <div style={{height: '100%', float: 'left'}}>
-      <Menu items={items2} toggle={true}/>
+      <Menu items={items2} toggle={true} />
     </div>
   </div>,
   document.getElementById('example')

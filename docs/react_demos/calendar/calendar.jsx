@@ -40,19 +40,19 @@ const disabled = {
 ReactDOM.render(
   <div>
     <div className="example">
-      <div className="screen" id="screen1" >show date</div>
+      <div className="screen" id="screen1">show date</div>
       <Calendar onChange={display1} beforeChange={beforeChange1} afterChange={afterChange1} />
     </div>
     <div className="example">
-      <div className="screen" id="screen2" >show date</div>
-      <Calendar startWeek={1} local={local} page="2016-10" selectedDate="2016-10-14" onChange={display2}/>
+      <div className="screen" id="screen2">show date</div>
+      <Calendar startWeek={1} local={local} page="2016-10" selectedDate="2016-10-14" onChange={display2} />
     </div>
     <div className="example">
-      <div className="screen" id="screen3" >show date</div>
-      <Calendar page="2016-09" disabled={disabled} onChange={display3}/>
+      <div className="screen" id="screen3">show date</div>
+      <Calendar page="2016-09" disabled={disabled} onChange={display3} />
     </div>
     <div className="example">
-      <Calendar page="2016-10" disabled={disabled} hasScreen={true} placeholder="Please select date"/>
+      <Calendar page="2016-10" disabled={disabled} hasScreen={true} placeholder="Please select date" />
     </div>
     <div className="example">
       <Calendar disabled={disabled} page="2016-14" selectedDate="2016-10-14" hasScreen={true} unfold={true} />

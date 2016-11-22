@@ -23,11 +23,11 @@ var onClickBreadcrumb = function(item, e) {
 };
 
 ReactDOM.render(
-  <Breadcrumb items={items1} onClick={onClickBreadcrumb}/>,
+  <Breadcrumb items={items1} onClick={onClickBreadcrumb} />,
   document.getElementById('example')
 );
 
 ReactDOM.render(
-  <Breadcrumb items={items2} onClick={onClickBreadcrumb}/>,
+  <Breadcrumb items={items2} onClick={onClickBreadcrumb} />,
   document.getElementById('example2')
 );

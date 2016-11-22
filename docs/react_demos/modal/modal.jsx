@@ -24,17 +24,17 @@ ReactDOM.render(
   <div>
     <p>Modal with title</p>
     <div>
-      <Button value="Info Caller" btnKey="info" onClick={listener.bind(this, 'info')}/>
-      <Button value="Success Caller" type="create" btnKey="success" onClick={listener.bind(this, 'success')}/>
-      <Button value="Warning Caller" type="warning" btnKey="warning" onClick={listener.bind(this, 'warning')}/>
-      <Button value="Danger Caller" type="delete" btnKey="danger" onClick={listener.bind(this, 'danger')}/>
+      <Button value="Info Caller" btnKey="info" onClick={listener.bind(this, 'info')} />
+      <Button value="Success Caller" type="create" btnKey="success" onClick={listener.bind(this, 'success')} />
+      <Button value="Warning Caller" type="warning" btnKey="warning" onClick={listener.bind(this, 'warning')} />
+      <Button value="Danger Caller" type="delete" btnKey="danger" onClick={listener.bind(this, 'danger')} />
     </div>
     <p>Modal with no title</p>
     <div>
-      <Button value="Info Caller" btnKey="info" onClick={listener2.bind(this, 'info')}/>
-      <Button value="Success Caller" type="create" btnKey="success" onClick={listener2.bind(this, 'success')}/>
-      <Button value="Warning Caller" type="warning" btnKey="warning" onClick={listener2.bind(this, 'warning')}/>
-      <Button value="Danger Caller" type="delete" btnKey="danger" onClick={listener2.bind(this, 'danger')}/>
+      <Button value="Info Caller" btnKey="info" onClick={listener2.bind(this, 'info')} />
+      <Button value="Success Caller" type="create" btnKey="success" onClick={listener2.bind(this, 'success')} />
+      <Button value="Warning Caller" type="warning" btnKey="warning" onClick={listener2.bind(this, 'warning')} />
+      <Button value="Danger Caller" type="delete" btnKey="danger" onClick={listener2.bind(this, 'danger')} />
     </div>
   </div>,
   mountNode

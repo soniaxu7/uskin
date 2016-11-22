@@ -182,7 +182,7 @@ var SearchForm = React.createClass({
           </div>
         </div>
         <div className="block">
-          <InputSearch onChange={this.searchFlavor} width="200" type="light"/>
+          <InputSearch onChange={this.searchFlavor} width="200" type="light" />
           <div style={{display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px'}}>
             Search in Flavor Column With Submit-Icon
           </div>

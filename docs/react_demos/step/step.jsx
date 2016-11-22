@@ -24,12 +24,12 @@ var StepForm1 = React.createClass({
   render: function() {
     return (
       <div style={{textAlign: 'center'}}>
-        <Step ref="step" items={items1} onClick={listener} disabled={true} consecutive={true}/>
+        <Step ref="step" items={items1} onClick={listener} disabled={true} consecutive={true} />
         <ButtonGroup width="800">
           <span style={{marginRight: '20px'}}>consecutive = true, disabled = true</span>
-          <Button value="Step 1" type="create" onClick={this.onClick.bind(this, 0)}/>
-          <Button value="Step 2" type="create" onClick={this.onClick.bind(this, 1)}/>
-          <Button value="Step 3" type="create" onClick={this.onClick.bind(this, 2)}/>
+          <Button value="Step 1" type="create" onClick={this.onClick.bind(this, 0)} />
+          <Button value="Step 2" type="create" onClick={this.onClick.bind(this, 1)} />
+          <Button value="Step 3" type="create" onClick={this.onClick.bind(this, 2)} />
         </ButtonGroup>
       </div>
     );
@@ -46,13 +46,13 @@ var StepForm2 = React.createClass({
   render: function() {
     return (
       <div style={{textAlign: 'center'}}>
-        <Step ref="step" items={items2} onClick={listener} disabled={true} width="572"/>
+        <Step ref="step" items={items2} onClick={listener} disabled={true} width="572" />
         <ButtonGroup width="800">
           <span style={{marginRight: '20px'}}>disabled = true</span>
-          <Button value="Title 1" type="create" onClick={this.onClick.bind(this, 0)}/>
-          <Button value="Title 2" type="create" onClick={this.onClick.bind(this, 1)}/>
-          <Button value="Title 3" type="create" onClick={this.onClick.bind(this, 2)}/>
-          <Button value="Title 4" type="create" onClick={this.onClick.bind(this, 3)}/>
+          <Button value="Title 1" type="create" onClick={this.onClick.bind(this, 0)} />
+          <Button value="Title 2" type="create" onClick={this.onClick.bind(this, 1)} />
+          <Button value="Title 3" type="create" onClick={this.onClick.bind(this, 2)} />
+          <Button value="Title 4" type="create" onClick={this.onClick.bind(this, 3)} />
         </ButtonGroup>
       </div>
     );
@@ -64,11 +64,11 @@ ReactDOM.render(
     <StepForm1 />
     <StepForm2 />
     <div>
-      <Step items={items2} onClick={listener} width="572" consecutive={true}/>
+      <Step items={items2} onClick={listener} width="572" consecutive={true} />
       <p style={{marginLeft: '200px'}}>consecutive = true</p>
     </div>
     <div>
-      <Step items={items2} onClick={listener} width="572"/>
+      <Step items={items2} onClick={listener} width="572" />
       <p style={{marginLeft: '200px'}}>default props</p>
     </div>
   </div>,

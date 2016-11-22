@@ -267,9 +267,9 @@ var TableForm = React.createClass({
     return (
       <div className="main-box">
         <div className="button-box">
-          <Button value="更新数据" onClick={this.updateData}/>
-          <Button value="清空状态" onClick={this.clearState}/>
-          <Button value="Loading Toggle" iconClass="refresh" initial={true} onClick={this.toggleLoading}/>
+          <Button value="更新数据" onClick={this.updateData} />
+          <Button value="清空状态" onClick={this.clearState} />
+          <Button value="Loading Toggle" iconClass="refresh" initial={true} onClick={this.toggleLoading} />
           <InputSearch onChange={this.inputSearchOnChange} />
           <span>search in Category, Level and Price</span>
         </div>

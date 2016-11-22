@@ -61,10 +61,10 @@ var dropdownBoxStyle = {float: 'left', marginRight: '20px'};
 ReactDOM.render(
   <div>
     <div style={dropdownBoxStyle}>
-      <DropdownButton buttonData={btn} dropdownItems={dropdownItems} dropdownOnClick={listener}/>
+      <DropdownButton buttonData={btn} dropdownItems={dropdownItems} dropdownOnClick={listener} />
     </div>
     <div style={dropdownBoxStyle}>
-      <DropdownButton disabled={true} buttonData={btn} dropdownItems={dropdownItems} dropdownOnClick={listener}/>
+      <DropdownButton disabled={true} buttonData={btn} dropdownItems={dropdownItems} dropdownOnClick={listener} />
     </div>
   </div>,
   document.getElementById('example')

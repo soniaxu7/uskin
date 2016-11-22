@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+
 var entry = {};
 
 var dirs = fs.readdirSync(path.resolve('./'));
@@ -8,7 +9,7 @@ dirs.forEach(function(dir) {
     var enterDir = fs.readdirSync(path.resolve('./' + dir));
     var jsFile = /.jsx$/;
     enterDir.forEach(function(file) {
-      if(jsFile.exec(file)) {
+      if (jsFile.exec(file)) {
         entry[file.replace('.jsx', '')] = './' + dir + '/' + file;
       }
     });

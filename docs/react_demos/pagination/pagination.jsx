@@ -74,21 +74,21 @@ class Example extends React.Component {
           <p className="page">
             Current Page is
             <span>{' ' + state.value1}</span>
-            <Button value={'Jump to 17'} onClick={this.pageJump.bind(this, 17)}/>
+            <Button value={'Jump to 17'} onClick={this.pageJump.bind(this, 17)} />
           </p>
-          <Pagination onClick={this.listener1} current={state.value1} total={20}/>
+          <Pagination onClick={this.listener1} current={state.value1} total={20} />
         </div>
         <div>
           <p className="page">Current Page is <span>{state.value2}</span></p>
-          <Pagination onClick={this.listener2} current={state.value2} total={5}/>
+          <Pagination onClick={this.listener2} current={state.value2} total={5} />
         </div>
         <div>
           <p className="page">
             Current Page is
             <span>{' ' + state.value3}</span>
-            <Button value={'Change Label'} onClick={this.changeLabel}/>
+            <Button value={'Change Label'} onClick={this.changeLabel} />
           </p>
-          <Pagination labelOnly={true} label={state.changeLabel ? label1 : label2} onClickLabel={this.labelListener}/>
+          <Pagination labelOnly={true} label={state.changeLabel ? label1 : label2} onClickLabel={this.labelListener} />
         </div>
       </div>
     );

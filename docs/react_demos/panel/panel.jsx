@@ -14,6 +14,6 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <Panel title={text[1].title} content={text[1].content} width="600"/>,
+  <Panel title={text[1].title} content={text[1].content} width="600" />,
   document.getElementById('example2')
 );

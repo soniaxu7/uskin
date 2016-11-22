@@ -33,26 +33,26 @@ function listener5(e, status) {
 }
 
 ReactDOM.render(
-  <Slider onChange={listener}/>,
+  <Slider onChange={listener} />,
   document.getElementById('example')
 );
 
 ReactDOM.render(
-  <Slider min="-100" max="100" value={value2} step="40" width={400} onChange={listener2}/>,
+  <Slider min="-100" max="100" value={value2} step="40" width={400} onChange={listener2} />,
   document.getElementById('example2')
 );
 
 ReactDOM.render(
-  <Slider min="0" max="3" value={value3} step="0.01" width="500" onChange={listener3}/>,
+  <Slider min="0" max="3" value={value3} step="0.01" width="500" onChange={listener3} />,
   document.getElementById('example3')
 );
 
 ReactDOM.render(
-  <Slider min="0" max="10" value={value4} disabled={true} onChange={listener4}/>,
+  <Slider min="0" max="10" value={value4} disabled={true} onChange={listener4} />,
   document.getElementById('example4')
 );
 
 ReactDOM.render(
-  <Slider min="1" max="1" value={value5} onChange={listener5}/>,
+  <Slider min="1" max="1" value={value5} onChange={listener5} />,
   document.getElementById('example5')
 );

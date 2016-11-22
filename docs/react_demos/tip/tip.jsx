@@ -1,12 +1,12 @@
 var Tip = uskin.Tip;
 var text = {
-  'title': 'Note:',
-  'content': 'I am content',
-  'info': 'I am a info tip',
-  'success': 'I am a success tip',
-  'warning': 'I am a warning tip',
-  'danger': 'I am a danger tip',
-  'para': 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
+  title: 'Note:',
+  content: 'I am content',
+  info: 'I am a info tip',
+  success: 'I am a success tip',
+  warning: 'I am a warning tip',
+  danger: 'I am a danger tip',
+  para: 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
 };
 
 ReactDOM.render(
