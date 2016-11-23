@@ -34,15 +34,17 @@ class MenuItem extends React.Component {
   }
 
   render() {
-    var enableToggle = this.props.toggle,
-      item = this.props.item,
-      toggle = this.state.toggle;
+    const props = this.props;
+    const state = this.state;
+    let enableToggle = props.toggle;
+    let item = props.item;
+    let toggle = state.toggle;
 
     return (
       <div>
         {
           item.title ? (
-            <h6 onClick={enableToggle ? this.toggle : null} className={enableToggle ? 'toggle' : null}>
+            <h6 onClick={enableToggle ? this.toggle : null} className={enableToggle ? 'menu-title-toggle' : null}>
               {item.title}
               {
                 enableToggle ?
@@ -52,10 +54,10 @@ class MenuItem extends React.Component {
             </h6>
           ) : null
         }
-        <ul style={{height: toggle ? 0 : ITEM_HEIGHT * item.submenu.length}} className="toggle">
+        <ul style={{height: toggle ? 0 : ITEM_HEIGHT * item.submenu.length}} className={enableToggle ? 'menu-item-toggle' : null}>
           {item.submenu.map((ele, i) =>
             <li key={i}
-              className={this.isSelected(ele) ? 'selected' : null}
+              className={this.isSelected(ele) ? 'menu-item-selected' : null}
               onClick={this.isSelected(ele) ? null : this.onClick.bind(this, item.key, ele)}>
               {
                 ele.iconClass ?

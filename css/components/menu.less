@@ -29,7 +29,7 @@
         padding: 16px 20px 8px;
         color: @menu_font_title_color;
         font-weight: normal;
-        &.toggle {
+        &.menu-title-toggle {
           cursor: pointer;
           .icon-arrow-up {
             float: right;
@@ -41,7 +41,7 @@
         }
       }
       ul {
-        &.toggle {
+        &.menu-item-toggle {
           transition: height .3s ease;
           overflow: hidden;
         }
@@ -61,7 +61,7 @@
           &:hover {
             color: @menu_font_selected_color;
           }
-          &.selected {
+          &.menu-item-selected {
             height: 38px;
             line-height: 38px;
             color: @menu_font_selected_color;
