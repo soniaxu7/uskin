@@ -10,7 +10,7 @@
 @calendar_disabled_selected_bg_color: @color_grey_400;
 @calendar_disabled_color: @color_disabled_400;
 @calendar_title_width: 70px;
-@calendar_title_padding: 8px;
+@calendar_title_padding: 7px;
 
 .calendar-box {
   position: relative;
@@ -107,13 +107,14 @@
           &:hover, &.selected {
             .title-content > i.toggle {
               opacity: 1;
-              margin-left: 13px;
+              margin-left: 15px;
             }
           }
 
           .title-content > i.toggle {
             float: right;
             height: 32px;
+            width: 10px;
             line-height: 32px;
             font-size: 10px;
             opacity: 0;
@@ -159,6 +160,7 @@
       > div.mask {
         position: absolute;
         top: 32px;
+        left: 0;
         cursor: default;
         background-color: #fff;
         opacity: 0.85;
