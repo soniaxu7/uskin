@@ -20,6 +20,10 @@ class Dropdown extends React.Component {
     if (item.danger) {
       return 'danger';
     }
+    if (item.children) {
+      console.log(item.children)
+      return 'has-submenu';
+    }
     return null;
   }
 
@@ -38,7 +42,7 @@ class Dropdown extends React.Component {
               onClick={props.onClick && !ele.disabled ? this.onClick.bind(null, ele) : null}>
               <a>{ele.title}</a>
               {
-                ele.children ?
+                !ele.disabled && ele.children ?
                   <div className="dropdown dropdown-sub">
                     {ele.children.map((child, key) =>
                       createLists(child, key)
