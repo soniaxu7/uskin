@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../mixins/styles';
+import styles from '../../mixins/styles';
 
 class ButtonGroup extends React.Component {
 

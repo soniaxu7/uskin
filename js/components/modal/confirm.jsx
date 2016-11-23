@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './modal';
-import Button from '../button';
+import Button from '../button/index';
 
 class ModalBase extends React.Component {
 

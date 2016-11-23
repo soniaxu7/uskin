@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from '../mixins/styles';
+import styles from '../../mixins/styles';
 
 var seed = 0;
 var now = Date.now();

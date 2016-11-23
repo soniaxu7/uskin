@@ -2,26 +2,26 @@
  * USkin index
  */
 
-import Breadcrumb from '../js/components/breadcrumb';
-import Button from '../js/components/button';
-import ButtonGroup from '../js/components/button-group';
+import Breadcrumb from '../js/components/breadcrumb/index';
+import Button from '../js/components/button/index';
+import ButtonGroup from '../js/components/button-group/index';
 import Calendar from '../js/components/calendar/index';
-import Dropdown from '../js/components/dropdown';
-import DropdownButton from '../js/components/dropdown-button';
-import InputNumber from '../js/components/input-number';
-import InputSearch from '../js/components/input-search';
-import Menu from '../js/components/menu';
+import Dropdown from '../js/components/dropdown/index';
+import DropdownButton from '../js/components/dropdown-button/index';
+import InputNumber from '../js/components/input-number/index';
+import InputSearch from '../js/components/input-search/index';
+import Menu from '../js/components/menu/index';
 import Modal from '../js/components/modal/index';
-import Notification from '../js/components/notification';
-import Pagination from '../js/components/pagination';
-import Panel from '../js/components/panel';
-import Slider from '../js/components/slider';
-import Step from '../js/components/step';
-import Switch from '../js/components/switch';
-import Tab from '../js/components/tab';
-import Table from '../js/components/table';
-import Tip from '../js/components/tip';
-import Tooltip from '../js/components/tooltip';
+import Notification from '../js/components/notification/index';
+import Pagination from '../js/components/pagination/index';
+import Panel from '../js/components/panel/index';
+import Slider from '../js/components/slider/index';
+import Step from '../js/components/step/index';
+import Switch from '../js/components/switch/index';
+import Tab from '../js/components/tab/index';
+import Table from '../js/components/table/index';
+import Tip from '../js/components/tip/index';
+import Tooltip from '../js/components/tooltip/index';
 
 var uskin = {
   Breadcrumb,

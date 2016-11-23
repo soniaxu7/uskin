@@ -1,6 +1,6 @@
 import React from 'react';
-import hash from '../mixins/hash';
-import styles from '../mixins/styles';
+import hash from '../../mixins/hash';
+import styles from '../../mixins/styles';
 
 class Switch extends React.Component {
 

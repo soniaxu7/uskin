@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styles from '../mixins/styles';
-import createClassName from '../mixins/createClassName';
+import styles from '../../mixins/styles';
+import createClassName from '../../mixins/createClassName';
 
 const DOC = document;
 const FILTER_ID = 'uskin-filter-container';

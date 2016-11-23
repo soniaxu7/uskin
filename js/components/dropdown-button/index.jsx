@@ -1,6 +1,6 @@
 import React from 'react';
-import Dropdown from './dropdown';
-import Button from './button';
+import Dropdown from '../dropdown/index';
+import Button from '../button/index';
 
 class DropdownButton extends React.Component {
 

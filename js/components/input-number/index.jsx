@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../mixins/styles.js';
+import styles from '../../mixins/styles.js';
 
 class InputNumber extends React.Component {
 
