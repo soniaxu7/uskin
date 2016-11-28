@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './modal';
-import Tip from '../tip';
+import Tip from '../tip/index';
 import shim from './shim';
 
 var btnMap = {

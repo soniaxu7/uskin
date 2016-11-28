@@ -21,7 +21,6 @@ class Dropdown extends React.Component {
       return 'danger';
     }
     if (item.children) {
-      console.log(item.children)
       return 'has-submenu';
     }
     return null;
