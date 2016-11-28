@@ -79,7 +79,7 @@ class Table extends React.Component {
     if (tbodyDOM.scrollHeight > tbodyDOM.clientHeight) {
       if (colLength === theadDOM.childNodes.length) {
         var scrollCol = DOC.createElement('div');
-        var width = tbodyDOM.offsetWidth - tbodyDOM.clientWidth + 'px';
+        var width = (tbodyDOM.offsetWidth - tbodyDOM.clientWidth) + 'px';
         var colStyle = scrollCol.style;
 
         colStyle.flex = 1;
@@ -96,7 +96,7 @@ class Table extends React.Component {
   }
 
   //checkbox onChange
-  onCheck(e){
+  onCheck(e) {
     var key = e.target.value,
       isChecked = e.target.checked,
       checkedKeys = this.state.checkedKey,
@@ -110,12 +110,10 @@ class Table extends React.Component {
           newCheckedKeys[item[dataKey]] = true;
         });
       }
+    } else if (isChecked) {
+      newCheckedKeys[key] = true;
     } else {
-      if (isChecked) {
-        newCheckedKeys[key] = true;
-      } else {
-        delete newCheckedKeys[key];
-      }
+      delete newCheckedKeys[key];
     }
 
     //set state
@@ -191,7 +189,7 @@ class Table extends React.Component {
           <span>{column.filterAll ? column.filterAll : 'All'}</span>
           {
             !filterBy ?
-              <i className="glyphicon icon-active-yes"/>
+              <i className="glyphicon icon-active-yes" />
             : null
           }
         </div>
@@ -207,7 +205,7 @@ class Table extends React.Component {
                 <span>{item.name}</span>
                 {
                   selected ?
-                    <i className="glyphicon icon-active-yes" data-value={item.key}/>
+                    <i className="glyphicon icon-active-yes" data-value={item.key} />
                   : null
                 }
               </div>
@@ -272,7 +270,7 @@ class Table extends React.Component {
       prevCol = state.sortCol,
       prevDir = state.sortDirection;
 
-    return (column === prevCol && direction === prevDir) ? true : false;
+    return (column === prevCol && direction === prevDir);
   }
 
   getSortedData(column, direction, data) {
@@ -307,14 +305,14 @@ class Table extends React.Component {
       return -1;
     }
     switch (sortType) {
-    case 'number':
-      return a - b;
-    case 'boolean':
-      return (a === b) ? 0 : a;
-    case 'date':
-      return new Date(a) - new Date(b);
-    default:
-      return a.localeCompare(b);
+      case 'number':
+        return a - b;
+      case 'boolean':
+        return (a === b) ? 0 : a;
+      case 'date':
+        return new Date(a) - new Date(b);
+      default:
+        return a.localeCompare(b);
     }
   }
 
@@ -450,7 +448,7 @@ class Table extends React.Component {
           {
             props.checkbox ?
               <div key="checkbox" className="checkbox">
-                <input value="null" onChange={this.onCheck} type="checkbox" checked={checkedAll}/>
+                <input value="null" onChange={this.onCheck} type="checkbox" checked={checkedAll} />
               </div>
             : null
           }
@@ -468,18 +466,18 @@ class Table extends React.Component {
                     col.filter ?
                       <div className="filter-box">
                         <div className="filter-icon" onClick={this.onFilter.bind(this, col)} />
-                     </div>
+                      </div>
                     : null
                   }
                   {
                     col.sortBy ?
                       <div className="sort-box">
                         <span className={'sort-up' + (isSorted && (state.sortDirection === 1) ? ' selected' : '')}
-                            onClick={this.onSort.bind(this, col, 1)} >
+                          onClick={this.onSort.bind(this, col, 1)} >
                           <span className="arrow-up" data-value={col.key} data-direction="up" />
                         </span>
                         <span className={'sort-down' + (isSorted && (state.sortDirection === -1) ? ' selected' : '')}
-                            onClick={this.onSort.bind(this, col, -1)} >
+                          onClick={this.onSort.bind(this, col, -1)} >
                           <span className="arrow-down" data-value={col.key} data-direction="down" />
                         </span>
                       </div>
@@ -508,8 +506,7 @@ class Table extends React.Component {
                   {
                     props.checkbox ?
                       <div className="checkbox">
-                        <input
-                          value={key}
+                        <input value={key}
                           onChange={this.onCheck}
                           type="checkbox"
                           checked={checked} />

@@ -220,7 +220,7 @@ var TableForm = React.createClass({
   },
 
   checkboxInitialize: function(item) {
-    return item.level.indexOf('Second Level') > -1 ? true : false;
+    return item.level.indexOf('Second Level') > -1;
   },
 
   checkboxOnChange: function(status, item, arr) {
@@ -244,13 +244,14 @@ var TableForm = React.createClass({
         var ret = keys.some((key) => {
           if (item[key]) {
             var data = item[key].toLowerCase();
-            return data.indexOf(text.toLowerCase()) > -1 ? true : false;
+            return data.indexOf(text.toLowerCase()) > -1;
           }
+          return false;
         });
         return ret;
       });
     } else {
-      this.refs.table.filter(filterCol, undefined);
+      this.refs.table.filter(filterCol);
     }
   },
 
@@ -282,8 +283,7 @@ var TableForm = React.createClass({
           <InputSearch onChange={this.inputSearchOnChange} />
           <span>search in Category, Level and Price</span>
         </div>
-        <Table
-          ref="table"
+        <Table ref="table"
           column={column}
           data={data}
           dataKey="id"
@@ -293,15 +293,14 @@ var TableForm = React.createClass({
           checkboxOnChange={this.checkboxOnChange}
           checkboxOnChangeAll={this.checkboxOnChangeAll}
           striped={true}
-          hover={true}/>
+          hover={true} />
         <div className="desc">
           <p>The following is mini table</p>
         </div>
-        <Table
-          mini={true}
+        <Table mini={true}
           column={column}
           data={data}
-          dataKey={'id'}/>
+          dataKey={'id'} />
         <div className="bottom">
           <span>This is bottom</span>
         </div>

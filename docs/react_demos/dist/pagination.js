@@ -200,7 +200,8 @@
 	            ),
 	            React.createElement(Button, { value: 'Change Label', onClick: this.changeLabel })
 	          ),
-	          React.createElement(Pagination, { labelOnly: true, label: state.changeLabel ? label1 : label2, onClickLabel: this.labelListener })
+	          React.createElement(Pagination, { labelOnly: true, label: state.changeLabel ? label1 : label2,
+	            onClickLabel: this.labelListener })
 	        )
 	      );
 	    }

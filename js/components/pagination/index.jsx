@@ -100,7 +100,7 @@ class Pagination extends React.Component {
       </li>
     );
 
-    for(let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= 2; i++) {
       let prevSibling = current - i;
       if (prevSibling >= 1 && prevSibling < current) {
         pagi.unshift(
@@ -184,7 +184,7 @@ class Pagination extends React.Component {
         <a className={'next' + (current === total ? ' disabled' : '')}
           onClick={current === total ? null : this.onClick.bind(null, current + 1)}>
           <i className="glyphicon icon-arrow-right"></i>
-          </a>
+        </a>
       </li>
     );
 

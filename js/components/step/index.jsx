@@ -63,15 +63,16 @@ class Step extends React.Component {
 
     return (
       <ol className="steps" style={{width: props.width}}>
-        {items.map((item, index) => {
-          return (
-            <li key={index} className={this.getItemClass(item, index, props, state)} style={style}>
-              <span data-value={index} onClick={disabled || selectedIndex === index ? null : this.onClick}></span>
-              <div className="delimiter"></div>
-              <div className="name">{item.name}</div>
-            </li>
-          );
-        })}
+        {items.map((item, index) => (
+          <li key={index}
+            className={this.getItemClass(item, index, props, state)}
+            style={style}>
+            <span data-value={index}
+              onClick={disabled || selectedIndex === index ? null : this.onClick}></span>
+            <div className="delimiter"></div>
+            <div className="name">{item.name}</div>
+          </li>)
+        )}
       </ol>
     );
   }

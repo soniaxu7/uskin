@@ -12,7 +12,8 @@ class Slider extends React.Component {
     };
 
     ['getProps', 'startSlide', 'endSlide', 'updateSlide', 'finishSlide',
-    'disableAnimate', 'enableAnimate'].forEach((func) => {
+      'disableAnimate', 'enableAnimate'
+    ].forEach((func) => {
       this[func] = this[func].bind(this);
     });
   }
@@ -86,7 +87,8 @@ class Slider extends React.Component {
   }
 
   _trackOffsetPerc(e) {
-    return this._inbound((e.clientX - this.refs.slider.getBoundingClientRect().left) / this.refs.slider.offsetWidth);
+    return this._inbound(
+      (e.clientX - this.refs.slider.getBoundingClientRect().left) / this.refs.slider.offsetWidth);
   }
 
   _trackOffsetCloserPerc(e) {
@@ -147,8 +149,14 @@ class Slider extends React.Component {
       <div className={'slider' + (disabled ? ' disabled' : '')} data-min={min} data-max={max} data-value={state.value} ref="slider"
         onMouseDown={disabled ? null : this.startSlide}
         style={{width: style.width}}>
-        <div ref="track" className="slider-track" style={{width: state.perc * 100 + '%'}}></div>
-        <div ref="thumb" className={'slider-thumb' + (props.hideThumb ? ' hide' : '')} style={{left: state.perc * 100 + '%'}}></div>
+        <div ref="track"
+          className="slider-track"
+          style={{width: (state.perc * 100) + '%'}}>
+        </div>
+        <div ref="thumb"
+          className={'slider-thumb' + (props.hideThumb ? ' hide' : '')}
+          style={{left: (state.perc * 100) + '%'}}>
+        </div>
       </div>
     );
   }

@@ -1,11 +1,7 @@
 import React from 'react';
 import styles from '../../mixins/styles';
 
-class Panel extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
+class Panel extends React.PureComponent {
 
   render() {
     var props = this.props;
@@ -14,10 +10,10 @@ class Panel extends React.Component {
     return (
       <div className="panel" style={style}>
         <div className="panel-hd">
-          { props.title }
+          {props.title}
         </div>
         <div className="panel-bd">
-          { props. content }
+          {props.content}
         </div>
       </div>
     );

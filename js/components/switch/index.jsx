@@ -17,8 +17,8 @@ class Switch extends React.Component {
   componentWillMount() {
     var props = this.props;
     this.setState({
-      checked: props.checked ? true : false,
-      disabled: props.disabled ? true : false
+      checked: props.checked,
+      disabled: props.disabled
     });
   }
 

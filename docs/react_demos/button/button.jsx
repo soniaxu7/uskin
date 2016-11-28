@@ -23,12 +23,12 @@ ReactDOM.render(
       <Button value="Initial" type="cancel" initial={true} disabled={true} onClick={listener} />
     </div>
     <div>
-      <Button value="Initial" btnKey="btnIcon-1" initial={true} onClick={listener} iconClass="region"/>
-      <Button value="Initial" btnKey="btnIcon-2" type="create" initial={true} onClick={listener} iconClass="create"/>
-      <Button value="Initial" btnKey="btnIcon-2" type="warning" initial={true} onClick={listener} iconClass="property"/>
-      <Button value="Initial" btnKey="btnIcon-3" type="delete" initial={true} onClick={listener} iconClass="more"/>
-      <Button value="Initial" btnKey="btnIcon-4" type="cancel" initial={true} onClick={listener} iconClass="edit"/>
-      <Button value="Initial" btnKey="btnIcon-5" type="cancel" initial={true} disabled={true} onClick={listener} iconClass="disable"/>
+      <Button value="Initial" btnKey="btnIcon-1" initial={true} onClick={listener} iconClass="region" />
+      <Button value="Initial" btnKey="btnIcon-2" type="create" initial={true} onClick={listener} iconClass="create" />
+      <Button value="Initial" btnKey="btnIcon-2" type="warning" initial={true} onClick={listener} iconClass="property" />
+      <Button value="Initial" btnKey="btnIcon-3" type="delete" initial={true} onClick={listener} iconClass="more" />
+      <Button value="Initial" btnKey="btnIcon-4" type="cancel" initial={true} onClick={listener} iconClass="edit" />
+      <Button value="Initial" btnKey="btnIcon-5" type="cancel" initial={true} disabled={true} onClick={listener} iconClass="disable" />
     </div>
     <div>
       <Button value="Size xl" btnKey="xl" size="xl" onClick={listener} />

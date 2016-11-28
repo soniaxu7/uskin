@@ -1,14 +1,14 @@
 function hash(length) {
-  var ret = '';
+  let ret = '';
 
   if (!length) {
     length = 8;
   }
 
   if (window.btoa) {
-    ret = btoa(Math.random()).replace(/\=+$/, '').slice(-length);
+    ret = btoa(Math.random()).replace(/=+$/, '').slice(-length);
   } else {
-    let str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+    const str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
       len = str.length;
 
     for (let i = 0; i < length; i++) {

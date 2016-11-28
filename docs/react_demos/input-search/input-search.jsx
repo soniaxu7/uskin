@@ -14,6 +14,7 @@ var column = [{
       if (item.id >= 4) {
         return true;
       }
+      return false;
     }
   }, {
     name: 'id小于4',
@@ -22,6 +23,7 @@ var column = [{
       if (item.id < 4) {
         return true;
       }
+      return false;
     }
   }]
 }, {
@@ -103,8 +105,8 @@ var column = [{
     if (item.id > 4) {
       return <div>Printing Disabled</div>;
     } else {
-      return <div style={{fontWeight: 500, cursor: 'pointer'}}
-        onClick={this.printData.bind(this, col, item)}>{'Print ID ' + item.id}</div>;
+      return (<div style={{fontWeight: 500, cursor: 'pointer'}}
+        onClick={this.printData.bind(this, col, item)}>{'Print ID ' + item.id}</div>);
     }
   }
 }];
@@ -158,7 +160,7 @@ var SearchForm = React.createClass({
     this.refs.table.filter(column[3], function(item) {
       var filter = text.toLowerCase(),
         level = item.level.toLowerCase();
-      return (level.indexOf(filter) > -1) ? true : false;
+      return level.indexOf(filter) > -1;
     });
   },
 
@@ -167,7 +169,7 @@ var SearchForm = React.createClass({
       this.refs.table.filter(column[2], function(item) {
         var filter = text.toLowerCase(),
           flavor = item.flavor.toLowerCase();
-        return (flavor.indexOf(filter) > -1) ? true : false;
+        return flavor.indexOf(filter) > -1;
       });
     }
   },
@@ -188,8 +190,7 @@ var SearchForm = React.createClass({
           </div>
         </div>
         <div>
-          <Table
-            ref="table"
+          <Table ref="table"
             column={column}
             data={data}
             dataKey={'id'} />

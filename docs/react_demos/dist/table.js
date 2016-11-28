@@ -64,6 +64,7 @@
 	      if (item.id >= 4) {
 	        return true;
 	      }
+	      return false;
 	    }
 	  }, {
 	    name: 'id小于4',
@@ -72,6 +73,7 @@
 	      if (item.id < 4) {
 	        return true;
 	      }
+	      return false;
 	    }
 	  }]
 	}, {
@@ -277,7 +279,7 @@
 	  },
 
 	  checkboxInitialize: function checkboxInitialize(item) {
-	    return item.level.indexOf('Second Level') > -1 ? true : false;
+	    return item.level.indexOf('Second Level') > -1;
 	  },
 
 	  checkboxOnChange: function checkboxOnChange(status, item, arr) {
@@ -289,7 +291,11 @@
 	  },
 
 	  inputSearchOnChange: function inputSearchOnChange(text, status) {
-	    var filterCol = { category: true, level: true, price: true };
+	    var filterCol = {
+	      category: true,
+	      level: true,
+	      price: true
+	    };
 
 	    if (text !== '') {
 	      this.refs.table.filter(filterCol, function (item, columns) {
@@ -299,13 +305,14 @@
 	        var ret = keys.some(function (key) {
 	          if (item[key]) {
 	            var data = item[key].toLowerCase();
-	            return data.indexOf(text.toLowerCase()) > -1 ? true : false;
+	            return data.indexOf(text.toLowerCase()) > -1;
 	          }
+	          return false;
 	        });
 	        return ret;
 	      });
 	    } else {
-	      this.refs.table.filter(filterCol, undefined);
+	      this.refs.table.filter(filterCol);
 	    }
 	  },
 
@@ -344,8 +351,7 @@
 	          'search in Category, Level and Price'
 	        )
 	      ),
-	      React.createElement(Table, {
-	        ref: 'table',
+	      React.createElement(Table, { ref: 'table',
 	        column: column,
 	        data: data,
 	        dataKey: 'id',
@@ -365,8 +371,7 @@
 	          'The following is mini table'
 	        )
 	      ),
-	      React.createElement(Table, {
-	        mini: true,
+	      React.createElement(Table, { mini: true,
 	        column: column,
 	        data: data,
 	        dataKey: 'id' }),

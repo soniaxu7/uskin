@@ -1,4 +1,4 @@
-var styles = {
+const styles = {
 
   getWidth(width) {
     return width ? {

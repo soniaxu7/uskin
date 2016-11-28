@@ -48,38 +48,43 @@
 
 	var Panel = uskin.Panel;
 
+	var c1 = 'Meanwhile in Russia, an outpouring of grief gripped the historic city of St. Petersburg, home of many of the victims. President Vladimir Putin declared a nationwide day of mourning, and flags flew at half-staff.';
+	var c2 = 'viation experts joined the searchers in a remote part of the Sinai, seeking any clues to what caused the Metrojet Airbus A321-200 to plummet abruptly from 31,000 feet just 23 minutes after it departed from the Red Sea resort of Sharm el-Sheikh bound for St. Petersburg.';
+	var c3 = 'ot quite ready to introduce your infant to Taylor Swift? Then ease them into Swiftie-hood with these lullaby versions of her greatest hits, brought you to by Rockabye Baby! The album (which is available for purchase on iTunes) offers gentle, twinkly, super-soothing versions of recent hits like “Bad Blood” and “Blank Space” along with old classics like “Love Story” and “You Belong With Me.”';
+	var c4 = 'You’ll hear the melodies you know and love reimagined with xylophones, bells and wood blocks. If you don’t have an infant you need to lure to sleep, we recommend just listening on your own. The songs will make great background music to keep you calm while you work or try to figure out how your health insurance works.';
+
 	var text = [{
-	  'title': React.createElement(
+	  title: React.createElement(
 	    'div',
 	    null,
 	    'Crashed Russian Plane Broke Up in the Air'
 	  ),
-	  'content': React.createElement(
+	  content: React.createElement(
 	    'div',
 	    null,
 	    React.createElement(
 	      'p',
 	      null,
-	      'Meanwhile in Russia, an outpouring of grief gripped the historic city of St. Petersburg,      home of many of the victims. President Vladimir Putin declared a nationwide day of mourning, and      flags flew at half-staff.'
+	      c1
 	    ),
 	    React.createElement(
 	      'p',
 	      null,
-	      'viation experts joined the searchers in a remote part of the Sinai, seeking any clues to what caused the Metrojet Airbus A321-200 to plummet abruptly from 31,000 feet just 23 minutes after it departed from the Red Sea resort of Sharm el-Sheikh bound for St. Petersburg.'
+	      c2
 	    )
 	  )
 	}, {
-	  'title': React.createElement(
+	  title: React.createElement(
 	    'div',
 	    null,
 	    'Taylor Swift Songs Sound Incredibly Soothing as Lullabies'
 	  ),
-	  'content': React.createElement(
+	  content: React.createElement(
 	    'div',
 	    null,
-	    'ot quite ready to introduce your infant to Taylor Swift? Then ease them into Swiftie-hood with these lullaby versions of her greatest hits, brought you to by Rockabye Baby! The album (which is available for purchase on iTunes) offers gentle, twinkly, super-soothing versions of recent hits like \u201CBad Blood\u201D and \u201CBlank Space\u201D along with old classics like \u201CLove Story\u201D and \u201CYou Belong With Me.\u201D',
+	    c3,
 	    React.createElement('br', null),
-	    'You\u2019ll hear the melodies you know and love reimagined with xylophones, bells and wood blocks. If you don\u2019t have an infant you need to lure to sleep, we recommend just listening on your own. The songs will make great background music to keep you calm while you work or try to figure out how your health insurance works.'
+	    c4
 	  )
 	}];
 

@@ -54,8 +54,23 @@
 	  console.debug('click triggered!', e, status);
 	}
 
-	var items1 = [{ name: 'step 1' }, { name: 'step 2' }, { name: 'step 3' }],
-	    items2 = [{ name: 'title 1' }, { name: 'title 2' }, { name: 'title 3', default: true }, { name: 'title 4' }];
+	var items1 = [{
+	  name: 'step 1'
+	}, {
+	  name: 'step 2'
+	}, {
+	  name: 'step 3'
+	}],
+	    items2 = [{
+	  name: 'title 1'
+	}, {
+	  name: 'title 2'
+	}, {
+	  name: 'title 3',
+	  default: true
+	}, {
+	  name: 'title 4'
+	}];
 
 	var StepForm1 = React.createClass({
 	  displayName: 'StepForm1',

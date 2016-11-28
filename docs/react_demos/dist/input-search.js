@@ -62,6 +62,7 @@
 	      if (item.id >= 4) {
 	        return true;
 	      }
+	      return false;
 	    }
 	  }, {
 	    name: 'id小于4',
@@ -70,6 +71,7 @@
 	      if (item.id < 4) {
 	        return true;
 	      }
+	      return false;
 	    }
 	  }]
 	}, {
@@ -220,7 +222,7 @@
 	    this.refs.table.filter(column[3], function (item) {
 	      var filter = text.toLowerCase(),
 	          level = item.level.toLowerCase();
-	      return level.indexOf(filter) > -1 ? true : false;
+	      return level.indexOf(filter) > -1;
 	    });
 	  },
 
@@ -229,7 +231,7 @@
 	      this.refs.table.filter(column[2], function (item) {
 	        var filter = text.toLowerCase(),
 	            flavor = item.flavor.toLowerCase();
-	        return flavor.indexOf(filter) > -1 ? true : false;
+	        return flavor.indexOf(filter) > -1;
 	      });
 	    }
 	  },
@@ -261,8 +263,7 @@
 	      React.createElement(
 	        'div',
 	        null,
-	        React.createElement(Table, {
-	          ref: 'table',
+	        React.createElement(Table, { ref: 'table',
 	          column: column,
 	          data: data,
 	          dataKey: 'id' })

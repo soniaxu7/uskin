@@ -88,7 +88,8 @@ class Example extends React.Component {
             <span>{' ' + state.value3}</span>
             <Button value={'Change Label'} onClick={this.changeLabel} />
           </p>
-          <Pagination labelOnly={true} label={state.changeLabel ? label1 : label2} onClickLabel={this.labelListener} />
+          <Pagination labelOnly={true} label={state.changeLabel ? label1 : label2}
+            onClickLabel={this.labelListener} />
         </div>
       </div>
     );
