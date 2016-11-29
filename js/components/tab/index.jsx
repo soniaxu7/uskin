@@ -22,7 +22,7 @@ class Tab extends React.Component {
 
   _findDefaultTab() {
     var items = this.props.items,
-      selectedKey = undefined;
+      selectedKey;
 
     function findSelected(item, index) {
       if (item.default) {

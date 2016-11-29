@@ -44,7 +44,7 @@ const helper = {
   },
 
   isValidDate: function(value) {
-    return this.getValidDate(value) ? true : false;
+    return this.getValidDate(value);
   },
 
   getValidDate: function(value) {

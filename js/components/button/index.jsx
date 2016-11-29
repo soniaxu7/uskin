@@ -49,20 +49,20 @@ class Button extends React.Component {
     if (props.tag === 'div') {
       return (
         <div className={this._getClassName(props, state)}
-             onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
-          {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
+          onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
+          {props.iconClass ? <i className={iconPrefix + props.iconClass} /> : null}
           {props.value ? <span>{props.value}</span> : null}
-          {props.dropdown ? <i className={iconPrefix + 'dropdown'}/> : null}
+          {props.dropdown ? <i className={iconPrefix + 'dropdown'} /> : null}
         </div>
       );
     } else {
       return (
         <button className={this._getClassName(props, state)}
-                disabled={state.disabled}
-                onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
-          {props.iconClass ? <i className={iconPrefix + props.iconClass}/> : null}
+          disabled={state.disabled}
+          onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
+          {props.iconClass ? <i className={iconPrefix + props.iconClass} /> : null}
           {props.value ? <span>{props.value}</span> : null}
-          {props.dropdown ? <i className={iconPrefix + 'dropdown'}/> : null}
+          {props.dropdown ? <i className={iconPrefix + 'dropdown'} /> : null}
         </button>
       );
     }

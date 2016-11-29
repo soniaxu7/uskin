@@ -6,24 +6,23 @@ function modal(props) {
 
   var container = null;
 
-  (function() {
-    var mask = null,
-      doc = document,
-      root = doc.getElementById('modal-container');
+  var mask = null,
+    doc = document,
+    root = doc.getElementById('modal-container');
 
-    if (!root) {
-      root = doc.createElement('div');
-      root.id = 'modal-container';
+  if (!root) {
+    root = doc.createElement('div');
+    root.id = 'modal-container';
 
-      mask = doc.createElement('div');
-      mask.classList.add('modal-mask');
-      root.appendChild(mask);
+    mask = doc.createElement('div');
+    mask.classList.add('modal-mask');
+    root.appendChild(mask);
 
-      doc.body.appendChild(root);
-    }
-    container = doc.createElement('div');
-    root.appendChild(container);
-  })();
+    doc.body.appendChild(root);
+  }
+  container = doc.createElement('div');
+  root.appendChild(container);
+
 
   function destory() {
     ReactDOM.unmountComponentAtNode(container);
@@ -38,7 +37,7 @@ function modal(props) {
     onAfterClose: onAfterClose
   });
 
-  return ReactDOM.render(<Base {..._props}/>, container);
+  return ReactDOM.render(<Base {..._props} />, container);
 }
 
 module.exports = modal;

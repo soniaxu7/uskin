@@ -31,7 +31,11 @@ class ModalBase extends React.Component {
           {props.content}
         </div>
         <div className="modal-ft">
-          <Button value={props.okText} disabled={state.disabled} btnKey="create" type={props.btnType} onClick={this.onConfirm}/>
+          <Button value={props.okText}
+            disabled={state.disabled}
+            btnKey="create"
+            type={props.btnType}
+            onClick={this.onConfirm} />
         </div>
       </Modal>
     );

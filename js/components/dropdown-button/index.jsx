@@ -46,8 +46,15 @@ class DropdownButton extends React.Component {
 
     return (
       <div ref="dropdownBtn" className="dropdown-btn">
-        <Button value={btn.value} iconClass={btn.iconClass} onClick={this.buttonOnClick} dropdown={true} initial={true} disabled={props.disabled}/>
-        <Dropdown items={dropdownItems} style={dropdownStyle} onClick={props.dropdownOnClick} />
+        <Button value={btn.value}
+          iconClass={btn.iconClass}
+          onClick={this.buttonOnClick}
+          dropdown={true}
+          initial={true}
+          disabled={props.disabled} />
+        <Dropdown items={dropdownItems}
+          style={dropdownStyle}
+          onClick={props.dropdownOnClick} />
       </div>
     );
   }

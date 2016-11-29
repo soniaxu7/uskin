@@ -15,7 +15,8 @@ class Header extends React.Component {
     };
 
     ['onChangeYear', 'onChangeMonth', 'prevMonth', 'nextMonth',
-    'showYears', 'showMonths', 'closeLists'].forEach((func) => {
+      'showYears', 'showMonths', 'closeLists'
+    ].forEach((func) => {
       this[func] = this[func].bind(this);
     });
   }
@@ -84,7 +85,7 @@ class Header extends React.Component {
     let start = current - YEARS_PERIOD;
     let end = current + YEARS_PERIOD;
 
-    for(let i = start; i <= end; i++) {
+    for (let i = start; i <= end; i++) {
       years.push(i);
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../mixins/styles.js';
+import styles from '../../mixins/styles';
 
 class InputNumber extends React.Component {
 
@@ -25,15 +25,13 @@ class InputNumber extends React.Component {
       min = this.min;
 
     if (value === undefined) {
-      this.setState({ value: 0 });
+      this.setState({value: 0});
+    } else if (value > max) {
+      this.setState({value: max});
+    } else if (value < min) {
+      this.setState({value: min});
     } else {
-      if (value > max) {
-        this.setState({ value: max });
-      } else if (value < min) {
-        this.setState({ value: min });
-      } else {
-        this.setState({ value: value });
-      }
+      this.setState({value: value});
     }
   }
 
@@ -55,20 +53,20 @@ class InputNumber extends React.Component {
     if (this.props.disabled) {
       return true;
     }
-    return value >= this.max ? true : false;
+    return value >= this.max;
   }
 
   _isLowerBound(value) {
     if (this.props.disabled) {
       return true;
     }
-    return value <= this.min ? true : false;
+    return value <= this.min;
   }
 
   _fixNumber(value) {
     var pro = 1;
     for (let i = 0; i < this.stepLength; i++) {
-      pro = pro * 10;
+      pro *= 10;
     }
 
     return parseFloat((Math.round(value * pro) / pro).toFixed(this.stepLength));
@@ -178,20 +176,18 @@ class InputNumber extends React.Component {
       inputWidth = styles.getWidth(props.width - 42);
 
     return (
-      <div className={props.disabled ? 'input-number disabled' : 'input-number'}
-           style={inputBoxWidth}>
+      <div className={props.disabled ? 'input-number disabled' : 'input-number'} style={inputBoxWidth}>
         <div className="arrow">
           <div className={this._isUpperBound(state.value) ? 'arrow-up disabled' : 'arrow-up'}
-               onClick={this._isUpperBound(state.value) ? null : this.nextStep}>
+            onClick={this._isUpperBound(state.value) ? null : this.nextStep}>
             <div />
           </div>
           <div className={this._isLowerBound(state.value) ? 'arrow-down disabled' : 'arrow-down'}
-               onClick={this._isLowerBound(state.value) ? null : this.prevStep}>
+            onClick={this._isLowerBound(state.value) ? null : this.prevStep}>
             <div />
           </div>
         </div>
-        <input
-          style={inputWidth}
+        <input style={inputWidth}
           className={error ? 'error' : null}
           disabled={props.disabled ? 'disabled' : null}
           onChange={this.onChange}

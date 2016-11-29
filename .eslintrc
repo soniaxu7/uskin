@@ -34,6 +34,7 @@
     "no-undef": 2,
     "no-underscore-dangle": 0,
     "no-unused-vars": [2, {"vars": "all", "args": "none"}],
+    "no-useless-constructor": 0,
     "no-var": 0,
     "no-unused-expressions": 0,
     "no-plusplus": 0,
@@ -56,10 +57,12 @@
     "react/jsx-first-prop-new-line": [2, "never"],
     "react/jsx-no-bind": 0,
     "react/jsx-no-duplicate-props": 2,
+    "react/no-render-return-value": 0,
     "react/no-string-refs": 0,
     "react/no-unused-prop-types": 0,
     "react/prefer-stateless-function": [2, {ignorePureComponents: true}],
-    "react/prop-types": [2, {"ignore": ["children", "className", "style"]}],
+    "react/prop-types": [0, {"ignore": ["children", "className", "style"]}],
+    "react/prefer-es6-class": 0,
     "react/sort-comp": 0,
     "react/self-closing-comp": [2, {
       "component": true

@@ -30,12 +30,10 @@ class Calendar extends React.Component {
 
     if (selected.date) {
       page = selected;
+    } else if (props.page) {
+      page = Helper.formatDate(new Date(props.page));
     } else {
-      if (props.page) {
-        page = Helper.formatDate(new Date(props.page));
-      } else {
-        page = Helper.formatDate(new Date());
-      }
+      page = Helper.formatDate(new Date());
     }
 
     let state = {
@@ -146,7 +144,9 @@ class Calendar extends React.Component {
 
       let isAvailableDate = true;
       if (disabled.dates && disabled.dates.length > 0) {
-        isAvailableDate = !disabled.dates.some((d) => Helper.compareFullDate(new Date(d), currentDate) === 0);
+        isAvailableDate = !disabled.dates.some((d) => (
+          Helper.compareFullDate(new Date(d), currentDate) === 0
+        ));
       }
 
       return isAvaiableMin && isAvailableMax && isAvailableWeek && isAvailableDate;
@@ -200,16 +200,16 @@ class Calendar extends React.Component {
               onToggle={this.onToggle}
               onSelected={this.onSelected}
               onChange={this.onChange}
-              onConfirm={this.onConfirmScreen}/>
+              onConfirm={this.onConfirmScreen} />
           : null
         }
         <div className={'calendar' + (state.toggle ? '' : ' hide')}>
           <Header ref="header" {...props} {...state}
             onPreventFold={this.onPreventFold}
-            onChange={this.onChange}/>
+            onChange={this.onChange} />
           <DatePicker {...props} {...state}
             onSelected={this.onSelected}
-            isSelectable={this.isSelectable}/>
+            isSelectable={this.isSelectable} />
         </div>
       </div>
     );

@@ -63,13 +63,13 @@ class DatePicker extends React.Component {
       dates[line] = [];
       let i = 0;
 
-      for(i = 0; i < offset; i++) {
+      for (i = 0; i < offset; i++) {
         dates[line][i] = {
           monthOffset: -1,
           date: prevLastDate + i - offset + 1
         };
       }
-      for(; i < WEEKS_COUNT; i++) {
+      for (; i < WEEKS_COUNT; i++) {
         dates[line][i] = {
           monthOffset: 0,
           date: i - offset + 1
@@ -118,7 +118,9 @@ class DatePicker extends React.Component {
       if (props.disabled && !this.isSelectable(props.disabled, date)) {
         return 'not-selected';
       }
-      if (ele.monthOffset === 0 && props.selected.date && Helper.compareDate(props.selected, date) === 0) {
+      if (ele.monthOffset === 0
+        && props.selected.date
+        && Helper.compareDate(props.selected, date) === 0) {
         return 'selected';
       }
       return 'default';

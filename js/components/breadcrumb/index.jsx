@@ -15,17 +15,17 @@ class Breadcrumb extends React.Component {
 
     return (
       <div className="breadcrumb">
-      {items.map((item, index) =>
-        index < items.length - 1 ?
-          <span className="breadcrumb-item" key={index}>
-            <a href={item.href} onClick={this.onClick.bind(this, item)}>{item.name}</a>
-            <span className="breadcrumb-item-next">></span>
-          </span> :
-          <span className="breadcrumb-item" key={index}>
-            <span>{item.name}</span>
-          </span>
-      )}
-    </div>
+        {items.map((item, index) => (
+          index < items.length - 1 ?
+            <span className="breadcrumb-item" key={index}>
+              <a href={item.href} onClick={this.onClick.bind(this, item)}>{item.name}</a>
+              <span className="breadcrumb-item-next">&gt;</span>
+            </span> :
+            <span className="breadcrumb-item" key={index}>
+              <span>{item.name}</span>
+            </span>
+        ))}
+      </div>
     );
   }
 }

@@ -23,7 +23,7 @@ class Screen extends React.Component {
 
   getDefaultValue(props) {
     let selected = props ? props.selected : this.props.selected;
-    let format = (num) => num < 10 ? '0' + num : '' + num;
+    let format = (num) => (num < 10 ? '0' + num : '' + num);
 
     return selected.date ? selected.year + '-' + format(selected.month + 1) + '-' + format(selected.date) : '';
   }
@@ -61,7 +61,11 @@ class Screen extends React.Component {
     return (
       <div className={'calendar-screen' + (props.toggle ? ' unfold' : '')} onClick={this.toggle}>
         <i className="glyphicon icon-calendar" />
-        <input key="screen" onChange={this.onChange} onKeyPress={this.onKeyPress} value={state.value} placeholder={props.placeholder}/>
+        <input key="screen"
+          onChange={this.onChange}
+          onKeyPress={this.onKeyPress}
+          value={state.value}
+          placeholder={props.placeholder} />
       </div>
     );
   }

@@ -26,7 +26,7 @@ var iconMap = {
       content = (
         <div className="modal-reminder-content">
           <div className="modal-reminder-title">
-            <i className={'glyphicon icon-status-' + iconMap[m] + ' ' + m}/>
+            <i className={'glyphicon icon-status-' + iconMap[m] + ' ' + m} />
             <span>{m.charAt(0).toUpperCase() + m.slice(1)}</span>
           </div>
           <div className="modal-reminder-message">

@@ -23,10 +23,10 @@ class Menu extends React.Component {
   }
 
   update(items) {
-    var isSelected = items.some(item =>
-      item.submenu.some(submenu =>
+    var isSelected = items.some((item) =>
+      item.submenu.some((submenu) => (
         submenu.selected ? (this.onChange(null, item.key, submenu.key), true) : false
-      )
+      ))
     );
 
     !isSelected && this.onChange(null, undefined, undefined);
@@ -53,7 +53,10 @@ class Menu extends React.Component {
       <ul ref="menu" className="menu">
         {items.map((item, index) =>
           <li key={index}>
-            <MenuItem item={item} selectMenu={this.onChange} selected={selected} toggle={props.toggle}/>
+            <MenuItem item={item}
+              selectMenu={this.onChange}
+              selected={selected}
+              toggle={props.toggle} />
           </li>
         )}
       </ul>

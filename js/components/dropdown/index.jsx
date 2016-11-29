@@ -32,28 +32,26 @@ class Dropdown extends React.Component {
     var items = props.items,
       style = props.style;
 
-    var createLists = (element, index) => {
-      return (
-        <ul key={index} ref="dropdown">
-          {element.title ? <li key={element.title} className="dropdown-header">{element.title}</li> : null}
-          {element.items.map((ele, i) =>
-            <li className={this.getClassName(ele)} key={i}
-              onClick={props.onClick && !ele.disabled ? this.onClick.bind(null, ele) : null}>
-              <a>{ele.title}</a>
-              {
-                !ele.disabled && ele.children ?
-                  <div className="dropdown dropdown-sub">
-                    {ele.children.map((child, key) =>
-                      createLists(child, key)
-                    )}
-                  </div>
-                : null
-              }
-            </li>
-          )}
-        </ul>
-      );
-    };
+    var createLists = (element, index) => (
+      <ul key={index} ref="dropdown">
+        {element.title ? <li key={element.title} className="dropdown-header">{element.title}</li> : null}
+        {element.items.map((ele, i) =>
+          <li className={this.getClassName(ele)} key={i}
+            onClick={props.onClick && !ele.disabled ? this.onClick.bind(null, ele) : null}>
+            <a>{ele.title}</a>
+            {
+              !ele.disabled && ele.children ?
+                <div className="dropdown dropdown-sub">
+                  {ele.children.map((child, key) =>
+                    createLists(child, key)
+                  )}
+                </div>
+              : null
+            }
+          </li>
+        )}
+      </ul>
+    );
 
     return (
       <div className="dropdown" style={style} ref="container">

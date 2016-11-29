@@ -97,13 +97,11 @@ class Modal extends React.Component {
     }
     if (nextProps.visible === true) {
       this.show();
+    } else if (this.props.parent) {
+      this.hide(true);
+      this.props.parent.show(true);
     } else {
-      if (this.props.parent) {
-        this.hide(true);
-        this.props.parent.show(true);
-      } else {
-        this.hide();
-      }
+      this.hide();
     }
   }
 

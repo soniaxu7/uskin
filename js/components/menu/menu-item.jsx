@@ -26,7 +26,8 @@ class MenuItem extends React.Component {
 
   isSelected(menu) {
     var selected = this.props.selected;
-    if ((this.props.item.key.localeCompare(selected.key) === 0) && (menu.key.localeCompare(selected.subkey) === 0)) {
+    if ((this.props.item.key.localeCompare(selected.key) === 0)
+      && (menu.key.localeCompare(selected.subkey) === 0)) {
       return true;
     } else {
       return false;

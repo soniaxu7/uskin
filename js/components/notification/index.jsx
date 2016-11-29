@@ -131,7 +131,8 @@ var Notice = React.createClass({
     var className = this.state.className;
 
     var style = styles.getWidth(parseInt(props.width, 10) - 40),
-      contentStyle = iconType ? styles.getWidth(parseInt(props.width, 10) - 90) : styles.getWidth(parseInt(props.width, 10) - 50);
+      contentStyle = iconType ? styles.getWidth(parseInt(props.width, 10) - 90)
+        : styles.getWidth(parseInt(props.width, 10) - 50);
 
     return (
       <div className={className} style={style}>
@@ -170,9 +171,7 @@ class Notification extends React.Component {
   }
 
   remove(id) {
-    var notices = this.state.notices.filter((notice) => {
-      return notice.id !== id;
-    });
+    var notices = this.state.notices.filter((notice) => notice.id !== id);
     this.setState({
       notices: notices
     });
@@ -204,9 +203,13 @@ class Notification extends React.Component {
   }
 
   render() {
-    var noticeNodes = this.state.notices.map((notice) => {
-      return (<Notice {...notice} onClose={this.remove.bind(this, notice.id)} key={notice.id}>{notice.content}</Notice>);
-    });
+    var noticeNodes = this.state.notices.map((notice) => (
+      <Notice {...notice}
+        onClose={this.remove.bind(this, notice.id)}
+        key={notice.id}>
+        {notice.content}
+      </Notice>)
+    );
 
     return (
       <div className="notification">
