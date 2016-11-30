@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Slider = require('../js/components/slider.jsx').default;
+import Slider from '../js/components/slider/index';
 
 describe('Test slider component', () => {
 

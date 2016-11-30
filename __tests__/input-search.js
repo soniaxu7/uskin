@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const InputSearch = require('../js/components/input-search.jsx').default;
+import InputSearch from '../js/components/input-search/index';
 
 describe('Test input-search component', () => {
   const props = {

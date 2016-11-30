@@ -1,9 +1,7 @@
-jest.autoMockOff();
-
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const Table = require('../js/components/table.jsx').default;
+import Table from '../js/components/table/index';
 
 describe('Test table component', () => {
   var column, data, checkboxOnChange, checkboxInitialize, table;

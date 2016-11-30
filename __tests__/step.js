@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Step = require('../js/components/step.jsx').default;
+import Step from '../js/components/step/index';
 
 describe('Test step component', () => {
 

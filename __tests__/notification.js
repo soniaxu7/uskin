@@ -1,9 +1,7 @@
-jest.autoMockOff();
-
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Notification = require('../js/components/notification.jsx').default;
+import Notification from '../js/components/notification/index';
 
 describe('Test notification component', () => {
 

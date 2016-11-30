@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Dropdown = require('../js/components/dropdown.jsx').default;
+import Dropdown from '../js/components/dropdown/index';
 
 describe('Test dropdown component', () => {
 

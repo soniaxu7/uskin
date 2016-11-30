@@ -1,12 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-// import Switch from '../js/components/switch.jsx';
-
-const Switch = require('../js/components/switch.jsx').default;
+import Switch from '../js/components/switch/index';
 
 describe('Test switch component', () => {
 

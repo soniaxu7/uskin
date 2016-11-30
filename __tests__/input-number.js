@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const InputNumber = require('../js/components/input-number.jsx').default;
+import InputNumber from '../js/components/input-number/index';
 
 describe('Test input-number component', () => {
 

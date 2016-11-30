@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Tab = require('../js/components/tab.jsx').default;
+import Tab from '../js/components/tab/index';
 
 describe('Test tab component', () => {
 

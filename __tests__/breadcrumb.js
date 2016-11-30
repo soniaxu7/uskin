@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Breadcrumb = require('../js/components/breadcrumb.jsx').default;
+import Breadcrumb from '../js/components/breadcrumb/index';
 
 describe('Test breadcrumb component', () => {
 

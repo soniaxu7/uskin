@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Menu = require('../js/components/menu.jsx').default;
+import Menu from '../js/components/menu/index';
 
 describe('Test menu component', () => {
 

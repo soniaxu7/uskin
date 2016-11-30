@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Tooltip = require('../js/components/tooltip.jsx').default;
+import Tooltip from '../js/components/tooltip/index';
 
 describe('Test tooltip component', () => {
 
@@ -16,7 +14,7 @@ describe('Test tooltip component', () => {
       classNamePrefix = 'tooltip tooltip-',
       width = 300;
     var tooltip = TestUtils.renderIntoDocument(
-      <Tooltip content={content} shape={shape} type={type} width={width}/>
+      <Tooltip content={content} shape={shape} type={type} width={width} />
     );
 
     var tooltipNode = ReactDOM.findDOMNode(tooltip);

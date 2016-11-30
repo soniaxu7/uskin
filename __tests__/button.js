@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Button = require('../js/components/button.jsx').default;
+import Button from '../js/components/button/index';
 
 describe('Test button component', () => {
 

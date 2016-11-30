@@ -1,9 +1,7 @@
-jest.autoMockOff();
-
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const Pagination = require('../js/components/pagination.jsx').default;
+import Pagination from '../js/components/pagination/index';
 
 describe('Test pagination component', () => {
 

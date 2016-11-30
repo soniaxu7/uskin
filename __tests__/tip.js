@@ -1,10 +1,8 @@
-jest.autoMockOff();
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-const Tip = require('../js/components/tip.jsx').default;
+import Tip from '../js/components/tip/index';
 
 describe('Test tip component', () => {
 

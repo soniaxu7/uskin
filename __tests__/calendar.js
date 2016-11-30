@@ -1,9 +1,7 @@
-jest.autoMockOff();
-
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const Calendar = require('../js/components/calendar/index.jsx').default;
+import Calendar from '../js/components/calendar/index';
 
 describe('Test calendar component', () => {
 
