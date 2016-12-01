@@ -17,8 +17,8 @@
     "build": "grunt build",
     "release": "grunt release",
     "prepublish": "grunt build",
-    "test": "jest",
-    "test-dev": "jest --watch",
+    "test": "jest --config  ./jest.config.json",
+    "test-dev": "jest --config  ./jest.config.json --watch",
     "eslint": "eslint *.js __tests__/ js/** docs/react_demos/** --ext .js,.jsx --cache",
     "dev": "rm -rf dist && webpack --config dev.webpack.config.js"
   },
@@ -69,21 +69,5 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.4",
     "webpack-dev-server": "^1.12.1"
-  },
-  "jest": {
-    "transform": {
-      ".(js|jsx)": "<rootDir>/node_modules/babel-jest"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules/"
-    ],
-    "collectCoverage": true
   }
 }
