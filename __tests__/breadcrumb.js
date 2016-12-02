@@ -48,9 +48,12 @@ describe('Test breadcrumb component', () => {
       index < breadcrumbItemsNode.length - 1 ? content += item.firstChild.textContent + '>' : content += item.firstChild.textContent
     );
 
+    let firstChildNode = breadcrumbItemsNode[0].firstChild;
+    let lastChildNode = breadcrumbItemsNode[breadcrumbItemsNode.length - 1];
+
     expect(breadcrumbNode.textContent).toEqual(content);
-    expect(breadcrumbItemsNode[0].firstChild.getAttribute('href')).toEqual(items[0].href);
-    expect(breadcrumbItemsNode[breadcrumbItemsNode.length - 1].lastChild.getAttribute('href')).toEqual(undefined);
+    expect(firstChildNode.getAttribute('href')).toEqual(items[0].href);
+    expect(lastChildNode.childNodes.length).toEqual(1);
   });
 
   it('is triggered with onClick', () => {
