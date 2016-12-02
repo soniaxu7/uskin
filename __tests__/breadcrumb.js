@@ -8,16 +8,16 @@ describe('Test breadcrumb component', () => {
 
   it('checks when props item is not an array', () => {
 
-    var items = {
+    let items = {
       name: 'title 1',
       href: '#home'
     };
 
-    var breadcrumb = TestUtils.renderIntoDocument(
+    let breadcrumb = TestUtils.renderIntoDocument(
       <Breadcrumb items={items}/>
     );
 
-    var breadcrumbNode = ReactDOM.findDOMNode(breadcrumb);
+    let breadcrumbNode = ReactDOM.findDOMNode(breadcrumb);
 
     expect(breadcrumbNode.textContent).toEqual('');
 
@@ -25,7 +25,7 @@ describe('Test breadcrumb component', () => {
 
   it('makes breadcrumb', () => {
 
-    var items = [{
+    let items = [{
       name: 'Home',
       href: '#home'
     }, {
@@ -36,11 +36,11 @@ describe('Test breadcrumb component', () => {
       href: '#phone'
     }];
 
-    var breadcrumb = TestUtils.renderIntoDocument(
+    let breadcrumb = TestUtils.renderIntoDocument(
       <Breadcrumb items={items}/>
     );
 
-    var breadcrumbNode = ReactDOM.findDOMNode(breadcrumb),
+    let breadcrumbNode = ReactDOM.findDOMNode(breadcrumb),
       breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithClass(breadcrumb, 'breadcrumb-item'),
       content = '';
 
@@ -54,7 +54,7 @@ describe('Test breadcrumb component', () => {
   });
 
   it('is triggered with onClick', () => {
-    var items = [{
+    let items = [{
         name: 'Home',
         href: '#home'
       }, {
@@ -66,11 +66,11 @@ describe('Test breadcrumb component', () => {
       }],
       listener = jest.genMockFunction();
 
-    var breadcrumb = TestUtils.renderIntoDocument(
+    let breadcrumb = TestUtils.renderIntoDocument(
       <Breadcrumb items={items} onClick={listener}/>
     );
 
-    var breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithTag(breadcrumb, 'a');
+    let breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithTag(breadcrumb, 'a');
     TestUtils.Simulate.click(breadcrumbItemsNode[0]);
     TestUtils.Simulate.click(breadcrumbItemsNode[1]);
 

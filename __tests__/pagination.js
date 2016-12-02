@@ -6,7 +6,7 @@ import Pagination from '../js/components/pagination/index';
 describe('Test pagination component', () => {
 
   describe('Test pagination with page labels', () => {
-    var current, total, listener, pagination, prevNode, nextNode;
+    let current, total, listener, pagination, prevNode, nextNode;
 
     beforeEach(() => {
       current = 1;
@@ -26,17 +26,17 @@ describe('Test pagination component', () => {
     });
 
     it('corrects the page when props is invalid', () => {
-      var invalidCurrent = -1,
+      let invalidCurrent = -1,
         invalidTotal = -10,
         newListener = jest.genMockFunction();
 
-      var newPagination = TestUtils.renderIntoDocument(
+      let newPagination = TestUtils.renderIntoDocument(
         <Pagination onClick={newListener} current={invalidCurrent} total={invalidTotal}/>
       );
 
-      var newPageLabels = TestUtils.scryRenderedDOMComponentsWithTag(newPagination, 'li');
-      var newPrevNode = TestUtils.findRenderedDOMComponentWithClass(newPagination, 'prev');
-      var newNextNode = TestUtils.findRenderedDOMComponentWithClass(newPagination, 'next');
+      let newPageLabels = TestUtils.scryRenderedDOMComponentsWithTag(newPagination, 'li');
+      let newPrevNode = TestUtils.findRenderedDOMComponentWithClass(newPagination, 'prev');
+      let newNextNode = TestUtils.findRenderedDOMComponentWithClass(newPagination, 'next');
 
       expect(newPageLabels.length).toBe(3);
       expect(newPagination.state.current).toBe(1);
@@ -45,10 +45,10 @@ describe('Test pagination component', () => {
     });
 
     it('should jump to the page when page label is clicked', () => {
-      var index = total;
+      let index = total;
 
-      var pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      var lastPage = pageLabels[pageLabels.length - 2].firstChild;
+      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
+      let lastPage = pageLabels[pageLabels.length - 2].firstChild;
       TestUtils.Simulate.click(lastPage);
 
       expect(listener.mock.calls[0][0]).toEqual(index);
@@ -72,8 +72,8 @@ describe('Test pagination component', () => {
     });
 
     it('test with upper bound', () => {
-      var pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      var lastPage = pageLabels[pageLabels.length - 2].firstChild;
+      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
+      let lastPage = pageLabels[pageLabels.length - 2].firstChild;
       TestUtils.Simulate.click(lastPage);
       TestUtils.Simulate.click(nextNode);
 
@@ -87,23 +87,23 @@ describe('Test pagination component', () => {
   describe('Test pagination with guide label only', () => {
 
     it('should render with guide label only', () => {
-      var label = {
+      let label = {
         prev: true,
         next: true,
         first: true,
         last: true
       };
-      var listener = jest.genMockFunction();
+      let listener = jest.genMockFunction();
 
-      var pagination = TestUtils.renderIntoDocument(
+      let pagination = TestUtils.renderIntoDocument(
         <Pagination labelOnly={true} label={label} onClickLabel={listener}/>
       );
 
-      var pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      var prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
-      var nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
-      var firstNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'first');
-      var lastNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'last');
+      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
+      let prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
+      let nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
+      let firstNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'first');
+      let lastNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'last');
 
       TestUtils.Simulate.click(prevNode);
       TestUtils.Simulate.click(nextNode);
@@ -118,21 +118,21 @@ describe('Test pagination component', () => {
     });
 
     it('should render with disabled guide label only', () => {
-      var label = {
+      let label = {
         prev: true,
         prevDisabled: true,
         next: true,
         nextDisabled: true
       };
-      var listener = jest.genMockFunction();
+      let listener = jest.genMockFunction();
 
-      var pagination = TestUtils.renderIntoDocument(
+      let pagination = TestUtils.renderIntoDocument(
         <Pagination labelOnly={true} label={label} onClickLabel={listener}/>
       );
 
-      var pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      var prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
-      var nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
+      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
+      let prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
+      let nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
 
       TestUtils.Simulate.click(prevNode);
       TestUtils.Simulate.click(nextNode);

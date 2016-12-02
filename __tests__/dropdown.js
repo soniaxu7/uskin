@@ -6,7 +6,7 @@ import Dropdown from '../js/components/dropdown/index';
 
 describe('Test dropdown component', () => {
 
-  var items = [{
+  let items = [{
     title: 'Basic Ops',
     key: 'basic',
     items: [{
@@ -94,16 +94,16 @@ describe('Test dropdown component', () => {
 
   it('should render a dropdown with items', () => {
 
-    var dropdown = TestUtils.renderIntoDocument(
+    let dropdown = TestUtils.renderIntoDocument(
       <Dropdown items={items}/>
     );
-    var dropdownNode = ReactDOM.findDOMNode(dropdown);
+    let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
-    var blockNodeSum = dropdownNode.childNodes.length;
-    var itemNodeSum = TestUtils.scryRenderedDOMComponentsWithTag(dropdown, 'li').length;
+    let blockNodeSum = dropdownNode.childNodes.length;
+    let itemNodeSum = TestUtils.scryRenderedDOMComponentsWithTag(dropdown, 'li').length;
 
-    var itemsSum = 0;
-    var counter = (element) => {
+    let itemsSum = 0;
+    let counter = (element) => {
       if (element.title) {
         itemsSum++;
       }
@@ -127,14 +127,14 @@ describe('Test dropdown component', () => {
 
   it('clicks item', () => {
 
-    var listener = jest.genMockFunction();
-    var dropdown = TestUtils.renderIntoDocument(
+    let listener = jest.genMockFunction();
+    let dropdown = TestUtils.renderIntoDocument(
       <Dropdown items={items} onClick={listener}/>
     );
-    var dropdownNode = ReactDOM.findDOMNode(dropdown);
+    let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
-    var clickIndex = [1, 2];
-    var clickNode = dropdownNode.childNodes[clickIndex[0]].childNodes[clickIndex[1] + 1];
+    let clickIndex = [1, 2];
+    let clickNode = dropdownNode.childNodes[clickIndex[0]].childNodes[clickIndex[1] + 1];
 
     TestUtils.Simulate.click(clickNode);
 
@@ -144,14 +144,14 @@ describe('Test dropdown component', () => {
 
   it('clicks sub item', () => {
 
-    var listener = jest.genMockFunction();
-    var dropdown = TestUtils.renderIntoDocument(
+    let listener = jest.genMockFunction();
+    let dropdown = TestUtils.renderIntoDocument(
       <Dropdown items={items} onClick={listener}/>
     );
-    var dropdownNode = ReactDOM.findDOMNode(dropdown);
+    let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
-    var clickIndex = [1, 0, 0, 0, 0, 1];
-    var clickNode = dropdownNode.childNodes[clickIndex[0]]
+    let clickIndex = [1, 0, 0, 0, 0, 1];
+    let clickNode = dropdownNode.childNodes[clickIndex[0]]
       .childNodes[clickIndex[1] + 1].childNodes[1].childNodes[clickIndex[2]]
       .childNodes[clickIndex[3] + 1].childNodes[1].childNodes[clickIndex[4]]
       .childNodes[clickIndex[5]];
@@ -166,14 +166,14 @@ describe('Test dropdown component', () => {
 
   it('should not trigger disabled item', () => {
 
-    var listener = jest.genMockFunction();
-    var dropdown = TestUtils.renderIntoDocument(
+    let listener = jest.genMockFunction();
+    let dropdown = TestUtils.renderIntoDocument(
       <Dropdown items={items} onClick={listener}/>
     );
-    var dropdownNode = ReactDOM.findDOMNode(dropdown);
+    let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
-    var disabledIndex = [3, 1];
-    var disabledNode = dropdownNode.childNodes[disabledIndex[0]].childNodes[disabledIndex[1] + 1];
+    let disabledIndex = [3, 1];
+    let disabledNode = dropdownNode.childNodes[disabledIndex[0]].childNodes[disabledIndex[1] + 1];
 
     TestUtils.Simulate.click(disabledNode);
 

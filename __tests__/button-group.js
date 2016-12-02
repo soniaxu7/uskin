@@ -9,7 +9,7 @@ describe('Test button-group component', () => {
 
   it('is generated with default style', () => {
 
-    var buttongroup = TestUtils.renderIntoDocument(
+    let buttongroup = TestUtils.renderIntoDocument(
       <ButtonGroup>
         <Button tag="div" value="Prev"/>
         <Button tag="div" value="Mid 1" type="delete"/>
@@ -18,15 +18,15 @@ describe('Test button-group component', () => {
       </ButtonGroup>
     );
 
-    var buttongroupNode = ReactDOM.findDOMNode(buttongroup);
+    let buttongroupNode = ReactDOM.findDOMNode(buttongroup);
 
     expect(buttongroupNode.getAttribute('class')).toBe('btn-group');
   });
 
   it('is generated with vertical type, justified width', () => {
-    var width = '200px';
+    let width = '200px';
 
-    var buttongroup = TestUtils.renderIntoDocument(
+    let buttongroup = TestUtils.renderIntoDocument(
       <ButtonGroup type="vertical" width={width}>
         <Button tag="div" value="Prev"/>
         <Button tag="div" value="Mid 1" type="delete"/>
@@ -35,7 +35,7 @@ describe('Test button-group component', () => {
       </ButtonGroup>
     );
 
-    var buttongroupNode = ReactDOM.findDOMNode(buttongroup);
+    let buttongroupNode = ReactDOM.findDOMNode(buttongroup);
 
     expect(buttongroupNode.getAttribute('class')).toBe('btn-group-vertical btn-group-justified');
     expect(buttongroupNode.style.width).toBe(width);

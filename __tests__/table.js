@@ -4,7 +4,7 @@ import TestUtils from 'react-addons-test-utils';
 import Table from '../js/components/table/index';
 
 describe('Test table component', () => {
-  var column, data, checkboxOnChange, checkboxInitialize, table;
+  let column, data, checkboxOnChange, checkboxInitialize, table;
   beforeEach(() => {
     column = [{
       title: 'ID',
@@ -71,7 +71,7 @@ describe('Test table component', () => {
         }
       }],
       sortBy: function(item1, item2) {
-        var weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];
+        let weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];
         if (weight.indexOf(item1.level) > weight.indexOf(item2.level)) {
           return 1;
         } else if (weight.indexOf(item1.level) < weight.indexOf(item2.level)) {
@@ -183,7 +183,7 @@ describe('Test table component', () => {
   });
 
   it('renders table component', () => {
-    var headNum = TestUtils.scryRenderedDOMComponentsWithClass(table, 'table-header').length,
+    let headNum = TestUtils.scryRenderedDOMComponentsWithClass(table, 'table-header').length,
       rowsNum = TestUtils.scryRenderedDOMComponentsWithClass(table, 'row').length;
 
     expect(headNum).toEqual(1);
@@ -192,7 +192,7 @@ describe('Test table component', () => {
   });
 
   it('clicks checkbox and return checked data', () => {
-    var checkIndex = 0,
+    let checkIndex = 0,
       clickNode = TestUtils.scryRenderedDOMComponentsWithTag(table, 'INPUT')[checkIndex + 1];
 
     TestUtils.Simulate.change(clickNode);
@@ -203,11 +203,11 @@ describe('Test table component', () => {
   });
 
   it('sorts by desc id value', () => {
-    var descById = TestUtils.scryRenderedDOMComponentsWithClass(table, 'arrow-down')[0];
+    let descById = TestUtils.scryRenderedDOMComponentsWithClass(table, 'arrow-down')[0];
 
     TestUtils.Simulate.click(descById);
 
-    var idValue = TestUtils.scryRenderedDOMComponentsWithClass(table, 'row')[0].childNodes[1].innerHTML;
+    let idValue = TestUtils.scryRenderedDOMComponentsWithClass(table, 'row')[0].childNodes[1].innerHTML;
 
     expect(idValue).toEqual('6');
   });

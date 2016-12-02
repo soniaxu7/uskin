@@ -8,13 +8,13 @@ describe('Test tip component', () => {
 
   it('generates with title and content', () => {
 
-    var title = 'Title',
+    let title = 'Title',
       content = 'this is content';
-    var tip = TestUtils.renderIntoDocument(
+    let tip = TestUtils.renderIntoDocument(
       <Tip title={title} content={content}/>
     );
 
-    var tipNode = ReactDOM.findDOMNode(tip);
+    let tipNode = ReactDOM.findDOMNode(tip);
 
     expect(tipNode.textContent).toEqual(title + content);
 
@@ -22,15 +22,15 @@ describe('Test tip component', () => {
 
   it('generates with type and width', () => {
 
-    var content = 'this is content',
+    let content = 'this is content',
       type = 'info',
       classNamePrefix = 'tip tip-',
       width = 600;
-    var tip = TestUtils.renderIntoDocument(
+    let tip = TestUtils.renderIntoDocument(
       <Tip content={content} type={type} width={width}/>
     );
 
-    var tipNode = ReactDOM.findDOMNode(tip);
+    let tipNode = ReactDOM.findDOMNode(tip);
 
     expect(tipNode.textContent).toEqual(content);
     expect(tipNode.getAttribute('class')).toEqual(classNamePrefix + type);

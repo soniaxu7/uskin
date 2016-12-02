@@ -8,7 +8,7 @@ describe('Test tab component', () => {
 
   it('generates with small size', () => {
 
-    var items = [{
+    let items = [{
         name: 'Overview',
         key: '0'
       }, {
@@ -21,11 +21,11 @@ describe('Test tab component', () => {
       }],
       type = 'sm';
 
-    var tab = TestUtils.renderIntoDocument(
+    let tab = TestUtils.renderIntoDocument(
       <Tab items={items} type={type} />
     );
 
-    var tabNode = ReactDOM.findDOMNode(tab);
+    let tabNode = ReactDOM.findDOMNode(tab);
 
     expect(tabNode.getAttribute('class')).toEqual('tabs-mini');
 
@@ -33,7 +33,7 @@ describe('Test tab component', () => {
 
   it('generates with selected tab', () => {
 
-    var items = [{
+    let items = [{
       name: 'Overview',
       key: '0'
     }, {
@@ -45,20 +45,20 @@ describe('Test tab component', () => {
       key: '2'
     }];
 
-    var selectedKey = items.filter((item) => item.default)[0].key;
-    var tab = TestUtils.renderIntoDocument(
+    let selectedKey = items.filter((item) => item.default)[0].key;
+    let tab = TestUtils.renderIntoDocument(
       <Tab items={items} />
     );
 
-    var itemNode = TestUtils.findRenderedDOMComponentWithClass(tab, 'tab selected');
+    let itemNode = TestUtils.findRenderedDOMComponentWithClass(tab, 'tab selected');
     expect(itemNode.firstElementChild.getAttribute('data-value')).toEqual(selectedKey);
 
   });
 
   it('triggers when the tab props is not disabled', () => {
 
-    var listener = jest.genMockFunction();
-    var items = [{
+    let listener = jest.genMockFunction();
+    let items = [{
         name: 'Overview',
         key: 'overview',
         href: '#overview'
@@ -74,13 +74,13 @@ describe('Test tab component', () => {
       }],
       clickIndex = 1;
 
-    var tab = TestUtils.renderIntoDocument(
+    let tab = TestUtils.renderIntoDocument(
       <Tab items={items} onClick={listener} />
     );
 
-    var tabNode = ReactDOM.findDOMNode(tab);
+    let tabNode = ReactDOM.findDOMNode(tab);
 
-    var clickNode = tabNode.childNodes[clickIndex].firstChild,
+    let clickNode = tabNode.childNodes[clickIndex].firstChild,
       disabledNode = TestUtils.scryRenderedDOMComponentsWithClass(tab, 'tab disabled')[0].firstChild;
 
     TestUtils.Simulate.click(clickNode);
@@ -92,8 +92,8 @@ describe('Test tab component', () => {
 
   it('updates when the tab receive new props', () => {
 
-    var listener = jest.genMockFunction();
-    var items = [{
+    let listener = jest.genMockFunction();
+    let items = [{
         name: 'Overview',
         key: 'overview',
         href: '#overview'
@@ -109,7 +109,7 @@ describe('Test tab component', () => {
       }],
       clickIndex = 1;
 
-    var newItems = [{
+    let newItems = [{
       name: 'new Overview',
       key: 'new_overview',
       default: true
@@ -121,10 +121,10 @@ describe('Test tab component', () => {
       key: 'new_recharge_record'
     }];
 
-    var divNode = document.createElement('div');
+    let divNode = document.createElement('div');
 
     //first update
-    var tab = ReactDOM.render(<Tab items={items} onClick={listener} />, divNode),
+    let tab = ReactDOM.render(<Tab items={items} onClick={listener} />, divNode),
       tabNode = ReactDOM.findDOMNode(tab),
       clickNode = tabNode.childNodes[clickIndex].firstChild;
 
@@ -132,7 +132,7 @@ describe('Test tab component', () => {
     TestUtils.Simulate.click(clickNode);
 
     //second update
-    var newTab = ReactDOM.render(<Tab items={newItems} onClick={listener} />, divNode),
+    let newTab = ReactDOM.render(<Tab items={newItems} onClick={listener} />, divNode),
       newTabNode = ReactDOM.findDOMNode(newTab),
       newClickNode = newTabNode.childNodes[clickIndex].firstChild;
 

@@ -9,11 +9,11 @@ describe('Test switch component', () => {
   it('changes the text after click', () => {
 
     // Render a checkbox with label in the document
-    var checkbox = TestUtils.renderIntoDocument(
+    let checkbox = TestUtils.renderIntoDocument(
       <Switch labelOn="ON" labelOff="OFF" checked={true} />
     );
 
-    var checkboxNode = ReactDOM.findDOMNode(checkbox);
+    let checkboxNode = ReactDOM.findDOMNode(checkbox);
 
     expect(checkboxNode.textContent).toEqual('ON');
 
@@ -24,19 +24,19 @@ describe('Test switch component', () => {
 
   it('default value is OFF', () => {
 
-    var checkbox = TestUtils.renderIntoDocument(
+    let checkbox = TestUtils.renderIntoDocument(
       <Switch labelOn="ON" labelOff="OFF" checked={false} />
     );
-    var checkboxNode = ReactDOM.findDOMNode(checkbox);
+    let checkboxNode = ReactDOM.findDOMNode(checkbox);
 
     expect(checkboxNode.textContent).toEqual('OFF');
   });
 
   it('adds change event handler', () => {
 
-    var listener = jest.genMockFunction();
+    let listener = jest.genMockFunction();
 
-    var checkbox = TestUtils.renderIntoDocument(
+    let checkbox = TestUtils.renderIntoDocument(
       <Switch labelOn="ON" labelOff="OFF" checked={true} onChange={listener} />
     );
 

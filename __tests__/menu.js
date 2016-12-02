@@ -6,8 +6,8 @@ import Menu from '../js/components/menu/index';
 
 describe('Test menu component', () => {
 
-  var listener = jest.genMockFunction();
-  var items = [{
+  let listener = jest.genMockFunction();
+  let items = [{
     title: 'Fruits',
     key: 'fruits',
     submenu: [{
@@ -65,11 +65,11 @@ describe('Test menu component', () => {
 
   it('is generated with items', () => {
 
-    var menu = TestUtils.renderIntoDocument(
+    let menu = TestUtils.renderIntoDocument(
       <Menu items={items} />
     );
 
-    var menuNode = ReactDOM.findDOMNode(menu);
+    let menuNode = ReactDOM.findDOMNode(menu);
 
     expect(items.length).toEqual(menuNode.childElementCount);
 
@@ -77,13 +77,13 @@ describe('Test menu component', () => {
 
   it('triggers onClick', () => {
 
-    var clickIndex = [1, 1];
-    var menu = TestUtils.renderIntoDocument(
+    let clickIndex = [1, 1];
+    let menu = TestUtils.renderIntoDocument(
       <Menu items={items} />
     );
 
-    var menuNode = ReactDOM.findDOMNode(menu);
-    var clickNode = menuNode.childNodes[clickIndex[0]].firstChild.lastChild.childNodes[clickIndex[1]];
+    let menuNode = ReactDOM.findDOMNode(menu);
+    let clickNode = menuNode.childNodes[clickIndex[0]].firstChild.lastChild.childNodes[clickIndex[1]];
 
     TestUtils.Simulate.click(clickNode);
 

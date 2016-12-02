@@ -19,7 +19,7 @@ describe('Test notification component', () => {
 
   it('renders a notification and destroys automatically', () => {
 
-    var notice = {
+    let notice = {
       title: 'Note:',
       content: 'I am content',
       showIcon: true,
@@ -29,19 +29,19 @@ describe('Test notification component', () => {
       id: 'test-1'
     };
 
-    var notification = Notification.addNotice(notice);
-    var notificationNode = ReactDOM.findDOMNode(notification);
-    var noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+    let notification = Notification.addNotice(notice);
+    let notificationNode = ReactDOM.findDOMNode(notification);
+    let noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
 
     expect(noticeCls.length).toBe(1);
     expect(notificationNode.textContent).toEqual(notice.title + notice.content);
 
-    var ticks = (notice.duration + 1) * 1000;
+    let ticks = (notice.duration + 1) * 1000;
     jasmine.Clock.installed.setTimeout(() => {
 
       jest.runOnlyPendingTimers();
 
-      var updatedNoticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+      let updatedNoticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
       expect(updatedNoticeCls.length).toBe(0);
 
     }, ticks);
@@ -53,7 +53,7 @@ describe('Test notification component', () => {
 
   it('renders 3 notifications and destroys manually', () => {
 
-    var notice1 = {
+    let notice1 = {
       title: 'Note:',
       content: 'I am content',
       showIcon: true,
@@ -62,7 +62,7 @@ describe('Test notification component', () => {
       id: 'test-2-1'
     };
 
-    var notice2 = {
+    let notice2 = {
       title: 'Note:',
       content: 'I am content',
       showIcon: true,
@@ -71,7 +71,7 @@ describe('Test notification component', () => {
       id: 'test-2-2'
     };
 
-    var notice3 = {
+    let notice3 = {
       title: 'Note:',
       content: 'I am content',
       showIcon: true,
@@ -82,15 +82,15 @@ describe('Test notification component', () => {
 
     Notification.addNotice(notice1);
     Notification.addNotice(notice2);
-    var notification = Notification.addNotice(notice3);
-    var noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+    let notification = Notification.addNotice(notice3);
+    let noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
 
     expect(noticeCls.length).toBe(3);
 
     Notification.removeNotice('test-2-1');
     jest.runOnlyPendingTimers();
 
-    var noticeCls2 = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+    let noticeCls2 = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
     expect(noticeCls2.length).toBe(2);
 
     Notification.removeNotice('test-2-2');
@@ -98,14 +98,14 @@ describe('Test notification component', () => {
     Notification.removeNotice('test-2-3');
     jest.runOnlyPendingTimers();
 
-    var noticeCls3 = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+    let noticeCls3 = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
     expect(noticeCls3.length).toBe(0);
 
   });
 
   it('updates the notification', () => {
 
-    var notice = {
+    let notice = {
       title: 'Note:',
       content: 'I am content',
       showIcon: true,
@@ -114,8 +114,8 @@ describe('Test notification component', () => {
       id: 'test-3'
     };
 
-    var notification = Notification.addNotice(notice);
-    var notificationNode = ReactDOM.findDOMNode(notification);
+    let notification = Notification.addNotice(notice);
+    let notificationNode = ReactDOM.findDOMNode(notification);
 
     expect(notificationNode.textContent).toEqual(notice.title + notice.content);
 

@@ -32,7 +32,7 @@ describe('Test input-number component', () => {
     const isError = true;
 
     it('should render a InputNumber component with specific width', () => {
-      var inputNumberNode = ReactDOM.findDOMNode(inputNumber);
+      let inputNumberNode = ReactDOM.findDOMNode(inputNumber);
 
       expect(inputNumberNode.style.width).toBe(props.width + 'px');
     });
@@ -120,7 +120,7 @@ describe('Test input-number component', () => {
         TestUtils.Simulate.click(upButtonNode);
       }
 
-      var callSum = props.onChange.mock.calls.length;
+      let callSum = props.onChange.mock.calls.length;
       expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.max, !isError]);
     });
 
@@ -129,13 +129,13 @@ describe('Test input-number component', () => {
         TestUtils.Simulate.click(downButtonNode);
       }
 
-      var callSum = props.onChange.mock.calls.length;
+      let callSum = props.onChange.mock.calls.length;
       expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.min, !isError]);
     });
   });
 
   describe('test input value is changed', () => {
-    var props, inputNode, inputNumber, isError;
+    let props, inputNode, inputNumber, isError;
 
     beforeEach(() => {
       props = {
@@ -160,7 +160,7 @@ describe('Test input-number component', () => {
     });
 
     it('test if value is not a number', () => {
-      var focusValue = 'abcd';
+      let focusValue = 'abcd';
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -182,7 +182,7 @@ describe('Test input-number component', () => {
     });
 
     it('test value is changed', () => {
-      var focusValue = 8;
+      let focusValue = 8;
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -202,7 +202,7 @@ describe('Test input-number component', () => {
     });
 
     it('test value is overstep upper bound', () => {
-      var focusValue = 15;
+      let focusValue = 15;
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -217,7 +217,7 @@ describe('Test input-number component', () => {
     });
 
     it('test value is overstep lower bound', () => {
-      var focusValue = -15;
+      let focusValue = -15;
 
       TestUtils.Simulate.focus(inputNode);
       TestUtils.Simulate.change(inputNode, {
@@ -242,7 +242,7 @@ describe('Test input-number component', () => {
     };
 
     it('tests initial value is overstep the upper bound', () => {
-      var inputNumber = TestUtils.renderIntoDocument(
+      let inputNumber = TestUtils.renderIntoDocument(
         <InputNumber
               onChange={props.onChange}
               min={props.min}
@@ -250,13 +250,13 @@ describe('Test input-number component', () => {
               value={12}
               step={props.step}/>);
 
-      var inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
+      let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
 
       expect(inputNode.value).toEqual('' + props.max);
     });
 
     it('tests initial value is overstep the lower bound', () => {
-      var inputNumber = TestUtils.renderIntoDocument(
+      let inputNumber = TestUtils.renderIntoDocument(
         <InputNumber
               onChange={props.onChange}
               min={props.min}
@@ -264,7 +264,7 @@ describe('Test input-number component', () => {
               value={-12}
               step={props.step}/>);
 
-      var inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
+      let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
 
       expect(inputNode.value).toEqual('' + props.min);
     });
@@ -272,10 +272,10 @@ describe('Test input-number component', () => {
 
   describe('test disabled is true', () => {
     it('shouldn\'t work when disabled props is true', () => {
-      var newListener = jest.genMockFunction(),
+      let newListener = jest.genMockFunction(),
         InputNumberDisabled = TestUtils.renderIntoDocument(<InputNumber onChange={newListener} disabled={true} />);
 
-      var upButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-up'),
+      let upButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-up'),
         downButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-down');
 
       TestUtils.Simulate.click(upButtonNode);

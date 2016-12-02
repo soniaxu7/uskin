@@ -17,7 +17,7 @@ describe('Test input-search component', () => {
       width={props.width}
       type={props.type}/>);
 
-  var inputSearchNode = ReactDOM.findDOMNode(inputSearch),
+  let inputSearchNode = ReactDOM.findDOMNode(inputSearch),
     classPrefix = 'input-search-';
 
   it('should render a InputSearch component with specific width and type', () => {
@@ -29,12 +29,12 @@ describe('Test input-search component', () => {
 
   it('should return input value when search icon is clicked', () => {
 
-    var searchContext = 'search this';
+    let searchContext = 'search this';
 
-    var inputNode = TestUtils.findRenderedDOMComponentWithTag(inputSearch, 'INPUT');
+    let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputSearch, 'INPUT');
     inputNode.value = searchContext;
 
-    var searchIcon = TestUtils.findRenderedDOMComponentWithClass(inputSearch, 'search-icon');
+    let searchIcon = TestUtils.findRenderedDOMComponentWithClass(inputSearch, 'search-icon');
 
     TestUtils.Simulate.click(searchIcon);
 

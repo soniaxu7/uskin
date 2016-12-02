@@ -8,16 +8,16 @@ describe('Test tooltip component', () => {
 
   it('generates with content, type and width', () => {
 
-    var content = 'this is content',
+    let content = 'this is content',
       shape = 'bottom',
       type = 'error',
       classNamePrefix = 'tooltip tooltip-',
       width = 300;
-    var tooltip = TestUtils.renderIntoDocument(
+    let tooltip = TestUtils.renderIntoDocument(
       <Tooltip content={content} shape={shape} type={type} width={width} />
     );
 
-    var tooltipNode = ReactDOM.findDOMNode(tooltip);
+    let tooltipNode = ReactDOM.findDOMNode(tooltip);
 
     expect(tooltipNode.textContent).toEqual(content);
     expect(tooltipNode.getAttribute('class')).toEqual(classNamePrefix + shape + ' tooltip-' + type);
