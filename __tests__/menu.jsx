@@ -83,7 +83,8 @@ describe('Test menu component', () => {
     );
 
     let menuNode = ReactDOM.findDOMNode(menu);
-    let clickNode = menuNode.childNodes[clickIndex[0]].firstChild.lastChild.childNodes[clickIndex[1]];
+    let clickNode = menuNode.childNodes[clickIndex[0]]
+      .firstChild.lastChild.childNodes[clickIndex[1]];
 
     TestUtils.Simulate.click(clickNode);
 

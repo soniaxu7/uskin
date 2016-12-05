@@ -13,7 +13,7 @@ describe('Test panel component', () => {
       width = 200;
 
     let panel = TestUtils.renderIntoDocument(
-      <Panel title={title} content={content} width={width}/>
+      <Panel title={title} content={content} width={width} />
     );
 
     let panelTitleNode = TestUtils.findRenderedDOMComponentWithClass(panel, 'panel-hd'),

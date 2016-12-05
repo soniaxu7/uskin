@@ -11,7 +11,7 @@ describe('Test tip component', () => {
     let title = 'Title',
       content = 'this is content';
     let tip = TestUtils.renderIntoDocument(
-      <Tip title={title} content={content}/>
+      <Tip title={title} content={content} />
     );
 
     let tipNode = ReactDOM.findDOMNode(tip);
@@ -27,14 +27,14 @@ describe('Test tip component', () => {
       classNamePrefix = 'tip tip-',
       width = 600;
     let tip = TestUtils.renderIntoDocument(
-      <Tip content={content} type={type} width={width}/>
+      <Tip content={content} type={type} width={width} />
     );
 
     let tipNode = ReactDOM.findDOMNode(tip);
 
     expect(tipNode.textContent).toEqual(content);
     expect(tipNode.getAttribute('class')).toEqual(classNamePrefix + type);
-    expect(tipNode.style.width).toEqual(width - 40 + 'px');
+    expect(tipNode.style.width).toEqual((width - 40) + 'px');
 
   });
 

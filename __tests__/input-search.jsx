@@ -12,10 +12,10 @@ describe('Test input-search component', () => {
   };
 
   const inputSearch = TestUtils.renderIntoDocument(
-    <InputSearch
-      onChange={props.onChange}
+    <InputSearch onChange={props.onChange}
       width={props.width}
-      type={props.type}/>);
+      type={props.type} />
+  );
 
   let inputSearchNode = ReactDOM.findDOMNode(inputSearch),
     classPrefix = 'input-search-';

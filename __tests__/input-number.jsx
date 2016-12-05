@@ -17,13 +17,13 @@ describe('Test input-number component', () => {
     };
 
     const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber
-        onChange={props.onChange}
+      <InputNumber onChange={props.onChange}
         min={props.min}
         max={props.max}
         value={props.value}
         width={props.width}
-        step={props.step}/>);
+        step={props.step} />
+    );
 
     const inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT'),
       upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
@@ -70,12 +70,12 @@ describe('Test input-number component', () => {
     };
 
     const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber
-            onChange={props.onChange}
-            min={props.min}
-            max={props.max}
-            value={props.value}
-            step={props.step}/>);
+      <InputNumber onChange={props.onChange}
+        min={props.min}
+        max={props.max}
+        value={props.value}
+        step={props.step} />
+    );
 
     const upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
       downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
@@ -103,12 +103,12 @@ describe('Test input-number component', () => {
     };
 
     const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber
-            onChange={props.onChange}
-            min={props.min}
-            max={props.max}
-            value={props.value}
-            step={props.step}/>);
+      <InputNumber onChange={props.onChange}
+        min={props.min}
+        max={props.max}
+        value={props.value}
+        step={props.step} />
+    );
 
     const upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
       downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
@@ -135,7 +135,10 @@ describe('Test input-number component', () => {
   });
 
   describe('test input value is changed', () => {
-    let props, inputNode, inputNumber, isError;
+    let props,
+      inputNode,
+      inputNumber,
+      isError;
 
     beforeEach(() => {
       props = {
@@ -147,12 +150,12 @@ describe('Test input-number component', () => {
       };
 
       inputNumber = TestUtils.renderIntoDocument(
-        <InputNumber
-              onChange={props.onChange}
-              min={props.min}
-              max={props.max}
-              value={props.value}
-              step={props.step}/>);
+        <InputNumber onChange={props.onChange}
+          min={props.min}
+          max={props.max}
+          value={props.value}
+          step={props.step} />
+      );
 
       inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
 
@@ -243,12 +246,12 @@ describe('Test input-number component', () => {
 
     it('tests initial value is overstep the upper bound', () => {
       let inputNumber = TestUtils.renderIntoDocument(
-        <InputNumber
-              onChange={props.onChange}
-              min={props.min}
-              max={props.max}
-              value={12}
-              step={props.step}/>);
+        <InputNumber onChange={props.onChange}
+          min={props.min}
+          max={props.max}
+          value={12}
+          step={props.step} />
+      );
 
       let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
 
@@ -257,12 +260,12 @@ describe('Test input-number component', () => {
 
     it('tests initial value is overstep the lower bound', () => {
       let inputNumber = TestUtils.renderIntoDocument(
-        <InputNumber
-              onChange={props.onChange}
-              min={props.min}
-              max={props.max}
-              value={-12}
-              step={props.step}/>);
+        <InputNumber onChange={props.onChange}
+          min={props.min}
+          max={props.max}
+          value={-12}
+          step={props.step} />
+      );
 
       let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
 
@@ -273,7 +276,9 @@ describe('Test input-number component', () => {
   describe('test disabled is true', () => {
     it('shouldn\'t work when disabled props is true', () => {
       let newListener = jest.genMockFunction(),
-        InputNumberDisabled = TestUtils.renderIntoDocument(<InputNumber onChange={newListener} disabled={true} />);
+        InputNumberDisabled = TestUtils.renderIntoDocument(
+          <InputNumber onChange={newListener} disabled={true} />
+        );
 
       let upButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-up'),
         downButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-down');

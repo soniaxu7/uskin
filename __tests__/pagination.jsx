@@ -6,7 +6,12 @@ import Pagination from '../js/components/pagination/index';
 describe('Test pagination component', () => {
 
   describe('Test pagination with page labels', () => {
-    let current, total, listener, pagination, prevNode, nextNode;
+    let current,
+      total,
+      listener,
+      pagination,
+      prevNode,
+      nextNode;
 
     beforeEach(() => {
       current = 1;
@@ -14,7 +19,7 @@ describe('Test pagination component', () => {
       listener = jest.genMockFunction();
 
       pagination = TestUtils.renderIntoDocument(
-        <Pagination onClick={listener} current={current} total={total}/>
+        <Pagination onClick={listener} current={current} total={total} />
       );
 
       prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
@@ -31,7 +36,7 @@ describe('Test pagination component', () => {
         newListener = jest.genMockFunction();
 
       let newPagination = TestUtils.renderIntoDocument(
-        <Pagination onClick={newListener} current={invalidCurrent} total={invalidTotal}/>
+        <Pagination onClick={newListener} current={invalidCurrent} total={invalidTotal} />
       );
 
       let newPageLabels = TestUtils.scryRenderedDOMComponentsWithTag(newPagination, 'li');
@@ -96,7 +101,7 @@ describe('Test pagination component', () => {
       let listener = jest.genMockFunction();
 
       let pagination = TestUtils.renderIntoDocument(
-        <Pagination labelOnly={true} label={label} onClickLabel={listener}/>
+        <Pagination labelOnly={true} label={label} onClickLabel={listener} />
       );
 
       let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
@@ -127,7 +132,7 @@ describe('Test pagination component', () => {
       let listener = jest.genMockFunction();
 
       let pagination = TestUtils.renderIntoDocument(
-        <Pagination labelOnly={true} label={label} onClickLabel={listener}/>
+        <Pagination labelOnly={true} label={label} onClickLabel={listener} />
       );
 
       let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');

@@ -4,7 +4,11 @@ import TestUtils from 'react-addons-test-utils';
 import Table from '../js/components/table/index';
 
 describe('Test table component', () => {
-  let column, data, checkboxOnChange, checkboxInitialize, table;
+  let column,
+    data,
+    checkboxOnChange,
+    checkboxInitialize,
+    table;
   beforeEach(() => {
     column = [{
       title: 'ID',
@@ -19,6 +23,7 @@ describe('Test table component', () => {
           if (item.id >= 4) {
             return true;
           }
+          return false;
         }
       }, {
         name: 'id小于4',
@@ -27,6 +32,7 @@ describe('Test table component', () => {
           if (item.id < 4) {
             return true;
           }
+          return false;
         }
       }]
     }, {
@@ -49,25 +55,25 @@ describe('Test table component', () => {
         name: 'level 1',
         key: '1',
         filter: function(item) {
-          return item.level.localeCompare('First Level') === 0 ? true : false;
+          return item.level.localeCompare('First Level') === 0;
         }
       }, {
         name: 'level 2',
         key: '2',
         filter: function(item) {
-          return item.level.localeCompare('Second Level') === 0 ? true : false;
+          return item.level.localeCompare('Second Level') === 0;
         }
       }, {
         name: 'level 3',
         key: '3',
         filter: function(item) {
-          return item.level.localeCompare('Third Level') === 0 ? true : false;
+          return item.level.localeCompare('Third Level') === 0;
         }
       }, {
         name: 'level 4',
         key: '4',
         filter: function(item) {
-          return item.level.localeCompare('Fourth Level') === 0 ? true : false;
+          return item.level.localeCompare('Fourth Level') === 0;
         }
       }],
       sortBy: function(item1, item2) {
@@ -116,8 +122,11 @@ describe('Test table component', () => {
         if (item.id > 4) {
           return <div>Printing Disabled</div>;
         } else {
-          return <div style={{fontWeight: 500, cursor: 'pointer'}}
-          onClick={this.printData.bind(this, col, item)}>{'Print ID ' + item.id}</div>;
+          return (
+            <div style={{fontWeight: 500, cursor: 'pointer'}}
+              onClick={this.printData.bind(this, col, item)}>{'Print ID ' + item.id}
+            </div>
+          );
         }
       }
     }];
@@ -170,15 +179,14 @@ describe('Test table component', () => {
     checkboxInitialize = jest.genMockFunction();
 
     table = TestUtils.renderIntoDocument(
-      <Table
-        column={column}
+      <Table column={column}
         data={data}
         dataKey="id"
         checkbox={true}
         checkboxInitialize={checkboxInitialize}
         checkboxOnChange={checkboxOnChange}
         striped={true}
-        hover={true}/>
+        hover={true} />
     );
   });
 

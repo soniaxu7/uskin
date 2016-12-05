@@ -40,9 +40,9 @@ describe('Test step component', () => {
     let itemWidth = width / newItems.length,
       itemNode = TestUtils.scryRenderedDOMComponentsWithClass(step, 'step-item')[0],
       content = '';
-    newItems.map((item) =>
+    newItems.map((item) => (
       content += item.name
-    );
+    ));
 
     expect(stepNode.textContent).toEqual(content);
     expect(itemNode.style.width).toEqual(itemWidth + 'px');
@@ -52,9 +52,9 @@ describe('Test step component', () => {
   it('generates with selected step', () => {
 
     let selectedIndex;
-    items.some((item, index) =>
-      item.selected ? (selectedIndex = '' + index, true) : false
-    );
+    items.some((item, index) => (
+      item.selected ? ((selectedIndex = '' + index), true) : false
+    ));
 
     let step = TestUtils.renderIntoDocument(
       <Step items={items} />

@@ -13,7 +13,9 @@ describe('Test slider component', () => {
       step = '0.01',
       width = '300px';
 
-    let slider = TestUtils.renderIntoDocument(<Slider min={min} max={max} value={value} step={step} width={width} />);
+    let slider = TestUtils.renderIntoDocument(
+      <Slider min={min} max={max} value={value} step={step} width={width} />
+    );
     let sliderNode = ReactDOM.findDOMNode(slider);
 
     expect(sliderNode.getAttribute('data-min')).toEqual(min);

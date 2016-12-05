@@ -95,7 +95,7 @@ describe('Test dropdown component', () => {
   it('should render a dropdown with items', () => {
 
     let dropdown = TestUtils.renderIntoDocument(
-      <Dropdown items={items}/>
+      <Dropdown items={items} />
     );
     let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
@@ -110,8 +110,10 @@ describe('Test dropdown component', () => {
       itemsSum += element.items.length;
 
       element.items.forEach((ele) => {
-        if(ele.children) {
-          ele.children.forEach((e) => { counter(e); });
+        if (ele.children) {
+          ele.children.forEach((e) => {
+            counter(e);
+          });
         }
       });
     };
@@ -129,7 +131,7 @@ describe('Test dropdown component', () => {
 
     let listener = jest.genMockFunction();
     let dropdown = TestUtils.renderIntoDocument(
-      <Dropdown items={items} onClick={listener}/>
+      <Dropdown items={items} onClick={listener} />
     );
     let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
@@ -146,7 +148,7 @@ describe('Test dropdown component', () => {
 
     let listener = jest.genMockFunction();
     let dropdown = TestUtils.renderIntoDocument(
-      <Dropdown items={items} onClick={listener}/>
+      <Dropdown items={items} onClick={listener} />
     );
     let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
@@ -168,7 +170,7 @@ describe('Test dropdown component', () => {
 
     let listener = jest.genMockFunction();
     let dropdown = TestUtils.renderIntoDocument(
-      <Dropdown items={items} onClick={listener}/>
+      <Dropdown items={items} onClick={listener} />
     );
     let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
