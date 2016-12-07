@@ -15,7 +15,7 @@ describe('Test button component', () => {
       iconClass = 'create';
 
     let button = TestUtils.renderIntoDocument(
-      <Button value={value} type={type} size={size} iconClass={iconClass}/>
+      <Button value={value} type={type} size={size} iconClass={iconClass} />
     );
 
     let buttonNode = ReactDOM.findDOMNode(button);
@@ -34,7 +34,7 @@ describe('Test button component', () => {
       selected = true;
 
     let button = TestUtils.renderIntoDocument(
-      <Button value={value} initial={initial} selected={selected}/>
+      <Button value={value} initial={initial} selected={selected} />
     );
 
     let buttonNode = ReactDOM.findDOMNode(button);
@@ -81,7 +81,7 @@ describe('Test button component', () => {
       listener = jest.genMockFunction();
 
     let button = TestUtils.renderIntoDocument(
-      <Button value={value} disabled={true} onClick={listener}/>
+      <Button value={value} disabled={true} onClick={listener} />
     );
 
     let buttonNode = ReactDOM.findDOMNode(button);

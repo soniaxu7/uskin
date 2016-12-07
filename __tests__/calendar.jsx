@@ -21,7 +21,7 @@ describe('Test calendar component', () => {
     it('render with screen', () => {
 
       let calendar = TestUtils.renderIntoDocument(
-        <Calendar hasScreen={true}/>
+        <Calendar hasScreen={true} />
       );
       let calendarNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar hide');
       let screenNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar-screen');
@@ -34,7 +34,7 @@ describe('Test calendar component', () => {
     it('render with screen and unfold calendar', () => {
 
       let calendar = TestUtils.renderIntoDocument(
-        <Calendar hasScreen={true} unfold={true}/>
+        <Calendar hasScreen={true} unfold={true} />
       );
       let calendarNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar');
       let screenNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar-screen unfold');
@@ -55,7 +55,7 @@ describe('Test calendar component', () => {
       };
 
       let calendar = TestUtils.renderIntoDocument(
-        <Calendar startWeek={week.index}/>
+        <Calendar startWeek={week.index} />
       );
       let firstThNode = TestUtils.scryRenderedDOMComponentsWithTag(calendar, 'th')[0];
 
@@ -180,7 +180,9 @@ describe('Test calendar component', () => {
       };
 
       let calendar = TestUtils.renderIntoDocument(
-        <Calendar beforeChange={beforeChange} onChange={onChange} afterChange={afterChange}/>
+        <Calendar beforeChange={beforeChange}
+          onChange={onChange}
+          afterChange={afterChange} />
       );
 
       let clickNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'default')[date.date - 1];

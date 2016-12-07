@@ -11,10 +11,10 @@ describe('Test button-group component', () => {
 
     let buttongroup = TestUtils.renderIntoDocument(
       <ButtonGroup>
-        <Button tag="div" value="Prev"/>
-        <Button tag="div" value="Mid 1" type="delete"/>
-        <Button tag="div" value="Mid 2" disabled={true}/>
-        <Button tag="div" value="Next" type="create"/>
+        <Button tag="div" value="Prev" />
+        <Button tag="div" value="Mid 1" type="delete" />
+        <Button tag="div" value="Mid 2" disabled={true} />
+        <Button tag="div" value="Next" type="create" />
       </ButtonGroup>
     );
 
@@ -28,10 +28,10 @@ describe('Test button-group component', () => {
 
     let buttongroup = TestUtils.renderIntoDocument(
       <ButtonGroup type="vertical" width={width}>
-        <Button tag="div" value="Prev"/>
-        <Button tag="div" value="Mid 1" type="delete"/>
-        <Button tag="div" value="Mid 2" disabled={true}/>
-        <Button tag="div" value="Next" type="create"/>
+        <Button tag="div" value="Prev" />
+        <Button tag="div" value="Mid 1" type="delete" />
+        <Button tag="div" value="Mid 2" disabled={true} />
+        <Button tag="div" value="Next" type="create" />
       </ButtonGroup>
     );
 

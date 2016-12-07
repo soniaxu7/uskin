@@ -14,7 +14,7 @@ describe('Test breadcrumb component', () => {
     };
 
     let breadcrumb = TestUtils.renderIntoDocument(
-      <Breadcrumb items={items}/>
+      <Breadcrumb items={items} />
     );
 
     let breadcrumbNode = ReactDOM.findDOMNode(breadcrumb);
@@ -37,16 +37,17 @@ describe('Test breadcrumb component', () => {
     }];
 
     let breadcrumb = TestUtils.renderIntoDocument(
-      <Breadcrumb items={items}/>
+      <Breadcrumb items={items} />
     );
 
     let breadcrumbNode = ReactDOM.findDOMNode(breadcrumb),
       breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithClass(breadcrumb, 'breadcrumb-item'),
       content = '';
 
-    breadcrumbItemsNode.map((item, index) =>
-      index < breadcrumbItemsNode.length - 1 ? content += item.firstChild.textContent + '>' : content += item.firstChild.textContent
-    );
+    breadcrumbItemsNode.forEach((item, index) => {
+      index < breadcrumbItemsNode.length - 1 ? content += item.firstChild.textContent + '>'
+        : content += item.firstChild.textContent;
+    });
 
     let firstChildNode = breadcrumbItemsNode[0].firstChild;
     let lastChildNode = breadcrumbItemsNode[breadcrumbItemsNode.length - 1];
@@ -70,7 +71,7 @@ describe('Test breadcrumb component', () => {
       listener = jest.genMockFunction();
 
     let breadcrumb = TestUtils.renderIntoDocument(
-      <Breadcrumb items={items} onClick={listener}/>
+      <Breadcrumb items={items} onClick={listener} />
     );
 
     let breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithTag(breadcrumb, 'a');

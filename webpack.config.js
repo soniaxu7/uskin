@@ -40,12 +40,12 @@ module.exports = {
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!' + 'postcss-loader!' + 'less?{sourceMap: true, modifyVars:{"theme": "\'' + theme + '\'"}}'
+        'css?sourceMap&-minimize!postcss-loader!less?{sourceMap: true, modifyVars:{"theme": "\'' + theme + '\'"}}'
       )
     }, {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!' + 'postcss-loader'
+        'css?sourceMap&-minimize!postcss-loader'
       )
     }, {
       test: /\.(woff|svg|eot|ttf)\??.*$/,
