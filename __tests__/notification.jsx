@@ -3,19 +3,9 @@ import TestUtils from 'react-addons-test-utils';
 
 import Notification from '../js/components/notification/index';
 
+jest.useFakeTimers();
+
 describe('Test notification component', () => {
-
-  beforeEach(() => {
-
-    jasmine.Clock.installMock();
-
-  });
-
-  afterEach(() => {
-
-    jasmine.Clock.uninstallMock();
-
-  });
 
   it('renders a notification and destroys automatically', () => {
 
@@ -37,7 +27,7 @@ describe('Test notification component', () => {
     expect(notificationNode.textContent).toEqual(notice.title + notice.content);
 
     let ticks = (notice.duration + 1) * 1000;
-    jasmine.Clock.installed.setTimeout(() => {
+    setTimeout(() => {
 
       jest.runOnlyPendingTimers();
 
@@ -47,7 +37,6 @@ describe('Test notification component', () => {
     }, ticks);
 
     jest.runOnlyPendingTimers();
-    jasmine.Clock.tick(ticks);
 
   });
 

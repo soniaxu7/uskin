@@ -180,7 +180,8 @@ describe('Test calendar component', () => {
       };
 
       let calendar = TestUtils.renderIntoDocument(
-        <Calendar beforeChange={beforeChange}
+        <Calendar page={date.year + '-' + date.month + '-' + date.date}
+          beforeChange={beforeChange}
           onChange={onChange}
           afterChange={afterChange} />
       );

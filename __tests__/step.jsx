@@ -51,18 +51,13 @@ describe('Test step component', () => {
 
   it('generates with selected step', () => {
 
-    let selectedIndex;
-    items.some((item, index) => (
-      item.selected ? ((selectedIndex = '' + index), true) : false
-    ));
-
     let step = TestUtils.renderIntoDocument(
       <Step items={items} />
     );
 
     let itemNode = TestUtils.findRenderedDOMComponentWithClass(step, 'step-item selected');
 
-    expect(itemNode.firstElementChild.getAttribute('value')).toEqual(selectedIndex);
+    expect(itemNode.firstElementChild.getAttribute('data-value')).toEqual('' + defaultIndex);
 
   });
 
