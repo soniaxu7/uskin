@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import {shallow} from 'enzyme';
 
 import Tooltip from '../js/components/tooltip/index';
 
@@ -13,15 +12,14 @@ describe('Test tooltip component', () => {
       type = 'error',
       classNamePrefix = 'tooltip tooltip-',
       width = 300;
-    let tooltip = TestUtils.renderIntoDocument(
+
+    let tooltip = shallow(
       <Tooltip content={content} shape={shape} type={type} width={width} />
     );
 
-    let tooltipNode = ReactDOM.findDOMNode(tooltip);
-
-    expect(tooltipNode.textContent).toEqual(content);
-    expect(tooltipNode.getAttribute('class')).toEqual(classNamePrefix + shape + ' tooltip-' + type);
-    expect(tooltipNode.style.width).toEqual(width + 'px');
+    expect(tooltip.text()).toEqual(content);
+    expect(tooltip.props().className).toEqual(classNamePrefix + shape + ' tooltip-' + type);
+    expect(tooltip.props().style.width).toEqual(width);
 
   });
 
