@@ -19,6 +19,7 @@
     "prepublish": "grunt build",
     "test": "jest --config  ./jest.config.json",
     "test-dev": "jest --config  ./jest.config.json --watch",
+    "coveralls": "coveralls",
     "eslint": "eslint *.js __tests__/ js/** docs/react_demos/** --ext .js,.jsx --cache",
     "dev": "rm -rf dist && webpack --config dev.webpack.config.js"
   },
@@ -40,6 +41,7 @@
     "babel-preset-es2015": "^6.1.4",
     "babel-preset-react": "^6.1.4",
     "babel-runtime": "^6.2.0",
+    "coveralls": "^2.11.15",
     "css-loader": "^0.26.0",
     "enzyme": "^2.6.0",
     "eslint": "^3.10.2",
