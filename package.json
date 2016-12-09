@@ -19,7 +19,7 @@
     "prepublish": "grunt build",
     "test": "jest --config  ./jest.config.json",
     "test-dev": "jest --config  ./jest.config.json --watch",
-    "coveralls": "coveralls",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "eslint": "eslint *.js __tests__/ js/** docs/react_demos/** --ext .js,.jsx --cache",
     "dev": "rm -rf dist && webpack --config dev.webpack.config.js"
   },
