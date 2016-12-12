@@ -6,16 +6,16 @@ class Step extends React.Component {
   constructor(props) {
     super(props);
 
+    var index = this.props.items.findIndex((ele) => ele.default);
     this.state = {
-      selectedIndex: -1
+      selectedIndex: index
     };
 
     this.onClick = this.onClick.bind(this);
   }
 
-  componentWillMount() {
-    var items = this.props.items;
-    var index = items.findIndex((ele) => ele.default);
+  componentWillReceiveProps(nextProps) {
+    var index = nextProps.items.findIndex((ele) => ele.default);
 
     this.setState({
       selectedIndex: index
