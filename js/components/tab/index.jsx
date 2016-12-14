@@ -17,11 +17,11 @@ class Tab extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this._findDefaultTab();
+    this._findDefaultTab(nextProps.items);
   }
 
-  _findDefaultTab() {
-    var items = this.props.items,
+  _findDefaultTab(item) {
+    var items = item || this.props.items,
       selectedKey;
 
     function findSelected(item, index) {
