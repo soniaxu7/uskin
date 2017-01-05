@@ -1,44 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 
 import InputSearch from '../js/components/input-search/index';
 
-describe('Test input-search component', () => {
-  const props = {
-    onChange: jest.genMockFunction(),
-    width: 200,
-    type: 'light'
-  };
+describe('test input-search', () => {
 
-  const inputSearch = TestUtils.renderIntoDocument(
-    <InputSearch onChange={props.onChange}
-      width={props.width}
-      type={props.type} />
-  );
+  it('clicks icon and return input value', () => {
 
-  let inputSearchNode = ReactDOM.findDOMNode(inputSearch),
-    classPrefix = 'input-search-';
+    let value = 'search this';
+    let listener = jest.genMockFunction();
+    const inputsearch = mount(
+      <InputSearch onChange={listener}
+        width={200}
+        type="light" />
+    );
+    const input = inputsearch.find('input');
+    const searchIcon = inputsearch.find('.search-icon');
 
-  it('should render a InputSearch component with specific width and type', () => {
+    input.simulate('change', { target: { value: value } });
+    searchIcon.simulate('click');
 
-    expect(inputSearchNode.style.width).toEqual(props.width + 'px');
-    expect(inputSearchNode.classList.contains(classPrefix + props.type)).toBe(true);
-
-  });
-
-  it('should return input value when search icon is clicked', () => {
-
-    let searchContext = 'search this';
-
-    let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputSearch, 'INPUT');
-    inputNode.value = searchContext;
-
-    let searchIcon = TestUtils.findRenderedDOMComponentWithClass(inputSearch, 'search-icon');
-
-    TestUtils.Simulate.click(searchIcon);
-
-    expect(props.onChange.mock.calls[0][0]).toEqual(searchContext);
+    expect(listener.mock.calls[0][0]).toEqual(value);
 
   });
 

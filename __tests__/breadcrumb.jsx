@@ -1,84 +1,43 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Breadcrumb from '../js/components/breadcrumb/index';
 
-describe('Test breadcrumb component', () => {
+describe('test Breadcrumb', () => {
 
-  it('checks when props item is not an array', () => {
-
-    let items = {
-      name: 'title 1',
-      href: '#home'
-    };
-
-    let breadcrumb = TestUtils.renderIntoDocument(
-      <Breadcrumb items={items} />
-    );
-
-    let breadcrumbNode = ReactDOM.findDOMNode(breadcrumb);
-
-    expect(breadcrumbNode.textContent).toEqual('');
-
-  });
+  let items = [{
+    name: 'Home',
+    href: '#home'
+  }, {
+    name: 'Store',
+    href: '#store'
+  }, {
+    name: 'Phones',
+    href: '#phone'
+  }];
 
   it('makes breadcrumb', () => {
 
-    let items = [{
-      name: 'Home',
-      href: '#home'
-    }, {
-      name: 'Store',
-      href: '#store'
-    }, {
-      name: 'Phones',
-      href: '#phone'
-    }];
+    const breadcrumb = shallow(<Breadcrumb items={items} />);
+    const children = breadcrumb.find('.breadcrumb-item');
+    let content = children.map((ele) => ele.text()).reduce((prev, next) => prev + next);
 
-    let breadcrumb = TestUtils.renderIntoDocument(
-      <Breadcrumb items={items} />
-    );
+    expect(children.length).toEqual(items.length);
+    expect(breadcrumb.text()).toEqual(content);
+    expect(breadcrumb.find({ href: items[0].href }).text()).toEqual(items[0].name);
 
-    let breadcrumbNode = ReactDOM.findDOMNode(breadcrumb),
-      breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithClass(breadcrumb, 'breadcrumb-item'),
-      content = '';
-
-    breadcrumbItemsNode.forEach((item, index) => {
-      index < breadcrumbItemsNode.length - 1 ? content += item.firstChild.textContent + '>'
-        : content += item.firstChild.textContent;
-    });
-
-    let firstChildNode = breadcrumbItemsNode[0].firstChild;
-    let lastChildNode = breadcrumbItemsNode[breadcrumbItemsNode.length - 1];
-
-    expect(breadcrumbNode.textContent).toEqual(content);
-    expect(firstChildNode.getAttribute('href')).toEqual(items[0].href);
-    expect(lastChildNode.childNodes.length).toEqual(1);
   });
 
-  it('is triggered with onClick', () => {
-    let items = [{
-        name: 'Home',
-        href: '#home'
-      }, {
-        name: 'Store',
-        href: '#store'
-      }, {
-        name: 'Phones',
-        href: '#phone'
-      }],
-      listener = jest.genMockFunction();
+  it('triggers onClick', () => {
 
-    let breadcrumb = TestUtils.renderIntoDocument(
-      <Breadcrumb items={items} onClick={listener} />
-    );
+    const listener = jest.genMockFunction();
+    const breadcrumb = shallow(<Breadcrumb items={items} onClick={listener} />);
+    const clickNode = breadcrumb.find({ href: items[0].href });
 
-    let breadcrumbItemsNode = TestUtils.scryRenderedDOMComponentsWithTag(breadcrumb, 'a');
-    TestUtils.Simulate.click(breadcrumbItemsNode[0]);
-    TestUtils.Simulate.click(breadcrumbItemsNode[1]);
+    clickNode.simulate('click');
 
     expect(listener.mock.calls[0][0]).toEqual(items[0]);
-    expect(listener.mock.calls[1][0]).toEqual(items[1]);
+
   });
+
 });

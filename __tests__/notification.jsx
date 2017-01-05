@@ -5,7 +5,7 @@ import Notification from '../js/components/notification/index';
 
 jest.useFakeTimers();
 
-describe('Test notification component', () => {
+describe('test notification', () => {
 
   it('renders a notification and destroys automatically', () => {
 

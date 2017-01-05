@@ -1,97 +1,111 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 
 import Pagination from '../js/components/pagination/index';
 
-describe('Test pagination component', () => {
+describe('test pagination', () => {
 
-  describe('Test pagination with page labels', () => {
+  describe('test type = page labels', () => {
+
     let current,
       total,
       listener,
       pagination,
-      prevNode,
-      nextNode;
+      prev,
+      next,
+      last;
 
     beforeEach(() => {
+
       current = 1;
       total = 10;
       listener = jest.genMockFunction();
-
-      pagination = TestUtils.renderIntoDocument(
+      pagination = mount(
         <Pagination onClick={listener} current={current} total={total} />
       );
+      prev = pagination.find('.prev');
+      next = pagination.find('.next');
 
-      prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
-      nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
     });
 
     it('renders a pagination', () => {
-      expect(pagination.state.current).toEqual(current);
+
+      expect(pagination.state().current).toEqual(current);
+
     });
 
-    it('corrects the page when props is invalid', () => {
-      let invalidCurrent = -1,
-        invalidTotal = -10,
-        newListener = jest.genMockFunction();
-
-      let newPagination = TestUtils.renderIntoDocument(
-        <Pagination onClick={newListener} current={invalidCurrent} total={invalidTotal} />
+    it('renders a page when props is invalid', () => {
+  
+      let current2 = -1,
+        total2 = -10,
+        listener2 = jest.genMockFunction();
+      const pagination2 = mount(
+        <Pagination onClick={listener2} current={current2} total={total2} />
       );
+      const lables = pagination2.find('li');
+      const prev2 = pagination2.find('.prev');
+      const next2 = pagination2.find('.next');
 
-      let newPageLabels = TestUtils.scryRenderedDOMComponentsWithTag(newPagination, 'li');
-      let newPrevNode = TestUtils.findRenderedDOMComponentWithClass(newPagination, 'prev');
-      let newNextNode = TestUtils.findRenderedDOMComponentWithClass(newPagination, 'next');
+      expect(pagination2.state().current).toBe(1);
+      expect(lables.length).toEqual(3);
+      expect(prev2.hasClass('disabled')).toEqual(true);
+      expect(next2.hasClass('disabled')).toEqual(true);
 
-      expect(newPageLabels.length).toBe(3);
-      expect(newPagination.state.current).toBe(1);
-      expect(newPrevNode.className).toContain('disabled');
-      expect(newNextNode.className).toContain('disabled');
     });
 
-    it('should jump to the page when page label is clicked', () => {
-      let index = total;
+    it('tests onclick page label', () => {
 
-      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      let lastPage = pageLabels[pageLabels.length - 2].firstChild;
-      TestUtils.Simulate.click(lastPage);
+      const lables = pagination.find('li');
+      const last = lables.at(lables.length - 2).childAt(0);
 
-      expect(listener.mock.calls[0][0]).toEqual(index);
-      expect(pagination.state.current).toEqual(index);
-      expect(prevNode.className).not.toContain('disabled');
-      expect(nextNode.className).toContain('disabled');
+      last.simulate('click');
+
+      expect(listener.mock.calls[0][0]).toEqual(total);
+      expect(pagination.state().current).toEqual(total);
+      expect(prev.hasClass('disabled')).toEqual(false);
+      expect(next.hasClass('disabled')).toEqual(true);
+
     });
 
-    it('test with next and prev label', () => {
-      TestUtils.Simulate.click(nextNode);
-      TestUtils.Simulate.click(prevNode);
+    it('tests next and prev labels', () => {
 
-      expect(listener.mock.calls[0][0]).toEqual(2);
-      expect(listener.mock.calls[1][0]).toEqual(1);
-    });
+      next.simulate('click');
+      prev.simulate('click');
+
+      expect(listener.mock.calls[0][0]).toEqual(current + 1);
+      expect(listener.mock.calls[1][0]).toEqual(current);
+
+   });
 
     it('test with lower bound', () => {
-      TestUtils.Simulate.click(prevNode);
-      expect(prevNode.className).toContain('disabled');
+
+      prev.simulate('click');
+
+      expect(prev.hasClass('disabled')).toEqual(true);
       expect(listener).not.toBeCalled();
+
     });
 
     it('test with upper bound', () => {
-      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      let lastPage = pageLabels[pageLabels.length - 2].firstChild;
-      TestUtils.Simulate.click(lastPage);
-      TestUtils.Simulate.click(nextNode);
 
-      expect(nextNode.className).toContain('disabled');
-      expect(listener.mock.calls[0][0]).toEqual(total);
+      const lables = pagination.find('li');
+      const last = lables.at(lables.length - 2).childAt(0);
+
+      last.simulate('click');
+      next.simulate('click');
+
       expect(listener.mock.calls.length).toEqual(1);
+      expect(listener.mock.calls[0][0]).toEqual(total);
+      expect(next.hasClass('disabled')).toEqual(true);
+
     });
 
   });
 
-  describe('Test pagination with guide label only', () => {
+  describe('test type = guide label', () => {
 
     it('should render with guide label only', () => {
+
       let label = {
         prev: true,
         next: true,
@@ -99,30 +113,30 @@ describe('Test pagination component', () => {
         last: true
       };
       let listener = jest.genMockFunction();
-
-      let pagination = TestUtils.renderIntoDocument(
+      const pagination = mount(
         <Pagination labelOnly={true} label={label} onClickLabel={listener} />
       );
+      const pages = pagination.find('li');
+      const prev = pagination.find('.prev');
+      const next = pagination.find('.next');
+      const first = pagination.find('.first');
+      const last = pagination.find('.last');
 
-      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      let prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
-      let nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
-      let firstNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'first');
-      let lastNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'last');
+      prev.simulate('click');
+      next.simulate('click');
+      first.simulate('click');
+      last.simulate('click');
 
-      TestUtils.Simulate.click(prevNode);
-      TestUtils.Simulate.click(nextNode);
-      TestUtils.Simulate.click(firstNode);
-      TestUtils.Simulate.click(lastNode);
+      expect(pages.length).toEqual(4);
+      expect(listener.mock.calls[0][0]).toEqual('prev');
+      expect(listener.mock.calls[1][0]).toEqual('next');
+      expect(listener.mock.calls[2][0]).toEqual('first');
+      expect(listener.mock.calls[3][0]).toEqual('last');
 
-      expect(pageLabels.length).toBe(4);
-      expect(listener.mock.calls[0][0]).toBe('prev');
-      expect(listener.mock.calls[1][0]).toBe('next');
-      expect(listener.mock.calls[2][0]).toBe('first');
-      expect(listener.mock.calls[3][0]).toBe('last');
     });
 
     it('should render with disabled guide label only', () => {
+
       let label = {
         prev: true,
         prevDisabled: true,
@@ -130,23 +144,23 @@ describe('Test pagination component', () => {
         nextDisabled: true
       };
       let listener = jest.genMockFunction();
-
-      let pagination = TestUtils.renderIntoDocument(
+      const pagination = mount(
         <Pagination labelOnly={true} label={label} onClickLabel={listener} />
       );
+      const pages = pagination.find('li');
+      const prev = pagination.find('.prev');
+      const next = pagination.find('.next');
 
-      let pageLabels = TestUtils.scryRenderedDOMComponentsWithTag(pagination, 'li');
-      let prevNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'prev');
-      let nextNode = TestUtils.findRenderedDOMComponentWithClass(pagination, 'next');
+      prev.simulate('click');
+      next.simulate('click');
 
-      TestUtils.Simulate.click(prevNode);
-      TestUtils.Simulate.click(nextNode);
-
-      expect(pageLabels.length).toBe(2);
-      expect(prevNode.className).toContain('disabled');
-      expect(nextNode.className).toContain('disabled');
+      expect(pages.length).toEqual(2);
       expect(listener).not.toBeCalled();
+      expect(prev.hasClass('disabled')).toEqual(true);
+      expect(next.hasClass('disabled')).toEqual(true);
+
     });
 
   });
+
 });

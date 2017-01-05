@@ -1,40 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Tip from '../js/components/tip/index';
 
-describe('Test tip component', () => {
+describe('test tip', () => {
 
-  it('generates with title and content', () => {
+  it('renders with title and content', () => {
 
-    let title = 'Title',
-      content = 'this is content';
-    let tip = TestUtils.renderIntoDocument(
-      <Tip title={title} content={content} />
-    );
+    let title = 'Title';
+    let content = 'this is content';
+    const tip = shallow(<Tip title={title} content={content} />);
 
-    let tipNode = ReactDOM.findDOMNode(tip);
-
-    expect(tipNode.textContent).toEqual(title + content);
+    expect(tip.text()).toEqual(title + content);
 
   });
 
-  it('generates with type and width', () => {
+  it('renders with type and width', () => {
 
-    let content = 'this is content',
-      type = 'info',
-      classNamePrefix = 'tip tip-',
-      width = 600;
-    let tip = TestUtils.renderIntoDocument(
-      <Tip content={content} type={type} width={width} />
-    );
+    let content = 'this is content';
+    let type = 'info';
+    let clsPrefix = 'tip tip-';
+    const tip = shallow(<Tip content={content} type={type} />);
 
-    let tipNode = ReactDOM.findDOMNode(tip);
-
-    expect(tipNode.textContent).toEqual(content);
-    expect(tipNode.getAttribute('class')).toEqual(classNamePrefix + type);
-    expect(tipNode.style.width).toEqual((width - 40) + 'px');
+    expect(tip.text()).toEqual(content);
+    expect(tip.props().className).toEqual(clsPrefix + type);
 
   });
 

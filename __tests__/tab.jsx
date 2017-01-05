@@ -1,37 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Tab from '../js/components/tab/index';
 
-describe('Test tab component', () => {
+describe('test tab', () => {
 
-  it('generates with small size', () => {
-
-    let items = [{
-        name: 'Overview',
-        key: '0'
-      }, {
-        name: 'Account Recharge',
-        key: '1',
-        default: true
-      }, {
-        name: 'Recharge Record',
-        key: '2'
-      }],
-      type = 'sm';
-
-    let tab = TestUtils.renderIntoDocument(
-      <Tab items={items} type={type} />
-    );
-
-    let tabNode = ReactDOM.findDOMNode(tab);
-
-    expect(tabNode.getAttribute('class')).toEqual('tabs-mini');
-
-  });
-
-  it('generates with selected tab', () => {
+  describe('test rendering', () => {
 
     let items = [{
       name: 'Overview',
@@ -45,20 +19,33 @@ describe('Test tab component', () => {
       key: '2'
     }];
 
-    let selectedKey = items.filter((item) => item.default)[0].key;
-    let tab = TestUtils.renderIntoDocument(
-      <Tab items={items} />
-    );
+    it('renders tab with small type', () => {
 
-    let itemNode = TestUtils.findRenderedDOMComponentWithClass(tab, 'tab selected');
-    expect(itemNode.firstElementChild.getAttribute('data-value')).toEqual(selectedKey);
+      const tab = shallow(<Tab items={items} type="sm" />);
+
+      expect(tab.props().className).toEqual('tabs-mini');
+
+    });
+
+    it('renders tab with selected type', () => {
+
+      let key = items.find((item) => item.default).key;
+      const tab = shallow(<Tab items={items} />);
+      const selected = tab.find('.selected');
+
+      expect(selected.text()).toEqual(items[key].name);
+
+    });
 
   });
 
-  it('triggers when the tab props is not disabled', () => {
+  describe('test onclick event', () => {
 
-    let listener = jest.genMockFunction();
-    let items = [{
+    let items;
+
+    beforeEach(() => {
+
+      items = [{
         name: 'Overview',
         key: 'overview',
         href: '#overview'
@@ -71,76 +58,42 @@ describe('Test tab component', () => {
         key: 'disalbed_tab',
         href: '#',
         disabled: true
-      }],
-      clickIndex = 1;
+      }];
 
-    let tab = TestUtils.renderIntoDocument(
-      <Tab items={items} onClick={listener} />
-    );
+    });
 
-    let tabNode = ReactDOM.findDOMNode(tab);
+    it('tests onClick', () => {
 
-    let clickNode = tabNode.childNodes[clickIndex].firstChild,
-      disabledNode = TestUtils.scryRenderedDOMComponentsWithClass(tab, 'tab disabled')[0].firstChild;
+      let listener = jest.genMockFunction();
+      let key = 1;
+      const tab = shallow(<Tab items={items} onClick={listener} />);
+      const clickNode = tab.find('.tab').at(key).childAt(0);
 
-    TestUtils.Simulate.click(clickNode);
-    TestUtils.Simulate.click(disabledNode);
+      clickNode.simulate('click', {
+        target: {
+          getAttribute(attr) {
+            return items[key].key;
+          }
+        },
+        preventDefault() {}
+      });
 
-    expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
-    expect(listener.mock.calls.length).toBe(1);
-  });
+      expect(listener.mock.calls[0][1]).toEqual(items[key]);
 
-  it('updates when the tab receive new props', () => {
+    });
 
-    let listener = jest.genMockFunction();
-    let items = [{
-        name: 'Overview',
-        key: 'overview',
-        href: '#overview'
-      }, {
-        name: 'Account Recharge',
-        key: 'account_recharge',
-        href: '#accout'
-      }, {
-        name: 'Disabled Tab',
-        key: 'disabled_tab',
-        href: '#',
-        disabled: true
-      }],
-      clickIndex = 1;
+    it('tests onClick with disabled item', () => {
 
-    let newItems = [{
-      name: 'new Overview',
-      key: 'new_overview',
-      default: true
-    }, {
-      name: 'new Account Recharge',
-      key: 'new_accout_recharge'
-    }, {
-      name: 'Recharge Record',
-      key: 'new_recharge_record'
-    }];
+      let listener = jest.genMockFunction();
+      const tab = shallow(<Tab items={items} onClick={listener} />);
+      const disabledNode = tab.find('.disabled');
 
-    let divNode = document.createElement('div');
+      disabledNode.simulate('click');
 
-    //first update
-    let tab = ReactDOM.render(<Tab items={items} onClick={listener} />, divNode),
-      tabNode = ReactDOM.findDOMNode(tab),
-      clickNode = tabNode.childNodes[clickIndex].firstChild;
+      expect(listener).not.toBeCalled();
 
-    //first click
-    TestUtils.Simulate.click(clickNode);
+    });
 
-    //second update
-    let newTab = ReactDOM.render(<Tab items={newItems} onClick={listener} />, divNode),
-      newTabNode = ReactDOM.findDOMNode(newTab),
-      newClickNode = newTabNode.childNodes[clickIndex].firstChild;
-
-    //second click
-    TestUtils.Simulate.click(newClickNode);
-
-    expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
-    expect(listener.mock.calls[1][1]).toBe(newItems[clickIndex]);
   });
 
 });

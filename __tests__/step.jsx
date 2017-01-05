@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Step from '../js/components/step/index';
 
-describe('Test step component', () => {
+describe('test step', () => {
 
   let items = [{
     name: 'title 1'
@@ -16,93 +15,90 @@ describe('Test step component', () => {
   }, {
     name: 'title 4'
   }];
-  let defaultIndex = items.findIndex((ele) => ele.default);
+  let index = items.findIndex((ele) => ele.default);
 
-  it('generates with title and width', () => {
+  it('renders with title and width', () => {
+
+    const step = shallow(<Step items={items} width={600} />);
+    let content = '';
+    items.forEach((item) => {
+      content += item.name;
+    });
+
+    expect(step.text()).toEqual(content);
+
+  });
+
+  it('renders with selected step', () => {
+
+    const step = shallow(<Step items={items} />);
+    const selected = step.find('.selected');
+
+    expect(selected.text()).toEqual(items[index].name);
+
+  });
+
+  it('tests onclick step', () => {
 
     let newItems = [{
-        name: 'title 1'
-      }, {
-        name: 'title 2'
-      }, {
-        name: 'title 3'
-      }, {
-        name: 'title 4'
-      }],
-      width = 600;
-
-    let step = TestUtils.renderIntoDocument(
-      <Step items={newItems} width={width} />
-    );
-
-    let stepNode = ReactDOM.findDOMNode(step);
-
-    let itemWidth = width / newItems.length,
-      itemNode = TestUtils.scryRenderedDOMComponentsWithClass(step, 'step-item')[0],
-      content = '';
-    newItems.map((item) => (
-      content += item.name
-    ));
-
-    expect(stepNode.textContent).toEqual(content);
-    expect(itemNode.style.width).toEqual(itemWidth + 'px');
-
-  });
-
-  it('generates with selected step', () => {
-
-    let step = TestUtils.renderIntoDocument(
-      <Step items={items} />
-    );
-
-    let itemNode = TestUtils.findRenderedDOMComponentWithClass(step, 'step-item selected');
-
-    expect(itemNode.firstElementChild.getAttribute('data-value')).toEqual('' + defaultIndex);
-
-  });
-
-  it('jumps when the step is clicked', () => {
+      name: 'title 1'
+    }, {
+      name: 'title 2'
+    }, {
+      name: 'title 3',
+      default: true
+    }, {
+      name: 'title 4'
+    }];
 
     let listener = jest.genMockFunction();
-    let clickIndex = 1;
+    let key = 1;
+    const step = shallow(<Step items={newItems} onClick={listener} />);
+    const clickNode = step.find('.step-item').at(key).childAt(0);
+    let dataValue = clickNode.props()['data-value'];
 
-    let divNode = document.createElement('div'),
-      step = ReactDOM.render(<Step items={items} onClick={listener} />, divNode),
-      stepNode = ReactDOM.findDOMNode(step),
-      clickNode = stepNode.childNodes[clickIndex].firstChild;
+    clickNode.simulate('click', {
+      target: {
+        getAttribute() {
+          return dataValue;
+        }
+      }
+    });
 
-    TestUtils.Simulate.click(clickNode);
-
-    expect(listener.mock.calls[0][1]).toBe(items[clickIndex]);
+    expect(listener.mock.calls[0][1]).toEqual(items[key]);
 
   });
 
   it('tests consedutive mode', () => {
 
-    let step = TestUtils.renderIntoDocument(
-      <Step items={items} consecutive={true} />
-    );
+    let newItems = [{
+      name: 'title 1'
+    }, {
+      name: 'title 2'
+    }, {
+      name: 'title 3',
+      default: true
+    }, {
+      name: 'title 4'
+    }];
+    let newIndex = newItems.findIndex((ele) => ele.default);
 
-    let itemNode = TestUtils.scryRenderedDOMComponentsWithClass(step, 'step-item selected');
+    const step = shallow(<Step items={newItems} consecutive={true} />);
+    const items = step.find('.selected');
 
-    expect(itemNode.length).toBe(defaultIndex + 1);
+    expect(items.length).toEqual(newIndex + 1);
 
   });
 
   it('tests disabled mode', () => {
 
     let listener = jest.genMockFunction();
-    let divNode = document.createElement('div'),
-      step = ReactDOM.render(<Step items={items} onClick={listener} disabled={true} />, divNode),
-      stepNode = ReactDOM.findDOMNode(step);
+    const step = shallow(<Step items={items} onClick={listener} disabled={true} />);
+    const clickNode = step.find('.step-item').at(0).childAt(0);
 
-    let clickNode1 = stepNode.childNodes[0].firstChild;
-    let clickNode2 = stepNode.childNodes[1].firstChild;
+    clickNode.simulate('click');
 
-    TestUtils.Simulate.click(clickNode1);
-    TestUtils.Simulate.click(clickNode2);
-
-    expect(listener.mock.calls.length).toBe(0);
+    expect(listener.mock.calls.length).toEqual(0);
 
   });
 

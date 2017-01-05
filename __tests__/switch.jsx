@@ -1,48 +1,50 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Switch from '../js/components/switch/index';
 
-describe('Test switch component', () => {
+describe('test switch', () => {
 
-  it('changes the text after click', () => {
+  const LABEL_ON = 'ON';
+  const LABEL_OFF = 'OFF';
 
-    // Render a checkbox with label in the document
-    let checkbox = TestUtils.renderIntoDocument(
-      <Switch labelOn="ON" labelOff="OFF" checked={true} />
-    );
+  it('renders switch', () => {
 
-    let checkboxNode = ReactDOM.findDOMNode(checkbox);
+    const checkbox = shallow(<Switch labelOn={LABEL_ON} labelOff={LABEL_OFF} />);
+    const label = checkbox.find('label');
 
-    expect(checkboxNode.textContent).toEqual('ON');
+    expect(label.text()).toEqual(LABEL_OFF);
 
-    TestUtils.Simulate.change(TestUtils.findRenderedDOMComponentWithTag(checkbox, 'input'));
-
-    expect(checkboxNode.textContent).toEqual('OFF');
   });
 
-  it('default value is OFF', () => {
+  it('renders switch witth unchecked', () => {
 
-    let checkbox = TestUtils.renderIntoDocument(
-      <Switch labelOn="ON" labelOff="OFF" checked={false} />
-    );
-    let checkboxNode = ReactDOM.findDOMNode(checkbox);
+    const checkbox = shallow(<Switch labelOn={LABEL_ON} labelOff={LABEL_OFF} checked={true} />);
+    const label = checkbox.find('label');
 
-    expect(checkboxNode.textContent).toEqual('OFF');
+    expect(label.text()).toEqual(LABEL_ON);
+
   });
 
-  it('adds change event handler', () => {
+  it('tests onclick', () => {
 
     let listener = jest.genMockFunction();
-
-    let checkbox = TestUtils.renderIntoDocument(
-      <Switch labelOn="ON" labelOff="OFF" checked={true} onChange={listener} />
+    const checkbox = shallow(
+      <Switch labelOn={LABEL_ON} labelOff={LABEL_OFF} checked={true} onChange={listener} />
     );
 
-    TestUtils.Simulate.change(TestUtils.findRenderedDOMComponentWithTag(checkbox, 'input'));
+    const input = checkbox.find('input');
+    input.simulate('change');
 
-    expect(listener).toBeCalledWith(jasmine.any(Object), false);
+    const label = checkbox.find('label');
+    expect(label.text()).toEqual(LABEL_OFF);
+    expect(listener.mock.calls[0][1]).toEqual(false);
+
+    input.simulate('change');
+
+    const label2 = checkbox.find('label');
+    expect(label2.text()).toEqual(LABEL_ON);
+    expect(listener.mock.calls[1][1]).toEqual(true);
 
   });
 

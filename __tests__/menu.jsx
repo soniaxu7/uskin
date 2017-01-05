@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 
 import Menu from '../js/components/menu/index';
 
-describe('Test menu component', () => {
+describe('test menu', () => {
 
   let listener = jest.genMockFunction();
   let items = [{
@@ -63,32 +62,23 @@ describe('Test menu component', () => {
     }]
   }];
 
-  it('is generated with items', () => {
+  it('renders menu', () => {
 
-    let menu = TestUtils.renderIntoDocument(
-      <Menu items={items} />
-    );
+    const menu = mount(<Menu items={items} />);
 
-    let menuNode = ReactDOM.findDOMNode(menu);
-
-    expect(items.length).toEqual(menuNode.childElementCount);
+    expect(items.length).toEqual(menu.children().length);
 
   });
 
   it('triggers onClick', () => {
 
-    let clickIndex = [1, 1];
-    let menu = TestUtils.renderIntoDocument(
-      <Menu items={items} />
-    );
+    let key = [1, 1];
+    const menu = mount(<Menu items={items} />);
+    const clickNode = menu.childAt(key[0]).childAt(0).childAt(1).childAt(key[1]);
 
-    let menuNode = ReactDOM.findDOMNode(menu);
-    let clickNode = menuNode.childNodes[clickIndex[0]]
-      .firstChild.lastChild.childNodes[clickIndex[1]];
+    clickNode.simulate('click');
 
-    TestUtils.Simulate.click(clickNode);
-
-    expect(listener.mock.calls[0][1]).toBe(items[clickIndex[0]].submenu[clickIndex[1]]);
+    expect(listener.mock.calls[0][1]).toBe(items[key[0]].submenu[key[1]]);
 
   });
 

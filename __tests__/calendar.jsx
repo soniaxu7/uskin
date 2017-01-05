@@ -1,65 +1,24 @@
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 
 import Calendar from '../js/components/calendar/index';
 
-describe('Test calendar component', () => {
+describe('test calendar', () => {
 
-  describe('Test render', () => {
-
-    it('renders a calendar', () => {
-
-      let calendar = TestUtils.renderIntoDocument(
-        <Calendar />
-      );
-      let calendarNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar');
-
-      expect(calendarNode.length).toBe(1);
-
-    });
-
-    it('render with screen', () => {
-
-      let calendar = TestUtils.renderIntoDocument(
-        <Calendar hasScreen={true} />
-      );
-      let calendarNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar hide');
-      let screenNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar-screen');
-
-      expect(calendarNode.length).toBe(1);
-      expect(screenNode.length).toBe(1);
-
-    });
-
-    it('render with screen and unfold calendar', () => {
-
-      let calendar = TestUtils.renderIntoDocument(
-        <Calendar hasScreen={true} unfold={true} />
-      );
-      let calendarNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar');
-      let screenNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'calendar-screen unfold');
-
-      expect(calendarNode.length).toBe(1);
-      expect(screenNode.length).toBe(1);
-
-    });
-
-  });
-
-  describe('Test display', () => {
+  describe('test display', () => {
 
     it('displays with Monday', () => {
+
       let week = {
         index: 1,
         value: 'Mon'
       };
-
-      let calendar = TestUtils.renderIntoDocument(
+      const calendar = mount(
         <Calendar startWeek={week.index} />
       );
-      let firstThNode = TestUtils.scryRenderedDOMComponentsWithTag(calendar, 'th')[0];
+      const firstWrp = calendar.find('th').at(0);
 
-      expect(firstThNode.innerHTML).toBe(week.value);
+      expect(firstWrp.text()).toBe(week.value);
 
     });
 
@@ -73,15 +32,14 @@ describe('Test calendar component', () => {
         date: dates[2]
       };
       let onChange = jest.genMockFunction();
-
-      let calendar = TestUtils.renderIntoDocument(
+      const calendar = mount(
         <Calendar page={page} onChange={onChange} />
       );
+      const yearWrp = calendar.find('li.selected[data-year=' + date.year + ']');
+      const monthWrp = calendar.find('li.selected[data-month=' + (date.month - 1) + ']');
 
-      let clickNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'default')[date.date - 1];
-      TestUtils.Simulate.click(clickNode);
-
-      expect(onChange.mock.calls[0][0]).toEqual(date);
+      expect(yearWrp.text()).toEqual('' + date.year);
+      expect(monthWrp.text()).toEqual('Jan');
 
     });
 
@@ -95,51 +53,34 @@ describe('Test calendar component', () => {
         date: dates[2]
       };
       let onChange = jest.genMockFunction();
-
-      let calendar = TestUtils.renderIntoDocument(
+      const calendar = mount(
         <Calendar selectedDate={value} onChange={onChange} />
       );
+      const selectedNode = calendar.find('td.selected');
 
-      let selectedNode = TestUtils.scryRenderedDOMComponentsWithTag(calendar, 'td').filter((dom) => dom.className === 'selected')[0];
-
-      expect(selectedNode.innerHTML).toBe('' + date.date);
-
-      let clickDate = {
-        year: dates[0],
-        month: dates[1],
-        date: 1
-      };
-      let clickNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'default')[clickDate.date - 1];
-      TestUtils.Simulate.click(clickNode);
-
-      expect(onChange.mock.calls[0][0]).toEqual(clickDate);
+      expect(selectedNode.text()).toEqual('' + date.date);
 
     });
 
-  });
-
-  describe('Test local', () => {
-
-    it('displays with chinese weeks and months', () => {
+    it('displays with custom local', () => {
 
       const local = {
         weeks: ['日', '一', '二', '三', '四', '五', '六'],
         months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
       };
-
-      let calendar = TestUtils.renderIntoDocument(
+      const calendar = mount(
         <Calendar local={local} />
       );
+      const monthWrps = calendar.find('li[data-month]');
+      const weekWrps = calendar.find('tr').at(0).children();
 
-      let weekLineNode = TestUtils.scryRenderedDOMComponentsWithTag(calendar, 'tr')[0];
-      let monthLineNode = TestUtils.scryRenderedDOMComponentsWithTag(calendar, 'ul')[1];
-
-      expect(weekLineNode.textContent).toBe(local.weeks.join(''));
-      expect(monthLineNode.textContent).toBe(local.months.join(''));
+      expect(monthWrps.map((ele) => ele.text())).toEqual(local.months);
+      expect(weekWrps.map((ele) => ele.text())).toEqual(local.weeks);
 
     });
 
   });
+
 
   describe('Test disabled date', () => {
 
@@ -151,15 +92,12 @@ describe('Test calendar component', () => {
         weeks: [0, 3, 6],
         dates: ['2016-10-10', '2016-10-13', '2016-10-18', '2016-10-21']
       };
-      let enableNum = 6;
-
-      let calendar = TestUtils.renderIntoDocument(
+      const enableNum = 6;
+      const calendar = mount(
         <Calendar page={disabled.min} disabled={disabled} />
       );
 
-      let clickableNum = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'default').length;
-
-      expect(clickableNum).toBe(enableNum);
+      expect(calendar.find('.default').length).toEqual(enableNum);
 
     });
 
@@ -172,22 +110,20 @@ describe('Test calendar component', () => {
       let beforeChange = jest.genMockFunction();
       let onChange = jest.genMockFunction();
       let afterChange = jest.genMockFunction();
-
       let date = {
         year: 2016,
         month: 11,
         date: 11
       };
-
-      let calendar = TestUtils.renderIntoDocument(
+      const calendar = mount(
         <Calendar page={date.year + '-' + date.month + '-' + date.date}
           beforeChange={beforeChange}
           onChange={onChange}
           afterChange={afterChange} />
       );
+      const clickWrp = calendar.find('td[data-month=0]').at(date.date - 1);
 
-      let clickNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'default')[date.date - 1];
-      TestUtils.Simulate.click(clickNode);
+      clickWrp.simulate('click');
 
       expect(beforeChange.mock.calls[0][0]).toEqual(date);
       expect(onChange.mock.calls[0][0]).toEqual(date);
@@ -204,17 +140,15 @@ describe('Test calendar component', () => {
         month: dates[1],
         date: dates[2]
       };
-
-      let calendar = TestUtils.renderIntoDocument(
+      const calendar = mount(
         <Calendar page={page} hasScreen={true} unfold={true} />
       );
+      const clickWrp = calendar.find('td[data-month=0]').at(date.date - 1);
+      const screenWrp = calendar.find('input');
 
-      let clickNode = TestUtils.scryRenderedDOMComponentsWithClass(calendar, 'default')[date.date - 1];
-      TestUtils.Simulate.click(clickNode);
+      clickWrp.simulate('click');
 
-      let screenNode = TestUtils.findRenderedDOMComponentWithTag(calendar, 'input');
-
-      expect(screenNode.value).toEqual(date.year + '-' + date.month + '-' + date.date);
+      expect(screenWrp.props().value).toEqual(date.year + '-' + date.month + '-' + date.date);
 
     });
 

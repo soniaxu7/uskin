@@ -1,15 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Button from '../js/components/button/index';
 import ButtonGroup from '../js/components/button-group/index';
 
-describe('Test button-group component', () => {
+describe('test button-group', () => {
 
-  it('is generated with default style', () => {
+  it('generates default style', () => {
 
-    let buttongroup = TestUtils.renderIntoDocument(
+    const buttongroup = shallow(
       <ButtonGroup>
         <Button tag="div" value="Prev" />
         <Button tag="div" value="Mid 1" type="delete" />
@@ -18,15 +17,14 @@ describe('Test button-group component', () => {
       </ButtonGroup>
     );
 
-    let buttongroupNode = ReactDOM.findDOMNode(buttongroup);
+    expect(buttongroup.hasClass('btn-group')).toEqual(true);
 
-    expect(buttongroupNode.getAttribute('class')).toBe('btn-group');
   });
 
-  it('is generated with vertical type, justified width', () => {
-    let width = '200px';
+  it('generates with vertical type, justified width', () => {
 
-    let buttongroup = TestUtils.renderIntoDocument(
+    let width = '200px';
+    const buttongroup = shallow(
       <ButtonGroup type="vertical" width={width}>
         <Button tag="div" value="Prev" />
         <Button tag="div" value="Mid 1" type="delete" />
@@ -35,10 +33,10 @@ describe('Test button-group component', () => {
       </ButtonGroup>
     );
 
-    let buttongroupNode = ReactDOM.findDOMNode(buttongroup);
+    expect(buttongroup.hasClass('btn-group-vertical')).toEqual(true);
+    expect(buttongroup.hasClass('btn-group-justified')).toEqual(true);
+    expect(buttongroup.node.props.style.width).toBe(width);
 
-    expect(buttongroupNode.getAttribute('class')).toBe('btn-group-vertical btn-group-justified');
-    expect(buttongroupNode.style.width).toBe(width);
   });
 
 });

@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Dropdown from '../js/components/dropdown/index';
 
-describe('Test dropdown component', () => {
+describe('test dropdown', () => {
 
   let items = [{
     title: 'Basic Ops',
@@ -66,7 +65,8 @@ describe('Test dropdown component', () => {
       key: '5'
     }, {
       title: 'Change Passoword',
-      key: '6'
+      key: '6',
+      disabled: true
     }, {
       title: 'Change Keypair',
       key: '7'
@@ -94,13 +94,12 @@ describe('Test dropdown component', () => {
 
   it('should render a dropdown with items', () => {
 
-    let dropdown = TestUtils.renderIntoDocument(
+    const dropdown = shallow(
       <Dropdown items={items} />
     );
-    let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
-    let blockNodeSum = dropdownNode.childNodes.length;
-    let itemNodeSum = TestUtils.scryRenderedDOMComponentsWithTag(dropdown, 'li').length;
+    let blockNodeSum = dropdown.children().length;
+    let itemNodeSum = dropdown.find('li').length;
 
     let itemsSum = 0;
     let counter = (element) => {
@@ -130,56 +129,48 @@ describe('Test dropdown component', () => {
   it('clicks item', () => {
 
     let listener = jest.genMockFunction();
-    let dropdown = TestUtils.renderIntoDocument(
+    const dropdown = shallow(
       <Dropdown items={items} onClick={listener} />
     );
-    let dropdownNode = ReactDOM.findDOMNode(dropdown);
+    let key = [0, 1];
+    let expectValue = items[key[0]].items[key[1]];
+    let clickWrp = dropdown.find('a').children().at(1).parent().parent();
 
-    let clickIndex = [1, 2];
-    let clickNode = dropdownNode.childNodes[clickIndex[0]].childNodes[clickIndex[1] + 1];
+    clickWrp.simulate('click', { stopPropagation() {} });
 
-    TestUtils.Simulate.click(clickNode);
-
-    expect(listener.mock.calls[0][1]).toEqual(items[clickIndex[0]].items[clickIndex[1]]);
+    expect(listener.mock.calls[0][1]).toEqual(expectValue);
 
   });
 
   it('clicks sub item', () => {
 
     let listener = jest.genMockFunction();
-    let dropdown = TestUtils.renderIntoDocument(
+    const dropdown = shallow(
       <Dropdown items={items} onClick={listener} />
     );
-    let dropdownNode = ReactDOM.findDOMNode(dropdown);
+    let key = [1, 0, 0, 0, 0, 1];
+    let expectValue = items[key[0]].items[key[1]].children[key[2]].items[key[3]].children[key[4]].items[key[5]];
+    let clickWrp = dropdown.find('a').children().at(5).parent().parent();
 
-    let clickIndex = [1, 0, 0, 0, 0, 1];
-    let clickNode = dropdownNode.childNodes[clickIndex[0]]
-      .childNodes[clickIndex[1] + 1].childNodes[1].childNodes[clickIndex[2]]
-      .childNodes[clickIndex[3] + 1].childNodes[1].childNodes[clickIndex[4]]
-      .childNodes[clickIndex[5]];
+    clickWrp.simulate('click', { stopPropagation() {} });
 
-    TestUtils.Simulate.click(clickNode);
-
-    expect(listener.mock.calls[0][1]).toEqual(items[clickIndex[0]].items[clickIndex[1]]
-      .children[clickIndex[2]].items[clickIndex[3]]
-      .children[clickIndex[4]].items[clickIndex[5]]);
+    expect(listener.mock.calls[0][1]).toEqual(expectValue);
 
   });
 
   it('should not trigger disabled item', () => {
 
     let listener = jest.genMockFunction();
-    let dropdown = TestUtils.renderIntoDocument(
+    const dropdown = shallow(
       <Dropdown items={items} onClick={listener} />
     );
-    let dropdownNode = ReactDOM.findDOMNode(dropdown);
 
-    let disabledIndex = [3, 1];
-    let disabledNode = dropdownNode.childNodes[disabledIndex[0]].childNodes[disabledIndex[1] + 1];
+    let key = [2, 1];
+    let disabledWrp = dropdown.children().at(key[0]).children().at(key[1]);
 
-    TestUtils.Simulate.click(disabledNode);
+    disabledWrp.simulate('click');
 
-    expect(listener.mock.calls.length).toBe(0);
+    expect(listener.mock.calls.length).toEqual(0);
 
   });
 

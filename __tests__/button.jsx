@@ -1,93 +1,85 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { shallow } from 'enzyme';
 
 import Button from '../js/components/button/index';
 
-describe('Test button component', () => {
+describe('test button', () => {
 
-  it('is generated with value, type, icon and size', () => {
+  it('generates button', () => {
 
-    let value = 'button',
-      type = 'create',
-      size = 'lg',
-      iconPrefix = 'glyphicon icon-',
-      iconClass = 'create';
-
-    let button = TestUtils.renderIntoDocument(
+    let value = 'button';
+    let type = 'create';
+    let size = 'lg';
+    let iconPrefix = 'glyphicon icon-';
+    let iconClass = 'create';
+    const button = shallow(
       <Button value={value} type={type} size={size} iconClass={iconClass} />
     );
 
-    let buttonNode = ReactDOM.findDOMNode(button);
+    expect(button.text()).toEqual(value);
+    expect(button.hasClass('btn')).toEqual(true);
+    expect(button.hasClass('btn-' + type)).toEqual(true);
+    expect(button.hasClass('btn-' + size)).toEqual(true);
 
-    expect(buttonNode.childNodes[0].className).toBe(iconPrefix + iconClass);
-    expect(buttonNode.childNodes[1].innerHTML).toBe(value);
-    expect(buttonNode.classList.contains('btn')).toBe(true);
-    expect(buttonNode.classList.contains('btn-' + type)).toBe(true);
-    expect(buttonNode.classList.contains('btn-' + size)).toBe(true);
   });
 
-  it('is generated with value, initial type and selected status', () => {
+  it('generates with initial & selected type', () => {
 
-    let value = 'button',
-      initial = true,
-      selected = true;
-
-    let button = TestUtils.renderIntoDocument(
+    let value = 'button';
+    let initial = true;
+    let selected = true;
+    const button = shallow(
       <Button value={value} initial={initial} selected={selected} />
     );
 
-    let buttonNode = ReactDOM.findDOMNode(button);
+    expect(button.text()).toEqual(value);
+    expect(button.hasClass('btn')).toEqual(true);
+    expect(button.hasClass('btn-initial')).toEqual(true);
+    expect(button.hasClass('selected')).toEqual(true);
 
-    expect(buttonNode.childNodes[0].innerHTML).toBe(value);
-    expect(buttonNode.classList.contains('btn')).toBe(true);
-    expect(buttonNode.classList.contains('btn-initial')).toBe(true);
-    expect(buttonNode.classList.contains('selected')).toBe(true);
   });
 
-  it('is generated with div tag', () => {
+  it('generates with div tag', () => {
 
-    let value = 'button',
-      listener = jest.genMockFunction(),
-      tag = 'div';
-
-    let button = TestUtils.renderIntoDocument(
+    let value = 'button';
+    let listener = jest.genMockFunction();
+    let tag = 'div';
+    const button = shallow(
       <Button value={value} tag={tag} onClick={listener} />
     );
 
-    let buttonNode = ReactDOM.findDOMNode(button);
-
-    expect(buttonNode.childNodes[0].innerHTML).toBe(value);
-    expect(buttonNode.tagName.toLowerCase()).toBe(tag);
+    expect(button.text()).toEqual(value);
+    expect(button.name()).toEqual(tag);
+  
   });
 
-  it('is triggered with beforeClick, onClick and afterClick', () => {
-    let value = 'button',
-      listener = jest.genMockFunction(),
-      btnKey = 'btn-1';
+  it('triggers onClick', () => {
 
-    let button = TestUtils.renderIntoDocument(
+    let value = 'button';
+    let listener = jest.genMockFunction();
+    let btnKey = 'btn-1';
+    const button = shallow(
       <Button value={value} onClick={listener} btnKey={btnKey} />
     );
 
-    let buttonNode = ReactDOM.findDOMNode(button);
-    TestUtils.Simulate.click(buttonNode);
+    button.simulate('click');
 
     expect(listener.mock.calls[0][1]).toEqual(btnKey);
+
   });
 
-  it('won\'t be triggered when button is disabled', () => {
-    let value = 'button',
-      listener = jest.genMockFunction();
-
-    let button = TestUtils.renderIntoDocument(
+  it('would not trigger disabled button', () => {
+  
+    let value = 'button';
+    let listener = jest.genMockFunction();
+    const button = shallow(
       <Button value={value} disabled={true} onClick={listener} />
     );
 
-    let buttonNode = ReactDOM.findDOMNode(button);
-    TestUtils.Simulate.click(buttonNode);
+    button.simulate('click');
 
     expect(listener).not.toBeCalled();
+
   });
 
 });

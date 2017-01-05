@@ -1,293 +1,256 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import { mount } from 'enzyme';
 
 import InputNumber from '../js/components/input-number/index';
 
-describe('Test input-number component', () => {
+describe('test input-number', () => {
 
-  describe('test step is 1 and disabled is false', () => {
-    const props = {
-      onChange: jest.genMockFunction(),
-      min: 0,
-      max: 10,
-      value: 3,
-      width: 62,
-      step: 1
-    };
+  describe('test step = 1, disabled = false', () => {
 
-    const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber onChange={props.onChange}
-        min={props.min}
-        max={props.max}
-        value={props.value}
-        width={props.width}
-        step={props.step} />
-    );
+    let listener, props, isError, inputnumber;
 
-    const inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT'),
-      upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
-      downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
+    beforeEach(() => {
 
-    const isError = true;
+      listener = jest.genMockFunction();
+      props = {
+        onChange: listener,
+        min: 0,
+        max: 10,
+        value: 3,
+        width: 62,
+        step: 1
+      };
+      isError = true;
+      inputnumber = mount(<InputNumber {...props} />);
 
-    it('should render a InputNumber component with specific width', () => {
-      let inputNumberNode = ReactDOM.findDOMNode(inputNumber);
-
-      expect(inputNumberNode.style.width).toBe(props.width + 'px');
     });
 
-    it('should work when up or down key is pressed', () => {
-      TestUtils.Simulate.keyDown(inputNode, {
+    it('works when up or down key is pressed', () => {
+
+      const input = inputnumber.find('input');
+
+      input.simulate('keyDown', {
         keyCode: 38,
-        which: 38
+        preventDefault() {}
       });
-      TestUtils.Simulate.keyDown(inputNode, {
+      input.simulate('keyDown', {
         keyCode: 40,
-        which: 40
+        preventDefault() {}
       });
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step, !isError]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.value, !isError]);
+      expect(listener.mock.calls[0]).toEqual([props.value + props.step, !isError]);
+      expect(listener.mock.calls[1]).toEqual([props.value, !isError]);
+
     });
 
-    it('should work when up or down button is clicked', () => {
-      TestUtils.Simulate.click(upButtonNode);
-      TestUtils.Simulate.click(downButtonNode);
+    it('works when up or down button is clicked', () => {
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step, !isError]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.value, !isError]);
+      const upperBtn = inputnumber.find('.arrow-up');
+      const downBtn = inputnumber.find('.arrow-down');
+      
+      upperBtn.simulate('click', { preventDefault() {} });
+      downBtn.simulate('click', { preventDefault() {} });
+
+      expect(listener.mock.calls[0]).toEqual([props.value + props.step, !isError]);
+      expect(listener.mock.calls[1]).toEqual([props.value, !isError]);
+
     });
+
   });
 
-  describe('test step is decimal and disabled is false', () => {
-    const props = {
-      onChange: jest.genMockFunction(),
-      min: 0,
-      max: 1,
-      value: 0.98,
-      step: 0.01
-    };
-
-    const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber onChange={props.onChange}
-        min={props.min}
-        max={props.max}
-        value={props.value}
-        step={props.step} />
-    );
-
-    const upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
-      downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
-
-    const isError = true;
+  describe('test step = 0.01 and disabled = false', () => {
 
     it('test decimal add and subtract', () => {
-      TestUtils.Simulate.click(upButtonNode);
-      TestUtils.Simulate.click(downButtonNode);
-      TestUtils.Simulate.click(downButtonNode);
 
-      expect(props.onChange.mock.calls[0]).toEqual([props.value + props.step, !isError]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.value, !isError]);
-      expect(props.onChange.mock.calls[2]).toEqual([props.value - props.step, !isError]);
+      let listener = jest.genMockFunction()
+      let props = {
+        onChange: listener,
+        min: 0,
+        max: 1,
+        value: 0.98,
+        step: 0.01
+      };
+      let isError = true;
+      const inputnumber = mount(<InputNumber {...props} />);
+      const upperBtn = inputnumber.find('.arrow-up');
+      const downBtn = inputnumber.find('.arrow-down');
+      
+      upperBtn.simulate('click', { preventDefault() {} });
+      downBtn.simulate('click', { preventDefault() {} });
+      downBtn.simulate('click', { preventDefault() {} });
+
+      expect(listener.mock.calls[0]).toEqual([props.value + props.step, !isError]);
+      expect(listener.mock.calls[1]).toEqual([props.value, !isError]);
+      expect(listener.mock.calls[2]).toEqual([props.value - props.step, !isError]);
+
     });
+
   });
 
-  describe('test overstep the boundary', () => {
-    const props = {
-      onChange: jest.genMockFunction(),
-      min: 0,
-      max: 5,
-      value: 3,
-      step: 1
-    };
+  describe('test boundary', () => {
 
-    const inputNumber = TestUtils.renderIntoDocument(
-      <InputNumber onChange={props.onChange}
-        min={props.min}
-        max={props.max}
-        value={props.value}
-        step={props.step} />
-    );
+    let listener, props, inputnumber, upperBtn, downBtn, isError;
 
-    const upButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-up'),
-      downButtonNode = TestUtils.findRenderedDOMComponentWithClass(inputNumber, 'arrow-down');
+    beforeEach(() => {
 
-    const isError = true;
+      listener = jest.genMockFunction();
+      props = {
+        onChange: listener,
+        min: 0,
+        max: 5,
+        value: 3,
+        step: 1
+      };
+      isError = true;
+      inputnumber = mount(<InputNumber {...props} />);
+      upperBtn = inputnumber.find('.arrow-up');
+      downBtn = inputnumber.find('.arrow-down');
+
+    });
 
     it('test upper bound', () => {
+
       for (let i = 0; i < 5; i++) {
-        TestUtils.Simulate.click(upButtonNode);
+        upperBtn.simulate('click');
       }
 
-      let callSum = props.onChange.mock.calls.length;
-      expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.max, !isError]);
+      expect(listener).lastCalledWith(props.max, !isError);
+
     });
 
     it('test lower bound', () => {
+
       for (let i = 0; i < 5; i++) {
-        TestUtils.Simulate.click(downButtonNode);
+        downBtn.simulate('click');
       }
 
-      let callSum = props.onChange.mock.calls.length;
-      expect(props.onChange.mock.calls[callSum - 1]).toEqual([props.min, !isError]);
+      expect(listener).lastCalledWith(props.min, !isError);
+
     });
+
   });
 
-  describe('test input value is changed', () => {
-    let props,
-      inputNode,
-      inputNumber,
-      isError;
+  describe('test onChange input value', () => {
+
+    let listener, props, inputnumber, input, isError;
 
     beforeEach(() => {
+
+      listener = jest.genMockFunction();
       props = {
-        onChange: jest.genMockFunction(),
+        onChange: listener,
         min: 0,
         max: 10,
         value: 3,
         step: 1
       };
-
-      inputNumber = TestUtils.renderIntoDocument(
-        <InputNumber onChange={props.onChange}
-          min={props.min}
-          max={props.max}
-          value={props.value}
-          step={props.step} />
-      );
-
-      inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
-
       isError = true;
+      inputnumber = mount(<InputNumber {...props} />);
+      input = inputnumber.find('input');
+
     });
 
-    it('test if value is not a number', () => {
-      let focusValue = 'abcd';
+    it('tests onChange value', () => {
 
-      TestUtils.Simulate.focus(inputNode);
-      TestUtils.Simulate.change(inputNode, {
-        target: {
-          value: focusValue
-        }
-      });
-      TestUtils.Simulate.blur(inputNode);
+      let value = 8;
 
-      expect(props.onChange.mock.calls[0]).toEqual([focusValue, isError]);
-      expect(inputNode.value).toEqual('' + props.value);
+      input.simulate('change', { target: { value: value } });
+      input.simulate('blur');
+
+      expect(listener.mock.calls[0]).toEqual([value, !isError]);
+      expect(input.node.value).toEqual('' + value);
+
+   });
+
+    it('tests onChange value which is invalid', () => {
+
+      let value = 'abcd';
+
+      input.simulate('change', { target: { value: value } });
+      input.simulate('blur');
+
+      expect(listener.mock.calls[0]).toEqual([value, isError]);
+      expect(input.node.value).toEqual('' + props.value);
+
     });
 
-    it('test value has no change', () => {
-      TestUtils.Simulate.focus(inputNode);
-      TestUtils.Simulate.blur(inputNode);
+    it('tests onChange upper bound', () => {
 
-      expect(inputNode.value).toEqual('' + props.value);
+      let value = 15;
+
+      input.simulate('change', { target: { value: value } });
+      input.simulate('blur');
+
+      expect(listener.mock.calls[0]).toEqual([value, isError]);
+      expect(listener.mock.calls[1]).toEqual([props.max, !isError]);
+      expect(input.node.value).toEqual('' + props.max);
+
     });
 
-    it('test value is changed', () => {
-      let focusValue = 8;
+    it('tests onChange lower bound', () => {
 
-      TestUtils.Simulate.focus(inputNode);
-      TestUtils.Simulate.change(inputNode, {
-        target: {
-          value: focusValue
-        }
-      });
+      let value = -15;
 
-      expect(inputNumber.state.focusValue).toEqual(focusValue);
+      input.simulate('change', { target: { value: value } });
+      input.simulate('blur');
 
-      TestUtils.Simulate.blur(inputNode);
+      expect(listener.mock.calls[0]).toEqual([value, isError]);
+      expect(listener.mock.calls[1]).toEqual([props.min, !isError]);
+      expect(input.node.value).toEqual('' + props.min);
 
-      expect(inputNumber.state.focusValue).toEqual(undefined);
-      expect(inputNumber.state.value).toEqual(Number(focusValue));
-      expect(props.onChange.mock.calls[0]).toEqual([focusValue, !isError]);
-      expect(props.onChange.mock.calls[1]).toEqual([focusValue, !isError]);
-    });
-
-    it('test value is overstep upper bound', () => {
-      let focusValue = 15;
-
-      TestUtils.Simulate.focus(inputNode);
-      TestUtils.Simulate.change(inputNode, {
-        target: {
-          value: focusValue
-        }
-      });
-      TestUtils.Simulate.blur(inputNode);
-
-      expect(props.onChange.mock.calls[0]).toEqual([focusValue, isError]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.max, !isError]);
-    });
-
-    it('test value is overstep lower bound', () => {
-      let focusValue = -15;
-
-      TestUtils.Simulate.focus(inputNode);
-      TestUtils.Simulate.change(inputNode, {
-        target: {
-          value: focusValue
-        }
-      });
-      TestUtils.Simulate.blur(inputNode);
-
-      expect(props.onChange.mock.calls[0]).toEqual([focusValue, isError]);
-      expect(props.onChange.mock.calls[1]).toEqual([props.min, !isError]);
     });
 
   });
 
-  describe('test when some props is wrong value', () => {
-    const props = {
-      onChange: jest.genMockFunction(),
-      min: 0,
-      max: 10,
-      step: 1
-    };
+  describe('test invalid props', () => {
+    let listener, props;
 
-    it('tests initial value is overstep the upper bound', () => {
-      let inputNumber = TestUtils.renderIntoDocument(
-        <InputNumber onChange={props.onChange}
-          min={props.min}
-          max={props.max}
-          value={12}
-          step={props.step} />
-      );
+    beforeEach(() => {
 
-      let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
+      listener = jest.genMockFunction();
+      props = {
+        onChange: listener,
+        min: 0,
+        max: 10,
+        step: 1
+      };
 
-      expect(inputNode.value).toEqual('' + props.max);
+    });
+
+    it('tests max props oversteps the upper bound', () => {
+
+      const inputnumber = mount(<InputNumber {...props} value={12} />);
+
+      expect(inputnumber.state().value).toEqual(props.max);
+
     });
 
     it('tests initial value is overstep the lower bound', () => {
-      let inputNumber = TestUtils.renderIntoDocument(
-        <InputNumber onChange={props.onChange}
-          min={props.min}
-          max={props.max}
-          value={-12}
-          step={props.step} />
-      );
+  
+      const inputnumber = mount(<InputNumber {...props} value={-12} />);
 
-      let inputNode = TestUtils.findRenderedDOMComponentWithTag(inputNumber, 'INPUT');
+      expect(inputnumber.state().value).toEqual(props.min);
 
-      expect(inputNode.value).toEqual('' + props.min);
     });
+
   });
 
-  describe('test disabled is true', () => {
-    it('shouldn\'t work when disabled props is true', () => {
-      let newListener = jest.genMockFunction(),
-        InputNumberDisabled = TestUtils.renderIntoDocument(
-          <InputNumber onChange={newListener} disabled={true} />
-        );
+  describe('test disabled = true', () => {
 
-      let upButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-up'),
-        downButtonNode = TestUtils.findRenderedDOMComponentWithClass(InputNumberDisabled, 'arrow-down');
+    it('do not trigger onChange when it is disabled', () => {
 
-      TestUtils.Simulate.click(upButtonNode);
-      TestUtils.Simulate.click(downButtonNode);
+      let listener = jest.genMockFunction();
+      const inputnumber = mount(<InputNumber onChange={listener} disabled={true} />);
+      const upperBtn = inputnumber.find('.arrow-up');
+      const downBtn = inputnumber.find('.arrow-down');
 
-      expect(newListener).not.toBeCalled();
+      upperBtn.simulate('click', { preventDefault() {} });
+      downBtn.simulate('click', { preventDefault() {} });
+
+      expect(listener).not.toBeCalled();
+
     });
+
   });
 
 });
