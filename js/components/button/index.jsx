@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+function noop() {}
 
 class Button extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this._type = ['create', 'delete', 'warning', 'cancel', 'status'];
-    this._size = ['xl', 'lg', 'sm', 'xs'];
-    this._iconClassPrefix = 'glyphicon icon-';
-    this.onClick = this.onClick.bind(this);
+    this.state = {
+      disabled: props.disabled
+    };
+
+    ['onClick'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
-  _getClassName(props, state) {
-    var className = 'btn';
-    (this._type.indexOf(props.type) > -1) && (className += ' btn-' + props.type);
-    (this._size.indexOf(props.size) > -1) && (className += ' btn-' + props.size);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.disabled !== this.props.disabled) {
+      this.setState({
+        disabled: nextProps.disabled
+      });
+    }
+  }
+
+  onClick(e) {
+    this.props.onClick(e, this.props.btnKey);
+  }
+
+  getClassName(props, state) {
+    let className = 'btn';
+
+    props.type && (className += ' btn-' + props.type);
+    props.size && (className += ' btn-' + props.size);
     props.initial && (className += ' btn-initial');
     props.selected && (className += ' selected');
     state.disabled && (className += ' disabled');
@@ -22,60 +40,57 @@ class Button extends React.Component {
     return className;
   }
 
-  componentWillMount() {
-    this.setState({
-      disabled: this.props.disabled
-    });
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.state.disabled === nextProps.disabled) {
-      return;
-    }
-    this.setState({
-      disabled: nextProps.disabled
-    });
-  }
-
-  onClick(e) {
-    (typeof this.props.onClick === 'function') && this.props.onClick(e, this.props.btnKey);
-  }
-
   render() {
-    var props = this.props,
-      state = this.state,
-      iconPrefix = this._iconClassPrefix;
+    const props = this.props;
+    const state = this.state;
+    const iconPrefix = 'glyphicon icon-';
 
-    if (props.tag === 'div') {
-      return (
-        <div className={this._getClassName(props, state)}
-          onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
-          {props.iconClass ? <i className={iconPrefix + props.iconClass} /> : null}
-          {props.value ? <span>{props.value}</span> : null}
-          {props.dropdown ? <i className={iconPrefix + 'dropdown'} /> : null}
-        </div>
-      );
-    } else {
-      return (
-        <button className={this._getClassName(props, state)}
-          disabled={state.disabled}
-          onClick={!state.disabled && (typeof props.onClick === 'function') ? this.onClick : null}>
-          {props.iconClass ? <i className={iconPrefix + props.iconClass} /> : null}
-          {props.value ? <span>{props.value}</span> : null}
-          {props.dropdown ? <i className={iconPrefix + 'dropdown'} /> : null}
-        </button>
-      );
+    switch(props.tag) {
+      case 'div':
+        return (
+          <div className={this.getClassName(props, state)}
+            onClick={!state.disabled ? this.onClick : null}
+          >
+            {props.iconClass ? <i className={iconPrefix + props.iconClass} /> : null}
+            {props.value ? <span>{props.value}</span> : null}
+            {props.dropdown ? <i className={iconPrefix + 'dropdown'} /> : null}
+          </div>
+        );
+      default:
+        return (
+          <button className={this.getClassName(props, state)}
+            disabled={state.disabled}
+            onClick={!state.disabled ? this.onClick : null}
+          >
+            {props.iconClass ? <i className={iconPrefix + props.iconClass} /> : null}
+            {props.value ? <span>{props.value}</span> : null}
+            {props.dropdown ? <i className={iconPrefix + 'dropdown'} /> : null}
+          </button>
+        );
     }
   }
 }
 
 Button.propTypes = {
-  value: React.PropTypes.string,
-  type: React.PropTypes.string,
-  size: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  initial: React.PropTypes.bool,
-  onClick: React.PropTypes.func
+  onClick: PropTypes.func,
+  value: PropTypes.string,
+  btnKey: PropTypes.string,
+  iconClass: PropTypes.string,
+  type: PropTypes.oneOf(['create', 'delete', 'warning', 'cancel', 'status']),
+  size: PropTypes.oneOf(['xl', 'lg', 'sm', 'xs']),
+  tag: PropTypes.oneOf(['div']),
+  disabled: PropTypes.bool,
+  initial: PropTypes.bool,
+  selected: PropTypes.bool,
+  dropdown: PropTypes.bool
+};
+
+Button.defaultProps = {
+  onClick: noop,
+  disabled: false,
+  initial: false,
+  selected: false,
+  dropdown: false
 };
 
 export default Button;

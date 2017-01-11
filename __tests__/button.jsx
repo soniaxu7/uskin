@@ -5,15 +5,16 @@ import Button from '../js/components/button/index';
 
 describe('test button', () => {
 
-  it('generates button', () => {
+  it('renders button', () => {
 
     let value = 'button';
     let type = 'create';
     let size = 'lg';
     let iconPrefix = 'glyphicon icon-';
     let iconClass = 'create';
+    let dropdown = true;
     const button = shallow(
-      <Button value={value} type={type} size={size} iconClass={iconClass} />
+      <Button value={value} type={type} size={size} iconClass={iconClass} dropdown={dropdown} />
     );
 
     expect(button.text()).toEqual(value);
@@ -23,7 +24,46 @@ describe('test button', () => {
 
   });
 
-  it('generates with initial & selected type', () => {
+  it('renders default button', () => {
+
+    const button = shallow(<Button />);
+
+    button.simulate('click');
+
+    expect(button.text()).toEqual('');
+
+  });
+
+  it('renders with div tag', () => {
+
+    let value = 'button';
+    let type = 'create';
+    let size = 'lg';
+    let iconPrefix = 'glyphicon icon-';
+    let iconClass = 'create';
+    let dropdown = true;
+    let tag = 'div';
+    const button = shallow(
+      <Button value={value} type={type} size={size} iconClass={iconClass} dropdown={dropdown} tag={tag} />
+    );
+
+    expect(button.text()).toEqual(value);
+    expect(button.name()).toEqual(tag);
+  
+  });
+
+  it('renders default button with div tag', () => {
+
+    let tag = 'div';
+    const button = shallow(<Button tag={tag} />);
+
+    button.simulate('click');
+
+    expect(button.text()).toEqual('');
+
+  });
+
+  it('renders with initial & selected type', () => {
 
     let value = 'button';
     let initial = true;
@@ -37,20 +77,6 @@ describe('test button', () => {
     expect(button.hasClass('btn-initial')).toEqual(true);
     expect(button.hasClass('selected')).toEqual(true);
 
-  });
-
-  it('generates with div tag', () => {
-
-    let value = 'button';
-    let listener = jest.genMockFunction();
-    let tag = 'div';
-    const button = shallow(
-      <Button value={value} tag={tag} onClick={listener} />
-    );
-
-    expect(button.text()).toEqual(value);
-    expect(button.name()).toEqual(tag);
-  
   });
 
   it('triggers onClick', () => {
@@ -75,7 +101,29 @@ describe('test button', () => {
     const button = shallow(
       <Button value={value} disabled={true} onClick={listener} />
     );
+    const buttonDiv = shallow(
+      <Button value={value} disabled={true} onClick={listener} tag="div" />
+    );
 
+    button.simulate('click');
+    buttonDiv.simulate('click');
+
+    expect(listener).not.toBeCalled();
+
+  });
+
+  it('tests update props', () => {
+  
+    let listener = jest.genMockFunction();
+    const button = shallow(
+      <Button disabled={false} onClick={listener} />
+    );
+
+    //update with different props
+    button.setProps({ disabled: true });
+    button.simulate('click');
+    //update with same props
+    button.setProps({ disabled: true });
     button.simulate('click');
 
     expect(listener).not.toBeCalled();

@@ -1,7 +1,7 @@
-var Button = uskin.Button;
+const { Button } = uskin;
 
-function listener(e, btnValue) {
-  console.debug('click triggered!', e, btnValue);
+function listener(e, btnKey) {
+  console.debug('Button clicked: ', e, btnKey);
 }
 
 ReactDOM.render(

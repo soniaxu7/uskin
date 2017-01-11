@@ -46,10 +46,12 @@
 
 	"use strict";
 
-	var Button = uskin.Button;
+	var _uskin = uskin,
+	    Button = _uskin.Button;
 
-	function listener(e, btnValue) {
-	  console.debug('click triggered!', e, btnValue);
+
+	function listener(e, btnKey) {
+	  console.debug('Button clicked: ', e, btnKey);
 	}
 
 	ReactDOM.render(React.createElement(

@@ -46,7 +46,9 @@
 
 	'use strict';
 
-	var Breadcrumb = uskin.Breadcrumb;
+	var _uskin = uskin,
+	    Breadcrumb = _uskin.Breadcrumb;
+
 
 	var items1 = [{
 	  name: 'Home',
@@ -65,14 +67,16 @@
 	  name: 'Phones',
 	  href: '#phone'
 	}];
-
-	var onClickBreadcrumb = function onClickBreadcrumb(item, e) {
-	  console.log('Testing Breadcrumb onClick event handler.', item);
+	var listener = function listener(item, e) {
+	  console.log('Breadcrumb item clicked: ', item);
 	};
 
-	ReactDOM.render(React.createElement(Breadcrumb, { items: items1, onClick: onClickBreadcrumb }), document.getElementById('example'));
-
-	ReactDOM.render(React.createElement(Breadcrumb, { items: items2, onClick: onClickBreadcrumb }), document.getElementById('example2'));
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(Breadcrumb, { items: items1, onClick: listener }),
+	  React.createElement(Breadcrumb, { items: items2, onClick: listener })
+	), document.getElementById('example'));
 
 /***/ }
 /******/ ]);

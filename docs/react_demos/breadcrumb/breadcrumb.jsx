@@ -1,33 +1,30 @@
-var Breadcrumb = uskin.Breadcrumb;
+const { Breadcrumb } = uskin;
 
-var items1 = [{
-    name: 'Home',
-    href: '#home'
-  }, {
-    name: 'Store',
-    href: '#store'
-  }],
-  items2 = [{
-    name: 'Home',
-    href: '#home'
-  }, {
-    name: 'Store',
-    href: '#store'
-  }, {
-    name: 'Phones',
-    href: '#phone'
-  }];
-
-var onClickBreadcrumb = function(item, e) {
-  console.log('Testing Breadcrumb onClick event handler.', item);
+const items1 = [{
+  name: 'Home',
+  href: '#home'
+}, {
+  name: 'Store',
+  href: '#store'
+}],
+items2 = [{
+  name: 'Home',
+  href: '#home'
+}, {
+  name: 'Store',
+  href: '#store'
+}, {
+  name: 'Phones',
+  href: '#phone'
+}];
+let listener = function(item, e) {
+  console.log('Breadcrumb item clicked: ', item);
 };
 
 ReactDOM.render(
-  <Breadcrumb items={items1} onClick={onClickBreadcrumb} />,
+  <div>
+    <Breadcrumb items={items1} onClick={listener} />
+    <Breadcrumb items={items2} onClick={listener} />
+  </div>,
   document.getElementById('example')
-);
-
-ReactDOM.render(
-  <Breadcrumb items={items2} onClick={onClickBreadcrumb} />,
-  document.getElementById('example2')
 );

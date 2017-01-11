@@ -16,11 +16,14 @@ describe('test Breadcrumb', () => {
     href: '#phone'
   }];
 
-  it('makes breadcrumb', () => {
+  it('renders breadcrumb', () => {
 
     const breadcrumb = shallow(<Breadcrumb items={items} />);
+    const clickNode = breadcrumb.find({ href: items[0].href });
     const children = breadcrumb.find('.breadcrumb-item');
     let content = children.map((ele) => ele.text()).reduce((prev, next) => prev + next);
+
+    clickNode.simulate('click');
 
     expect(children.length).toEqual(items.length);
     expect(breadcrumb.text()).toEqual(content);
@@ -28,7 +31,7 @@ describe('test Breadcrumb', () => {
 
   });
 
-  it('triggers onClick', () => {
+  it('tests onClick', () => {
 
     const listener = jest.genMockFunction();
     const breadcrumb = shallow(<Breadcrumb items={items} onClick={listener} />);
