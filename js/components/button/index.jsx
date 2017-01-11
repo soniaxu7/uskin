@@ -69,6 +69,7 @@ class Button extends React.Component {
         );
     }
   }
+
 }
 
 Button.propTypes = {

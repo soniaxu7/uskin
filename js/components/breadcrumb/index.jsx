@@ -32,6 +32,7 @@ class Breadcrumb extends React.Component {
       </div>
     );
   }
+
 }
 
 Breadcrumb.propTypes = {
