@@ -46,13 +46,14 @@
 
 	'use strict';
 
-	var Dropdown = uskin.Dropdown;
+	var _uskin = uskin,
+	    Dropdown = _uskin.Dropdown;
 
-	function listener(e, status) {
-	  console.debug('click triggered!', e, status);
+
+	function listener(e, item) {
+	  console.debug('click triggered!', e, item);
 	}
 
-	//key value should be exclusive
 	var items1 = [{
 	  title: 'Basic Ops',
 	  key: 'basic',
@@ -195,9 +196,20 @@
 	  }]
 	}];
 
-	ReactDOM.render(React.createElement(Dropdown, { items: items1, onClick: listener }), document.getElementById('example'));
-
-	ReactDOM.render(React.createElement(Dropdown, { items: items2, onClick: listener }), document.getElementById('example2'));
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Dropdown, { items: items1, onClick: listener })
+	  ),
+	  React.createElement(
+	    'div',
+	    { className: 'box box2' },
+	    React.createElement(Dropdown, { items: items2, onClick: listener })
+	  )
+	), document.getElementById('example'));
 
 /***/ }
 /******/ ]);

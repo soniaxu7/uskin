@@ -92,11 +92,12 @@ describe('test dropdown', () => {
     }]
   }];
 
-  it('should render a dropdown with items', () => {
+  it('renders dropdown', () => {
 
     const dropdown = shallow(
       <Dropdown items={items} />
     );
+    let clickNode = dropdown.find('a').children().at(1).parent().parent();
 
     let blockNodeSum = dropdown.children().length;
     let itemNodeSum = dropdown.find('li').length;
@@ -121,6 +122,8 @@ describe('test dropdown', () => {
       counter(items[i]);
     }
 
+    clickNode.simulate('click', { stopPropagation() {} });
+
     expect(blockNodeSum).toEqual(items.length);
     expect(itemNodeSum).toEqual(itemsSum);
 
@@ -134,9 +137,9 @@ describe('test dropdown', () => {
     );
     let key = [0, 1];
     let expectValue = items[key[0]].items[key[1]];
-    let clickWrp = dropdown.find('a').children().at(1).parent().parent();
+    let clickNode = dropdown.find('a').children().at(1).parent().parent();
 
-    clickWrp.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click', { stopPropagation() {} });
 
     expect(listener.mock.calls[0][1]).toEqual(expectValue);
 
@@ -150,9 +153,9 @@ describe('test dropdown', () => {
     );
     let key = [1, 0, 0, 0, 0, 1];
     let expectValue = items[key[0]].items[key[1]].children[key[2]].items[key[3]].children[key[4]].items[key[5]];
-    let clickWrp = dropdown.find('a').children().at(5).parent().parent();
+    let clickNode = dropdown.find('a').children().at(5).parent().parent();
 
-    clickWrp.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click', { stopPropagation() {} });
 
     expect(listener.mock.calls[0][1]).toEqual(expectValue);
 
@@ -166,9 +169,9 @@ describe('test dropdown', () => {
     );
 
     let key = [2, 1];
-    let disabledWrp = dropdown.children().at(key[0]).children().at(key[1]);
+    let disabledNode = dropdown.children().at(key[0]).children().at(key[1]);
 
-    disabledWrp.simulate('click');
+    disabledNode.simulate('click');
 
     expect(listener.mock.calls.length).toEqual(0);
 

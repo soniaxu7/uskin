@@ -91,6 +91,12 @@ ReactDOM.render(<Dropdown items={items}/>, document);
       <td></td>
       <td><a href="#items">见下方items详解</a></td>
     </tr>
+    <tr>
+      <td>onClick</td>
+      <td>Function</td>
+      <td></td>
+      <td>点击item时候触发，返回参数(e, item)</td>
+    </tr>
   </tbody>
 </table>
 
@@ -150,10 +156,48 @@ ReactDOM.render(<Dropdown items={items}/>, document);
       <td>每个子列表的key值</td>
     </tr>
     <tr>
-      <td>onClick</td>
-      <td>Function</td>
+      <td>disabled</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>是否设置为disabled状态</td>
+    </tr>
+    <tr>
+      <td>danger</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>是否设置为danger状态</td>
+    </tr>
+    <tr>
+      <td>children</td>
+      <td>Array</td>
       <td></td>
-      <td>子列表的click事件</td>
+      <td><a href="#items-items-children">每个子菜单的子菜单列表信息，见下方详解</a></td>
+    </tr>
+  </tbody>
+</table>
+
+**items: { items:[ children: [] ] }**
+<table id="items-items">
+  <thead>
+    <tr>
+      <th style="width: 100px;">name</th>
+      <th style="width: 50px;">type</th>
+      <th style="width: 50px;">default</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title(必填)</td>
+      <td>String</td>
+      <td></td>
+      <td>每个子列表的title</td>
+    </tr>
+    <tr>
+      <td>key(必填)</td>
+      <td>String</td>
+      <td></td>
+      <td>每个子列表的key值</td>
     </tr>
     <tr>
       <td>disabled</td>
@@ -166,6 +210,12 @@ ReactDOM.render(<Dropdown items={items}/>, document);
       <td>Boolean</td>
       <td>false</td>
       <td>是否设置为danger状态</td>
+    </tr>
+    <tr>
+      <td>items</td>
+      <td>Array</td>
+      <td></td>
+      <td><a href="#items-items">每个children的items列表信息，见items详解</a></td>
     </tr>
   </tbody>
 </table>

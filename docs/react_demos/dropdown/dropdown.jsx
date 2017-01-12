@@ -1,11 +1,10 @@
-var Dropdown = uskin.Dropdown;
+const { Dropdown } = uskin;
 
-function listener(e, status) {
-  console.debug('click triggered!', e, status);
+function listener(e, item) {
+  console.debug('click triggered!', e, item);
 }
 
-//key value should be exclusive
-var items1 = [{
+let items1 = [{
   title: 'Basic Ops',
   key: 'basic',
   items: [{
@@ -148,11 +147,13 @@ var items2 = [{
 }];
 
 ReactDOM.render(
-  <Dropdown items={items1} onClick={listener} />,
+  <div>
+    <div className="box">
+      <Dropdown items={items1} onClick={listener} />
+    </div>
+    <div className="box box2">
+      <Dropdown items={items2} onClick={listener} />
+    </div>
+  </div>,
   document.getElementById('example')
-);
-
-ReactDOM.render(
-  <Dropdown items={items2} onClick={listener} />,
-  document.getElementById('example2')
 );
