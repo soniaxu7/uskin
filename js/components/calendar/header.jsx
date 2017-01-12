@@ -1,8 +1,8 @@
 import React from 'react';
-import Helper from './helper';
+import helper from './helper';
 import Constants from './constants';
 
-const {MONTHS_LOCAL, YEARS_PERIOD} = Constants;
+const { MONTHS_LOCAL, YEARS_PERIOD } = Constants;
 
 class Header extends React.Component {
 
@@ -24,7 +24,7 @@ class Header extends React.Component {
   onChange(y, m, d = 1) {
     let page = new Date(y, m, d);
     let func = this.props.onChange;
-    func && func(Helper.formatDate(page));
+    func && func(helper.formatDate(page));
   }
 
   onChangeYear(e) {

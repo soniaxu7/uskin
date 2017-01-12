@@ -1,8 +1,8 @@
 import React from 'react';
-import Helper from './helper';
+import helper from './helper';
 import Constants from './constants';
 
-const {WEEKS_LOCAL, WEEKS_COUNT, TABLE_LINE} = Constants;
+const { WEEKS_LOCAL, WEEKS_COUNT, TABLE_LINE } = Constants;
 
 class DatePicker extends React.Component {
 
@@ -23,7 +23,7 @@ class DatePicker extends React.Component {
       let page = this.props.page;
       let newDate = new Date(page.year, page.month + monthOffset, date);
 
-      this.onSelected(Helper.formatDate(newDate));
+      this.onSelected(helper.formatDate(newDate));
     }
   }
 
@@ -120,7 +120,7 @@ class DatePicker extends React.Component {
       }
       if (ele.monthOffset === 0
         && props.selected.date
-        && Helper.compareDate(props.selected, date) === 0) {
+        && helper.compareDate(props.selected, date) === 0) {
         return 'selected';
       }
       return 'default';

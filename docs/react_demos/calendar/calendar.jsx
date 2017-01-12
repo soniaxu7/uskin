@@ -1,6 +1,4 @@
-const Calendar = uskin.Calendar;
-
-const mountNode = document.getElementById('example');
+const { Calendar } = uskin;
 
 function beforeChange1(date) {
   console.log('before change 1: ', date);
@@ -58,5 +56,5 @@ ReactDOM.render(
       <Calendar disabled={disabled} page="2016-14" selectedDate="2016-10-14" hasScreen={true} unfold={true} />
     </div>
   </div>,
-  mountNode
+  document.getElementById('example')
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import Helper from './helper';
+import helper from './helper';
 
 class Screen extends React.Component {
 
@@ -42,7 +42,7 @@ class Screen extends React.Component {
   onKeyPress(e) {
     if (e.key === 'Enter') {
       let value = this.state.value;
-      let date = Helper.getValidDate(value);
+      let date = helper.getValidDate(value);
 
       if (date) {
         this.props.onConfirm(date);

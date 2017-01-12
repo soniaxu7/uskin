@@ -1,4 +1,5 @@
 const helper = {
+
   compareDate: function(d1, d2) {
     if (d1.year > d2.year) {
       return 1;
@@ -79,6 +80,7 @@ const helper = {
       date: date.getDate()
     };
   }
+
 };
 
 export default helper;

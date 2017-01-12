@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Calendar Sample</title>
+  <link href="../../dist/css/uskin.css" rel="stylesheet" />
+  <style type="text/css">
+  .calendar-box {
+    margin: 40px;
+    float: left;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="calendar-box">
+    <div class="calendar">
+      <div class="calendar-header">
+        <i class="glyphicon icon-arrow-left direction"></i>
+        <span class="title">
+          <div class="title-left">
+            <span class="title-content">
+              <span>2016</span>
+              <i class="glyphicon icon-arrow-down toggle"></i>
+            </span>
+            <ul class="list hide">
+              <li class="" data-year="2013">2013</li>
+              <li class="" data-year="2014">2014</li>
+              <li class="" data-year="2015">2015</li>
+              <li class="selected" data-year="2016">2016</li>
+              <li class="" data-year="2017">2017</li>
+              <li class="" data-year="2018">2018</li>
+              <li class="" data-year="2019">2019</li>
+              <li class="" data-year="2020">2020</li>
+            </ul>
+          </div>
+        <div class="title-right">
+          <span class="title-content">
+            <span>Oct</span>
+            <i class="glyphicon icon-arrow-down toggle"></i>
+          </span>
+          <ul class="list hide">
+            <li class="" data-month="0">Jan</li>
+            <li class="" data-month="1">Feb</li>
+            <li class="" data-month="2">Mar</li>
+            <li class="" data-month="3">Apr</li>
+            <li class="" data-month="4">May</li>
+            <li class="" data-month="5">Jun</li>
+            <li class="" data-month="6">Jul</li>
+            <li class="" data-month="7">Aug</li>
+            <li class="" data-month="8">Sep</li>
+            <li class="selected" data-month="9">Oct</li>
+            <li class="" data-month="10">Nov</li>
+            <li class="" data-month="11">Dec</li>
+          </ul>
+        </div>
+      </span>
+      <i class="glyphicon icon-arrow-right direction"></i>
+    </div>
+    <div class="calendar-datepicker">
+      <table>
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-month="-1" data-date="25" class="disabled">25</td>
+            <td data-month="-1" data-date="26" class="disabled">26</td>
+            <td data-month="-1" data-date="27" class="disabled">27</td>
+            <td data-month="-1" data-date="28" class="disabled">28</td>
+            <td data-month="-1" data-date="29" class="disabled">29</td>
+            <td data-month="-1" data-date="30" class="disabled">30</td>
+            <td data-month="0" data-date="1" class="not-selected">1</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="2" class="not-selected">2</td>
+            <td data-month="0" data-date="3" class="default">3</td>
+            <td data-month="0" data-date="4" class="default">4</td>
+            <td data-month="0" data-date="5" class="not-selected">5</td>
+            <td data-month="0" data-date="6" class="default">6</td>
+            <td data-month="0" data-date="7" class="default">7</td>
+            <td data-month="0" data-date="8" class="not-selected">8</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="9" class="not-selected">9</td>
+            <td data-month="0" data-date="10" class="not-selected">10</td>
+            <td data-month="0" data-date="11" class="selected">11</td>
+            <td data-month="0" data-date="12" class="not-selected">12</td>
+            <td data-month="0" data-date="13" class="not-selected">13</td>
+            <td data-month="0" data-date="14" class="default">14</td>
+            <td data-month="0" data-date="15" class="not-selected">15</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="16" class="not-selected">16</td>
+            <td data-month="0" data-date="17" class="default">17</td>
+            <td data-month="0" data-date="18" class="not-selected">18</td>
+            <td data-month="0" data-date="19" class="not-selected">19</td>
+            <td data-month="0" data-date="20" class="default">20</td>
+            <td data-month="0" data-date="21" class="not-selected">21</td>
+            <td data-month="0" data-date="22" class="not-selected">22</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="23" class="not-selected">23</td>
+            <td data-month="0" data-date="24" class="default">24</td>
+            <td data-month="0" data-date="25" class="default">25</td>
+            <td data-month="0" data-date="26" class="not-selected">26</td>
+            <td data-month="0" data-date="27" class="default">27</td>
+            <td data-month="0" data-date="28" class="default">28</td>
+            <td data-month="0" data-date="29" class="not-selected">29</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="30" class="not-selected">30</td>
+            <td data-month="0" data-date="31" class="default">31</td>
+            <td data-month="1" data-date="1" class="disabled">1</td>
+            <td data-month="1" data-date="2" class="disabled">2</td>
+            <td data-month="1" data-date="3" class="disabled">3</td>
+            <td data-month="1" data-date="4" class="disabled">4</td>
+            <td data-month="1" data-date="5" class="disabled">5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <div class="calendar-box">
+    <div class="calendar-screen">
+      <i class="glyphicon icon-calendar"></i>
+      <input value="" placeholder="Please select date">
+    </div>
+    <div class="calendar">
+      <div class="calendar-header">
+        <i class="glyphicon icon-arrow-left direction"></i>
+        <span class="title">
+          <div class="title-left">
+            <span class="title-content">
+              <span>2016</span>
+              <i class="glyphicon icon-arrow-down toggle"></i>
+            </span>
+            <ul class="list hide">
+              <li class="" data-year="2013">2013</li>
+              <li class="" data-year="2014">2014</li>
+              <li class="" data-year="2015">2015</li>
+              <li class="selected" data-year="2016">2016</li>
+              <li class="" data-year="2017">2017</li>
+              <li class="" data-year="2018">2018</li>
+              <li class="" data-year="2019">2019</li>
+              <li class="" data-year="2020">2020</li>
+            </ul>
+          </div>
+        <div class="title-right">
+          <span class="title-content">
+            <span>Oct</span>
+            <i class="glyphicon icon-arrow-down toggle"></i>
+          </span>
+          <ul class="list hide">
+            <li class="" data-month="0">Jan</li>
+            <li class="" data-month="1">Feb</li>
+            <li class="" data-month="2">Mar</li>
+            <li class="" data-month="3">Apr</li>
+            <li class="" data-month="4">May</li>
+            <li class="" data-month="5">Jun</li>
+            <li class="" data-month="6">Jul</li>
+            <li class="" data-month="7">Aug</li>
+            <li class="" data-month="8">Sep</li>
+            <li class="selected" data-month="9">Oct</li>
+            <li class="" data-month="10">Nov</li>
+            <li class="" data-month="11">Dec</li>
+          </ul>
+        </div>
+      </span>
+      <i class="glyphicon icon-arrow-right direction"></i>
+    </div>
+    <div class="calendar-datepicker">
+      <table>
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-month="-1" data-date="25" class="disabled">25</td>
+            <td data-month="-1" data-date="26" class="disabled">26</td>
+            <td data-month="-1" data-date="27" class="disabled">27</td>
+            <td data-month="-1" data-date="28" class="disabled">28</td>
+            <td data-month="-1" data-date="29" class="disabled">29</td>
+            <td data-month="-1" data-date="30" class="disabled">30</td>
+            <td data-month="0" data-date="1" class="not-selected">1</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="2" class="not-selected">2</td>
+            <td data-month="0" data-date="3" class="default">3</td>
+            <td data-month="0" data-date="4" class="default">4</td>
+            <td data-month="0" data-date="5" class="not-selected">5</td>
+            <td data-month="0" data-date="6" class="default">6</td>
+            <td data-month="0" data-date="7" class="default">7</td>
+            <td data-month="0" data-date="8" class="not-selected">8</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="9" class="not-selected">9</td>
+            <td data-month="0" data-date="10" class="not-selected">10</td>
+            <td data-month="0" data-date="11" class="default">11</td>
+            <td data-month="0" data-date="12" class="not-selected">12</td>
+            <td data-month="0" data-date="13" class="not-selected">13</td>
+            <td data-month="0" data-date="14" class="default">14</td>
+            <td data-month="0" data-date="15" class="not-selected">15</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="16" class="not-selected">16</td>
+            <td data-month="0" data-date="17" class="default">17</td>
+            <td data-month="0" data-date="18" class="not-selected">18</td>
+            <td data-month="0" data-date="19" class="not-selected">19</td>
+            <td data-month="0" data-date="20" class="default">20</td>
+            <td data-month="0" data-date="21" class="not-selected">21</td>
+            <td data-month="0" data-date="22" class="not-selected">22</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="23" class="not-selected">23</td>
+            <td data-month="0" data-date="24" class="default">24</td>
+            <td data-month="0" data-date="25" class="default">25</td>
+            <td data-month="0" data-date="26" class="not-selected">26</td>
+            <td data-month="0" data-date="27" class="default">27</td>
+            <td data-month="0" data-date="28" class="default">28</td>
+            <td data-month="0" data-date="29" class="not-selected">29</td>
+          </tr>
+          <tr>
+            <td data-month="0" data-date="30" class="not-selected">30</td>
+            <td data-month="0" data-date="31" class="default">31</td>
+            <td data-month="1" data-date="1" class="disabled">1</td>
+            <td data-month="1" data-date="2" class="disabled">2</td>
+            <td data-month="1" data-date="3" class="disabled">3</td>
+            <td data-month="1" data-date="4" class="disabled">4</td>
+            <td data-month="1" data-date="5" class="disabled">5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+
+</body>
+</html>

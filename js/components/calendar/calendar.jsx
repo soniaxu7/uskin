@@ -1,8 +1,10 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import Screen from './screen';
 import Header from './header';
 import DatePicker from './datepicker';
-import Helper from './helper';
+import helper from './helper';
+
+function noop() {}
 
 class Calendar extends React.Component {
 
@@ -20,8 +22,8 @@ class Calendar extends React.Component {
     let selected = {};
     let page;
 
-    if (props.selectedDate && Helper.isValidDate(props.selectedDate)){
-      selected = Helper.formatDate(new Date(props.selectedDate));
+    if (props.selectedDate && helper.isValidDate(props.selectedDate)){
+      selected = helper.formatDate(new Date(props.selectedDate));
 
       if (!this.isSelectable(props.disabled, selected)) {
         selected = {};
@@ -31,9 +33,9 @@ class Calendar extends React.Component {
     if (selected.date) {
       page = selected;
     } else if (props.page) {
-      page = Helper.formatDate(new Date(props.page));
+      page = helper.formatDate(new Date(props.page));
     } else {
-      page = Helper.formatDate(new Date());
+      page = helper.formatDate(new Date());
     }
 
     let state = {
@@ -75,7 +77,7 @@ class Calendar extends React.Component {
       if (selected.date) {
         this.onChange(selected);
       } else {
-        this.onChange(Helper.formatDate(new Date()));
+        this.onChange(helper.formatDate(new Date()));
       }
     }
 
@@ -94,16 +96,6 @@ class Calendar extends React.Component {
 
   onChange(date) {
     this.setPage(date);
-  }
-
-  beforeChange(date) {
-    let func = this.props.beforeChange;
-    func && func(date);
-  }
-
-  afterChange(date) {
-    let func = this.props.afterChange;
-    func && func(date);
   }
 
   setPage(date) {
@@ -128,12 +120,12 @@ class Calendar extends React.Component {
 
       let isAvaiableMin = true;
       if (disabled.min) {
-        isAvaiableMin = Helper.compareFullDate(currentDate, new Date(disabled.min)) > 0;
+        isAvaiableMin = helper.compareFullDate(currentDate, new Date(disabled.min)) > 0;
       }
 
       let isAvailableMax = true;
       if (disabled.max) {
-        isAvailableMax = Helper.compareFullDate(new Date(disabled.max), currentDate) > 0;
+        isAvailableMax = helper.compareFullDate(new Date(disabled.max), currentDate) > 0;
       }
 
       let isAvailableWeek = true;
@@ -145,7 +137,7 @@ class Calendar extends React.Component {
       let isAvailableDate = true;
       if (disabled.dates && disabled.dates.length > 0) {
         isAvailableDate = !disabled.dates.some((d) => (
-          Helper.compareFullDate(new Date(d), currentDate) === 0
+          helper.compareFullDate(new Date(d), currentDate) === 0
         ));
       }
 
@@ -184,8 +176,15 @@ class Calendar extends React.Component {
   }
 
   onChangeDate(date) {
-    let func = this.props.onChange;
-    func && func(date);
+    this.props.onChange(date);
+  }
+
+  beforeChange(date) {
+    this.props.beforeChange(date);
+  }
+
+  afterChange(date) {
+    this.props.afterChange(date);
   }
 
   render() {
@@ -218,17 +217,23 @@ class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
+  onChange: PropTypes.func,
+  beforeChange: PropTypes.func,
+  afterChange: PropTypes.func,
   page: PropTypes.string,
   selectedDate: PropTypes.string,
+  placeholder: PropTypes.string,
   startWeek: PropTypes.number,
   disabled: PropTypes.object,
   local: PropTypes.object,
   hasScreen: PropTypes.bool,
-  unfold: PropTypes.bool,
-  placeholder: PropTypes.string
+  unfold: PropTypes.bool
 };
 
 Calendar.defaultProps = {
+  onChange: noop,
+  beforeChange: noop,
+  afterChange: noop,
   startWeek: 0,
   unfold: false
 };

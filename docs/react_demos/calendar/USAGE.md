@@ -3,7 +3,7 @@
 
 ## Usage
 ```
-var Calendar = uskin.Calendar;
+var { Calendar } = uskin;
 ReactDOM.render(
   <Calendar onChange={onChange}/>
   />, document);
@@ -46,16 +46,16 @@ ReactDOM.render(
       <td>需要显示的年份和月份，格式为'YYYY-MM-DD'</td>
     </tr>
     <tr>
-      <td>page</td>
-      <td>string</td>
-      <td>当前时间</td>
-      <td>需要显示的年份和月份，格式为'YYYY-MM-DD'</td>
-    </tr>
-    <tr>
       <td>selectedDate</td>
       <td>string</td>
       <td></td>
       <td>默认选中的日期，格式为'YYYY-MM-DD'</td>
+    </tr>
+    <tr>
+      <td>placeholder</td>
+      <td>string</td>
+      <td></td>
+      <td>日期显示屏幕上的placeholder</td>
     </tr>
     <tr>
       <td>startWeek</td>
@@ -86,12 +86,6 @@ ReactDOM.render(
       <td>boolean</td>
       <td>false</td>
       <td>是否折叠日历</td>
-    </tr>
-    <tr>
-      <td>placeholder</td>
-      <td>string</td>
-      <td></td>
-      <td>日期显示屏幕上的placeholder</td>
     </tr>
   </tbody>
 </table>

@@ -18,7 +18,7 @@ describe('test calendar', () => {
       );
       const firstWrp = calendar.find('th').at(0);
 
-      expect(firstWrp.text()).toBe(week.value);
+      expect(firstWrp.text()).toEqual(week.value);
 
     });
 
@@ -31,15 +31,14 @@ describe('test calendar', () => {
         month: dates[1],
         date: dates[2]
       };
-      let onChange = jest.genMockFunction();
       const calendar = mount(
-        <Calendar page={page} onChange={onChange} />
+        <Calendar page={page} />
       );
-      const yearWrp = calendar.find('li.selected[data-year=' + date.year + ']');
-      const monthWrp = calendar.find('li.selected[data-month=' + (date.month - 1) + ']');
+      const yearNode = calendar.find('li.selected[data-year=' + date.year + ']');
+      const monthNode = calendar.find('li.selected[data-month=' + (date.month - 1) + ']');
 
-      expect(yearWrp.text()).toEqual('' + date.year);
-      expect(monthWrp.text()).toEqual('Jan');
+      expect(yearNode.text()).toEqual('' + date.year);
+      expect(monthNode.text()).toEqual('Jan');
 
     });
 
@@ -52,13 +51,30 @@ describe('test calendar', () => {
         month: dates[1],
         date: dates[2]
       };
-      let onChange = jest.genMockFunction();
       const calendar = mount(
-        <Calendar selectedDate={value} onChange={onChange} />
+        <Calendar selectedDate={value} />
       );
       const selectedNode = calendar.find('td.selected');
 
       expect(selectedNode.text()).toEqual('' + date.date);
+
+    });
+
+    it('displays correctly with invalid selected date', () => {
+
+      let value = '2016-01-10';
+      let disabled = {
+        dates: ['2016-01-10']
+      };
+      const calendar = mount(
+        <Calendar selectedDate={value} disabled={disabled} />
+      );
+      const d = new Date();
+      const yearNode = calendar.find('li.selected[data-year=' + d.getFullYear() + ']');
+      const monthNode = calendar.find('li.selected[data-month=' + d.getMonth() + ']');
+
+      expect(yearNode.text()).toEqual('' + d.getFullYear());
+      expect(monthNode.text()).toEqual(d.toDateString().split(' ')[1]);
 
     });
 
@@ -82,7 +98,7 @@ describe('test calendar', () => {
   });
 
 
-  describe('Test disabled date', () => {
+  describe('test disabled date', () => {
 
     it('do not trigger disabled ', () => {
 
@@ -103,7 +119,7 @@ describe('test calendar', () => {
 
   });
 
-  describe('Test event', () => {
+  describe('test event', () => {
 
     it('triggers beforeChange(), onChange and afterChange()', () => {
 
