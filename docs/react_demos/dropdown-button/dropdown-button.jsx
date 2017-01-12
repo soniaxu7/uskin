@@ -1,15 +1,15 @@
-var DropdownButton = uskin.DropdownButton;
+const { DropdownButton } = uskin;
 
-function listener(e, status) {
-  console.debug('click triggered!', e, status);
+function listener(e, item) {
+  console.debug('click triggered!', e, item);
 }
 
-var btn = {
+let btn = {
   value: 'Dropdown Button',
   iconClass: 'more'
 };
 
-var dropdownItems = [{
+let dropdownItems = [{
   items: [{
     title: 'Reboot',
     key: '0'
@@ -56,20 +56,23 @@ var dropdownItems = [{
   }]
 }];
 
-var dropdownBoxStyle = {float: 'left', marginRight: '20px'};
-
 ReactDOM.render(
   <div>
-    <div style={dropdownBoxStyle}>
-      <DropdownButton buttonData={btn}
-        dropdownItems={dropdownItems}
-        dropdownOnClick={listener} />
-    </div>
-    <div style={dropdownBoxStyle}>
-      <DropdownButton disabled={true}
+    <div className="box">
+      <DropdownButton
         buttonData={btn}
         dropdownItems={dropdownItems}
-        dropdownOnClick={listener} />
+        dropdownOnClick={listener}
+        dropdownStyle={{ width: 164 }}
+      />
+    </div>
+    <div className="box">
+      <DropdownButton
+        disabled={true}
+        buttonData={btn}
+        dropdownItems={dropdownItems}
+        dropdownOnClick={listener}
+      />
     </div>
   </div>,
   document.getElementById('example')

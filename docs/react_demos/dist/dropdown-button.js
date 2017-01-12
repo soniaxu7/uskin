@@ -46,10 +46,12 @@
 
 	'use strict';
 
-	var DropdownButton = uskin.DropdownButton;
+	var _uskin = uskin,
+	    DropdownButton = _uskin.DropdownButton;
 
-	function listener(e, status) {
-	  console.debug('click triggered!', e, status);
+
+	function listener(e, item) {
+	  console.debug('click triggered!', e, item);
 	}
 
 	var btn = {
@@ -104,25 +106,28 @@
 	  }]
 	}];
 
-	var dropdownBoxStyle = { float: 'left', marginRight: '20px' };
-
 	ReactDOM.render(React.createElement(
 	  'div',
 	  null,
 	  React.createElement(
 	    'div',
-	    { style: dropdownBoxStyle },
-	    React.createElement(DropdownButton, { buttonData: btn,
+	    { className: 'box' },
+	    React.createElement(DropdownButton, {
+	      buttonData: btn,
 	      dropdownItems: dropdownItems,
-	      dropdownOnClick: listener })
+	      dropdownOnClick: listener,
+	      dropdownStyle: { width: 164 }
+	    })
 	  ),
 	  React.createElement(
 	    'div',
-	    { style: dropdownBoxStyle },
-	    React.createElement(DropdownButton, { disabled: true,
+	    { className: 'box' },
+	    React.createElement(DropdownButton, {
+	      disabled: true,
 	      buttonData: btn,
 	      dropdownItems: dropdownItems,
-	      dropdownOnClick: listener })
+	      dropdownOnClick: listener
+	    })
 	  )
 	), document.getElementById('example'));
 

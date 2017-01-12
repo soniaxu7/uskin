@@ -1,10 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
-import Dropdown from '../js/components/dropdown/index';
+import DropdownButton from '../js/components/dropdown-button/index';
 
 describe('test dropdown', () => {
 
+  let btn = {
+    value: 'button'
+  };
   let items = [{
     title: 'Basic Ops',
     key: 'basic',
@@ -92,12 +95,16 @@ describe('test dropdown', () => {
     }]
   }];
 
-  it('renders dropdown', () => {
+  it('renders dropdown-button', () => {
 
-    const dropdown = shallow(
-      <Dropdown items={items} />
+    const dropwdownbtn = mount(
+      <DropdownButton
+        buttonData={btn}
+        dropdownItems={items} />
     );
-    const clickNode = dropdown.find('a').children().at(1).parent().parent();
+    const button = dropwdownbtn.find('button');
+    const dropdown = dropwdownbtn.find('.dropdown').at(0);
+    const clickNode = dropdown.find('a').at(1).parent();
 
     let blockNodeSum = dropdown.children().length;
     let itemNodeSum = dropdown.find('li').length;
@@ -120,22 +127,44 @@ describe('test dropdown', () => {
       counter(items[i]);
     }
 
-    clickNode.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click');
 
+    expect(button.text()).toEqual(btn.value);
     expect(blockNodeSum).toEqual(items.length);
     expect(itemNodeSum).toEqual(itemsSum);
+
+  });
+
+  it('renders dropdown-button with specific width', () => {
+
+    let style = {
+      width: 160
+    };
+    const dropwdownbtn = mount(
+      <DropdownButton
+        buttonData={btn}
+        dropdownItems={items}
+        dropdownStyle={style} />
+    );
+    const dropdown = dropwdownbtn.find('.dropdown').at(0);
+
+    expect(dropdown.props().style.width).toEqual(style.width);
 
   });
 
   it('clicks item', () => {
 
     let listener = jest.genMockFunction();
-    const dropdown = shallow(
-      <Dropdown items={items} onClick={listener} />
+    const dropwdownbtn = mount(
+      <DropdownButton
+        buttonData={btn}
+        dropdownItems={items}
+        dropdownOnClick={listener} />
     );
+    const dropdown = dropwdownbtn.find('.dropdown').at(0);
     let key = [0, 1];
     let expectValue = items[key[0]].items[key[1]];
-    const clickNode = dropdown.find('a').children().at(1).parent().parent();
+    const clickNode = dropdown.find('a').at(1).parent();
 
     clickNode.simulate('click', { stopPropagation() {} });
 
@@ -143,35 +172,23 @@ describe('test dropdown', () => {
 
   });
 
-  it('clicks sub item', () => {
+  it('clicks button to fold/unfold dropdown', () => {
 
-    let listener = jest.genMockFunction();
-    const dropdown = shallow(
-      <Dropdown items={items} onClick={listener} />
+    const VISIBLE = 'block';
+    const UNVISIBLE = 'none';
+    const dropwdownbtn = mount(
+      <DropdownButton
+        buttonData={btn}
+        dropdownItems={items} />
     );
-    let key = [1, 0, 0, 0, 0, 1];
-    let expectValue = items[key[0]].items[key[1]].children[key[2]].items[key[3]].children[key[4]].items[key[5]];
-    const clickNode = dropdown.find('a').children().at(5).parent().parent();
+    const button = dropwdownbtn.find('button');
+    const dropdown = dropwdownbtn.find('.dropdown').at(0);
 
-    clickNode.simulate('click', { stopPropagation() {} });
+    button.simulate('click');
+    expect(dropdown.props().style.display).toEqual(VISIBLE);
 
-    expect(listener.mock.calls[0][1]).toEqual(expectValue);
-
-  });
-
-  it('should not trigger disabled item', () => {
-
-    let listener = jest.genMockFunction();
-    const dropdown = shallow(
-      <Dropdown items={items} onClick={listener} />
-    );
-
-    let key = [2, 1];
-    const disabledNode = dropdown.children().at(key[0]).children().at(key[1]);
-
-    disabledNode.simulate('click');
-
-    expect(listener.mock.calls.length).toEqual(0);
+    button.simulate('click');
+    expect(dropdown.props().style.display).toEqual(UNVISIBLE);
 
   });
 

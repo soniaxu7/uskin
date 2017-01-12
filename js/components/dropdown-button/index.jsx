@@ -1,6 +1,8 @@
-import React from 'react';
-import Dropdown from '../dropdown/index';
+import React, { PropTypes } from 'react';
 import Button from '../button/index';
+import Dropdown from '../dropdown/index';
+
+function noop() {}
 
 class DropdownButton extends React.Component {
 
@@ -11,8 +13,9 @@ class DropdownButton extends React.Component {
       toggle: false
     };
 
-    this.buttonOnClick = this.buttonOnClick.bind(this);
-    this.closeToggle = this.closeToggle.bind(this);
+    ['buttonOnClick', 'closeToggle'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   buttonOnClick(e, key) {
@@ -34,15 +37,11 @@ class DropdownButton extends React.Component {
   }
 
   render() {
-    var props = this.props;
-
-    var btn = props.buttonData,
-      dropdownItems = props.dropdownItems;
-
-    var dropdownStyle = {
-      width: 100,
-      display: this.state.toggle ? 'block' : 'none'
-    };
+    const props = this.props;
+    const btn = props.buttonData;
+    const dropdownItems = props.dropdownItems;
+    let dropdownStyle = props.dropdownStyle ? Object.assign({}, props.dropdownStyle) : { width: 100 };
+    dropdownStyle.display = this.state.toggle ? 'block' : 'none';
 
     return (
       <div ref="dropdownBtn" className="dropdown-btn">
@@ -58,6 +57,21 @@ class DropdownButton extends React.Component {
       </div>
     );
   }
+
 }
+
+DropdownButton.propTypes = {
+  dropdownOnClick: PropTypes.func,
+  buttonData: PropTypes.object,
+  dropdownItems: PropTypes.array,
+  dropdownStyle: PropTypes.object,
+  disabled: PropTypes.bool
+};
+
+DropdownButton.defaultProps = {
+  dropdownOnClick: noop,
+  dropdownItems: [],
+  disabled: false
+};
 
 export default DropdownButton;
