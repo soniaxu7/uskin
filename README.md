@@ -66,6 +66,17 @@ Details for each release are documented in the [release notes](https://github.co
 
 Any questions to the releases are welcome, feel free to [create issues](https://github.com/icecreamliker/uskin/issues).
 
+## Authors
+
+**Lee Yao**
+
+- Weibo: <http://weibo.com/icecreamliker>
+- Email: yaoli111144@gmail.com
+
+**Sonia Xu**
+
+- Email: soniaxu7@foxmail.com
+
 ## License
 
 USkin is available under the terms of [the MIT license](LICENSE).
