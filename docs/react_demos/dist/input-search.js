@@ -46,8 +46,10 @@
 
 	'use strict';
 
-	var InputSearch = uskin.InputSearch,
-	    Table = uskin.Table;
+	var _uskin = uskin,
+	    InputSearch = _uskin.InputSearch,
+	    Table = _uskin.Table;
+
 
 	var column = [{
 	  title: 'ID',
@@ -243,7 +245,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'block' },
-	        React.createElement(InputSearch, { placeholder: 'Search in Level', onChange: this.searchLevel, width: '200' }),
+	        React.createElement(InputSearch, { placeholder: 'Search in Level', onChange: this.searchLevel, width: 200 }),
 	        React.createElement(
 	          'div',
 	          { style: { display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px' } },
@@ -253,7 +255,7 @@
 	      React.createElement(
 	        'div',
 	        { className: 'block' },
-	        React.createElement(InputSearch, { onChange: this.searchFlavor, width: '200', type: 'light' }),
+	        React.createElement(InputSearch, { onChange: this.searchFlavor, width: 200, type: 'light' }),
 	        React.createElement(
 	          'div',
 	          { style: { display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px' } },

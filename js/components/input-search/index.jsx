@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styles from '../../mixins/styles';
+
+function noop() {}
 
 class InputSearch extends React.Component {
 
@@ -10,17 +12,16 @@ class InputSearch extends React.Component {
       value: ''
     };
 
-    this._onChange = this._onChange.bind(this);
-    this._onClick = this._onClick.bind(this);
-    this.updateValue = this.updateValue.bind(this);
-    this.clearState = this.clearState.bind(this);
+    ['onChange', 'onClick', 'updateValue', 'clearState'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
-  _onChange(e) {
+  onChange(e) {
     this.updateValue(e.target.value, false);
   }
 
-  _onClick(e) {
+  onClick(e) {
     this.updateValue(this.refs.search.value, true);
   }
 
@@ -29,40 +30,46 @@ class InputSearch extends React.Component {
       value: val
     });
 
-    this.props.onChange && this.props.onChange(val, isSubmitted);
+    this.props.onChange(val, isSubmitted);
   }
 
   clearState() {
     this.setState({
       value: ''
     });
-    this.refs.search.value = '';
   }
 
   render() {
-    const {width, type} = this.props,
-      state = this.state;
-
-    var style = styles.getWidth(parseInt(width, 10)),
-      inputWidth = styles.getWidth(parseInt(width, 10) - 48);
+    const { width, type } = this.props;
+    const state = this.state;
+    const style = styles.getWidth(width, 10);
+    const inputWidth = styles.getWidth(width - 48);
 
     return (
-      <div className={type === 'light' ? 'input-search input-search-light' : 'input-search'} style={style}>
+      <div className={'input-search' + (type === 'light' ? ' input-search-light' : '')} style={style}>
         <input {...this.props}
           ref="search"
           style={inputWidth}
           value={state.value}
-          onChange={this._onChange} />
-        <div className="search-icon" onClick={this._onClick}>
+          onChange={this.onChange} />
+        <div className="search-icon" onClick={this.onClick}>
           <i className="glyphicon icon-search"></i>
         </div>
       </div>
     );
   }
+
 }
 
+InputSearch.propTypes = {
+  width: PropTypes.number,
+  type: PropTypes.oneOf(['light']),
+  onChange: PropTypes.func
+};
+
 InputSearch.defaultProps = {
-  width: 150
+  width: 150,
+  onChange: noop
 };
 
 export default InputSearch;

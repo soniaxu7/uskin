@@ -1,7 +1,6 @@
-var InputSearch = uskin.InputSearch,
-  Table = uskin.Table;
+const { InputSearch, Table } = uskin;
 
-var column = [{
+let column = [{
   title: 'ID',
   key: 'id',
   width: 120,
@@ -111,7 +110,7 @@ var column = [{
   }
 }];
 
-var data = [{
+let data = [{
   id: 1,
   category: 'Micro-1',
   flavor: 'Micro',
@@ -155,7 +154,7 @@ var data = [{
   price: '0.444'
 }];
 
-var SearchForm = React.createClass({
+const SearchForm = React.createClass({
   searchLevel: function (text, status) {
     this.refs.table.filter(column[3], function(item) {
       var filter = text.toLowerCase(),
@@ -178,13 +177,13 @@ var SearchForm = React.createClass({
     return (
       <div>
         <div className="block">
-          <InputSearch placeholder="Search in Level" onChange={this.searchLevel} width="200" />
+          <InputSearch placeholder="Search in Level" onChange={this.searchLevel} width={200} />
           <div style={{display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px'}}>
             Search in Level Column Automatically
           </div>
         </div>
         <div className="block">
-          <InputSearch onChange={this.searchFlavor} width="200" type="light" />
+          <InputSearch onChange={this.searchFlavor} width={200} type="light" />
           <div style={{display: 'inline-block', height: '32px', lineHeight: '32px', marginLeft: '10px'}}>
             Search in Flavor Column With Submit-Icon
           </div>

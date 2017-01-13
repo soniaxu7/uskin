@@ -3,7 +3,7 @@
 
 ## Usage
 ```
-<InputSearch onClick={listener} width="300" type="light"/>
+<InputSearch onClick={listener} width={300} type="light"/>
 ```
 
 ## API
