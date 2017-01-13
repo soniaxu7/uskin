@@ -3,9 +3,9 @@
 
 ## Usage
 ```
-var Dropdown = uskin.Dropdown;
+const { Dropdown } = uskin;
 
-var items = [{
+let items = [{
   title: 'Basic Ops',
   key: 'basic',
   items: [{

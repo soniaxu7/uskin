@@ -3,10 +3,18 @@
 
 ## Usage
 ```
-var { Calendar } = uskin;
+const { Calendar } = uskin;
+
 ReactDOM.render(
-  <Calendar onChange={onChange}/>
-  />, document);
+  <Calendar
+    startWeek={1}
+    local={local}
+    page="2016-10"
+    selectedDate="2016-10-14"
+    onChange={display2}
+  />,
+  document
+);
 ```
 
 ## API

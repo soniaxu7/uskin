@@ -4,13 +4,16 @@
 ## Usage
 ```
 const { Button } = uskin;
+
 ReactDOM.render(
   <Button
     value="Create"
     onClick={listener}
     type="create"
     size="sm"
-  />, document);
+  />,
+  document
+);
 ```
 
 ## API

@@ -3,11 +3,14 @@
 
 ## Usage
 ```
-var Breadcrumb = uskin.Breadcrumb;
+const { Breadcrumb } = uskin;
 
-var items = [{ name: 'Home', href: '#home' },
-            { name: 'Store', href: '#store' },
-            { name: 'Phones', href: '#phone' }];
+let items = [
+  { name: 'Home', href: '#home' },
+  { name: 'Store', href: '#store' },
+  { name: 'Phones', href: '#phone' }
+];
+
 ReactDOM.render(<Breadcrumb items={items}/>, document);
 ```
 

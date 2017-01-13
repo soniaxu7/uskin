@@ -3,16 +3,17 @@
 
 ## Usage
 ```
-var Button = uskin.Button,
-  ButtonGroup = uskin.ButtonGroup;
+const { Button, ButtonGroup } = uskin;
+
 ReactDOM.render(  
   <ButtonGroup>
     <Button tag="div" value="Prev"/>
     <Button tag="div" value="Mid 1" type="delete"/>
     <Button tag="div" value="Mid 2" disabled={true}/>
     <Button tag="div" value="Next" type="create"/>
-  </ButtonGroup>
-  />, document);
+  </ButtonGroup>,
+  document
+);
 ```
 
 ## API
