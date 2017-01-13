@@ -5,6 +5,37 @@ import InputNumber from '../js/components/input-number/index';
 
 describe('test input-number', () => {
 
+  describe('test render', () => {
+
+    it('renders input-number', () => {
+
+      let width = 60;
+      const inputnumber = mount(<InputNumber width={width} />);
+      const inputnumberNode = inputnumber.find('.input-number');
+      const input = inputnumber.find('input');
+
+      input.simulate('blur');
+      input.simulate('change', { target: { value: '' } });
+      input.simulate('keyDown', {
+        keyCode: 38,
+        preventDefault() {}
+      });
+      input.simulate('keyDown', {
+        keyCode: 39,
+        preventDefault() {}
+      });
+      input.simulate('keyDown', {
+        keyCode: 40,
+        preventDefault() {}
+      });
+
+      expect(inputnumberNode.props().style.width).toEqual(width);
+      expect(input.node.value).toEqual('0');
+
+    });
+
+  });
+
   describe('test step = 1, disabled = false', () => {
 
     let listener, props, isError, inputnumber;
@@ -203,6 +234,7 @@ describe('test input-number', () => {
   });
 
   describe('test invalid props', () => {
+
     let listener, props;
 
     beforeEach(() => {

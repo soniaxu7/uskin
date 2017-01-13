@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import styles from '../../mixins/styles';
+
+function noop() {}
 
 class InputNumber extends React.Component {
 
@@ -7,64 +9,47 @@ class InputNumber extends React.Component {
     super(props);
 
     this.state = {
-      value: 0,
+      value: this.getInitialValue(props),
       focusValue: undefined,
       error: false
     };
+    this.stepLength = this.getStepLength(props.step);
 
     ['nextStep', 'prevStep', 'goStep', 'onChange', 'onKeyDown', 'checkValue'].forEach((func) => {
       this[func] = this[func].bind(this);
     });
-
-    this._setDefaultProps();
   }
 
-  componentWillMount() {
-    var value = this.props.value,
-      max = this.max,
-      min = this.min;
+  getInitialValue(props) {
+    const value = props.value;
+    const max = props.max;
+    const min = props.min;
 
-    if (value === undefined) {
-      this.setState({value: 0});
-    } else if (value > max) {
-      this.setState({value: max});
+    if (value > max) {
+      return max;
     } else if (value < min) {
-      this.setState({value: min});
-    } else {
-      this.setState({value: value});
+      return min;
     }
+
+    return value;
   }
 
-  _emptyFunc() {}
+  getStepLength(step) {
+    let len = step.toString().split('.')[1];
 
-  _setDefaultProps() {
-    this.max = this.props.max !== undefined ? this.props.max : Infinity;
-    this.min = this.props.min !== undefined ? this.props.min : -Infinity;
-    this.step = this.props.step ? this.props.step : 1;
-
-    this.stepLength = 0;
-    if (this.props.step !== undefined) {
-      var stepLength = this.props.step.toString().split('.')[1];
-      this.stepLength = stepLength ? stepLength.length : 0;
-    }
+    return len ? len.length : 0;
   }
 
-  _isUpperBound(value) {
-    if (this.props.disabled) {
-      return true;
-    }
-    return value >= this.max;
+  isUpperBound(value) {
+    return this.props.disabled ? true : value >= this.props.max;
   }
 
-  _isLowerBound(value) {
-    if (this.props.disabled) {
-      return true;
-    }
-    return value <= this.min;
+  isLowerBound(value) {
+    return this.props.disabled ? true : value <= this.props.min;
   }
 
-  _fixNumber(value) {
-    var pro = 1;
+  fixNumber(value) {
+    let pro = 1;
     for (let i = 0; i < this.stepLength; i++) {
       pro *= 10;
     }
@@ -73,13 +58,14 @@ class InputNumber extends React.Component {
   }
 
   onChange(e) {
-    var value = e.target.value;
-    var error = false;
+    let value = e.target.value;
+    let error = false;
+    let dot = value[value.length - 1] === '.';
+    const props = this.props;
 
-    var dot = value[value.length - 1] === '.';
     if (value && !dot && !isNaN(value)) {
       value = Number(value);
-      if (value < this.min || value > this.max) {
+      if (value < props.min || value > props.max) {
         error = true;
       }
     } else {
@@ -92,11 +78,11 @@ class InputNumber extends React.Component {
       error: error
     });
 
-    this.props.onChange && this.props.onChange(value, error);
+    this.props.onChange(value, error);
   }
 
   checkValue(e) {
-    var focusValue = this.state.focusValue;
+    let focusValue = this.state.focusValue;
     if (focusValue === undefined) {
       return;
     }
@@ -105,11 +91,12 @@ class InputNumber extends React.Component {
       return;
     }
 
-    var value = parseFloat(focusValue);
-    if (value > this.max) {
-      this.setValue(this.max);
-    } else if (value < this.min) {
-      this.setValue(this.min);
+    let value = parseFloat(focusValue);
+    const props = this.props;
+    if (value > props.max) {
+      this.setValue(props.max);
+    } else if (value < props.min) {
+      this.setValue(props.min);
     } else {
       this.setValue(value);
     }
@@ -128,62 +115,71 @@ class InputNumber extends React.Component {
       e.preventDefault();
     }
 
-    var value = this.state.value;
+    const value = this.state.value;
+    const props = this.props;
+    const step = this.props.step;
 
-    if (type.localeCompare('next') === 0) {
-      var nextStep = value + this.step;
-      if (!this._isUpperBound(nextStep)) {
-        this.setValue(nextStep);
-      } else {
-        this.setValue(this.max);
-      }
-    } else if (type.localeCompare('prev') === 0) {
-      var prevStep = value - this.step;
-      if (!this._isLowerBound(prevStep)) {
-        this.setValue(prevStep);
-      } else {
-        this.setValue(this.min);
-      }
+    switch(type) {
+      case 'next':
+        let nextStep = value + step;
+        if (!this.isUpperBound(nextStep)) {
+          this.setValue(nextStep);
+        } else {
+          this.setValue(props.max);
+        }
+        break;
+      case 'prev':
+      default:
+        let prevStep = value - step;
+        if (!this.isLowerBound(prevStep)) {
+          this.setValue(prevStep);
+        } else {
+          this.setValue(props.min);
+        }
+        break;
     }
   }
 
   setValue(value) {
     this.setState({
       focusValue: undefined,
-      value: this._fixNumber(value),
+      value: this.fixNumber(value),
       error: false
     });
 
-    this.props.onChange && this.props.onChange(value, false);
+    this.props.onChange(value, false);
   }
 
   onKeyDown(e) {
-    if (e.keyCode === 38) {
-      this.nextStep(e);
-    } else if (e.keyCode === 40) {
-      this.prevStep(e);
+    switch(e.keyCode) {
+      case 38:
+        this.nextStep(e);
+        break;
+      case 40:
+        this.prevStep(e);
+        break;
+      default:
+        break;
     }
   }
 
   render() {
-    var props = this.props,
-      state = this.state,
-      error = state.error;
-
-    var value = state.focusValue !== undefined ? state.focusValue : state.value;
-
-    var inputBoxWidth = styles.getWidth(props.width),
-      inputWidth = styles.getWidth(props.width - 42);
+    const props = this.props;
+    const state = this.state;
+    const error = state.error;
+    const value = state.focusValue !== undefined ? state.focusValue : state.value;
+    const inputBoxWidth = styles.getWidth(props.width);
+    const inputWidth = styles.getWidth(props.width - 42);
 
     return (
       <div className={props.disabled ? 'input-number disabled' : 'input-number'} style={inputBoxWidth}>
         <div className="arrow">
-          <div className={this._isUpperBound(state.value) ? 'arrow-up disabled' : 'arrow-up'}
-            onClick={this._isUpperBound(state.value) ? null : this.nextStep}>
+          <div className={this.isUpperBound(state.value) ? 'arrow-up disabled' : 'arrow-up'}
+            onClick={this.isUpperBound(state.value) ? null : this.nextStep}>
             <div />
           </div>
-          <div className={this._isLowerBound(state.value) ? 'arrow-down disabled' : 'arrow-down'}
-            onClick={this._isLowerBound(state.value) ? null : this.prevStep}>
+          <div className={this.isLowerBound(state.value) ? 'arrow-down disabled' : 'arrow-down'}
+            onClick={this.isLowerBound(state.value) ? null : this.prevStep}>
             <div />
           </div>
         </div>
@@ -199,6 +195,26 @@ class InputNumber extends React.Component {
       </div>
     );
   }
+
 }
+
+InputNumber.propTypes = {
+  step: PropTypes.number,
+  max: PropTypes.number,
+  min: PropTypes.number,
+  value: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func
+};
+
+InputNumber.defaultProps = {
+  step: 1,
+  max: Infinity,
+  min: -Infinity,
+  value: 0,
+  disabled: false,
+  onChange: noop
+};
 
 export default InputNumber;

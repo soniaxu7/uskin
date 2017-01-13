@@ -44,21 +44,59 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
-	var InputNumber = uskin.InputNumber;
+	var _uskin = uskin,
+	    InputNumber = _uskin.InputNumber;
 
-	function listener(number, error) {
-	  console.debug('click triggered!', number, error);
+
+	function listener(number, isError) {
+	  console.debug('click triggered!', number, isError);
 	}
 
 	ReactDOM.render(React.createElement(
-	  'div',
+	  "div",
 	  null,
-	  React.createElement(InputNumber, { onChange: listener }),
-	  React.createElement(InputNumber, { onChange: listener, min: 0, max: 10, value: 3, width: 62 }),
-	  React.createElement(InputNumber, { onChange: listener, min: -1, max: 1, value: 0.98, step: 0.01 }),
-	  React.createElement(InputNumber, { onChange: listener, value: 20, width: 62, disabled: true })
+	  React.createElement(
+	    "div",
+	    { className: "box" },
+	    React.createElement(InputNumber, { onChange: listener }),
+	    React.createElement(
+	      "span",
+	      null,
+	      "default props (min: -Infinity, max: Infinity, initial-value: 0, step: 1)"
+	    )
+	  ),
+	  React.createElement(
+	    "div",
+	    { className: "box" },
+	    React.createElement(InputNumber, { onChange: listener, min: 0, max: 10, value: 3, width: 62 }),
+	    React.createElement(
+	      "span",
+	      null,
+	      "min: 0 / max: 10 / initial-value: 3 / width: 62"
+	    )
+	  ),
+	  React.createElement(
+	    "div",
+	    { className: "box" },
+	    React.createElement(InputNumber, { onChange: listener, min: -1, max: 1, value: 0.98, step: 0.01 }),
+	    React.createElement(
+	      "span",
+	      null,
+	      "min: -1 / max: 1 / initial-value: 0.98 / step: 0.01"
+	    )
+	  ),
+	  React.createElement(
+	    "div",
+	    { className: "box" },
+	    React.createElement(InputNumber, { onChange: listener, value: 20, width: 62, disabled: true }),
+	    React.createElement(
+	      "span",
+	      null,
+	      "disabled: true / width: 62"
+	    )
+	  )
 	), document.getElementById('example'));
 
 /***/ }
