@@ -1,10 +1,10 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import Table from '../js/components/table/index';
 
 describe('test table', () => {
-  
+
   let column;
   let data;
   let checkboxOnChange;

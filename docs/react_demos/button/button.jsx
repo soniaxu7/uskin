@@ -1,4 +1,4 @@
-const { Button } = uskin;
+const {Button} = uskin;
 
 function listener(e, btnKey) {
   console.debug('Button clicked: ', e, btnKey);

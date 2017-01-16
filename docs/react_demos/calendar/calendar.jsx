@@ -1,4 +1,4 @@
-const { Calendar } = uskin;
+const {Calendar} = uskin;
 
 function beforeChange1(date) {
   console.log('before change 1: ', date);

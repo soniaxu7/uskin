@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import Screen from './screen';
 import Header from './header';
 import DatePicker from './datepicker';
@@ -224,8 +224,16 @@ Calendar.propTypes = {
   selectedDate: PropTypes.string,
   placeholder: PropTypes.string,
   startWeek: PropTypes.number,
-  disabled: PropTypes.object,
-  local: PropTypes.object,
+  disabled: PropTypes.shape({
+    min: PropTypes.string,
+    max: PropTypes.string,
+    weeks: PropTypes.arrayOf(PropTypes.number),
+    dates: PropTypes.arrayOf(PropTypes.string)
+  }),
+  local: PropTypes.shape({
+    weeks: PropTypes.arrayOf(PropTypes.string),
+    months: PropTypes.arrayOf(PropTypes.string)
+  }),
   hasScreen: PropTypes.bool,
   unfold: PropTypes.bool
 };

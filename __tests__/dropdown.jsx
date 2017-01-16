@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import Dropdown from '../js/components/dropdown/index';
 
@@ -97,7 +97,8 @@ describe('test dropdown', () => {
     const dropdown = shallow(
       <Dropdown items={items} />
     );
-    const clickNode = dropdown.find('a').children().at(1).parent().parent();
+    const clickNode = dropdown.find('a').children().at(1).parent()
+      .parent();
 
     let blockNodeSum = dropdown.children().length;
     let itemNodeSum = dropdown.find('li').length;
@@ -120,7 +121,7 @@ describe('test dropdown', () => {
       counter(items[i]);
     }
 
-    clickNode.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click', {stopPropagation() {}});
 
     expect(blockNodeSum).toEqual(items.length);
     expect(itemNodeSum).toEqual(itemsSum);
@@ -135,9 +136,10 @@ describe('test dropdown', () => {
     );
     let key = [0, 1];
     let expectValue = items[key[0]].items[key[1]];
-    const clickNode = dropdown.find('a').children().at(1).parent().parent();
+    const clickNode = dropdown.find('a').children().at(1).parent()
+      .parent();
 
-    clickNode.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click', {stopPropagation() {}});
 
     expect(listener.mock.calls[0][1]).toEqual(expectValue);
 
@@ -150,10 +152,13 @@ describe('test dropdown', () => {
       <Dropdown items={items} onClick={listener} />
     );
     let key = [1, 0, 0, 0, 0, 1];
-    let expectValue = items[key[0]].items[key[1]].children[key[2]].items[key[3]].children[key[4]].items[key[5]];
-    const clickNode = dropdown.find('a').children().at(5).parent().parent();
+    let expectValue = items[key[0]].items[key[1]]
+      .children[key[2]].items[key[3]]
+      .children[key[4]].items[key[5]];
+    const clickNode = dropdown.find('a').children().at(5).parent()
+      .parent();
 
-    clickNode.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click', {stopPropagation() {}});
 
     expect(listener.mock.calls[0][1]).toEqual(expectValue);
 

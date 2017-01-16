@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import Slider from '../js/components/slider/index';
 
 describe('test slider', () => {
 
   it('renders with min, max, value attributes and width', () => {
-    
+
     let min = '0';
     let max = '1.5';
     let value = '1';

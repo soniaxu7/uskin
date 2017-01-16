@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import Button from '../js/components/button/index';
 
@@ -10,7 +10,6 @@ describe('test button', () => {
     let value = 'button';
     let type = 'create';
     let size = 'lg';
-    let iconPrefix = 'glyphicon icon-';
     let iconClass = 'create';
     let dropdown = true;
     const button = shallow(
@@ -39,17 +38,21 @@ describe('test button', () => {
     let value = 'button';
     let type = 'create';
     let size = 'lg';
-    let iconPrefix = 'glyphicon icon-';
     let iconClass = 'create';
     let dropdown = true;
     let tag = 'div';
     const button = shallow(
-      <Button value={value} type={type} size={size} iconClass={iconClass} dropdown={dropdown} tag={tag} />
+      <Button value={value}
+        type={type}
+        size={size}
+        iconClass={iconClass}
+        dropdown={dropdown}
+        tag={tag} />
     );
 
     expect(button.text()).toEqual(value);
     expect(button.name()).toEqual(tag);
-  
+
   });
 
   it('renders default button with div tag', () => {
@@ -95,7 +98,7 @@ describe('test button', () => {
   });
 
   it('would not trigger disabled button', () => {
-  
+
     let value = 'button';
     let listener = jest.genMockFunction();
     const button = shallow(
@@ -113,17 +116,17 @@ describe('test button', () => {
   });
 
   it('tests update props', () => {
-  
+
     let listener = jest.genMockFunction();
     const button = shallow(
       <Button disabled={false} onClick={listener} />
     );
 
     //update with different props
-    button.setProps({ disabled: true });
+    button.setProps({disabled: true});
     button.simulate('click');
     //update with same props
-    button.setProps({ disabled: true });
+    button.setProps({disabled: true});
     button.simulate('click');
 
     expect(listener).not.toBeCalled();

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import Button from '../button/index';
 import Dropdown from '../dropdown/index';
 
@@ -40,7 +40,8 @@ class DropdownButton extends React.Component {
     const props = this.props;
     const btn = props.buttonData;
     const dropdownItems = props.dropdownItems;
-    let dropdownStyle = props.dropdownStyle ? Object.assign({}, props.dropdownStyle) : { width: 100 };
+    let dropdownStyle = props.dropdownStyle ?
+      Object.assign({}, props.dropdownStyle) : {width: 100};
     dropdownStyle.display = this.state.toggle ? 'block' : 'none';
 
     return (
@@ -62,9 +63,14 @@ class DropdownButton extends React.Component {
 
 DropdownButton.propTypes = {
   dropdownOnClick: PropTypes.func,
-  buttonData: PropTypes.object,
-  dropdownItems: PropTypes.array,
-  dropdownStyle: PropTypes.object,
+  buttonData: PropTypes.shape({
+    value: PropTypes.string,
+    iconClass: PropTypes.string
+  }),
+  dropdownItems: PropTypes.arrayOf(PropTypes.object),
+  dropdownStyle: PropTypes.shape({
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  }),
   disabled: PropTypes.bool
 };
 

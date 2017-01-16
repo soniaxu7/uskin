@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {mount} from 'enzyme';
 
 import DropdownButton from '../js/components/dropdown-button/index';
 
@@ -98,9 +98,7 @@ describe('test dropdown', () => {
   it('renders dropdown-button', () => {
 
     const dropwdownbtn = mount(
-      <DropdownButton
-        buttonData={btn}
-        dropdownItems={items} />
+      <DropdownButton buttonData={btn} dropdownItems={items} />
     );
     const button = dropwdownbtn.find('button');
     const dropdown = dropwdownbtn.find('.dropdown').at(0);
@@ -141,10 +139,7 @@ describe('test dropdown', () => {
       width: 160
     };
     const dropwdownbtn = mount(
-      <DropdownButton
-        buttonData={btn}
-        dropdownItems={items}
-        dropdownStyle={style} />
+      <DropdownButton buttonData={btn} dropdownItems={items} dropdownStyle={style} />
     );
     const dropdown = dropwdownbtn.find('.dropdown').at(0);
 
@@ -156,17 +151,14 @@ describe('test dropdown', () => {
 
     let listener = jest.genMockFunction();
     const dropwdownbtn = mount(
-      <DropdownButton
-        buttonData={btn}
-        dropdownItems={items}
-        dropdownOnClick={listener} />
+      <DropdownButton buttonData={btn} dropdownItems={items} dropdownOnClick={listener} />
     );
     const dropdown = dropwdownbtn.find('.dropdown').at(0);
     let key = [0, 1];
     let expectValue = items[key[0]].items[key[1]];
     const clickNode = dropdown.find('a').at(1).parent();
 
-    clickNode.simulate('click', { stopPropagation() {} });
+    clickNode.simulate('click', {stopPropagation() {}});
 
     expect(listener.mock.calls[0][1]).toEqual(expectValue);
 
@@ -177,9 +169,7 @@ describe('test dropdown', () => {
     const VISIBLE = 'block';
     const UNVISIBLE = 'none';
     const dropwdownbtn = mount(
-      <DropdownButton
-        buttonData={btn}
-        dropdownItems={items} />
+      <DropdownButton buttonData={btn} dropdownItems={items} />
     );
     const button = dropwdownbtn.find('button');
     const dropdown = dropwdownbtn.find('.dropdown').at(0);

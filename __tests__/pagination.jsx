@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {mount} from 'enzyme';
 
 import Pagination from '../js/components/pagination/index';
 
@@ -7,13 +7,12 @@ describe('test pagination', () => {
 
   describe('test type = page labels', () => {
 
-    let current,
-      total,
-      listener,
-      pagination,
-      prev,
-      next,
-      last;
+    let current;
+    let total;
+    let listener;
+    let pagination;
+    let prev;
+    let next;
 
     beforeEach(() => {
 
@@ -35,7 +34,7 @@ describe('test pagination', () => {
     });
 
     it('renders a page when props is invalid', () => {
-  
+
       let current2 = -1,
         total2 = -10,
         listener2 = jest.genMockFunction();
@@ -75,7 +74,7 @@ describe('test pagination', () => {
       expect(listener.mock.calls[0][0]).toEqual(current + 1);
       expect(listener.mock.calls[1][0]).toEqual(current);
 
-   });
+    });
 
     it('test with lower bound', () => {
 

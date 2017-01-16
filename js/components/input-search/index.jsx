@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import styles from '../../mixins/styles';
 
 function noop() {}
@@ -40,7 +40,7 @@ class InputSearch extends React.Component {
   }
 
   render() {
-    const { width, type } = this.props;
+    const {width, type} = this.props;
     const state = this.state;
     const style = styles.getWidth(width, 10);
     const inputWidth = styles.getWidth(width - 48);

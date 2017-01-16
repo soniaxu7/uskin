@@ -1,4 +1,4 @@
-const { Button, ButtonGroup } = uskin;
+const {Button, ButtonGroup} = uskin;
 
 ReactDOM.render(
   <div>

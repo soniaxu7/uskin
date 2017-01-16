@@ -1,4 +1,4 @@
-const { Breadcrumb } = uskin;
+const {Breadcrumb} = uskin;
 
 const items1 = [{
   name: 'Home',
@@ -6,8 +6,8 @@ const items1 = [{
 }, {
   name: 'Store',
   href: '#store'
-}],
-items2 = [{
+}];
+const items2 = [{
   name: 'Home',
   href: '#home'
 }, {

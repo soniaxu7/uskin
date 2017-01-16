@@ -1,4 +1,4 @@
-const { DropdownButton } = uskin;
+const {DropdownButton} = uskin;
 
 function listener(e, item) {
   console.debug('click triggered!', e, item);
@@ -59,20 +59,16 @@ let dropdownItems = [{
 ReactDOM.render(
   <div>
     <div className="box">
-      <DropdownButton
-        buttonData={btn}
+      <DropdownButton buttonData={btn}
         dropdownItems={dropdownItems}
         dropdownOnClick={listener}
-        dropdownStyle={{ width: 164 }}
-      />
+        dropdownStyle={{width: 164}} />
     </div>
     <div className="box">
-      <DropdownButton
-        disabled={true}
+      <DropdownButton disabled={true}
         buttonData={btn}
         dropdownItems={dropdownItems}
-        dropdownOnClick={listener}
-      />
+        dropdownOnClick={listener} />
     </div>
   </div>,
   document.getElementById('example')

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 import styles from '../../mixins/styles';
 
 function noop() {}
@@ -119,8 +119,8 @@ class InputNumber extends React.Component {
     const props = this.props;
     const step = this.props.step;
 
-    switch(type) {
-      case 'next':
+    switch (type) {
+      case 'next': {
         let nextStep = value + step;
         if (!this.isUpperBound(nextStep)) {
           this.setValue(nextStep);
@@ -128,14 +128,17 @@ class InputNumber extends React.Component {
           this.setValue(props.max);
         }
         break;
-      case 'prev':
-      default:
+      }
+      case 'prev': {
         let prevStep = value - step;
         if (!this.isLowerBound(prevStep)) {
           this.setValue(prevStep);
         } else {
           this.setValue(props.min);
         }
+        break;
+      }
+      default:
         break;
     }
   }
@@ -151,7 +154,7 @@ class InputNumber extends React.Component {
   }
 
   onKeyDown(e) {
-    switch(e.keyCode) {
+    switch (e.keyCode) {
       case 38:
         this.nextStep(e);
         break;

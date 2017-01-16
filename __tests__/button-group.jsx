@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import Button from '../js/components/button/index';
 import ButtonGroup from '../js/components/button-group/index';

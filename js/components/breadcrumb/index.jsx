@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 function noop() {}
 
@@ -18,16 +18,22 @@ class Breadcrumb extends React.Component {
     return (
       <div className="breadcrumb">
         {
-          items.map((item, index) =>
-            index < items.length - 1 ?
-              <span className="breadcrumb-item" key={index}>
-                <a href={item.href} onClick={this.onClick.bind(this, item)}>{item.name}</a>
-                <span className="breadcrumb-item-next">&gt;</span>
-              </span>
-            : <span className="breadcrumb-item" key={index}>
-                <span>{item.name}</span>
-              </span>
-          )
+          items.map((item, index) => {
+            if (index < items.length - 1) {
+              return (
+                <span className="breadcrumb-item" key={index}>
+                  <a href={item.href} onClick={this.onClick.bind(this, item)}>{item.name}</a>
+                  <span className="breadcrumb-item-next">&gt;</span>
+                </span>
+              );
+            } else {
+              return (
+                <span className="breadcrumb-item" key={index}>
+                  <span>{item.name}</span>
+                </span>
+              );
+            }
+          })
         }
       </div>
     );
@@ -36,7 +42,7 @@ class Breadcrumb extends React.Component {
 }
 
 Breadcrumb.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.arrayOf(PropTypes.object),
   onClick: PropTypes.func
 };
 

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 function noop() {}
 
@@ -77,8 +77,10 @@ class Dropdown extends React.Component {
 
 Dropdown.propTypes = {
   onClick: PropTypes.func,
-  items: PropTypes.array,
-  style: PropTypes.object
+  items: PropTypes.arrayOf(PropTypes.object),
+  style: PropTypes.shape({
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  })
 };
 
 Dropdown.defaultProps = {

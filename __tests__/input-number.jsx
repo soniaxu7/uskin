@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {mount} from 'enzyme';
 
 import InputNumber from '../js/components/input-number/index';
 
@@ -15,7 +15,7 @@ describe('test input-number', () => {
       const input = inputnumber.find('input');
 
       input.simulate('blur');
-      input.simulate('change', { target: { value: '' } });
+      input.simulate('change', {target: {value: ''}});
       input.simulate('keyDown', {
         keyCode: 38,
         preventDefault() {}
@@ -38,7 +38,10 @@ describe('test input-number', () => {
 
   describe('test step = 1, disabled = false', () => {
 
-    let listener, props, isError, inputnumber;
+    let listener;
+    let props;
+    let isError;
+    let inputnumber;
 
     beforeEach(() => {
 
@@ -78,9 +81,9 @@ describe('test input-number', () => {
 
       const upperBtn = inputnumber.find('.arrow-up');
       const downBtn = inputnumber.find('.arrow-down');
-      
-      upperBtn.simulate('click', { preventDefault() {} });
-      downBtn.simulate('click', { preventDefault() {} });
+
+      upperBtn.simulate('click', {preventDefault() {}});
+      downBtn.simulate('click', {preventDefault() {}});
 
       expect(listener.mock.calls[0]).toEqual([props.value + props.step, !isError]);
       expect(listener.mock.calls[1]).toEqual([props.value, !isError]);
@@ -93,7 +96,7 @@ describe('test input-number', () => {
 
     it('test decimal add and subtract', () => {
 
-      let listener = jest.genMockFunction()
+      let listener = jest.genMockFunction();
       let props = {
         onChange: listener,
         min: 0,
@@ -105,10 +108,10 @@ describe('test input-number', () => {
       const inputnumber = mount(<InputNumber {...props} />);
       const upperBtn = inputnumber.find('.arrow-up');
       const downBtn = inputnumber.find('.arrow-down');
-      
-      upperBtn.simulate('click', { preventDefault() {} });
-      downBtn.simulate('click', { preventDefault() {} });
-      downBtn.simulate('click', { preventDefault() {} });
+
+      upperBtn.simulate('click', {preventDefault() {}});
+      downBtn.simulate('click', {preventDefault() {}});
+      downBtn.simulate('click', {preventDefault() {}});
 
       expect(listener.mock.calls[0]).toEqual([props.value + props.step, !isError]);
       expect(listener.mock.calls[1]).toEqual([props.value, !isError]);
@@ -120,7 +123,12 @@ describe('test input-number', () => {
 
   describe('test boundary', () => {
 
-    let listener, props, inputnumber, upperBtn, downBtn, isError;
+    let listener;
+    let props;
+    let inputnumber;
+    let upperBtn;
+    let downBtn;
+    let isError;
 
     beforeEach(() => {
 
@@ -163,7 +171,11 @@ describe('test input-number', () => {
 
   describe('test onChange input value', () => {
 
-    let listener, props, inputnumber, input, isError;
+    let listener;
+    let props;
+    let inputnumber;
+    let input;
+    let isError;
 
     beforeEach(() => {
 
@@ -185,19 +197,19 @@ describe('test input-number', () => {
 
       let value = 8;
 
-      input.simulate('change', { target: { value: value } });
+      input.simulate('change', {target: {value: value}});
       input.simulate('blur');
 
       expect(listener.mock.calls[0]).toEqual([value, !isError]);
       expect(input.node.value).toEqual('' + value);
 
-   });
+    });
 
     it('tests onChange value which is invalid', () => {
 
       let value = 'abcd';
 
-      input.simulate('change', { target: { value: value } });
+      input.simulate('change', {target: {value: value}});
       input.simulate('blur');
 
       expect(listener.mock.calls[0]).toEqual([value, isError]);
@@ -209,7 +221,7 @@ describe('test input-number', () => {
 
       let value = 15;
 
-      input.simulate('change', { target: { value: value } });
+      input.simulate('change', {target: {value: value}});
       input.simulate('blur');
 
       expect(listener.mock.calls[0]).toEqual([value, isError]);
@@ -222,7 +234,7 @@ describe('test input-number', () => {
 
       let value = -15;
 
-      input.simulate('change', { target: { value: value } });
+      input.simulate('change', {target: {value: value}});
       input.simulate('blur');
 
       expect(listener.mock.calls[0]).toEqual([value, isError]);
@@ -235,7 +247,8 @@ describe('test input-number', () => {
 
   describe('test invalid props', () => {
 
-    let listener, props;
+    let listener;
+    let props;
 
     beforeEach(() => {
 
@@ -258,7 +271,7 @@ describe('test input-number', () => {
     });
 
     it('tests initial value is overstep the lower bound', () => {
-  
+
       const inputnumber = mount(<InputNumber {...props} value={-12} />);
 
       expect(inputnumber.state().value).toEqual(props.min);
@@ -276,8 +289,8 @@ describe('test input-number', () => {
       const upperBtn = inputnumber.find('.arrow-up');
       const downBtn = inputnumber.find('.arrow-down');
 
-      upperBtn.simulate('click', { preventDefault() {} });
-      downBtn.simulate('click', { preventDefault() {} });
+      upperBtn.simulate('click', {preventDefault() {}});
+      downBtn.simulate('click', {preventDefault() {}});
 
       expect(listener).not.toBeCalled();
 

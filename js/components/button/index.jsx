@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 function noop() {}
 
@@ -45,7 +45,7 @@ class Button extends React.Component {
     const state = this.state;
     const iconPrefix = 'glyphicon icon-';
 
-    switch(props.tag) {
+    switch (props.tag) {
       case 'div':
         return (
           <div className={this.getClassName(props, state)}

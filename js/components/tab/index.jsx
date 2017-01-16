@@ -24,9 +24,9 @@ class Tab extends React.Component {
     var items = item || this.props.items,
       selectedKey;
 
-    function findSelected(item, index) {
-      if (item.default) {
-        selectedKey = item.key;
+    function findSelected(element, index) {
+      if (element.default) {
+        selectedKey = element.key;
         return true;
       }
       return false;

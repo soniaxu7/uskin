@@ -2,7 +2,7 @@ import React from 'react';
 import helper from './helper';
 import Constants from './constants';
 
-const { MONTHS_LOCAL, YEARS_PERIOD } = Constants;
+const {MONTHS_LOCAL, YEARS_PERIOD} = Constants;
 
 class Header extends React.Component {
 

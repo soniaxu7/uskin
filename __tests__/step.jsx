@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 
 import Step from '../js/components/step/index';
 
@@ -84,9 +84,9 @@ describe('test step', () => {
     let newIndex = newItems.findIndex((ele) => ele.default);
 
     const step = shallow(<Step items={newItems} consecutive={true} />);
-    const items = step.find('.selected');
+    const itemsNode = step.find('.selected');
 
-    expect(items.length).toEqual(newIndex + 1);
+    expect(itemsNode.length).toEqual(newIndex + 1);
 
   });
 

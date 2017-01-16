@@ -1,4 +1,4 @@
-const { Dropdown } = uskin;
+const {Dropdown} = uskin;
 
 function listener(e, item) {
   console.debug('click triggered!', e, item);

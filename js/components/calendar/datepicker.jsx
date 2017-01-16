@@ -2,7 +2,7 @@ import React from 'react';
 import helper from './helper';
 import Constants from './constants';
 
-const { WEEKS_LOCAL, WEEKS_COUNT, TABLE_LINE } = Constants;
+const {WEEKS_LOCAL, WEEKS_COUNT, TABLE_LINE} = Constants;
 
 class DatePicker extends React.Component {
 

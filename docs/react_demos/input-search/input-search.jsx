@@ -1,4 +1,4 @@
-const { InputSearch, Table } = uskin;
+const {InputSearch, Table} = uskin;
 
 let column = [{
   title: 'ID',

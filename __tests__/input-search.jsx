@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {mount} from 'enzyme';
 
 import InputSearch from '../js/components/input-search/index';
 
@@ -28,7 +28,7 @@ describe('test input-search', () => {
     const input = inputsearch.find('input');
     const searchIcon = inputsearch.find('.search-icon');
 
-    input.simulate('change', { target: { value: value } });
+    input.simulate('change', {target: {value: value}});
     searchIcon.simulate('click');
 
     expect(listener.mock.calls[0][0]).toEqual(value);
@@ -41,7 +41,7 @@ describe('test input-search', () => {
     const inputsearch = mount(<InputSearch />);
     const input = inputsearch.find('input');
 
-    input.simulate('change', { target: { value: value } });
+    input.simulate('change', {target: {value: value}});
     expect(input.node.value).toEqual(value);
 
     inputsearch.node.clearState();

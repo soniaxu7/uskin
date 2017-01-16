@@ -1,4 +1,4 @@
-var { InputNumber } = uskin;
+const {InputNumber} = uskin;
 
 function listener(number, isError) {
   console.debug('click triggered!', number, isError);
