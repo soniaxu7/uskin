@@ -3,11 +3,11 @@
 
 ## Usage
 ```
-var Panel = uskin.Panel;
+const {Panel} = uskin;
 
-var text = {
-  'title': <div>Taylor Swift Songs Sound Incredibly Soothing as Lullabies</div>,
-  'content': <div>ot quite ready to introduce your infant to Taylor Swift? Then ease them into Swiftie-hood with these lullaby versions of her greatest hits, brought you to by Rockabye Baby! The album (which is available for purchase on iTunes) offers gentle, twinkly, super-soothing versions of recent hits like “Bad Blood” and “Blank Space” along with old classics like “Love Story” and “You Belong With Me.”<br/>You’ll hear the melodies you know and love reimagined with xylophones, bells and wood blocks. If you don’t have an infant you need to lure to sleep, we recommend just listening on your own. The songs will make great background music to keep you calm while you work or try to figure out how your health insurance works.</div>
+let text = {
+  title: <div>Taylor Swift Songs Sound Incredibly Soothing as Lullabies</div>,
+  content: <div>ot quite ready to introduce your infant to Taylor Swift? Then ease them into Swiftie-hood with these lullaby versions of her greatest hits, brought you to by Rockabye Baby! The album (which is available for purchase on iTunes) offers gentle, twinkly, super-soothing versions of recent hits like “Bad Blood” and “Blank Space” along with old classics like “Love Story” and “You Belong With Me.”<br/>You’ll hear the melodies you know and love reimagined with xylophones, bells and wood blocks. If you don’t have an infant you need to lure to sleep, we recommend just listening on your own. The songs will make great background music to keep you calm while you work or try to figure out how your health insurance works.</div>
 }
 
 ReactDOM.render(<Panel title={text.title} content={text.content} width={600}/>, document);

@@ -3,18 +3,19 @@
 
 ## Usage
 ```
-var Notification = uskin.Notification;
+const {Notification} = uskin;
 
-var title = 'Note:',
-    content = 'Life is tough, but I'm tougher';
+let title = 'Note:';
+let content = 'Life is tough, but I'm tougher';
 
 ReactDOM.render(
   <Notification
     title={title}
     content={content}
     type="info"
-    width={200}
-  />, document);
+    width={200} />,
+  document
+);
 ```
 
 ## API

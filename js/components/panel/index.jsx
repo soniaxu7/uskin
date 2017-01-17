@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import styles from '../../mixins/styles';
 
 class Panel extends React.PureComponent {
+
   constructor(props) {
     super(props);
   }
 
   render() {
-    var props = this.props;
+    const props = this.props;
+    let style = styles.getWidth(props.width);
 
-    var style = styles.getWidth(props.width);
     return (
       <div className="panel" style={style}>
         <div className="panel-hd">
@@ -21,6 +22,13 @@ class Panel extends React.PureComponent {
       </div>
     );
   }
+
 }
+
+Panel.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.string,
+  width: PropTypes.number
+};
 
 export default Panel;

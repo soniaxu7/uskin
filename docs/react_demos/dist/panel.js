@@ -46,7 +46,9 @@
 
 	'use strict';
 
-	var Panel = uskin.Panel;
+	var _uskin = uskin,
+	    Panel = _uskin.Panel;
+
 
 	var c1 = 'Meanwhile in Russia, an outpouring of grief gripped the historic city of St. Petersburg, home of many of the victims. President Vladimir Putin declared a nationwide day of mourning, and flags flew at half-staff.';
 	var c2 = 'viation experts joined the searchers in a remote part of the Sinai, seeking any clues to what caused the Metrojet Airbus A321-200 to plummet abruptly from 31,000 feet just 23 minutes after it departed from the Red Sea resort of Sharm el-Sheikh bound for St. Petersburg.';
@@ -88,9 +90,12 @@
 	  )
 	}];
 
-	ReactDOM.render(React.createElement(Panel, { title: text[0].title, content: text[0].content }), document.getElementById('example'));
-
-	ReactDOM.render(React.createElement(Panel, { title: text[1].title, content: text[1].content, width: '600' }), document.getElementById('example2'));
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(Panel, { title: text[0].title, content: text[0].content }),
+	  React.createElement(Panel, { title: text[1].title, content: text[1].content, width: '600' })
+	), document.getElementById('example'));
 
 /***/ }
 /******/ ]);
