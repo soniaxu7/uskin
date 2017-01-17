@@ -108,9 +108,6 @@ module.exports = function(grunt) {
   });
   require('time-grunt')(grunt);
 
-  // Load task-related files from the specified directory
-  grunt.task.loadTasks('./grunt');
-
   // Build JS
   grunt.registerTask('js', ['webpack:build', 'webpack:dev']);
 
