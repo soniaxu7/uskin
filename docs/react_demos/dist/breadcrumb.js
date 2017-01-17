@@ -56,8 +56,8 @@
 	}, {
 	  name: 'Store',
 	  href: '#store'
-	}],
-	    items2 = [{
+	}];
+	var items2 = [{
 	  name: 'Home',
 	  href: '#home'
 	}, {

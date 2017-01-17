@@ -1,11 +1,10 @@
-var Menu = uskin.Menu,
-  Button = uskin.Button;
+const {Button, Menu} = uskin;
 
 function listener(e, status) {
   console.debug('click triggered!', e, status);
 }
 
-var items = [{
+let items = [{
   title: 'Fruits',
   key: 'fruits',
   submenu: [{
@@ -61,7 +60,7 @@ var items = [{
   }]
 }];
 
-var items2 = Object.assign([], items);
+let items2 = Object.assign([], items);
 items2.unshift({
   key:'overview',
   submenu: [{
@@ -74,16 +73,18 @@ items2.unshift({
 });
 
 function updateData() {
-  var newItems = [];
-  for (let i = 0; i < items.length; i++) {
-    newItems[i] = Object.assign({}, items[i]);
-  }
-  newItems[0].submenu[0].selected = false;
+  let newItems = Object.assign([], items);
+  delete newItems[0].submenu[0].selected;
   newItems[1].submenu[1].selected = true;
 
   ReactDOM.render(
     <div style={{height: '100%'}}>
-      <Menu items={newItems} />
+      <div style={{height: '100%', float: 'left'}}>
+        <Menu items={newItems} />
+      </div>
+      <div style={{height: '100%', float: 'left'}}>
+        <Menu items={items2} toggle={true} width={240} />
+      </div>
     </div>,
     document.getElementById('example')
   );
@@ -98,7 +99,7 @@ ReactDOM.render(
       </div>
     </div>
     <div style={{height: '100%', float: 'left'}}>
-      <Menu items={items2} toggle={true} />
+      <Menu items={items2} toggle={true} width={240} />
     </div>
   </div>,
   document.getElementById('example')

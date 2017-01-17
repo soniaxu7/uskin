@@ -10,7 +10,10 @@ class MenuItem extends React.Component {
     this.state = {
       toggle: props.toggle && !!props.item.fold
     };
-    this.toggle = this.toggle.bind(this);
+
+    ['toggle'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   toggle(e) {
@@ -19,19 +22,20 @@ class MenuItem extends React.Component {
     });
   }
 
-  onClick(key, submenu, e) {
-    this.props.selectMenu && this.props.selectMenu.apply(this, [e, key, submenu.key]);
-    submenu.onClick && submenu.onClick.apply(this, [e, submenu]);
+  onClick(key, item, e) {
+    this.props.onChange(e, key, item.key);
+
+    if (typeof item.onClick === 'function') {
+      item.onClick(e, item);
+    } else {
+      this.props.onClick(e, item);
+    }
   }
 
   isSelected(menu) {
-    var selected = this.props.selected;
-    if ((this.props.item.key.localeCompare(selected.key) === 0)
-      && (menu.key.localeCompare(selected.subkey) === 0)) {
-      return true;
-    } else {
-      return false;
-    }
+    let selected = this.props.selected;
+
+    return this.props.item.key === selected.key && menu.key === selected.subkey;
   }
 
   render() {
@@ -56,18 +60,20 @@ class MenuItem extends React.Component {
           ) : null
         }
         <ul style={{height: toggle ? 0 : ITEM_HEIGHT * item.submenu.length}} className={enableToggle ? 'menu-item-toggle' : null}>
-          {item.submenu.map((ele, i) =>
-            <li key={i}
-              className={this.isSelected(ele) ? 'menu-item-selected' : null}
-              onClick={this.isSelected(ele) ? null : this.onClick.bind(this, item.key, ele)}>
-              {
-                ele.iconClass ?
-                  <i className={ele.iconClass} />
-                : null
-              }
-              {ele.subtitle}
-            </li>
-          )}
+          {
+            item.submenu.map((ele, i) =>
+              <li key={i}
+                className={this.isSelected(ele) ? 'menu-item-selected' : null}
+                onClick={this.isSelected(ele) ? null : this.onClick.bind(this, item.key, ele)}>
+                {
+                  ele.iconClass ?
+                    <i className={ele.iconClass} />
+                  : null
+                }
+                {ele.subtitle}
+              </li>
+            )
+          }
         </ul>
       </div>
     );

@@ -3,9 +3,9 @@
 
 ## Usage
 ```
-var Menu = uskin.Menu;
+const {Menu} = uskin;
 
-var items = [{
+let items = [{
   title: 'Fruits',
   key: 'fruits',
   submenu: [{
@@ -69,7 +69,7 @@ var items = [{
   }]
 }];
 
-ReactDOM.render(<Menu items={items}/>, document);
+ReactDOM.render(<Menu width={300} items={items}/>, document);
 ```
 
 ## API
@@ -88,6 +88,18 @@ ReactDOM.render(<Menu items={items}/>, document);
       <td>Array</td>
       <td></td>
       <td><a href="#items">见下方items详解</a></td>
+    </tr>
+    <tr>
+      <td>width</td>
+      <td>Number</td>
+      <td></td>
+      <td>menu的宽度</td>
+    </tr>
+    <tr>
+      <td>onClick</td>
+      <td>Function</td>
+      <td></td>
+      <td>item被点击时候的触发时间，item的onClick优先级较高</td>
     </tr>
   </tbody>
 </table>

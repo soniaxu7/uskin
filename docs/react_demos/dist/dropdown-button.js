@@ -112,22 +112,18 @@
 	  React.createElement(
 	    'div',
 	    { className: 'box' },
-	    React.createElement(DropdownButton, {
-	      buttonData: btn,
+	    React.createElement(DropdownButton, { buttonData: btn,
 	      dropdownItems: dropdownItems,
 	      dropdownOnClick: listener,
-	      dropdownStyle: { width: 164 }
-	    })
+	      dropdownStyle: { width: 164 } })
 	  ),
 	  React.createElement(
 	    'div',
 	    { className: 'box' },
-	    React.createElement(DropdownButton, {
-	      disabled: true,
+	    React.createElement(DropdownButton, { disabled: true,
 	      buttonData: btn,
 	      dropdownItems: dropdownItems,
-	      dropdownOnClick: listener
-	    })
+	      dropdownOnClick: listener })
 	  )
 	), document.getElementById('example'));
 

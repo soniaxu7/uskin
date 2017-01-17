@@ -9,8 +9,7 @@
   value={56}
   step={2}
   onChange={this.inputNumberOnChange}
-  disabled={false}    
-/>
+  disabled={false} />
 ```
 
 ## API

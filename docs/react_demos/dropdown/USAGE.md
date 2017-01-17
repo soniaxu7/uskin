@@ -3,7 +3,7 @@
 
 ## Usage
 ```
-const { Dropdown } = uskin;
+const {Dropdown} = uskin;
 
 let items = [{
   title: 'Basic Ops',

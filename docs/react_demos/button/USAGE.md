@@ -3,15 +3,14 @@
 
 ## Usage
 ```
-const { Button } = uskin;
+const {Button} = uskin;
 
 ReactDOM.render(
   <Button
     value="Create"
     onClick={listener}
     type="create"
-    size="sm"
-  />,
+    size="sm" />,
   document
 );
 ```

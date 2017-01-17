@@ -52,8 +52,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Menu = uskin.Menu,
-	    Button = uskin.Button;
+	var _uskin = uskin,
+	    Button = _uskin.Button,
+	    Menu = _uskin.Menu;
+
 
 	function listener(e, status) {
 	  console.debug('click triggered!', e, status);
@@ -128,17 +130,23 @@
 	});
 
 	function updateData() {
-	  var newItems = [];
-	  for (var i = 0; i < items.length; i++) {
-	    newItems[i] = (0, _assign2.default)({}, items[i]);
-	  }
-	  newItems[0].submenu[0].selected = false;
+	  var newItems = (0, _assign2.default)([], items);
+	  delete newItems[0].submenu[0].selected;
 	  newItems[1].submenu[1].selected = true;
 
 	  ReactDOM.render(React.createElement(
 	    'div',
 	    { style: { height: '100%' } },
-	    React.createElement(Menu, { items: newItems })
+	    React.createElement(
+	      'div',
+	      { style: { height: '100%', float: 'left' } },
+	      React.createElement(Menu, { items: newItems })
+	    ),
+	    React.createElement(
+	      'div',
+	      { style: { height: '100%', float: 'left' } },
+	      React.createElement(Menu, { items: items2, toggle: true, width: 240 })
+	    )
 	  ), document.getElementById('example'));
 	}
 
@@ -158,7 +166,7 @@
 	  React.createElement(
 	    'div',
 	    { style: { height: '100%', float: 'left' } },
-	    React.createElement(Menu, { items: items2, toggle: true })
+	    React.createElement(Menu, { items: items2, toggle: true, width: 240 })
 	  )
 	), document.getElementById('example'));
 

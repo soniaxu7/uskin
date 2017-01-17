@@ -3,7 +3,7 @@
 
 ## Usage
 ```
-const { Calendar } = uskin;
+const {Calendar} = uskin;
 
 ReactDOM.render(
   <Calendar
@@ -11,8 +11,7 @@ ReactDOM.render(
     local={local}
     page="2016-10"
     selectedDate="2016-10-14"
-    onChange={display2}
-  />,
+    onChange={display2} />,
   document
 );
 ```

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import MenuItem from './menu-item';
+
+function noop() {}
 
 class Menu extends React.Component {
 
@@ -11,7 +13,9 @@ class Menu extends React.Component {
       selectedSubkey: undefined
     };
 
-    this.onChange = this.onChange.bind(this);
+    ['onChange'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   componentWillMount() {
@@ -23,13 +27,15 @@ class Menu extends React.Component {
   }
 
   update(items) {
-    var isSelected = items.some((item) =>
+    let isSelected = items.some((item) =>
       item.submenu.some((submenu) => (
         submenu.selected ? (this.onChange(null, item.key, submenu.key), true) : false
       ))
     );
 
-    !isSelected && this.onChange(null, undefined, undefined);
+    if (!isSelected) {
+      this.onChange(null, undefined, undefined);
+    }
   }
 
   onChange(e, key, subkey) {
@@ -40,28 +46,44 @@ class Menu extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      state = this.state,
-      items = props.items;
+    const props = this.props;
+    const state = this.state;
+    const items = props.items;
 
-    var selected = {
+    let selected = {
       key: state.selectedKey,
       subkey: state.selectedSubkey
     };
 
     return (
-      <ul ref="menu" className="menu">
-        {items.map((item, index) =>
-          <li key={index}>
-            <MenuItem item={item}
-              selectMenu={this.onChange}
-              selected={selected}
-              toggle={props.toggle} />
-          </li>
-        )}
+      <ul ref="menu" className="menu" style={{width: props.width}}>
+        {
+          items.map((item, index) =>
+            <li key={index}>
+              <MenuItem item={item}
+                onClick={props.onClick}
+                onChange={this.onChange}
+                selected={selected}
+                toggle={props.toggle} />
+            </li>
+          )
+        }
       </ul>
     );
   }
 }
+
+Menu.propTypes = {
+  width: PropTypes.number,
+  items: PropTypes.arrayOf(PropTypes.object),
+  toggle: PropTypes.bool,
+  onClick: PropTypes.func
+};
+
+Menu.defaultProps = {
+  width: 200,
+  toggle: false,
+  onClick: noop
+};
 
 export default Menu;

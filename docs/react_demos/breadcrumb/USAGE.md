@@ -3,13 +3,18 @@
 
 ## Usage
 ```
-const { Breadcrumb } = uskin;
+const {Breadcrumb} = uskin;
 
-let items = [
-  { name: 'Home', href: '#home' },
-  { name: 'Store', href: '#store' },
-  { name: 'Phones', href: '#phone' }
-];
+let items = [{
+  name: 'Home',
+  href: '#home'
+}, {
+  name: 'Store',
+  href: '#store'
+}, {
+  name: 'Phones',
+  href: '#phone'
+}];
 
 ReactDOM.render(<Breadcrumb items={items}/>, document);
 ```
