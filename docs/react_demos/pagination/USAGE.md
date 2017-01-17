@@ -3,14 +3,15 @@
 
 ## Usage
 ```
-var Pagination = uskin.Pagination;
+const {Pagination} = uskin;
 ReactDOM.render(
   <Pagination 
     onClick={this.paginationOnClick}
     total={200}
     perPage={20}
-    current={7}
-  />,, document);
+    current={7} />,
+  document
+);
 ```
 
 ## API
@@ -28,7 +29,13 @@ ReactDOM.render(
       <td>onClick</td>
       <td>Function</td>
       <td></td>
-      <td>页码点击时返回被点击的页码值</td>
+      <td>页码点击时返回被点击的页码值(number, e)</td>
+    </tr>
+    <tr>
+      <td>onClickLabel</td>
+      <td>Function</td>
+      <td></td>
+      <td>first, last, prev, next被点击时返回被点击的按钮(status, e)</td>
     </tr>
     <tr>
       <td>total(必填)</td>
@@ -37,16 +44,22 @@ ReactDOM.render(
       <td>总元素的数量</td>
     </tr>
     <tr>
-      <td>perPage(必填)</td>
-      <td>Number</td>
-      <td></td>
-      <td>每个页面显示的元素数量</td>
-    </tr>
-    <tr>
-      <td>current</td>
+      <td>current（必填）</td>
       <td>Number</td>
       <td></td>
       <td>当前页码</td>
+    </tr>
+    <tr>
+      <td>labelOnly</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>是否只显示标签的pagination</td>
+    </tr>
+    <tr>
+      <td>label</td>
+      <td>Object</td>
+      <td></td>
+      <td>需要显示的标签信息，比如{prev: true, next: true, first: true, last: true}</td>
     </tr>
   </tbody>
 </table>

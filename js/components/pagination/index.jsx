@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+
+function noop() {}
 
 class Pagination extends React.Component {
 
   constructor(props) {
     super(props);
 
-    var current = props.current;
-    var total = props.total;
+    let current = props.current;
+    let total = props.total;
     if (current < 1) {
       current = 1;
     }
@@ -33,22 +35,22 @@ class Pagination extends React.Component {
 
   onClick(index, e) {
     e.preventDefault();
+
     this.setState({
       current: index
     });
 
-    var func = this.props.onClick;
-    func && func.apply(this, [index, e]);
+    this.props.onClick(index, e);
   }
 
   onClickLabel(status, e) {
     e.preventDefault();
-    var func = this.props.onClickLabel;
-    func && func.apply(this, [status, e]);
+
+    this.props.onClickLabel(status, e);
   }
 
   renderLabelOnly(label) {
-    var labelData = [];
+    let labelData = [];
     if (label.first) {
       labelData.push({
         key: 'first',
@@ -76,7 +78,7 @@ class Pagination extends React.Component {
       });
     }
 
-    var pagi = [];
+    let pagi = [];
     labelData.forEach((ele) => {
       pagi.push(
         <li key={ele.key}>
@@ -92,7 +94,7 @@ class Pagination extends React.Component {
   }
 
   renderPageNumber(total, current) {
-    var pagi = [];
+    let pagi = [];
 
     pagi.push(
       <li key={current}>
@@ -152,7 +154,6 @@ class Pagination extends React.Component {
     }
 
     return pagi;
-
   }
 
   renderPagination(total, current) {
@@ -166,7 +167,7 @@ class Pagination extends React.Component {
       current = total;
     }
 
-    var pagi = [];
+    let pagi = [];
 
     pagi.push(
       <li key="prev">
@@ -192,8 +193,8 @@ class Pagination extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      current = this.state.current;
+    const props = this.props;
+    const current = this.state.current;
 
     return (
       <ul className="pagination">
@@ -205,15 +206,28 @@ class Pagination extends React.Component {
       </ul>
     );
   }
+
 }
 
-Pagination.defaultProps = {
-  current: 1
+Pagination.propTypes = {
+  current: PropTypes.number,
+  total: PropTypes.number,
+  labelOnly: PropTypes.bool,
+  label: PropTypes.shape({
+    prev: PropTypes.bool,
+    next: PropTypes.bool,
+    first: PropTypes.bool,
+    last: PropTypes.bool
+  }),
+  onClick: PropTypes.func,
+  onClickLabel: PropTypes.func
 };
 
-Pagination.propTypes = {
-  content: React.PropTypes.number,
-  total: React.PropTypes.number
+Pagination.defaultProps = {
+  current: 1,
+  labelOnly: false,
+  onClick: noop,
+  onClickLabel: noop
 };
 
 export default Pagination;

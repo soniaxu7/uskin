@@ -1,13 +1,13 @@
-var {Button, Pagination} = uskin;
+const {Button, Pagination} = uskin;
 
-var label1 = {
+let label1 = {
   prev: true,
   next: true,
   first: true,
   last: true
 };
 
-var label2 = {
+let label2 = {
   first: true,
   prev: true,
   next: true,
@@ -66,7 +66,7 @@ class Example extends React.Component {
   }
 
   render() {
-    var state = this.state;
+    const state = this.state;
 
     return (
       <div>
