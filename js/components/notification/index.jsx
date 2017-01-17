@@ -2,28 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../../mixins/styles';
 
-var seed = 0;
-var now = Date.now();
-var TYPES = ['info', 'success', 'warning', 'danger'];
-var notification = null;
+let seed = 0;
+let now = Date.now();
+let notification = null;
+const TYPES = ['info', 'success', 'warning', 'danger'];
 
 function getUuid() {
   return 'notification_' + now + '_' + (seed++);
 }
 
-var Notice = React.createClass({
-  getInitialState() {
-    var props = this.props;
-    return {
+class Notice extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
       className: props.type && (TYPES.indexOf(props.type) > -1) ? 'notice notice-' + props.type : 'notice'
     };
-  },
-
-  getDefaultProps() {
-    return {
-      animationDuration: 200
-    };
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.type !== nextProps.type) {
@@ -36,19 +32,19 @@ var Notice = React.createClass({
     }
 
     this.setAutoHide(nextProps);
-  },
+  }
 
   componentDidMount() {
-    var props = this.props;
+    const props = this.props;
     this.clearCloseTimer();
     this.fadeIn();
 
     this.setAutoHide(props);
-  },
+  }
 
   setAutoHide(props) {
     if (props.isAutoHide && !this.closeTimer) {
-      var duration;
+      let duration;
       if (props.duration === undefined) {
         duration = 3;
       } else {
@@ -58,27 +54,27 @@ var Notice = React.createClass({
         this.close();
       }, duration * 1000);
     }
-  },
+  }
 
   componentWillUnmount() {
     this.clearCloseTimer();
-  },
+  }
 
   clearCloseTimer() {
     if (this.closeTimer) {
       clearTimeout(this.closeTimer);
       this.closeTimer = null;
     }
-  },
+  }
 
   close() {
     this.clearCloseTimer();
     this.fadeOut();
-  },
+  }
 
   fadeIn() {
-    var originClassName = this.state.className;
-    var that = this;
+    let originClassName = this.state.className;
+    const that = this;
 
     this.setState({
       className: originClassName + ' notice-enter notice-enter-active'
@@ -89,11 +85,11 @@ var Notice = React.createClass({
         });
       }, this.props.animationDuration);
     });
-  },
+  }
 
   fadeOut() {
-    var originClassName = this.state.className;
-    var that = this;
+    let originClassName = this.state.className;
+    const that = this;
 
     this.setState({
       className: originClassName + ' notice-leave notice-leave-active'
@@ -105,12 +101,12 @@ var Notice = React.createClass({
         that.props.onClose();
       }, this.props.animationDuration);
     });
-  },
+  }
 
   render() {
-    var props = this.props;
+    const props = this.props;
 
-    var iconType;
+    let iconType;
     if (props.icon) {
       iconType = props.icon;
     } else if (props.showIcon) {
@@ -128,10 +124,10 @@ var Notice = React.createClass({
       iconType += ' glyphicon';
     }
 
-    var className = this.state.className;
+    let className = this.state.className;
 
-    var style = styles.getWidth(parseInt(props.width, 10) - 40),
-      contentStyle = iconType ? styles.getWidth(parseInt(props.width, 10) - 90)
+    let style = styles.getWidth(parseInt(props.width, 10) - 40);
+    let contentStyle = iconType ? styles.getWidth(parseInt(props.width, 10) - 90)
         : styles.getWidth(parseInt(props.width, 10) - 50);
 
     return (
@@ -145,9 +141,15 @@ var Notice = React.createClass({
       </div>
     );
   }
-});
+
+}
+
+Notice.defaultProps = {
+  animationDuration: 200
+};
 
 class Notification extends React.Component {
+
   constructor(props) {
     super(props);
 
@@ -160,9 +162,9 @@ class Notification extends React.Component {
   }
 
   add(notice) {
-    var id = notice.id = notice.id || getUuid();
+    let id = notice.id = notice.id || getUuid();
 
-    var notices = this.state.notices;
+    let notices = this.state.notices;
     if (!notices.filter((v) => v.id === id).length) {
       this.setState({
         notices: notices.concat(notice)
@@ -171,7 +173,7 @@ class Notification extends React.Component {
   }
 
   remove(id) {
-    var notices = this.state.notices.filter((notice) => notice.id !== id);
+    let notices = this.state.notices.filter((notice) => notice.id !== id);
     this.setState({
       notices: notices
     });
@@ -189,7 +191,7 @@ class Notification extends React.Component {
   }
 
   update(newNotice) {
-    var notices = [];
+    let notices = [];
     this.state.notices.forEach((oldNotice, index) => {
       if (newNotice.id === oldNotice.id) {
         notices[index] = newNotice;
@@ -203,7 +205,7 @@ class Notification extends React.Component {
   }
 
   render() {
-    var noticeNodes = this.state.notices.map((notice) => (
+    const noticeNodes = this.state.notices.map((notice) => (
       <Notice {...notice}
         onClose={this.remove.bind(this, notice.id)}
         key={notice.id}>
@@ -217,10 +219,11 @@ class Notification extends React.Component {
       </div>
     );
   }
+
 }
 
 Notification.addNotice = (noticeProps) => {
-  var div = document.getElementById('notification-container');
+  let div = document.getElementById('notification-container');
   if (!div) {
     div = document.createElement('div');
     div.id = 'notification-container';
@@ -232,7 +235,7 @@ Notification.addNotice = (noticeProps) => {
 };
 
 Notification.removeNotice = (id) => {
-  var div = document.getElementById('notification-container');
+  let div = document.getElementById('notification-container');
   if (!div) {
     return null;
   }
@@ -242,7 +245,7 @@ Notification.removeNotice = (id) => {
 };
 
 Notification.updateNotice = (newNotice) => {
-  var div = document.getElementById('notification-container');
+  let div = document.getElementById('notification-container');
   if (!div) {
     return null;
   }
