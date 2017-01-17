@@ -3,13 +3,13 @@ import Modal from './modal';
 import Tip from '../tip/index';
 import shim from './shim';
 
-var btnMap = {
+let btnMap = {
   danger: 'delete',
   success: 'create',
   warning: 'warning'
 };
 
-var iconMap = {
+let iconMap = {
   danger: 'deleted',
   info: 'warning',
   success: 'active',
@@ -18,7 +18,7 @@ var iconMap = {
 
 ['info', 'success', 'warning', 'danger'].forEach((m) => {
   Modal[m] = function(props) {
-    var content;
+    let content;
 
     if (props.title) {
       content = <Tip content={props.content} type={m} />;
@@ -36,7 +36,7 @@ var iconMap = {
       );
     }
 
-    var _props = Object.assign({}, props, {
+    let _props = Object.assign({}, props, {
       content: content,
       btnType: btnMap[m]
     });

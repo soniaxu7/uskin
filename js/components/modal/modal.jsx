@@ -9,10 +9,11 @@ class Modal extends React.Component {
       className: 'modal',
       visible: true
     };
-    this.onClose = this.onClose.bind(this);
-    this.hide = this.hide.bind(this);
-    this.show = this.show.bind(this);
     this.mask = document.querySelector('.modal-mask');
+
+    ['onClose', 'hide', 'show'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   onClose() {
@@ -22,12 +23,11 @@ class Modal extends React.Component {
     } else {
       this.hide();
     }
-
   }
 
   hide(keepMask) {
-    var that = this,
-      props = this.props;
+    const that = this;
+    const props = this.props;
 
     if (!keepMask) {
       this.mask.classList.add('modal-mask-leave');
@@ -54,7 +54,7 @@ class Modal extends React.Component {
   }
 
   show(keepMask) {
-    var that = this;
+    const that = this;
     if (!keepMask) {
       that.mask.classList.remove('hide');
       this.mask.classList.add('modal-mask-enter');
@@ -88,7 +88,6 @@ class Modal extends React.Component {
     } else {
       this.show();
     }
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -106,7 +105,8 @@ class Modal extends React.Component {
   }
 
   render() {
-    var props = this.props;
+    const props = this.props;
+
     return (
       <div className={this.state.className} style={{width: props.width}}>
         {

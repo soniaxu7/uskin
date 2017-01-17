@@ -1,12 +1,12 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Base = require('./confirm');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Base from './confirm';
 
 function modal(props) {
 
-  var container = null;
+  let container = null;
 
-  var mask = null,
+  let mask = null,
     doc = document,
     root = doc.getElementById('modal-container');
 
@@ -33,7 +33,7 @@ function modal(props) {
     destory();
   }
 
-  var _props = Object.assign({}, props, {
+  let _props = Object.assign({}, props, {
     onAfterClose: onAfterClose
   });
 

@@ -11,19 +11,22 @@ class ModalBase extends React.Component {
       disabled: false
     };
 
-    this.onConfirm = this.onConfirm.bind(this);
+    ['onConfirm'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   onConfirm() {
     this.setState({
       visible: false
     });
+
     this.props.onConfirm && this.props.onConfirm();
   }
 
   render() {
-    var props = this.props,
-      state = this.state;
+    const props = this.props;
+    const state = this.state;
 
     return (
       <Modal {...props} visible={state.visible}>
