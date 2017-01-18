@@ -46,16 +46,14 @@
 
 	'use strict';
 
-	var Tab = uskin.Tab;
+	var _uskin = uskin,
+	    Tab = _uskin.Tab;
+
 
 	function listener(e, status) {
 	  console.debug('click triggered!', e, status);
-	  ReactDOM.render(React.createElement(
-	    'div',
-	    null,
-	    'The Tab is ',
-	    status.name
-	  ), document.getElementById('example2'));
+
+	  document.getElementById('name').innerHTML = status.name;
 	}
 
 	var items1 = [{
@@ -70,13 +68,11 @@
 	  key: '2',
 	  disabled: true
 	}];
-
 	var items2 = [{
 	  name: 'Overview',
 	  key: '0',
 	  default: true
 	}];
-
 	var items3 = [{
 	  name: 'Overview',
 	  key: '0',
@@ -96,7 +92,21 @@
 	  React.createElement(Tab, { items: items1, onClick: listener }),
 	  React.createElement(Tab, { items: items2, onClick: listener }),
 	  React.createElement(Tab, { items: items1, type: 'sm', onClick: listener }),
-	  React.createElement(Tab, { items: items3, type: 'sm', onClick: listener })
+	  React.createElement(Tab, { items: items3, type: 'sm', onClick: listener }),
+	  React.createElement(
+	    'div',
+	    { className: 'name-box' },
+	    React.createElement(
+	      'span',
+	      null,
+	      'The Tab is '
+	    ),
+	    React.createElement(
+	      'span',
+	      { id: 'name' },
+	      status.name
+	    )
+	  )
 	), document.getElementById('example'));
 
 /***/ }

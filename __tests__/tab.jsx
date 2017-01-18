@@ -37,6 +37,43 @@ describe('test tab', () => {
 
     });
 
+    it('tests update props', () => {
+
+      let newItems = [{
+        name: 'Overview',
+        key: '0',
+        default: true
+      }, {
+        name: 'Account Recharge',
+        key: '1'
+      }, {
+        name: 'Recharge Record',
+        key: '2'
+      }];
+      let defaultItem = newItems.find((ele) => ele.default);
+      const tab = shallow(<Tab items={items} />);
+
+      tab.setProps({items: newItems});
+      const selected = tab.find('.selected');
+
+      expect(selected.text()).toEqual(defaultItem.name);
+
+    });
+
+    it('renders tabs with only one item', () => {
+
+      let newItems = [{
+        name: 'Overview',
+        key: '0',
+        default: true
+      }];
+      const tab = shallow(<Tab items={newItems} />);
+      const tabNode = tab.find('.tab');
+
+      expect(tabNode.hasClass('sole')).toEqual(true);
+
+    });
+
   });
 
   describe('test onclick event', () => {
@@ -62,11 +99,11 @@ describe('test tab', () => {
 
     });
 
-    it('tests onClick', () => {
+    it('tests onclick', () => {
 
       let listener = jest.genMockFunction();
-      let key = 1;
       const tab = shallow(<Tab items={items} onClick={listener} />);
+      let key = 1;
       const clickNode = tab.find('.tab').at(key).childAt(0);
 
       clickNode.simulate('click', {
@@ -82,7 +119,28 @@ describe('test tab', () => {
 
     });
 
-    it('tests onClick with disabled item', () => {
+    it('tests onclick with no listener', () => {
+
+      const tab = shallow(<Tab items={items} />);
+      let key = 1;
+      const clickNode = tab.find('.tab').at(key).childAt(0);
+
+      clickNode.simulate('click', {
+        target: {
+          getAttribute(attr) {
+            return items[key].key;
+          }
+        },
+        preventDefault() {}
+      });
+
+      const selected = tab.find('.selected');
+
+      expect(selected.text()).toEqual(items[key].name);
+
+    });
+
+    it('tests onclick with disabled item', () => {
 
       let listener = jest.genMockFunction();
       const tab = shallow(<Tab items={items} onClick={listener} />);

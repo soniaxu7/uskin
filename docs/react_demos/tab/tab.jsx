@@ -1,14 +1,12 @@
-var Tab = uskin.Tab;
+const {Tab} = uskin;
 
 function listener(e, status) {
   console.debug('click triggered!', e, status);
-  ReactDOM.render(
-    <div>The Tab is {status.name}</div>,
-    document.getElementById('example2')
-  );
+
+  document.getElementById('name').innerHTML = status.name;
 }
 
-var items1 = [{
+let items1 = [{
   name: 'Overview',
   key: '0'
 }, {
@@ -20,14 +18,12 @@ var items1 = [{
   key: '2',
   disabled: true
 }];
-
-var items2 = [{
+let items2 = [{
   name: 'Overview',
   key: '0',
   default: true
 }];
-
-var items3 = [{
+let items3 = [{
   name: 'Overview',
   key: '0',
   default: true
@@ -46,6 +42,10 @@ ReactDOM.render(
     <Tab items={items2} onClick={listener} />
     <Tab items={items1} type="sm" onClick={listener} />
     <Tab items={items3} type="sm" onClick={listener} />
+    <div className="name-box">
+      <span>The Tab is </span>
+      <span id="name">{status.name}</span>
+    </div>
   </div>,
   document.getElementById('example')
 );

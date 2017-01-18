@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+
+function noop() {}
 
 class Tab extends React.Component {
 
@@ -13,37 +15,22 @@ class Tab extends React.Component {
   }
 
   componentWillMount() {
-    this._findDefaultTab();
+    this.findDefaultTab(this.props.items);
   }
 
   componentWillReceiveProps(nextProps) {
-    this._findDefaultTab(nextProps.items);
+    this.findDefaultTab(nextProps.items);
   }
 
-  _findDefaultTab(item) {
-    var items = item || this.props.items,
-      selectedKey;
+  findDefaultTab(items) {
+    let selected = items.find((ele) => ele.default);
 
-    function findSelected(element, index) {
-      if (element.default) {
-        selectedKey = element.key;
-        return true;
-      }
-      return false;
-    }
-
-    if (items.some(findSelected)) {
-      this.setState({
-        selectedKey: selectedKey
-      });
-    } else {
-      this.setState({
-        selectedKey: undefined
-      });
-    }
+    this.setState({
+      selectedKey: selected ? selected.key : undefined
+    });
   }
 
-  _getItemClassName(item, key, selectedKey) {
+  getItemClassName(item, key, selectedKey) {
     if (item.disabled) {
       return 'tab disabled';
     } else if (this.props.type !== 'sm' && this.props.items.length === 1) {
@@ -58,24 +45,24 @@ class Tab extends React.Component {
   onClick(e) {
     e.preventDefault();
 
-    var selectedKey = e.target.getAttribute('data-value');
+    let key = e.target.getAttribute('data-value');
     this.setState({
-      selectedKey: selectedKey
+      selectedKey: key
     });
 
-    var selectedItem = this.props.items.filter((tab) => selectedKey === tab.key)[0];
-    this.props.onClick && this.props.onClick.apply(this, [e, selectedItem]);
+    let item = this.props.items.filter((tab) => key === tab.key)[0];
+    this.props.onClick(e, item);
   }
 
   render() {
-    var items = this.props.items,
-      className = (this.props.type === 'sm') ? 'tabs-mini' : 'tabs',
-      selectedKey = this.state.selectedKey;
+    const items = this.props.items;
+    let className = (this.props.type === 'sm') ? 'tabs-mini' : 'tabs';
+    let selectedKey = this.state.selectedKey;
 
     return (
-      <ul className={this.props.className ? this.props.className : className}>
+      <ul className={className}>
         {items.map((item, index) =>
-          <li key={item.key} className={this._getItemClassName(item, item.key, selectedKey)}>
+          <li key={item.key} className={this.getItemClassName(item, item.key, selectedKey)}>
             <a href={(item.href && !item.disabled) ? item.href : null}
               onClick={(item.disabled || selectedKey === item.key) ? null : this.onClick}
               data-value={item.key}>{item.name}</a>
@@ -84,6 +71,23 @@ class Tab extends React.Component {
       </ul>
     );
   }
+
 }
+
+Tab.propsTypes = {
+  items: PropTypes.shape({
+    name: PropTypes.string,
+    key: PropTypes.string,
+    default: PropTypes.bool,
+    disabled: PropTypes.bool
+  }),
+  type: PropTypes.oneOf(['sm']),
+  onClick: PropTypes.func
+};
+
+Tab.defaultProps = {
+  items: [],
+  onClick: noop
+};
 
 export default Tab;
