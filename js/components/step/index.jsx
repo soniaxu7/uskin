@@ -1,46 +1,45 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import styles from '../../mixins/styles';
+
+function noop() {}
 
 class Step extends React.Component {
 
   constructor(props) {
     super(props);
 
-    var index = this.props.items.findIndex((ele) => ele.default);
+    let index = props.items.findIndex((ele) => ele.default);
     this.state = {
       selectedIndex: index
     };
 
-    this.onClick = this.onClick.bind(this);
+    ['onClick'].forEach((func) => {
+      this[func] = this[func].bind(this);
+    });
   }
 
   componentWillReceiveProps(nextProps) {
-    var index = nextProps.items.findIndex((ele) => ele.default);
-
+    let index = nextProps.items.findIndex((ele) => ele.default);
     this.setState({
       selectedIndex: index
     });
   }
 
   onClick(e) {
-    var props = this.props;
-    var disabled = props.disabled;
-    var attrValue = e.target.getAttribute('data-value');
+    const props = this.props;
+    let index = e.target.getAttribute('data-value');
 
-    if (!disabled) {
-      var selectedIndex = parseInt(attrValue, 10);
-      this.setState({
-        selectedIndex: isNaN(selectedIndex) ? -1 : selectedIndex
-      });
+    this.setState({
+      selectedIndex: parseInt(index, 10)
+    });
 
-      var item = props.items.find((ele, index) => index === selectedIndex);
-      props.onClick && props.onClick.apply(this, [e, item]);
-    }
+    let item = props.items.find((ele, i) => i === index);
+    props.onClick(e, item);
   }
 
   getItemClass(item, index, props, state) {
-    var itemStyle = 'step-item';
-    var selected = props.consecutive ? state.selectedIndex >= index : state.selectedIndex === index;
+    let itemStyle = 'step-item';
+    let selected = props.consecutive ? state.selectedIndex >= index : state.selectedIndex === index;
 
     if (selected) {
       itemStyle += ' selected';
@@ -53,33 +52,49 @@ class Step extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      items = props.items,
-      disabled = props.disabled;
-    var state = this.state,
-      selectedIndex = state.selectedIndex;
-
-    var style = styles.getWidth(props.width / items.length);
+    const props = this.props;
+    const items = props.items;
+    const disabled = props.disabled;
+    const state = this.state;
+    const selectedIndex = state.selectedIndex;
+    const style = styles.getWidth(props.width / items.length);
 
     return (
       <ol className="steps" style={{width: props.width}}>
-        {items.map((item, index) => (
-          <li key={index}
-            className={this.getItemClass(item, index, props, state)}
-            style={style}>
-            <span data-value={index}
-              onClick={disabled || selectedIndex === index ? null : this.onClick}></span>
-            <div className="delimiter"></div>
-            <div className="name">{item.name}</div>
-          </li>)
-        )}
+        {
+          items.map((item, index) =>
+            <li key={index}
+              className={this.getItemClass(item, index, props, state)}
+              style={style}>
+              <span data-value={index}
+                onClick={disabled || selectedIndex === index ? null : this.onClick} />
+              <div className="delimiter" />
+              <div className="name">{item.name}</div>
+            </li>
+          )
+        }
       </ol>
     );
   }
+
 }
 
+Step.propsTypes = {
+  items: PropTypes.shape({
+    name: PropTypes.string,
+    default: PropTypes.bool
+  }),
+  width: PropTypes.number,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  consecutive: PropTypes.bool
+};
+
 Step.defaultProps = {
-  width: 570
+  width: 570,
+  onClick: noop,
+  disabled: false,
+  consecutive: false
 };
 
 export default Step;

@@ -38,6 +38,26 @@ describe('test step', () => {
 
   });
 
+  it('tests onclick with no listener', () => {
+
+    const step = shallow(<Step items={items} />);
+    let key = 1;
+    const clickNode = step.find('.step-item').at(key).childAt(0);
+    let dataValue = clickNode.props()['data-value'];
+
+    clickNode.simulate('click', {
+      target: {
+        getAttribute() {
+          return dataValue;
+        }
+      }
+    });
+    const selectedNode = step.find('.selected');
+
+    expect(selectedNode.text()).toEqual(items[key].name);
+
+  });
+
   it('tests onclick step', () => {
 
     let newItems = [{
@@ -64,7 +84,9 @@ describe('test step', () => {
         }
       }
     });
+    const selectedNode = step.find('.selected');
 
+    expect(selectedNode.text()).toEqual(items[key].name);
     expect(listener.mock.calls[0][1]).toEqual(items[key]);
 
   });
@@ -99,6 +121,29 @@ describe('test step', () => {
     clickNode.simulate('click');
 
     expect(listener.mock.calls.length).toEqual(0);
+
+  });
+
+  it('tests update props', () => {
+
+    const step = shallow(<Step items={items} />);
+    let newItems = [{
+      name: 'title 1',
+      default: true
+    }, {
+      name: 'title 2'
+    }, {
+      name: 'title 3'
+    }, {
+      name: 'title 4'
+    }];
+
+    step.setProps({items: newItems});
+
+    let selectedItem = newItems.find((ele) => ele.default);
+    const selectedNode = step.find('.selected');
+
+    expect(selectedNode.text()).toEqual(selectedItem.name);
 
   });
 

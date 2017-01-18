@@ -58,6 +58,18 @@ ReactDOM.render(
       <td></td>
       <td>设置steps的总长度</td>
     </tr>
+     <tr>
+      <td>disabled</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>设置是否让用户可点击每个step</td>
+    </tr>
+     <tr>
+      <td>consecutive</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>设置是否step前n个都是被选中状态</td>
+    </tr>
   </tbody>
 </table>
 
@@ -79,16 +91,10 @@ ReactDOM.render(
       <td>每个元素的显示名称</td>
     </tr>
     <tr>
-      <td>value</td>
-      <td>String</td>
-      <td></td>
-      <td>每个元素的唯一值，相当于key值</td>
-    </tr>
-    <tr>
-      <td>selected</td>
+      <td>default</td>
       <td>Boolean</td>
       <td></td>
-      <td>设置是否是selected状态</td>
+      <td>设置是否是被选中状态</td>
     </tr>
   </tbody>
 </table>

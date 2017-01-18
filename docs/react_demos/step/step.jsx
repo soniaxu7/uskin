@@ -1,37 +1,36 @@
-var Step = uskin.Step;
-var Button = uskin.Button;
-var ButtonGroup = uskin.ButtonGroup;
+const {Button, ButtonGroup, Step} = uskin;
 
 function listener(e, status) {
   console.debug('click triggered!', e, status);
 }
 
-var items1 = [{
-    name: 'step 1'
-  }, {
-    name: 'step 2'
-  }, {
-    name: 'step 3'
-  }],
-  items2 = [{
-    name: 'title 1'
-  }, {
-    name: 'title 2'
-  }, {
-    name: 'title 3',
-    default: true
-  }, {
-    name: 'title 4'
-  }];
+let items1 = [{
+  name: 'step 1'
+}, {
+  name: 'step 2'
+}, {
+  name: 'step 3'
+}];
+let items2 = [{
+  name: 'title 1'
+}, {
+  name: 'title 2'
+}, {
+  name: 'title 3',
+  default: true
+}, {
+  name: 'title 4'
+}];
 
-var StepForm1 = React.createClass({
-  onClick: function(index) {
+class StepForm1 extends React.Component {
+
+  onClick(index) {
     this.refs.step.setState({
       selectedIndex: index
     });
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div style={{textAlign: 'center'}}>
         <Step ref="step" items={items1} onClick={listener} disabled={true} consecutive={true} />
@@ -44,16 +43,18 @@ var StepForm1 = React.createClass({
       </div>
     );
   }
-});
 
-var StepForm2 = React.createClass({
-  onClick: function(index) {
+}
+
+class StepForm2 extends React.Component {
+
+  onClick(index) {
     this.refs.step.setState({
       selectedIndex: index
     });
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div style={{textAlign: 'center'}}>
         <Step ref="step" items={items2} onClick={listener} disabled={true} width="572" />
@@ -67,7 +68,8 @@ var StepForm2 = React.createClass({
       </div>
     );
   }
-});
+
+}
 
 ReactDOM.render(
   <div style={{paddingBottom: '100px'}}>
