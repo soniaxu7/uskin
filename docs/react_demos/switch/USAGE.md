@@ -3,7 +3,8 @@
 
 ## Usage
 ```
-var Switch = uskin.Switch;
+const {Switch} = uskin;
+
 ReactDOM.render(
   <Switch
     onChange={listener}
@@ -11,8 +12,9 @@ ReactDOM.render(
     labelOff="OFF"
     checked={true}
     width={50}
-    disabled={false}
-/>, document);
+    disabled={false} />,
+  document
+);
 ```
 
 ## API
