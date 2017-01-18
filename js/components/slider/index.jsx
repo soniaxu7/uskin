@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import styles from '../../mixins/styles';
+
+function noop() {}
 
 class Slider extends React.Component {
 
@@ -12,10 +14,9 @@ class Slider extends React.Component {
     };
 
     ['getProps', 'startSlide', 'endSlide', 'updateSlide', 'finishSlide',
-      'disableAnimate', 'enableAnimate'
-    ].forEach((func) => {
-      this[func] = this[func].bind(this);
-    });
+      'disableAnimate', 'enableAnimate'].forEach((func) => {
+        this[func] = this[func].bind(this);
+      });
   }
 
   componentWillMount() {
@@ -27,19 +28,15 @@ class Slider extends React.Component {
   }
 
   getProps(props) {
-    this._step = isNaN(Math.abs(props.step)) ? 1 : Math.abs(props.step);
-    var unit = (this._step).toString().split('.')[1];
+    this._step = props.step <= 0 ? -props.step : props.step;
+    let unit = (this._step).toString().split('.')[1];
     this._unit = unit ? unit.length : 0;
-    this._min = props.min !== undefined ? parseFloat(props.min).toFixed(this._unit) : 0;
-    this._max = props.max !== undefined ? parseFloat(props.max).toFixed(this._unit) : 100;
+    this._min = props.min;
+    this._max = props.max;
     this._sum = this._max - this._min;
-    var value = props.value !== undefined ? parseFloat(props.value).toFixed(this._unit) : 0;
 
-    this._min = parseFloat(this._min);
-    this._max = parseFloat(this._max);
-    value = parseFloat(value);
-
-    if (value <= this._min) {
+    let value = props.value;
+    if (value < this._min) {
       value = this._min;
     } else if (value > this._max) {
       value = this._max;
@@ -76,7 +73,7 @@ class Slider extends React.Component {
     this.finishSlide(e);
   }
 
-  _inbound(perc) {
+  inbound(perc) {
     if (perc < 0) {
       return 0;
     } else if (perc > 1) {
@@ -86,106 +83,110 @@ class Slider extends React.Component {
     }
   }
 
-  _trackOffsetPerc(e) {
-    return this._inbound(
-      (e.clientX - this.refs.slider.getBoundingClientRect().left) / this.refs.slider.offsetWidth);
+  trackOffsetPerc(e) {
+    return this.inbound(
+      (e.clientX - this.refs.slider.getBoundingClientRect().left) / this.refs.slider.offsetWidth
+    );
   }
 
-  _trackOffsetCloserPerc(e) {
-    var perc = this._trackOffsetPerc(e);
-    var percStep = 1 / (this._sum / this._step);
+  trackOffsetCloserPerc(e) {
+    let perc = this.trackOffsetPerc(e);
+    let percStep = 1 / (this._sum / this._step);
 
-    return this._inbound(Math.round(perc / percStep) * percStep);
+    return this.inbound(Math.round(perc / percStep) * percStep);
   }
 
-  _trackOffsetValue(perc) {
+  trackOffsetValue(perc) {
     return (parseFloat(this._sum * perc) + parseFloat(this._min)).toFixed(this._unit);
   }
 
   updateSlide(e) {
     this.disableAnimate();
-    var perc = this._trackOffsetPerc(e);
-    var value = this._trackOffsetValue(perc);
 
+    let perc = this.trackOffsetPerc(e);
+    let value = this.trackOffsetValue(perc);
     this.setState({
       perc: perc,
       value: value
     });
 
-    this.props.onChange && this.props.onChange(e, value);
+    this.props.onChange(e, value);
   }
 
   finishSlide(e) {
     this.enableAnimate();
 
-    var perc = this._trackOffsetCloserPerc(e);
-    var value = this._trackOffsetValue(perc);
-
+    let perc = this.trackOffsetCloserPerc(e);
+    let value = this.trackOffsetValue(perc);
     if (isNaN(perc)) {
       perc = 0;
     }
     if (isNaN(value)) {
       value = this._min;
     }
-
     this.setState({
       perc: perc,
       value: value
     });
 
-    this.props.onChange && this.props.onChange(e, value);
+    this.props.onChange(e, value);
   }
 
   render() {
-    var props = this.props,
-      state = this.state,
-      min = this._min,
-      max = this._max,
-      disabled = props.disabled;
+    const props = this.props;
+    const state = this.state;
+    const min = this._min;
+    const max = this._max;
+    const {disabled, hideThumb} = props;
+    const style = styles.getWidth(props.width);
 
-    var style = styles.getWidth(props.width);
+    let className = 'slider';
+    if (disabled) {
+      className += ' disabled';
+    } else if (hideThumb) {
+      className += ' noclick';
+    }
 
     return (
-      <div className={'slider' + (disabled ? ' disabled' : '')} data-min={min} data-max={max} data-value={state.value} ref="slider"
-        onMouseDown={disabled ? null : this.startSlide}
+      <div className={className}
+        data-min={min}
+        data-max={max}
+        data-value={state.value}
+        ref="slider"
+        onMouseDown={disabled || hideThumb ? null : this.startSlide}
         style={{width: style.width}}>
         <div ref="track"
           className="slider-track"
-          style={{width: (state.perc * 100) + '%'}}>
-        </div>
+          style={{width: (state.perc * 100) + '%'}} />
         <div ref="thumb"
           className={'slider-thumb' + (props.hideThumb ? ' hide' : '')}
-          style={{left: (state.perc * 100) + '%'}}>
-        </div>
+          style={{left: (state.perc * 100) + '%'}} />
       </div>
     );
   }
+
 }
 
 Slider.propTypes = {
-  min: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  max: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  step: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  width: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  value: PropTypes.number,
+  width: PropTypes.number,
   onChange: React.PropTypes.func,
   hideThumb: React.PropTypes.bool,
   disabled: React.PropTypes.bool
+};
+
+Slider.defaultProps = {
+  min: 1,
+  max: 10,
+  step: 1,
+  value: 1,
+  width: 300,
+  onChange: noop,
+  hideThumb: false,
+  disabled: false
 };
 
 export default Slider;

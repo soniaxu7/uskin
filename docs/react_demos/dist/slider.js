@@ -46,49 +46,115 @@
 
 	'use strict';
 
-	var Slider = uskin.Slider;
+	var _uskin = uskin,
+	    Slider = _uskin.Slider;
 
-	var value = 0,
-	    value2 = -20,
-	    value3 = 0.54,
-	    value4 = 3,
-	    value5 = 1;
 
-	document.getElementById('value1').innerHTML = value;
-	document.getElementById('value2').innerHTML = value2;
-	document.getElementById('value3').innerHTML = value3;
-	document.getElementById('value4').innerHTML = value4;
-	document.getElementById('value5').innerHTML = value5;
+	var value = 0;
+	var value2 = -20;
+	var value3 = 0.54;
+	var value4 = 3;
+	var value5 = 1;
+	var value6 = 8;
 
-	function listener(e, status) {
-	  document.getElementById('value1').innerHTML = status;
+	function listener(nodeId, e, status) {
+	  document.getElementById('value' + nodeId).innerHTML = status;
 	}
 
-	function listener2(e, status) {
-	  document.getElementById('value2').innerHTML = status;
-	}
-
-	function listener3(e, status) {
-	  document.getElementById('value3').innerHTML = status;
-	}
-
-	function listener4(e, status) {
-	  document.getElementById('value4').innerHTML = status;
-	}
-
-	function listener5(e, status) {
-	  document.getElementById('value5').innerHTML = status;
-	}
-
-	ReactDOM.render(React.createElement(Slider, { onChange: listener }), document.getElementById('example'));
-
-	ReactDOM.render(React.createElement(Slider, { min: '-100', max: '100', value: value2, step: '40', width: 400, onChange: listener2 }), document.getElementById('example2'));
-
-	ReactDOM.render(React.createElement(Slider, { min: '0', max: '3', value: value3, step: '0.01', width: '500', onChange: listener3 }), document.getElementById('example3'));
-
-	ReactDOM.render(React.createElement(Slider, { min: '0', max: '10', value: value4, disabled: true, onChange: listener4 }), document.getElementById('example4'));
-
-	ReactDOM.render(React.createElement(Slider, { min: '1', max: '1', value: value5, onChange: listener5 }), document.getElementById('example5'));
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Slider, { onChange: listener.bind(null, '1') }),
+	    React.createElement(
+	      'div',
+	      { className: 'value', id: 'value1' },
+	      value
+	    ),
+	    React.createElement(
+	      'span',
+	      null,
+	      'Default: min = 0, max = 100, value = 0'
+	    )
+	  ),
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Slider, { min: -100, max: 100, value: value2, step: 40, width: 400, onChange: listener.bind(null, '2') }),
+	    React.createElement(
+	      'div',
+	      { className: 'value', id: 'value2' },
+	      value2
+	    ),
+	    React.createElement(
+	      'span',
+	      null,
+	      'min = -100, max = 100, value = -20, unit = 40'
+	    )
+	  ),
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Slider, { min: 0, max: 3, value: value3, step: 0.01, width: 500, onChange: listener.bind(null, '3') }),
+	    React.createElement(
+	      'div',
+	      { className: 'value', id: 'value3' },
+	      value3
+	    ),
+	    React.createElement(
+	      'span',
+	      null,
+	      'min = 0, max = 3, value = 0.54, unit = 0.01'
+	    )
+	  ),
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Slider, { min: 0, max: 10, value: value4, disabled: true, onChange: listener.bind(null, '4') }),
+	    React.createElement(
+	      'div',
+	      { className: 'value', id: 'value4' },
+	      value4
+	    ),
+	    React.createElement(
+	      'span',
+	      null,
+	      'Disabled = true'
+	    )
+	  ),
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Slider, { min: 1, max: 1, value: value5, onChange: listener.bind(null, '5') }),
+	    React.createElement(
+	      'div',
+	      { className: 'value', id: 'value5' },
+	      value5
+	    ),
+	    React.createElement(
+	      'span',
+	      null,
+	      'when min == max == value == 1'
+	    )
+	  ),
+	  React.createElement(
+	    'div',
+	    { className: 'box' },
+	    React.createElement(Slider, { min: 1, max: 10, value: value6, hideThumb: true }),
+	    React.createElement(
+	      'div',
+	      { className: 'value', id: 'value6' },
+	      value6
+	    ),
+	    React.createElement(
+	      'span',
+	      null,
+	      'hideThumb = true'
+	    )
+	  )
+	), document.getElementById('example'));
 
 /***/ }
 /******/ ]);

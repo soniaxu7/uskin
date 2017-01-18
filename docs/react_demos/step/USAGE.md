@@ -3,19 +3,30 @@
 
 ## Usage
 ```
-var Step = uskin.Step;
+const {Step} = uskin;
 
-var items = [{ name: 'step 1', value: '0' },
-          { name: 'step 2', value: '1' },
-          { name: 'step 3', value: '2' , selected: true},
-          { name: 'step 4', value: '3' }];
+let items = [{
+  name: 'step 1',
+  value: '0'
+}, {
+  name: 'step 2',
+  value: '1'
+}, {
+  name: 'step 3',
+  value: '2',
+  selected: true
+}, {
+  name: 'step 4',
+  value: '3'
+}];
 
 ReactDOM.render(
   <Step
     items={items}
     onClick={this.stepOnClick}
-    width={600}
-  />, document);
+    width={600} />,
+  document
+);
 ```
 
 ## API
