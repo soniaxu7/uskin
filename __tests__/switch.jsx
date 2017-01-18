@@ -35,16 +35,44 @@ describe('test switch', () => {
 
     const input = checkbox.find('input');
     input.simulate('change');
-
     const label = checkbox.find('label');
+
     expect(label.text()).toEqual(LABEL_OFF);
     expect(listener.mock.calls[0][1]).toEqual(false);
 
     input.simulate('change');
-
     const label2 = checkbox.find('label');
+
     expect(label2.text()).toEqual(LABEL_ON);
     expect(listener.mock.calls[1][1]).toEqual(true);
+
+  });
+
+  it('tests onclick with no listener', () => {
+
+    const checkbox = shallow(
+      <Switch labelOn={LABEL_ON} labelOff={LABEL_OFF} />
+    );
+
+    const input = checkbox.find('input');
+    input.simulate('change');
+    const label = checkbox.find('label');
+
+    expect(label.text()).toEqual(LABEL_ON);
+
+  });
+
+  it('tests disabled switch', () => {
+
+    let listener = jest.genMockFunction();
+    const checkbox = shallow(
+      <Switch labelOn={LABEL_ON} labelOff={LABEL_OFF} disabled={true} onChange={listener} />
+    );
+
+    const input = checkbox.find('input');
+    input.simulate('change');
+
+    expect(listener).not.toBeCalled();
 
   });
 

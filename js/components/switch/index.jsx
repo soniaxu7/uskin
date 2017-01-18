@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import hash from '../../mixins/hash';
 import styles from '../../mixins/styles';
+
+function noop() {}
 
 class Switch extends React.Component {
 
@@ -8,17 +10,13 @@ class Switch extends React.Component {
     super(props);
 
     this.state = {
-      id: hash()
-    };
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  componentWillMount() {
-    var props = this.props;
-    this.setState({
+      id: hash(),
       checked: props.checked,
       disabled: props.disabled
+    };
+
+    ['onChange'].forEach((func) => {
+      this[func] = this[func].bind(this);
     });
   }
 
@@ -27,42 +25,51 @@ class Switch extends React.Component {
     this.setState({
       checked: checked
     });
-    this.props.onChange && this.props.onChange.apply(this, [e, checked]);
+
+    this.props.onChange(e, checked);
   }
 
-  _getClass() {
-    var ret = ['switch'];
-    if (this.props.disabled) {
-      ret.push('disabled');
+  getClassName(props) {
+    let className = 'switch';
+
+    if (props.disabled) {
+      className += ' disabled';
     }
-    return ret.join(' ');
+
+    return className;
   }
 
   render() {
-    var props = this.props,
-      state = this.state;
-
-    var style = styles.getWidth(props.width);
+    const props = this.props;
+    const state = this.state;
+    const style = styles.getWidth(props.width);
 
     return (
-      <div className={this._getClass()} style={style}>
+      <div className={this.getClassName(props)} style={style}>
         <input type="checkbox" id={state.id} checked={state.checked}
-          onChange={state.disabled ? undefined : this.onChange} />
+          onChange={state.disabled ? null : this.onChange} />
         <label htmlFor={state.id} className="switch-inner">
           {state.checked ? props.labelOn : props.labelOff}
         </label>
       </div>
     );
   }
+
 }
 
 Switch.propTypes = {
-  labelOn: React.PropTypes.string,
-  labelOff: React.PropTypes.string,
-  width: React.PropTypes.number,
-  disabled: React.PropTypes.bool,
-  checked: React.PropTypes.bool,
-  onChange: React.PropTypes.func
+  labelOn: PropTypes.string,
+  labelOff: PropTypes.string,
+  width: PropTypes.number,
+  disabled: PropTypes.bool,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func
+};
+
+Switch.defaultProps = {
+  disabled: false,
+  checked: false,
+  onChange: noop
 };
 
 export default Switch;
