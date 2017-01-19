@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../../mixins/styles';
 import createClassName from '../../mixins/createClassName';
 
 const DOC = document;
 const FILTER_ID = 'uskin-filter-container';
+
+function noop() {}
 
 class Table extends React.Component {
 
@@ -21,31 +23,28 @@ class Table extends React.Component {
       filterBy: undefined
     };
 
-    this._sortDefaultType = ['number', 'boolean', 'date', 'string'];
     ['resizeCol', 'onCheck', 'check', 'filter', 'sort'].forEach((func) => {
       this[func] = this[func].bind(this);
     });
   }
 
   componentWillMount() {
-    if (this.props.checkbox) {
-      var initChecked = this.props.checkboxInitialize;
+    const props = this.props;
+    let initChecked = this.props.checkboxInitialize;
 
-      if (initChecked) {
-        var data = this.props.data,
-          key = this.props.dataKey,
-          checkedKey = {};
+    if (props.checkbox && initChecked) {
+      let key = props.dataKey;
+      let checkedKey = {};
 
-        data.forEach((item) => {
-          if (initChecked(item)) {
-            checkedKey[item[key]] = true;
-          }
-        });
+      props.data.forEach((item) => {
+        if (initChecked(item)) {
+          checkedKey[item[key]] = true;
+        }
+      });
 
-        this.setState({
-          checkedKey: checkedKey
-        });
-      }
+      this.setState({
+        checkedKey: checkedKey
+      });
     }
   }
 
@@ -63,7 +62,7 @@ class Table extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    var data = this.getProcessedData(nextProps.data, nextProps.dataKey);
+    let data = this.getProcessedData(nextProps.data, nextProps.dataKey);
     this.setState({
       data: data,
       loading: nextProps.loading
@@ -71,16 +70,16 @@ class Table extends React.Component {
   }
 
   resizeCol() {
-    var theadDOM = this.refs.thead,
-      tbodyDOM = this.refs.tbody;
+    const theadDOM = this.refs.thead;
+    const tbodyDOM = this.refs.tbody;
 
-    var colLength = this.props.column.length + (this.props.checkbox ? 1 : 0);
+    let colLength = this.props.column.length + (this.props.checkbox ? 1 : 0);
 
     if (tbodyDOM.scrollHeight > tbodyDOM.clientHeight) {
       if (colLength === theadDOM.childNodes.length) {
-        var scrollCol = DOC.createElement('div');
-        var width = (tbodyDOM.offsetWidth - tbodyDOM.clientWidth) + 'px';
-        var colStyle = scrollCol.style;
+        let scrollCol = DOC.createElement('div');
+        let width = (tbodyDOM.offsetWidth - tbodyDOM.clientWidth) + 'px';
+        let colStyle = scrollCol.style;
 
         colStyle.flex = 1;
         colStyle.width = width;
@@ -97,10 +96,10 @@ class Table extends React.Component {
 
   //checkbox onChange
   onCheck(e) {
-    var key = e.target.value,
-      isChecked = e.target.checked,
-      checkedKeys = this.state.checkedKey,
-      newCheckedKeys = checkedKeys;
+    let key = e.target.value;
+    let isChecked = e.target.checked;
+    let checkedKeys = this.state.checkedKey;
+    let newCheckedKeys = checkedKeys;
 
     if (key === 'null') {
       newCheckedKeys = {};
@@ -120,12 +119,12 @@ class Table extends React.Component {
     this.check(newCheckedKeys);
 
     //deliver selected data to outside table
-    var checkedItem,
-      dataKey = this.props.dataKey,
-      arr = [];
+    let checkedItem;
+    let dataKey = this.props.dataKey;
+    let arr = [];
 
     this.state.data.forEach((item) => {
-      if (key === ('' + item[dataKey])) {
+      if ('' + key === '' + item[dataKey]) {
         checkedItem = item;
       }
       if (newCheckedKeys[item[dataKey]]) {
@@ -133,13 +132,11 @@ class Table extends React.Component {
       }
     });
 
-    var onChange = this.props.checkboxOnChange;
-    onChange && onChange(isChecked, checkedItem, arr);
+    this.props.checkboxOnChange(isChecked, checkedItem, arr);
 
     //deliver data when all checkbox is clicked
     if (key === 'null') {
-      let onChangeAll = this.props.checkboxOnChangeAll;
-      onChangeAll && onChangeAll(isChecked, isChecked ? this.state.data : []);
+      this.props.checkboxOnChangeAll(isChecked, isChecked ? this.state.data : []);
     }
   }
 
@@ -148,16 +145,15 @@ class Table extends React.Component {
     e.stopPropagation();
     e = e.nativeEvent;
 
-
     //create a filter, if it exists, destroy it
-    var prevFilter = DOC.getElementById(FILTER_ID);
+    const prevFilter = DOC.getElementById(FILTER_ID);
     if (prevFilter) {
       this.destroyFilter();
     }
     this.createFilter(column, e);
 
     //destroy filter listener
-    var that = this;
+    const that = this;
     DOC.addEventListener('click', function shouldDestroyFilter(event) {
       if (!(e.target.isEqualNode(event.target) && event.target.className === 'filter-icon')) {
         that.destroyFilter();
@@ -168,7 +164,7 @@ class Table extends React.Component {
   }
 
   destroyFilter() {
-    var filter = DOC.getElementById(FILTER_ID);
+    const filter = DOC.getElementById(FILTER_ID);
     if (filter) {
       let root = filter.parentNode;
       ReactDOM.unmountComponentAtNode(filter);
@@ -177,12 +173,12 @@ class Table extends React.Component {
   }
 
   createFilter(column, e) {
-    var root = e.target.parentNode,
-      state = this.state,
-      filterColKey = state.filterColKey,
-      filterBy = state.filterBy;
+    let root = e.target.parentNode;
+    const state = this.state;
+    let filterColKey = state.filterColKey;
+    let filterBy = state.filterBy;
 
-    var filter = (
+    const filter = (
       <div className="filter" data-key={column.key}>
         <div className={!filterBy ? 'selected' : null} key="null"
           onClick={this.filter.bind(this, {}, undefined)}>
@@ -215,18 +211,18 @@ class Table extends React.Component {
       </div>
     );
 
-    var container = document.createElement('div');
+    let container = document.createElement('div');
     container.id = FILTER_ID;
     root.appendChild(container);
     ReactDOM.render(filter, container);
   }
 
   getFilteredData(columnKeys, filterBy, data) {
-    var newData = data;
+    let newData = data;
 
     if (filterBy) {
-      let props = this.props,
-        columns = props.column.filter((column) => columnKeys[column.key]);
+      const props = this.props;
+      let columns = props.column.filter((column) => columnKeys[column.key]);
 
       //filterBy can be function or string
       if (typeof filterBy === 'function') {
@@ -245,7 +241,7 @@ class Table extends React.Component {
   onSort(column, direction, e) {
     e.stopPropagation();
 
-    var filterNode = e.target.parentNode.parentNode;
+    let filterNode = e.target.parentNode.parentNode;
     if (filterNode.parentNode.getAttribute('id') !== FILTER_ID && filterNode.getAttribute('id') !== FILTER_ID) {
       if (this.shouldClearSort(column, direction)) {
         this.state.data = null;
@@ -266,24 +262,24 @@ class Table extends React.Component {
 
   //sort helper
   shouldClearSort(column, direction) {
-    var state = this.state,
-      prevCol = state.sortCol,
-      prevDir = state.sortDirection;
+    const state = this.state;
+    let prevCol = state.sortCol;
+    let prevDir = state.sortDirection;
 
     return (column === prevCol && direction === prevDir);
   }
 
   getSortedData(column, direction, data) {
-    var props = this.props,
-      propsData = props.data,
-      dataKey = props.dataKey;
+    const props = this.props;
+    let propsData = props.data;
+    let dataKey = props.dataKey;
 
     if (data === propsData) {
       data = Object.assign([], propsData);
     }
 
     data.sort((item1, item2) => {
-      var ret = this.sortData(item1, item2, column.sortBy, column.dataIndex);
+      let ret = this.sortData(item1, item2, column.sortBy, column.dataIndex);
       return ret !== 0 ? ret * direction : this.sortByKey(item1, item2, dataKey);
     });
 
@@ -332,8 +328,8 @@ class Table extends React.Component {
   }
 
   filter(columnKeys, filterBy, e) {
-    var data = this.props.data,
-      state = this.state;
+    let data = this.props.data;
+    const state = this.state;
 
     if (filterBy) {
       data = this.getFilteredData(columnKeys, filterBy, data);
@@ -355,7 +351,7 @@ class Table extends React.Component {
   }
 
   sort(column, direction) {
-    var data = this.state.data;
+    let data = this.state.data;
     if (!column) {
       data = this.props.data;
     }
@@ -375,8 +371,8 @@ class Table extends React.Component {
   }
 
   getProcessedData(oldData, key) {
-    var data = oldData,
-      state = this.state;
+    let data = oldData;
+    const state = this.state;
 
     //check filter and sort
     if (!state.filterBy && state.sortCol) {
@@ -424,13 +420,13 @@ class Table extends React.Component {
   }
 
   render() {
-    var props = this.props,
-      state = this.state,
-      dataKey = props.dataKey,
-      loading = state.loading;
+    const props = this.props;
+    const state = this.state;
+    let dataKey = props.dataKey;
+    let loading = state.loading;
 
-    var style = styles.getWidth(props.width);
-    var className = createClassName({
+    let style = styles.getWidth(props.width);
+    let className = createClassName({
       default: 'table',
       prefix: 'table-',
       props: {
@@ -440,7 +436,7 @@ class Table extends React.Component {
       }
     });
 
-    var checkedAll = this.checkedAll(state.data, dataKey, state.checkedKey);
+    let checkedAll = this.checkedAll(state.data, dataKey, state.checkedKey);
 
     return (
       <div style={style} className={className}>
@@ -454,8 +450,8 @@ class Table extends React.Component {
           }
           {
             props.column.map((col) => {
-              var isSorted = (col === state.sortCol);
-              var nextDir = (isSorted && state.sortDirection) ? state.sortDirection * -1 : 1;
+              let isSorted = (col === state.sortCol);
+              let nextDir = (isSorted && state.sortDirection) ? state.sortDirection * -1 : 1;
 
               return (
                 <div key={col.key} style={col.width ? this.getFixedWidth(col.width) : null}
@@ -498,8 +494,8 @@ class Table extends React.Component {
         <div ref="tbody" style={{display: loading ? 'none' : 'block'}} className="table-body">
           {
             state.data.map((item, index) => {
-              var key = item[dataKey],
-                checked = !!state.checkedKey[key];
+              let key = item[dataKey];
+              let checked = !!state.checkedKey[key];
 
               return (
                 <div key={key} className={'row' + (checked ? ' selected' : '')}>
@@ -528,6 +524,21 @@ class Table extends React.Component {
       </div>
     );
   }
+
 }
+
+Table.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.object),
+  checkboxOnChange: PropTypes.func,
+  checkboxOnChangeAll: PropTypes.func
+};
+
+Table.defaultProps = {
+  columns: [],
+  data: [],
+  checkboxOnChange: noop,
+  checkboxOnChangeAll: noop
+};
 
 export default Table;

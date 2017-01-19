@@ -1,8 +1,6 @@
-var Table = uskin.Table,
-  Button = uskin.Button,
-  InputSearch = uskin.InputSearch;
+const {Button, InputSearch, Table} = uskin;
 
-var column = [{
+let column = [{
   title: 'ID',
   key: 'id',
   width: '150px',
@@ -62,7 +60,7 @@ var column = [{
     key: 'level 4'
   }],
   sortBy: function(item1, item2) {
-    var weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];
+    let weight = ['First Level', 'Second Level', 'Third Level', 'Fourth Level'];
     if (weight.indexOf(item1.level) > weight.indexOf(item2.level)) {
       return 1;
     } else if (weight.indexOf(item1.level) < weight.indexOf(item2.level)) {
@@ -116,7 +114,7 @@ var column = [{
   }
 }];
 
-var data1 = [{
+let data1 = [{
   id: 1,
   category: 'Micro-1',
   flavor: 'Micro',
@@ -160,7 +158,7 @@ var data1 = [{
   price: '0.444'
 }];
 
-var data2 = [{
+let data2 = [{
   id: 1,
   category: 'Micro-1',
   flavor: 'Micro',
@@ -211,28 +209,35 @@ var data2 = [{
   price: '0.444'
 }];
 
-var TableForm = React.createClass({
-  getInitialState: function() {
-    return ({
+class TableForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
       update: true,
       load: false
+    };
+
+    ['inputSearchOnChange', 'updateData', 'toggleLoading', 'clearState'].forEach((func) => {
+      this[func] = this[func].bind(this);
     });
-  },
+  }
 
-  checkboxInitialize: function(item) {
+  checkboxInitialize(item) {
     return item.level.indexOf('Second Level') > -1;
-  },
+  }
 
-  checkboxOnChange: function(status, item, arr) {
-    // console.log('checkbox on change', status, item, arr);
-  },
+  checkboxOnChange(status, item, arr) {
+    console.debug('checkbox on change', status, item, arr);
+  }
 
-  checkboxOnChangeAll: function(status, arr) {
-    // console.log('checkbox on change all', status, arr);
-  },
+  checkboxOnChangeAll(status, arr) {
+    console.debug('checkbox on change all', status, arr);
+  }
 
-  inputSearchOnChange: function(text, status) {
-    var filterCol = {
+  inputSearchOnChange(text, status) {
+    let filterCol = {
       category: true,
       level: true,
       price: true
@@ -240,10 +245,10 @@ var TableForm = React.createClass({
 
     if (text !== '') {
       this.refs.table.filter(filterCol, function(item, columns) {
-        var keys = columns.map((col) => col.dataIndex);
-        var ret = keys.some((key) => {
+        let keys = columns.map((col) => col.dataIndex);
+        let ret = keys.some((key) => {
           if (item[key]) {
-            var data = item[key].toLowerCase();
+            let data = item[key].toLowerCase();
             return data.indexOf(text.toLowerCase()) > -1;
           }
           return false;
@@ -253,26 +258,26 @@ var TableForm = React.createClass({
     } else {
       this.refs.table.filter(filterCol);
     }
-  },
+  }
 
-  updateData: function() {
+  updateData() {
     this.setState({
       update: !this.state.update
     });
-  },
+  }
 
-  toggleLoading: function() {
+  toggleLoading() {
     this.setState({
       loading: !this.state.loading
     });
-  },
+  }
 
-  clearState: function() {
+  clearState() {
     this.refs.table.clearState();
-  },
+  }
 
-  render: function() {
-    var data = this.state.update ? data1 : data2;
+  render() {
+    let data = this.state.update ? data1 : data2;
 
     return (
       <div className="main-box">
@@ -307,6 +312,7 @@ var TableForm = React.createClass({
       </div>
     );
   }
-});
+
+}
 
 ReactDOM.render(<TableForm />, document.getElementById('example'));

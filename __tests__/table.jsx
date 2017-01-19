@@ -191,6 +191,8 @@ describe('test table', () => {
         striped={true}
         hover={true} />
     );
+    table.instance().resizeCol = () => {};
+
   });
 
   it('renders table', () => {
@@ -206,35 +208,22 @@ describe('test table', () => {
 
   });
 
-  xit('tests onclick checkbox row', () => {
+  it('tests onclick checkbox row', () => {
 
-    // let key = 0;
-    // const checkbox = table.find('input').at(key + 1);
+    let key = 0;
+    let checked = true;
+    const checkbox = table.find('input').at(key + 1);
 
-    // checkbox.simulate('change', {
-    //   target: {
-    //     value: data[key].key,
-    //     checked: true
-    //   }
-    // });
+    checkbox.simulate('change', {
+      target: {
+        value: data[key].id,
+        checked: checked
+      }
+    });
 
-    // expect(checkboxOnChange).toBeCalled();
-    // expect(checkboxOnChange.mock.calls[0][0]).toEqual(false);
-    // expect(checkboxOnChange.mock.calls[0][1]).toEqual(data[key]);
-
-  });
-
-  xit('sorts by desc id value', () => {
-
-    // const arrowdown = table.find('.sort-down').at(0);
-
-    // arrowdown.simulate('click', {
-    //   stopPropagation() {}
-    // });
-
-    // let idRow = table.find('.row').at(0).childAt(1);
-
-    // expect(idRow.text()).toEqual('6');
+    expect(checkboxOnChange).toBeCalled();
+    expect(checkboxOnChange.mock.calls[0][0]).toEqual(checked);
+    expect(checkboxOnChange.mock.calls[0][1]).toEqual(data[key]);
 
   });
 
