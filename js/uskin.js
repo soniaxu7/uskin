@@ -23,7 +23,7 @@ import Table from '../js/components/table/index';
 import Tip from '../js/components/tip/index';
 import Tooltip from '../js/components/tooltip/index';
 
-var uskin = {
+const uskin = {
   Breadcrumb,
   Button,
   ButtonGroup,

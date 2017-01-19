@@ -1,8 +1,8 @@
-const createClassName = function(props) {
+function createClassName(props) {
 
-  var className = props.default ? props.default : '';
-  var prefix = props.prefix ? props.prefix : '';
-  var classProps = props.props;
+  let className = props.default ? props.default : '';
+  let prefix = props.prefix ? props.prefix : '';
+  let classProps = props.props;
 
   Object.keys(classProps).forEach((index) => {
     if (classProps[index]) {
@@ -12,6 +12,6 @@ const createClassName = function(props) {
 
   return className;
 
-};
+}
 
 export default createClassName;
