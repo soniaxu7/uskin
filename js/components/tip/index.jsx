@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+
+const TYPES = ['info', 'success', 'warning', 'danger'];
 
 class Tip extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.TYPES = ['info', 'success', 'warning', 'danger'];
 
     this.state = {
       isHide: false
@@ -32,59 +32,90 @@ class Tip extends React.Component {
     });
   }
 
-  render() {
-    var props = this.props;
+  getClassName(props, state) {
+    let className = (TYPES.indexOf(props.type) > -1) ?
+      'tip tip-' + props.type : 'tip tip-shadow';
 
-    var className = props.type && (this.TYPES.indexOf(props.type) > -1) ?
-      `tip tip-${props.type}` : 'tip tip-shadow';
     if (this.state.isHide) {
       className += ' hide';
     }
 
-    var iconType = null;
+    return className;
+  }
+
+  getIconType(props) {
+    let iconType = null;
+
     if (props.icon) {
       iconType = 'glyphicon ' + props.icon;
     } else if (props.showIcon) {
-      if (props.type) {
-        if (props.type === 'success') {
-          iconType = 'glyphicon icon-status-active';
-        } else {
-          iconType = 'glyphicon icon-status-warning';
-        }
-      } else {
-        iconType = 'glyphicon loading-tip';
+      iconType = 'glyphicon ';
+
+      switch (props.type) {
+        case 'success':
+          iconType += 'icon-status-active';
+          break;
+        case 'danger':
+        case 'warning':
+          iconType += 'icon-status-warning';
+          break;
+        default:
+          iconType += 'loading-tip';
+          break;
       }
     }
 
-    var style = props.width ? {
-      width: parseInt(props.width, 10) - 40
-    } : {};
-    var contentStyle = (props.width && iconType) ? {
-      width: parseInt(props.width, 10) - 70
-    } : {};
+    return iconType;
+  }
+
+  render() {
+    const props = this.props;
+    let className = this.getClassName(props, this.state);
+    let iconType = this.getIconType(props);
+
+    let style = props.width ?
+      {width: parseInt(props.width, 10) - 40} : null;
+    let contentStyle = (props.width && iconType) ?
+      {width: parseInt(props.width, 10) - 70} : null;
 
     return (
       <div className={className} style={style}>
-        {iconType ? <div className="tip-icon"><strong><i className={iconType}></i></strong></div> : ''}
+        {
+          iconType ?
+            <div className="tip-icon">
+              <strong>
+                <i className={iconType} />
+              </strong>
+            </div>
+          : null
+        }
         <div className="tip-content" style={contentStyle}>
           {props.title ? <strong>{props.title}</strong> : ''}
           {props.content}
         </div>
-        <i className={(props.enableClose ? '' : 'hide ') + 'glyphicon icon-close'} onClick={this.tick}></i>
+        <i className={(props.enableClose ? '' : 'hide ') + 'glyphicon icon-close'}
+          onClick={props.enableClose ? this.tick : null} />
       </div>
     );
   }
+
 }
 
 Tip.propTypes = {
-  title: React.PropTypes.string,
-  content: React.PropTypes.string,
-  type: React.PropTypes.string,
-  width: React.PropTypes.number,
-  showIcon: React.PropTypes.bool,
-  enableClose: React.PropTypes.bool,
-  isAutoHide: React.PropTypes.bool,
-  icon: React.PropTypes.string
+  title: PropTypes.string,
+  content: PropTypes.string,
+  width: PropTypes.number,
+  type: PropTypes.oneOf(TYPES),
+  showIcon: PropTypes.bool,
+  icon: PropTypes.oneOf(['success', 'warning', 'loading']),
+  enableClose: PropTypes.bool,
+  isAutoHide: PropTypes.bool
+};
+
+Tip.defaultProps = {
+  showIcon: false,
+  enableClose: false,
+  isAutoHide: false
 };
 
 export default Tip;

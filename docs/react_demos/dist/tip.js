@@ -46,7 +46,10 @@
 
 	'use strict';
 
-	var Tip = uskin.Tip;
+	var _uskin = uskin,
+	    Tip = _uskin.Tip;
+
+
 	var text = {
 	  title: 'Note:',
 	  content: 'I am content',
@@ -57,29 +60,22 @@
 	  para: 'A classification of architectural styles for network-based application software by the architectural properties they would induce when applied to the architecture for a distributed hypermedia system'
 	};
 
-	ReactDOM.render(React.createElement(Tip, { title: text.title, content: text.content, isAutoHide: true }), document.getElementById('example'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.info, type: 'info' }), document.getElementById('example2'));
-
-	ReactDOM.render(React.createElement(Tip, { title: text.title, content: text.success, type: 'success' }), document.getElementById('example3'));
-
-	ReactDOM.render(React.createElement(Tip, { title: text.title, content: text.warning, type: 'warning' }), document.getElementById('example4'));
-
-	ReactDOM.render(React.createElement(Tip, { title: text.title, content: text.danger, type: 'danger' }), document.getElementById('example5'));
-
-	ReactDOM.render(React.createElement(Tip, { title: text.title, content: text.para, type: 'danger', width: '400' }), document.getElementById('example6'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.content, icon: 'loading-tip', enableClose: true }), document.getElementById('example7'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.info, icon: 'loading-tip', enableClose: true, type: 'info' }), document.getElementById('example8'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.success, showIcon: true, enableClose: true, type: 'success' }), document.getElementById('example9'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.warning, showIcon: true, enableClose: true, type: 'warning' }), document.getElementById('example10'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.danger, showIcon: true, enableClose: true, type: 'danger' }), document.getElementById('example11'));
-
-	ReactDOM.render(React.createElement(Tip, { content: text.para, showIcon: true, enableClose: true, type: 'danger', width: '500' }), document.getElementById('example12'));
+	ReactDOM.render(React.createElement(
+	  'div',
+	  null,
+	  React.createElement(Tip, { title: text.title, content: text.content, isAutoHide: true }),
+	  React.createElement(Tip, { content: text.info, type: 'info' }),
+	  React.createElement(Tip, { title: text.title, content: text.success, type: 'success' }),
+	  React.createElement(Tip, { title: text.title, content: text.warning, type: 'warning' }),
+	  React.createElement(Tip, { title: text.title, content: text.danger, type: 'danger' }),
+	  React.createElement(Tip, { title: text.title, content: text.para, type: 'danger', width: '400' }),
+	  React.createElement(Tip, { content: text.content, icon: 'loading', enableClose: true }),
+	  React.createElement(Tip, { content: text.info, icon: 'loading', enableClose: true, type: 'info' }),
+	  React.createElement(Tip, { content: text.success, showIcon: true, enableClose: true, type: 'success' }),
+	  React.createElement(Tip, { content: text.warning, showIcon: true, enableClose: true, type: 'warning' }),
+	  React.createElement(Tip, { content: text.danger, showIcon: true, enableClose: true, type: 'danger' }),
+	  React.createElement(Tip, { content: text.para, showIcon: true, enableClose: true, type: 'danger', width: 500 })
+	), document.getElementById('example'));
 
 /***/ }
 /******/ ]);

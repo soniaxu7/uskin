@@ -3,18 +3,19 @@
 
 ## Usage
 ```
-var Tip = uskin.Tip;
+const {Tip} = uskin;
 
-var title = 'Note:',
-    content = 'Life is tough, but I'm tougher';
+let title = 'Note:';
+let content = 'Life is tough, but I'm tougher';
 
 ReactDOM.render(
   <Tip
     title={title}
     content={content}
     type="info"
-    width={200}
-  />, document);
+    width={200} />,
+  document
+);
 ```
 
 ## API
@@ -41,16 +42,40 @@ ReactDOM.render(
       <td>tip的content</td>
     </tr>
     <tr>
+      <td>width</td>
+      <td>Number</td>
+      <td></td>
+      <td>tip的宽度</td>
+    </tr>   
+    <tr>
       <td>type</td>
       <td>String</td>
       <td></td>
       <td>tip的类型，包括默认值，info,success,warning,danger</td>
     </tr>
     <tr>
-      <td>width</td>
-      <td>Number</td>
+      <td>showIcon</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>是否显示title前面的icon，根据不用的type有不同的icon</td>
+    </tr> 
+    <tr>
+      <td>icon</td>
+      <td>String</td>
       <td></td>
-      <td>tip的宽度</td>
-    </tr>
+      <td>自定义icon</td>
+    </tr> 
+    <tr>
+      <td>enableClose</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>是否显示关闭按钮</td>
+    </tr> 
+    <tr>
+      <td>isAutoHide</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td>是否3秒后自动关闭</td>
+    </tr> 
   </tbody>
 </table>
