@@ -5,20 +5,43 @@ import Tooltip from '../js/components/tooltip/index';
 
 describe('test tooltip', () => {
 
-  it('generates with content, type and width', () => {
+  it('generates with content and type', () => {
 
     let content = 'this is content';
     let shape = 'bottom';
     let type = 'error';
-    let classNamePrefix = 'tooltip tooltip-';
-    let width = 300;
     const tooltip = shallow(
-      <Tooltip content={content} shape={shape} type={type} width={width} />
+      <Tooltip content={content} shape={shape} type={type} />
     );
+    const tooltipNode = tooltip.find('.tooltip');
 
     expect(tooltip.text()).toEqual(content);
-    expect(tooltip.props().className).toEqual(classNamePrefix + shape + ' tooltip-' + type);
+    expect(tooltipNode.hasClass('tooltip-' + shape)).toEqual(true);
+    expect(tooltipNode.hasClass('tooltip-' + type)).toEqual(true);
+
+  });
+
+  it('should render with specific width', () => {
+
+    let content = 'this is content';
+    let width = 300;
+    const tooltip = shallow(
+      <Tooltip content={content} width={width} />
+    );
+
     expect(tooltip.props().style.width).toEqual(width);
+
+  });
+
+  it('should hide tip', () => {
+
+    let content = 'this is content';
+    const tooltip = shallow(
+      <Tooltip content={content} hide={true} />
+    );
+    const tooltipNode = tooltip.find('.tooltip');
+
+    expect(tooltipNode.hasClass('hide')).toEqual(true);
 
   });
 

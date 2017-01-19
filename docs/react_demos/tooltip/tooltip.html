@@ -9,25 +9,65 @@
     <script src="../../../node_modules/react-dom/dist/react-dom.min.js"></script>
     <script src="../../../dist/js/uskin.js"></script>
     <style type="text/css">
-      body > div {
+      #example > div {
         position: relative;
+      }
+      .tooltip:nth-child(1) {
+        left:150px;
+        top:140px;
+      }
+      .tooltip-top {
+        left:100px;
+        top:10px;
+      }
+      .tooltip-top-left {
+        left:200px;
+        top:10px;
+      }
+      .tooltip-top-right {
+        left:300px;
+        top:10px;
+      }
+      .tooltip-right {
+        left:400px;
+        top:70px;
+      }
+      .tooltip-right-top {
+        left:400px;
+        top:140px;
+      }
+      .tooltip-right-bottom {
+        left:400px;
+        top:210px;
+      }
+      .tooltip-bottom {
+        left:300px;
+        top:280px;
+      }
+      .tooltip-bottom-left {
+        left:200px;
+        top:280px;
+      }
+      .tooltip-bottom-right {
+        left:100px;
+        top:280px;
+      }
+      .tooltip-left {
+        left:20px;
+        top:210px;
+      }
+      .tooltip-left-top {
+        left:20px;
+        top:140px;
+      }
+      .tooltip-left-bottom {
+        left:20px;
+        top:70px;
       }
     </style>
   </head>
   <body>
-    <div id="example" style="left:150px; top:140px;"></div>
-    <div id="example2" style="left:100px; top:10px;"></div>
-    <div id="example3" style="left:200px; top:10px;"></div>
-    <div id="example4" style="left:300px; top:10px;"></div>
-    <div id="example5" style="left:400px; top:70px;"></div>
-    <div id="example6" style="left:400px; top:140px;"></div>
-    <div id="example7" style="left:400px; top:210px;"></div>
-    <div id="example8" style="left:300px; top:280px;"></div>
-    <div id="example9" style="left:200px; top:280px;"></div>
-    <div id="example10" style="left:100px; top:280px;"></div>
-    <div id="example11" style="left:20px; top:210px;"></div>
-    <div id="example12" style="left:20px; top:140px;"></div>
-    <div id="example13" style="left:20px; top:70px;"></div>
+    <div id="example"></div>
 
     <script src="../dist/tooltip.js"></script>
   </body>

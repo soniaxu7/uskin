@@ -1,67 +1,22 @@
-var Tooltip = uskin.Tooltip;
-var content = 'I am a tooltip';
+const {Tooltip} = uskin;
+
+let content = 'I am a tooltip';
 
 ReactDOM.render(
-  <Tooltip content={content} width="200" />,
+  <div>
+    <Tooltip content={content} width={200} />
+    <Tooltip content={content} shape="top" type="error" />
+    <Tooltip content={content} shape="top-left" hide={true} />
+    <Tooltip content={content} shape="top-right" />
+    <Tooltip content={content} shape="right" />
+    <Tooltip content={content} shape="right-top" type="error" />
+    <Tooltip content={content} shape="right-bottom" />
+    <Tooltip content={content} shape="bottom" />
+    <Tooltip content={content} shape="bottom-left" />
+    <Tooltip content={content} shape="bottom-right" />
+    <Tooltip content={content} shape="left" />
+    <Tooltip content={content} shape="left-top" />
+    <Tooltip content={content} shape="left-bottom" />
+  </div>,
   document.getElementById('example')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="top" type="error" />,
-  document.getElementById('example2')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="top-left" hide={true} />,
-  document.getElementById('example3')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="top-right" />,
-  document.getElementById('example4')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="right" />,
-  document.getElementById('example5')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="right-top" type="error" />,
-  document.getElementById('example6')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="right-bottom" />,
-  document.getElementById('example7')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="bottom" />,
-  document.getElementById('example8')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="bottom-left" />,
-  document.getElementById('example9')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="bottom-right" />,
-  document.getElementById('example10')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="left" />,
-  document.getElementById('example11')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="left-top" />,
-  document.getElementById('example12')
-);
-
-ReactDOM.render(
-  <Tooltip content={content} shape="left-bottom" />,
-  document.getElementById('example13')
 );

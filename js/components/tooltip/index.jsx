@@ -1,29 +1,39 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+
+const SHAPES = [
+  'bottom-left', 'bottom', 'bottom-right',
+  'left-top', 'left', 'left-bottom',
+  'top-left', 'top', 'top-right',
+  'right-top', 'right', 'right-bottom'
+];
 
 class Tooltip extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.SHAPES = ['bottom-left', 'bottom', 'bottom-right', 'left-top', 'left', 'left-bottom',
-      'top-left', 'top', 'top-right', 'right-top', 'right', 'right-bottom'
-    ];
   }
 
-  render() {
-    var props = this.props;
+  getClassName(props) {
+    let className = 'tooltip';
 
-    var className = props.shape && (this.SHAPES.indexOf(props.shape) > -1) ?
-      `tooltip tooltip-${props.shape}` : 'tooltip';
-    if (props.type && props.type === 'error') {
+    if (SHAPES.indexOf(props.shape) > -1) {
+      className += ' tooltip-' + props.shape;
+    }
+    if (props.type === 'error') {
       className += ' tooltip-error';
     }
     if (props.hide) {
       className += ' hide';
     }
-    var style = props.width ? {
-      width: parseInt(props.width, 10)
-    } : {};
+
+    return className;
+  }
+
+  render() {
+    const props = this.props;
+
+    let className = this.getClassName(props);
+    let style = props.width ? {width: props.width} : null;
 
     return (
       <div className={className} style={style}>
@@ -31,14 +41,19 @@ class Tooltip extends React.Component {
       </div>
     );
   }
+
 }
 
 Tooltip.propTypes = {
-  content: React.PropTypes.string,
-  type: React.PropTypes.string,
-  width: React.PropTypes.number,
-  shape: React.PropTypes.string,
-  hide: React.PropTypes.bool
+  content: PropTypes.string,
+  type: PropTypes.oneOf(['error']),
+  width: PropTypes.number,
+  shape: PropTypes.oneOf(SHAPES),
+  hide: PropTypes.bool
+};
+
+Tooltip.defaultProps = {
+  hide: false
 };
 
 export default Tooltip;
