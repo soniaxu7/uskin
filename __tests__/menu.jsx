@@ -80,8 +80,8 @@ describe('test menu', () => {
 
     clickNode.simulate('click');
 
-    expect(items.length).toEqual(menu.children().length);
-    expect(selectedNode.text()).toEqual(selected.subtitle);
+    expect(items.length).toBe(menu.children().length);
+    expect(selectedNode.text()).toBe(selected.subtitle);
 
   });
 
@@ -100,9 +100,9 @@ describe('test menu', () => {
     const itemNode = menu.find('.menu-item-selected');
     const iconNode = menu.find('i');
 
-    expect(titleNode.length).toEqual(0);
-    expect(itemNode.text()).toEqual(newItems[0].submenu[0].subtitle);
-    expect(iconNode.length).toEqual(0);
+    expect(titleNode.length).toBe(0);
+    expect(itemNode.text()).toBe(newItems[0].submenu[0].subtitle);
+    expect(iconNode.length).toBe(0);
 
   });
 
@@ -112,7 +112,7 @@ describe('test menu', () => {
     const menu = mount(<Menu items={items} width={width} />);
     const menuNode = menu.find('ul').at(0);
 
-    expect(menuNode.props().style.width).toEqual(width);
+    expect(menuNode.props().style.width).toBe(width);
 
   });
 
@@ -125,7 +125,7 @@ describe('test menu', () => {
     menu.setProps({items: newItems});
     const selectedNode = menu.find('.menu-item-selected');
 
-    expect(selectedNode.length).toEqual(0);
+    expect(selectedNode.length).toBe(0);
 
   });
 
@@ -167,7 +167,7 @@ describe('test menu', () => {
 
     toggleNode.simulate('click');
 
-    expect(toggleItem.node.style.height).toEqual('0px');
+    expect(toggleItem.node.style.height).toBe('0px');
 
   });
 

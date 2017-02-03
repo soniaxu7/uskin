@@ -123,8 +123,8 @@ describe('test dropdown', () => {
 
     clickNode.simulate('click', {stopPropagation() {}});
 
-    expect(blockNodeSum).toEqual(items.length);
-    expect(itemNodeSum).toEqual(itemsSum);
+    expect(blockNodeSum).toBe(items.length);
+    expect(itemNodeSum).toBe(itemsSum);
 
   });
 
@@ -176,7 +176,7 @@ describe('test dropdown', () => {
 
     disabledNode.simulate('click');
 
-    expect(listener.mock.calls.length).toEqual(0);
+    expect(listener.mock.calls.length).toBe(0);
 
   });
 

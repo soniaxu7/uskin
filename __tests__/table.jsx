@@ -201,10 +201,10 @@ describe('test table', () => {
     const columnNodes = table.find('.table-header').children();
     const rowNodes = table.find('.row');
 
-    expect(checkboxNodes.length).toEqual(data.length + 1);
-    expect(columnNodes.length).toEqual(column.length + 1);
-    expect(rowNodes.length).toEqual(data.length);
-    expect(checkboxInitialize.mock.calls.length).toEqual(data.length);
+    expect(checkboxNodes.length).toBe(data.length + 1);
+    expect(columnNodes.length).toBe(column.length + 1);
+    expect(rowNodes.length).toBe(data.length);
+    expect(checkboxInitialize.mock.calls.length).toBe(data.length);
 
   });
 
@@ -222,8 +222,8 @@ describe('test table', () => {
     });
 
     expect(checkboxOnChange).toBeCalled();
-    expect(checkboxOnChange.mock.calls[0][0]).toEqual(checked);
-    expect(checkboxOnChange.mock.calls[0][1]).toEqual(data[key]);
+    expect(checkboxOnChange.mock.calls[0][0]).toBe(checked);
+    expect(checkboxOnChange.mock.calls[0][1]).toBe(data[key]);
 
   });
 

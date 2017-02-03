@@ -18,7 +18,7 @@ describe('test calendar', () => {
       );
       const firstWrp = calendar.find('th').at(0);
 
-      expect(firstWrp.text()).toEqual(week.value);
+      expect(firstWrp.text()).toBe(week.value);
 
     });
 
@@ -37,8 +37,8 @@ describe('test calendar', () => {
       const yearNode = calendar.find('li.selected[data-year=' + date.year + ']');
       const monthNode = calendar.find('li.selected[data-month=' + (date.month - 1) + ']');
 
-      expect(yearNode.text()).toEqual('' + date.year);
-      expect(monthNode.text()).toEqual('Jan');
+      expect(yearNode.text()).toBe('' + date.year);
+      expect(monthNode.text()).toBe('Jan');
 
     });
 
@@ -56,7 +56,7 @@ describe('test calendar', () => {
       );
       const selectedNode = calendar.find('td.selected');
 
-      expect(selectedNode.text()).toEqual('' + date.date);
+      expect(selectedNode.text()).toBe('' + date.date);
 
     });
 
@@ -73,8 +73,8 @@ describe('test calendar', () => {
       const yearNode = calendar.find('li.selected[data-year=' + d.getFullYear() + ']');
       const monthNode = calendar.find('li.selected[data-month=' + d.getMonth() + ']');
 
-      expect(yearNode.text()).toEqual('' + d.getFullYear());
-      expect(monthNode.text()).toEqual(d.toDateString().split(' ')[1]);
+      expect(yearNode.text()).toBe('' + d.getFullYear());
+      expect(monthNode.text()).toBe(d.toDateString().split(' ')[1]);
 
     });
 
@@ -113,7 +113,7 @@ describe('test calendar', () => {
         <Calendar page={disabled.min} disabled={disabled} />
       );
 
-      expect(calendar.find('.default').length).toEqual(enableNum);
+      expect(calendar.find('.default').length).toBe(enableNum);
 
     });
 
@@ -164,7 +164,7 @@ describe('test calendar', () => {
 
       clickWrp.simulate('click');
 
-      expect(screenWrp.props().value).toEqual(date.year + '-' + date.month + '-' + date.date);
+      expect(screenWrp.props().value).toBe(date.year + '-' + date.month + '-' + date.date);
 
     });
 

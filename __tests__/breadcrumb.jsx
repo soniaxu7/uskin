@@ -25,9 +25,9 @@ describe('test Breadcrumb', () => {
 
     clickNode.simulate('click');
 
-    expect(children.length).toEqual(items.length);
-    expect(breadcrumb.text()).toEqual(content);
-    expect(breadcrumb.find({href: items[0].href}).text()).toEqual(items[0].name);
+    expect(children.length).toBe(items.length);
+    expect(breadcrumb.text()).toBe(content);
+    expect(breadcrumb.find({href: items[0].href}).text()).toBe(items[0].name);
 
   });
 

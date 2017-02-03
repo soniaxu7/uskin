@@ -16,7 +16,7 @@ describe('test input-search', () => {
     searchIcon.simulate('click');
 
     expect(input.node.value).toEqual('');
-    expect(inputsearchNode.props().style.width).toEqual(width);
+    expect(inputsearchNode.props().style.width).toBe(width);
 
   });
 
@@ -31,7 +31,7 @@ describe('test input-search', () => {
     input.simulate('change', {target: {value: value}});
     searchIcon.simulate('click');
 
-    expect(listener.mock.calls[0][0]).toEqual(value);
+    expect(listener.mock.calls[0][0]).toBe(value);
 
   });
 
@@ -42,10 +42,10 @@ describe('test input-search', () => {
     const input = inputsearch.find('input');
 
     input.simulate('change', {target: {value: value}});
-    expect(input.node.value).toEqual(value);
+    expect(input.node.value).toBe(value);
 
     inputsearch.node.clearState();
-    expect(input.node.value).toEqual('');
+    expect(input.node.value).toBe('');
 
   });
 
@@ -55,7 +55,7 @@ describe('test input-search', () => {
     const inputsearch = mount(<InputSearch placeholder={placeholder} />);
     const input = inputsearch.find('input');
 
-    expect(input.node.placeholder).toEqual(placeholder);
+    expect(input.node.placeholder).toBe(placeholder);
 
   });
 

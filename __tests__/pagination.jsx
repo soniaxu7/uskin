@@ -31,7 +31,7 @@ describe('test pagination', () => {
 
       const currentNode = pagination.find('.active');
 
-      expect(currentNode.text()).toEqual('' + current);
+      expect(currentNode.text()).toBe('' + current);
 
     });
 
@@ -45,7 +45,7 @@ describe('test pagination', () => {
 
       page2.simulate('click');
 
-      expect(page2.text()).toEqual('' + key);
+      expect(page2.text()).toBe('' + key);
 
     });
 
@@ -60,12 +60,12 @@ describe('test pagination', () => {
 
       const omit = pagination2.find('li').at(newCurrent + 3).childAt(0);
 
-      expect(omit.hasClass('omit')).toEqual(true);
+      expect(omit.hasClass('omit')).toBeTruthy();
 
       pagination2.setProps({current: newCurrent2});
       const omit2 = pagination2.find('li').at(2).childAt(0);
 
-      expect(omit2.hasClass('omit')).toEqual(true);
+      expect(omit2.hasClass('omit')).toBeTruthy();
 
     });
 
@@ -76,10 +76,10 @@ describe('test pagination', () => {
 
       last.simulate('click');
 
-      expect(listener.mock.calls[0][0]).toEqual(total);
-      expect(pagination.state().current).toEqual(total);
-      expect(prev.hasClass('disabled')).toEqual(false);
-      expect(next.hasClass('disabled')).toEqual(true);
+      expect(listener.mock.calls[0][0]).toBe(total);
+      expect(pagination.state().current).toBe(total);
+      expect(prev.hasClass('disabled')).toBeFalsy();
+      expect(next.hasClass('disabled')).toBeTruthy();
 
     });
 
@@ -88,8 +88,8 @@ describe('test pagination', () => {
       next.simulate('click');
       prev.simulate('click');
 
-      expect(listener.mock.calls[0][0]).toEqual(current + 1);
-      expect(listener.mock.calls[1][0]).toEqual(current);
+      expect(listener.mock.calls[0][0]).toBe(current + 1);
+      expect(listener.mock.calls[1][0]).toBe(current);
 
     });
 
@@ -97,7 +97,7 @@ describe('test pagination', () => {
 
       prev.simulate('click');
 
-      expect(prev.hasClass('disabled')).toEqual(true);
+      expect(prev.hasClass('disabled')).toBeTruthy();
       expect(listener).not.toBeCalled();
 
     });
@@ -110,9 +110,9 @@ describe('test pagination', () => {
       last.simulate('click');
       next.simulate('click');
 
-      expect(listener.mock.calls.length).toEqual(1);
-      expect(listener.mock.calls[0][0]).toEqual(total);
-      expect(next.hasClass('disabled')).toEqual(true);
+      expect(listener.mock.calls.length).toBe(1);
+      expect(listener.mock.calls[0][0]).toBe(total);
+      expect(next.hasClass('disabled')).toBe(true);
 
     });
 
@@ -128,7 +128,7 @@ describe('test pagination', () => {
       );
       const liNode = pagination.find('li');
 
-      expect(liNode.length).toEqual(0);
+      expect(liNode.length).toBe(0);
 
     });
 
@@ -156,10 +156,10 @@ describe('test pagination', () => {
       last.simulate('click');
 
       expect(pages.length).toEqual(4);
-      expect(listener.mock.calls[0][0]).toEqual('prev');
-      expect(listener.mock.calls[1][0]).toEqual('next');
-      expect(listener.mock.calls[2][0]).toEqual('first');
-      expect(listener.mock.calls[3][0]).toEqual('last');
+      expect(listener.mock.calls[0][0]).toBe('prev');
+      expect(listener.mock.calls[1][0]).toBe('next');
+      expect(listener.mock.calls[2][0]).toBe('first');
+      expect(listener.mock.calls[3][0]).toBe('last');
 
     });
 
@@ -182,10 +182,10 @@ describe('test pagination', () => {
       prev.simulate('click');
       next.simulate('click');
 
-      expect(pages.length).toEqual(2);
+      expect(pages.length).toBe(2);
       expect(listener).not.toBeCalled();
-      expect(prev.hasClass('disabled')).toEqual(true);
-      expect(next.hasClass('disabled')).toEqual(true);
+      expect(prev.hasClass('disabled')).toBeTruthy();
+      expect(next.hasClass('disabled')).toBeTruthy();
 
     });
 
@@ -202,7 +202,7 @@ describe('test pagination', () => {
       );
       const activeNode = pagination.find('.active');
 
-      expect(activeNode.text()).toEqual('' + total);
+      expect(activeNode.text()).toBe('' + total);
 
     });
 
@@ -219,9 +219,9 @@ describe('test pagination', () => {
       const next = pagination.find('.next');
 
       expect(pagination.state().current).toBe(1);
-      expect(lables.length).toEqual(3);
-      expect(prev.hasClass('disabled')).toEqual(true);
-      expect(next.hasClass('disabled')).toEqual(true);
+      expect(lables.length).toBe(3);
+      expect(prev.hasClass('disabled')).toBeTruthy();
+      expect(next.hasClass('disabled')).toBeTruthy();
 
     });
 
@@ -236,12 +236,12 @@ describe('test pagination', () => {
       pagination.setProps({current: -current});
       const current1 = pagination.find('.active');
 
-      expect(current1.text()).toEqual('1');
+      expect(current1.text()).toBe('1');
 
       pagination.setProps({current: current + total});
       const current2 = pagination.find('.active');
 
-      expect(current2.text()).toEqual('' + total);
+      expect(current2.text()).toBe('' + total);
 
     });
 

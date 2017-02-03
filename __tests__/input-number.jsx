@@ -29,8 +29,8 @@ describe('test input-number', () => {
         preventDefault() {}
       });
 
-      expect(inputnumberNode.props().style.width).toEqual(width);
-      expect(input.node.value).toEqual('0');
+      expect(inputnumberNode.props().style.width).toBe(width);
+      expect(input.node.value).toBe('0');
 
     });
 
@@ -201,7 +201,7 @@ describe('test input-number', () => {
       input.simulate('blur');
 
       expect(listener.mock.calls[0]).toEqual([value, !isError]);
-      expect(input.node.value).toEqual('' + value);
+      expect(input.node.value).toBe('' + value);
 
     });
 
@@ -213,7 +213,7 @@ describe('test input-number', () => {
       input.simulate('blur');
 
       expect(listener.mock.calls[0]).toEqual([value, isError]);
-      expect(input.node.value).toEqual('' + props.value);
+      expect(input.node.value).toBe('' + props.value);
 
     });
 
@@ -226,7 +226,7 @@ describe('test input-number', () => {
 
       expect(listener.mock.calls[0]).toEqual([value, isError]);
       expect(listener.mock.calls[1]).toEqual([props.max, !isError]);
-      expect(input.node.value).toEqual('' + props.max);
+      expect(input.node.value).toBe('' + props.max);
 
     });
 
@@ -239,7 +239,7 @@ describe('test input-number', () => {
 
       expect(listener.mock.calls[0]).toEqual([value, isError]);
       expect(listener.mock.calls[1]).toEqual([props.min, !isError]);
-      expect(input.node.value).toEqual('' + props.min);
+      expect(input.node.value).toBe('' + props.min);
 
     });
 
@@ -266,7 +266,7 @@ describe('test input-number', () => {
 
       const inputnumber = mount(<InputNumber {...props} value={12} />);
 
-      expect(inputnumber.state().value).toEqual(props.max);
+      expect(inputnumber.state().value).toBe(props.max);
 
     });
 
@@ -274,7 +274,7 @@ describe('test input-number', () => {
 
       const inputnumber = mount(<InputNumber {...props} value={-12} />);
 
-      expect(inputnumber.state().value).toEqual(props.min);
+      expect(inputnumber.state().value).toBe(props.min);
 
     });
 

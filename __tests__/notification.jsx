@@ -24,7 +24,7 @@ describe('test notification', () => {
     let noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
 
     expect(noticeCls.length).toBe(1);
-    expect(notificationNode.textContent).toEqual(notice.title + notice.content);
+    expect(notificationNode.textContent).toBe(notice.title + notice.content);
 
     let ticks = (notice.duration + 1) * 1000;
     setTimeout(() => {
@@ -106,13 +106,13 @@ describe('test notification', () => {
     let notification = Notification.addNotice(notice);
     let notificationNode = ReactDOM.findDOMNode(notification);
 
-    expect(notificationNode.textContent).toEqual(notice.title + notice.content);
+    expect(notificationNode.textContent).toBe(notice.title + notice.content);
 
     notice.title = 'Update:';
     notice.content = 'I am updated content';
     Notification.updateNotice(notice);
 
-    expect(notificationNode.textContent).toEqual(notice.title + notice.content);
+    expect(notificationNode.textContent).toBe(notice.title + notice.content);
 
   });
 

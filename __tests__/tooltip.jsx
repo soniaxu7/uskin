@@ -15,9 +15,9 @@ describe('test tooltip', () => {
     );
     const tooltipNode = tooltip.find('.tooltip');
 
-    expect(tooltip.text()).toEqual(content);
-    expect(tooltipNode.hasClass('tooltip-' + shape)).toEqual(true);
-    expect(tooltipNode.hasClass('tooltip-' + type)).toEqual(true);
+    expect(tooltip.text()).toBe(content);
+    expect(tooltipNode.hasClass('tooltip-' + shape)).toBeTruthy();
+    expect(tooltipNode.hasClass('tooltip-' + type)).toBeTruthy();
 
   });
 
@@ -29,7 +29,7 @@ describe('test tooltip', () => {
       <Tooltip content={content} width={width} />
     );
 
-    expect(tooltip.props().style.width).toEqual(width);
+    expect(tooltip.props().style.width).toBe(width);
 
   });
 
@@ -41,7 +41,7 @@ describe('test tooltip', () => {
     );
     const tooltipNode = tooltip.find('.tooltip');
 
-    expect(tooltipNode.hasClass('hide')).toEqual(true);
+    expect(tooltipNode.hasClass('hide')).toBeTruthy();
 
   });
 

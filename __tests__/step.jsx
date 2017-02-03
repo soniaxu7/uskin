@@ -25,7 +25,7 @@ describe('test step', () => {
       content += item.name;
     });
 
-    expect(step.text()).toEqual(content);
+    expect(step.text()).toBe(content);
 
   });
 
@@ -34,7 +34,7 @@ describe('test step', () => {
     const step = shallow(<Step items={items} />);
     const selected = step.find('.selected');
 
-    expect(selected.text()).toEqual(items[index].name);
+    expect(selected.text()).toBe(items[index].name);
 
   });
 
@@ -54,7 +54,7 @@ describe('test step', () => {
     });
     const selectedNode = step.find('.selected');
 
-    expect(selectedNode.text()).toEqual(items[key].name);
+    expect(selectedNode.text()).toBe(items[key].name);
 
   });
 
@@ -86,7 +86,7 @@ describe('test step', () => {
     });
     const selectedNode = step.find('.selected');
 
-    expect(selectedNode.text()).toEqual(items[key].name);
+    expect(selectedNode.text()).toBe(items[key].name);
     expect(listener.mock.calls[0][1]).toEqual(items[key]);
 
   });
@@ -108,7 +108,7 @@ describe('test step', () => {
     const step = shallow(<Step items={newItems} consecutive={true} />);
     const itemsNode = step.find('.selected');
 
-    expect(itemsNode.length).toEqual(newIndex + 1);
+    expect(itemsNode.length).toBe(newIndex + 1);
 
   });
 
@@ -120,7 +120,7 @@ describe('test step', () => {
 
     clickNode.simulate('click');
 
-    expect(listener.mock.calls.length).toEqual(0);
+    expect(listener.mock.calls.length).toBe(0);
 
   });
 
@@ -143,7 +143,7 @@ describe('test step', () => {
     let selectedItem = newItems.find((ele) => ele.default);
     const selectedNode = step.find('.selected');
 
-    expect(selectedNode.text()).toEqual(selectedItem.name);
+    expect(selectedNode.text()).toBe(selectedItem.name);
 
   });
 

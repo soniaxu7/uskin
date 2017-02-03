@@ -127,9 +127,9 @@ describe('test dropdown', () => {
 
     clickNode.simulate('click');
 
-    expect(button.text()).toEqual(btn.value);
-    expect(blockNodeSum).toEqual(items.length);
-    expect(itemNodeSum).toEqual(itemsSum);
+    expect(button.text()).toBe(btn.value);
+    expect(blockNodeSum).toBe(items.length);
+    expect(itemNodeSum).toBe(itemsSum);
 
   });
 
@@ -143,7 +143,7 @@ describe('test dropdown', () => {
     );
     const dropdown = dropwdownbtn.find('.dropdown').at(0);
 
-    expect(dropdown.props().style.width).toEqual(style.width);
+    expect(dropdown.props().style.width).toBe(style.width);
 
   });
 
@@ -175,10 +175,10 @@ describe('test dropdown', () => {
     const dropdown = dropwdownbtn.find('.dropdown').at(0);
 
     button.simulate('click');
-    expect(dropdown.props().style.display).toEqual(VISIBLE);
+    expect(dropdown.props().style.display).toBe(VISIBLE);
 
     button.simulate('click');
-    expect(dropdown.props().style.display).toEqual(UNVISIBLE);
+    expect(dropdown.props().style.display).toBe(UNVISIBLE);
 
   });
 

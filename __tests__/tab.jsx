@@ -23,7 +23,7 @@ describe('test tab', () => {
 
       const tab = shallow(<Tab items={items} type="sm" />);
 
-      expect(tab.props().className).toEqual('tabs-mini');
+      expect(tab.props().className).toBe('tabs-mini');
 
     });
 
@@ -33,7 +33,7 @@ describe('test tab', () => {
       const tab = shallow(<Tab items={items} />);
       const selected = tab.find('.selected');
 
-      expect(selected.text()).toEqual(items[key].name);
+      expect(selected.text()).toBe(items[key].name);
 
     });
 
@@ -56,7 +56,7 @@ describe('test tab', () => {
       tab.setProps({items: newItems});
       const selected = tab.find('.selected');
 
-      expect(selected.text()).toEqual(defaultItem.name);
+      expect(selected.text()).toBe(defaultItem.name);
 
     });
 
@@ -70,7 +70,7 @@ describe('test tab', () => {
       const tab = shallow(<Tab items={newItems} />);
       const tabNode = tab.find('.tab');
 
-      expect(tabNode.hasClass('sole')).toEqual(true);
+      expect(tabNode.hasClass('sole')).toBeTruthy();
 
     });
 
@@ -136,7 +136,7 @@ describe('test tab', () => {
 
       const selected = tab.find('.selected');
 
-      expect(selected.text()).toEqual(items[key].name);
+      expect(selected.text()).toBe(items[key].name);
 
     });
 

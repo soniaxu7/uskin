@@ -24,10 +24,10 @@ describe('test slider', () => {
 
     it('renders with min, max, value attributes and width', () => {
 
-      expect(slider.node.props['data-min']).toEqual(min);
-      expect(slider.node.props['data-max']).toEqual(max);
-      expect(slider.node.props['data-value']).toEqual(value);
-      expect(slider.node.props.style.width).toEqual(width);
+      expect(slider.node.props['data-min']).toBe(min);
+      expect(slider.node.props['data-max']).toBe(max);
+      expect(slider.node.props['data-value']).toBe(value);
+      expect(slider.node.props.style.width).toBe(width);
 
     });
 
@@ -41,7 +41,7 @@ describe('test slider', () => {
         <Slider min={min2} max={max2} value={value2} step={step2} />
       );
 
-      expect(slider2.node.props['data-value']).toEqual(value2);
+      expect(slider2.node.props['data-value']).toBe(value2);
 
     });
 
@@ -52,7 +52,7 @@ describe('test slider', () => {
       );
       const sliderNode = slider2.find('.slider');
 
-      expect(sliderNode.hasClass('disabled')).toEqual(true);
+      expect(sliderNode.hasClass('disabled')).toBeTruthy();
 
     });
 
@@ -63,7 +63,7 @@ describe('test slider', () => {
       );
       const sliderNode = slider2.find('.slider-thumb');
 
-      expect(sliderNode.hasClass('hide')).toEqual(true);
+      expect(sliderNode.hasClass('hide')).toBeTruthy();
 
     });
 
@@ -73,7 +73,7 @@ describe('test slider', () => {
 
       slider.setProps({step: newStep});
 
-      expect(slider.node.props['data-value']).toEqual(value);
+      expect(slider.node.props['data-value']).toBe(value);
 
     });
 
@@ -101,7 +101,7 @@ describe('test slider', () => {
 
       slider.setProps({step: newStep});
 
-      expect(slider.node.props['data-value']).toEqual(value);
+      expect(slider.node.props['data-value']).toBe(value);
 
     });
 
@@ -112,11 +112,11 @@ describe('test slider', () => {
 
       slider.setProps({value: val1});
 
-      expect(slider.node.props['data-value']).toEqual(max);
+      expect(slider.node.props['data-value']).toBe(max);
 
       slider.setProps({value: val2});
 
-      expect(slider.node.props['data-value']).toEqual(min);
+      expect(slider.node.props['data-value']).toBe(min);
 
     });
 

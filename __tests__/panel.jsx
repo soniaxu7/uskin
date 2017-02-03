@@ -16,9 +16,9 @@ describe('test panel', () => {
     const titleNode = panel.find('.panel-hd');
     const contentNode = panel.find('.panel-bd');
 
-    expect(titleNode.text()).toEqual(title);
-    expect(contentNode.text()).toEqual(content);
-    expect(panel.node.props.style.width).toEqual(width);
+    expect(titleNode.text()).toBe(title);
+    expect(contentNode.text()).toBe(content);
+    expect(panel.node.props.style.width).toBe(width);
 
   });
 

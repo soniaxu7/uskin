@@ -16,10 +16,10 @@ describe('test button', () => {
       <Button value={value} type={type} size={size} iconClass={iconClass} dropdown={dropdown} />
     );
 
-    expect(button.text()).toEqual(value);
-    expect(button.hasClass('btn')).toEqual(true);
-    expect(button.hasClass('btn-' + type)).toEqual(true);
-    expect(button.hasClass('btn-' + size)).toEqual(true);
+    expect(button.text()).toBe(value);
+    expect(button.hasClass('btn')).toBeTruthy();
+    expect(button.hasClass('btn-' + type)).toBeTruthy();
+    expect(button.hasClass('btn-' + size)).toBeTruthy();
 
   });
 
@@ -29,7 +29,7 @@ describe('test button', () => {
 
     button.simulate('click');
 
-    expect(button.text()).toEqual('');
+    expect(button.text()).toBe('');
 
   });
 
@@ -50,8 +50,8 @@ describe('test button', () => {
         tag={tag} />
     );
 
-    expect(button.text()).toEqual(value);
-    expect(button.name()).toEqual(tag);
+    expect(button.text()).toBe(value);
+    expect(button.name()).toBe(tag);
 
   });
 
@@ -62,7 +62,7 @@ describe('test button', () => {
 
     button.simulate('click');
 
-    expect(button.text()).toEqual('');
+    expect(button.text()).toBe('');
 
   });
 
@@ -75,10 +75,10 @@ describe('test button', () => {
       <Button value={value} initial={initial} selected={selected} />
     );
 
-    expect(button.text()).toEqual(value);
-    expect(button.hasClass('btn')).toEqual(true);
-    expect(button.hasClass('btn-initial')).toEqual(true);
-    expect(button.hasClass('selected')).toEqual(true);
+    expect(button.text()).toBe(value);
+    expect(button.hasClass('btn')).toBeTruthy();
+    expect(button.hasClass('btn-initial')).toBeTruthy();
+    expect(button.hasClass('selected')).toBeTruthy();
 
   });
 
@@ -93,7 +93,7 @@ describe('test button', () => {
 
     button.simulate('click');
 
-    expect(listener.mock.calls[0][1]).toEqual(btnKey);
+    expect(listener.mock.calls[0][1]).toBe(btnKey);
 
   });
 

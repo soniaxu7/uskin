@@ -14,7 +14,7 @@ describe('test tip', () => {
 
       const tip = mount(<Tip title={title} content={content} />);
 
-      expect(tip.text()).toEqual(title + content);
+      expect(tip.text()).toBe(title + content);
 
     });
 
@@ -25,8 +25,8 @@ describe('test tip', () => {
       const tip = mount(<Tip content={content} type={type} />);
       const tipNode = tip.find('.tip');
 
-      expect(tip.text()).toEqual(content);
-      expect(tipNode.props().className).toEqual(clsPrefix + type);
+      expect(tip.text()).toBe(content);
+      expect(tipNode.props().className).toBe(clsPrefix + type);
 
     });
 
@@ -36,7 +36,7 @@ describe('test tip', () => {
       const tip = mount(<Tip content={content} width={width} />);
       const tipNode = tip.find('.tip');
 
-      expect(tipNode.props().style.width).toEqual(width - 40);
+      expect(tipNode.props().style.width).toBe(width - 40);
 
     });
 
@@ -49,9 +49,9 @@ describe('test tip', () => {
       const tipNode = tip.find('.tip');
       const contentNode = tip.find('.tip-content');
 
-      expect(iconNode.length).toEqual(1);
-      expect(tipNode.props().style.width).toEqual(width - 40);
-      expect(contentNode.props().style.width).toEqual(width - 70);
+      expect(iconNode.length).toBe(1);
+      expect(tipNode.props().style.width).toBe(width - 40);
+      expect(contentNode.props().style.width).toBe(width - 70);
 
     });
 
@@ -60,7 +60,7 @@ describe('test tip', () => {
       const tip = mount(<Tip enableClose={false} />);
       const close = tip.find('.icon-close');
 
-      expect(close.hasClass('hide')).toEqual(true);
+      expect(close.hasClass('hide')).toBeTruthy();
 
     });
 
@@ -69,7 +69,7 @@ describe('test tip', () => {
       const tip = mount(<Tip showIcon={true} type="success" />);
       const success = tip.find('.icon-status-active');
 
-      expect(success.length).toEqual(1);
+      expect(success.length).toBe(1);
 
     });
 
@@ -78,7 +78,7 @@ describe('test tip', () => {
       const tip = mount(<Tip showIcon={true} type="warning" />);
       const warning = tip.find('.icon-status-warning');
 
-      expect(warning.length).toEqual(1);
+      expect(warning.length).toBe(1);
 
     });
 
@@ -87,7 +87,7 @@ describe('test tip', () => {
       const tip = mount(<Tip showIcon={true} type="danger" />);
       const danger = tip.find('.icon-status-warning');
 
-      expect(danger.length).toEqual(1);
+      expect(danger.length).toBe(1);
 
     });
 
@@ -96,7 +96,7 @@ describe('test tip', () => {
       const tip = mount(<Tip showIcon={true} />);
       const loading = tip.find('.loading-tip');
 
-      expect(loading.length).toEqual(1);
+      expect(loading.length).toBe(1);
 
     });
 
@@ -126,7 +126,7 @@ describe('test tip', () => {
 
       jasmine.clock().tick(TICKS);
 
-      expect(tipNode.hasClass('hide')).toEqual(true);
+      expect(tipNode.hasClass('hide')).toBeTruthy();
 
     });
 
@@ -137,7 +137,7 @@ describe('test tip', () => {
 
       tip.unmount();
 
-      expect(tipNode.hasClass('hide')).toEqual(false);
+      expect(tipNode.hasClass('hide')).toBeFalsy();
 
     });
 
@@ -148,7 +148,7 @@ describe('test tip', () => {
       jasmine.clock().tick(TICKS);
       tip.unmount();
 
-      expect(tip.children().length).toEqual(0);
+      expect(tip.children().length).toBe(0);
 
     });
 
@@ -160,7 +160,7 @@ describe('test tip', () => {
 
       close.simulate('click');
 
-      expect(tipNode.hasClass('hide')).toEqual(true);
+      expect(tipNode.hasClass('hide')).toBeTruthy();
 
     });
 

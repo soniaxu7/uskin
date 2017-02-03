@@ -17,7 +17,7 @@ describe('test button-group', () => {
       </ButtonGroup>
     );
 
-    expect(buttongroup.hasClass('btn-group')).toEqual(true);
+    expect(buttongroup.hasClass('btn-group')).toBeTruthy();
 
   });
 
@@ -33,8 +33,8 @@ describe('test button-group', () => {
       </ButtonGroup>
     );
 
-    expect(buttongroup.hasClass('btn-group-vertical')).toEqual(true);
-    expect(buttongroup.hasClass('btn-group-justified')).toEqual(true);
+    expect(buttongroup.hasClass('btn-group-vertical')).toBeTruthy();
+    expect(buttongroup.hasClass('btn-group-justified')).toBeTruthy();
     expect(buttongroup.node.props.style.width).toBe(width);
 
   });
