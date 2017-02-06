@@ -31,7 +31,10 @@ class ButtonGroup extends React.Component {
 
 ButtonGroup.propTypes = {
   type: PropTypes.oneOf(['vertical']),
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
+  ])
 };
 
 export default ButtonGroup;

@@ -69,7 +69,10 @@ DropdownButton.propTypes = {
   }),
   dropdownItems: PropTypes.arrayOf(PropTypes.object),
   dropdownStyle: PropTypes.shape({
-    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    width: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
   }),
   disabled: PropTypes.bool
 };

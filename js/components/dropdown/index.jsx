@@ -79,7 +79,10 @@ Dropdown.propTypes = {
   onClick: PropTypes.func,
   items: PropTypes.arrayOf(PropTypes.object),
   style: PropTypes.shape({
-    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    width: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string
+    ])
   })
 };
 

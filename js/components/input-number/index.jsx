@@ -206,7 +206,10 @@ InputNumber.propTypes = {
   max: PropTypes.number,
   min: PropTypes.number,
   value: PropTypes.number,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   disabled: PropTypes.bool,
   onChange: PropTypes.func
 };

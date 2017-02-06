@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+
+function noop() {}
 
 class Modal extends React.Component {
 
@@ -47,7 +49,7 @@ class Modal extends React.Component {
           that.mask.classList.add('hide');
         }
         if ((!keepMask && !props.parent) || (keepMask && props.parent)) {
-          props.onAfterClose && props.onAfterClose();
+          props.onAfterClose();
         }
       }, props.animationDuration);
     });
@@ -124,14 +126,23 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  title: React.PropTypes.string,
-  width: React.PropTypes.number,
-  animationDuration: React.PropTypes.number
+  parent: PropTypes.instanceOf(Modal),
+  title: PropTypes.string,
+  width: PropTypes.number,
+  visible: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element)
+  ]),
+  animationDuration: PropTypes.number,
+  onAfterClose: PropTypes.func
 };
 
 Modal.defaultProps = {
   width: 540,
-  animationDuration: 200
+  animationDuration: 200,
+  visible: true,
+  onAfterClose: noop
 };
 
 export default Modal;
