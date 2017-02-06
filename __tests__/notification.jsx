@@ -1,5 +1,3 @@
-import TestUtils from 'react-addons-test-utils';
-
 import Notification from '../js/components/notification/index';
 
 jest.useFakeTimers();
@@ -19,20 +17,19 @@ describe('test notification', () => {
     };
 
     let notification = Notification.addNotice(notice);
-    let noticeState = notification.state.notices[0];
-    let noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+    let notices = notification.state.notices;
 
-    expect(noticeCls.length).toBe(1);
-    expect(noticeState.title).toBe(notice.title);
-    expect(noticeState.content).toBe(notice.content);
+    expect(notices.length).toBe(1);
+    expect(notices[0].title).toBe(notice.title);
+    expect(notices[0].content).toBe(notice.content);
 
     let ticks = (notice.duration + 1) * 1000;
     setTimeout(() => {
 
       jest.runOnlyPendingTimers();
 
-      let updatedNoticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
-      expect(updatedNoticeCls.length).toBe(0);
+      let notice2 = notification.state.notices;
+      expect(notice2.length).toBe(0);
 
     }, ticks);
 
@@ -72,23 +69,23 @@ describe('test notification', () => {
     Notification.addNotice(notice1);
     Notification.addNotice(notice2);
     let notification = Notification.addNotice(notice3);
-    let noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
+    let notices = notification.state.notices;
 
-    expect(noticeCls.length).toBe(3);
+    expect(notices.length).toBe(3);
 
     Notification.removeNotice('test-2-1');
     jest.runOnlyPendingTimers();
 
-    let noticeCls2 = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
-    expect(noticeCls2.length).toBe(2);
+    let notices2 = notification.state.notices;
+    expect(notices2.length).toBe(2);
 
     Notification.removeNotice('test-2-2');
     jest.runOnlyPendingTimers();
     Notification.removeNotice('test-2-3');
     jest.runOnlyPendingTimers();
 
-    let noticeCls3 = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
-    expect(noticeCls3.length).toBe(0);
+    let notices3 = notification.state.notices;
+    expect(notices3.length).toBe(0);
 
   });
 
@@ -112,9 +109,9 @@ describe('test notification', () => {
     notice.content = content2;
     Notification.updateNotice(notice);
 
-    let noticeState = notification.state.notices[0];
-    expect(noticeState.title).toBe(notice.title);
-    expect(noticeState.content).toBe(notice.content);
+    let notices = notification.state.notices;
+    expect(notices[0].title).toBe(notice.title);
+    expect(notices[0].content).toBe(notice.content);
 
   });
 
