@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
 import Notification from '../js/components/notification/index';
@@ -20,11 +19,12 @@ describe('test notification', () => {
     };
 
     let notification = Notification.addNotice(notice);
-    let notificationNode = ReactDOM.findDOMNode(notification);
+    let noticeState = notification.state.notices[0];
     let noticeCls = TestUtils.scryRenderedDOMComponentsWithClass(notification, 'notice');
 
     expect(noticeCls.length).toBe(1);
-    expect(notificationNode.textContent).toBe(notice.title + notice.content);
+    expect(noticeState.title).toBe(notice.title);
+    expect(noticeState.content).toBe(notice.content);
 
     let ticks = (notice.duration + 1) * 1000;
     setTimeout(() => {
@@ -104,15 +104,17 @@ describe('test notification', () => {
     };
 
     let notification = Notification.addNotice(notice);
-    let notificationNode = ReactDOM.findDOMNode(notification);
 
-    expect(notificationNode.textContent).toBe(notice.title + notice.content);
+    let title2 = 'Update:';
+    let content2 = 'I am updated content';
 
-    notice.title = 'Update:';
-    notice.content = 'I am updated content';
+    notice.title = title2;
+    notice.content = content2;
     Notification.updateNotice(notice);
 
-    expect(notificationNode.textContent).toBe(notice.title + notice.content);
+    let noticeState = notification.state.notices[0];
+    expect(noticeState.title).toBe(notice.title);
+    expect(noticeState.content).toBe(notice.content);
 
   });
 
