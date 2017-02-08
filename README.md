@@ -2,6 +2,7 @@
 
 # USkin
 
+[![Build status](https://ci.appveyor.com/api/projects/status/dflrwd6sm6e6o8da?svg=true)](https://ci.appveyor.com/project/icecreamliker/uskin)
 [![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin) 
 [![Coverage Status](https://coveralls.io/repos/github/icecreamliker/uskin/badge.svg?branch=master)](https://coveralls.io/github/icecreamliker/uskin?branch=master)
 [![bitHound Score](https://www.bithound.io/github/icecreamliker/uskin/badges/score.svg)](https://www.bithound.io/github/icecreamliker/uskin) 
