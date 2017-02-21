@@ -19,21 +19,26 @@ class DropdownButton extends React.Component {
   }
 
   buttonOnClick(e, key) {
-    this.setState({
-      toggle: !this.state.toggle
-    });
+    let toggle = this.state.toggle;
 
-    document.addEventListener('click', this.closeToggle);
+    if (toggle) {
+      e.stopPropagation();
+      this.closeToggle(e);
+    } else {
+      this.setState({
+        toggle: true
+      });
+
+      document.addEventListener('click', this.closeToggle);
+    }
   }
 
   closeToggle(e) {
-    if (!this.refs.dropdownBtn.contains(e.target) || !e.target.parentNode.classList.contains('disabled')) {
-      this.setState({
-        toggle: false
-      });
+    this.setState({
+      toggle: false
+    });
 
-      document.removeEventListener('click', this.closeToggle);
-    }
+    document.removeEventListener('click', this.closeToggle);
   }
 
   render() {
