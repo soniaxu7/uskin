@@ -103,43 +103,36 @@ class InputNumber extends React.Component {
   }
 
   nextStep(e) {
-    this.goStep('next', e);
+    e.preventDefault();
+    this.goStep('next');
   }
 
   prevStep(e) {
-    this.goStep('prev', e);
+    e.preventDefault();
+    this.goStep('prev');
   }
 
-  goStep(type, e) {
-    if (e) {
-      e.preventDefault();
-    }
-
+  goStep(type) {
     const value = this.state.value;
     const props = this.props;
     const step = this.props.step;
 
-    switch (type) {
-      case 'next': {
-        let nextStep = value + step;
-        if (!this.isUpperBound(nextStep)) {
-          this.setValue(nextStep);
-        } else {
-          this.setValue(props.max);
-        }
-        break;
+    if (type === 'next') {
+      let nextStep = value + step;
+      if (!this.isUpperBound(nextStep)) {
+        this.setValue(nextStep);
+      } else {
+        this.setValue(props.max);
       }
-      case 'prev': {
-        let prevStep = value - step;
-        if (!this.isLowerBound(prevStep)) {
-          this.setValue(prevStep);
-        } else {
-          this.setValue(props.min);
-        }
-        break;
+    }
+
+    if (type === 'prev') {
+      let prevStep = value - step;
+      if (!this.isLowerBound(prevStep)) {
+        this.setValue(prevStep);
+      } else {
+        this.setValue(props.min);
       }
-      default:
-        break;
     }
   }
 
