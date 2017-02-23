@@ -4,7 +4,22 @@ jest.useFakeTimers();
 
 describe('test notification', () => {
 
-  it('renders a notification and destroys automatically', () => {
+  function clear() {
+    jest.runAllTimers();
+  }
+
+  it('tests error operation', () => {
+
+    let anyId = 'test';
+
+    Notification.removeNotice(anyId);
+    Notification.updateNotice(anyId);
+
+    expect(Notification.len).toBe(0);
+
+  });
+
+  it('tests autoHide with id(none), duration(none, given), icon(none, given), showIcon(true)', () => {
 
     let notice = {
       title: 'Note:',
@@ -13,34 +28,43 @@ describe('test notification', () => {
       isAutoHide: true,
       duration: 5,
       width: 300,
-      id: 'test-1'
+      type: 'success',
+      icon: 'status-pending'
+    };
+    let notice2 = {
+      title: 'Note:',
+      content: 'I am content',
+      isAutoHide: true,
+      width: 300,
+      type: 'success'
     };
 
-    let notification = Notification.addNotice(notice);
+    Notification.addNotice(notice);
+    let notification = Notification.addNotice(notice2);
     let notices = notification.state.notices;
 
-    expect(notices.length).toBe(1);
+    expect(Notification.len).toBe(2);
     expect(notices[0].title).toBe(notice.title);
     expect(notices[0].content).toBe(notice.content);
+    expect(notices[1].title).toBe(notice2.title);
+    expect(notices[1].content).toBe(notice2.content);
 
-    let ticks = (notice.duration + 1) * 1000;
+    let ticks = (notice.duration + 100) * 1000;
     setTimeout(() => {
 
-      jest.runOnlyPendingTimers();
+      jest.runAllTimers();
 
-      let notice2 = notification.state.notices;
-      expect(notice2.length).toBe(0);
+      expect(Notification.len).toBe(0);
 
     }, ticks);
 
-    jest.runOnlyPendingTimers();
+    clear();
 
   });
 
-  it('renders 3 notifications and destroys manually', () => {
+  it('tests close notification with id(given)', () => {
 
     let notice1 = {
-      title: 'Note:',
       content: 'I am content',
       showIcon: true,
       isAutoHide: false,
@@ -49,7 +73,6 @@ describe('test notification', () => {
     };
 
     let notice2 = {
-      title: 'Note:',
       content: 'I am content',
       showIcon: true,
       isAutoHide: false,
@@ -58,7 +81,6 @@ describe('test notification', () => {
     };
 
     let notice3 = {
-      title: 'Note:',
       content: 'I am content',
       showIcon: true,
       isAutoHide: false,
@@ -68,50 +90,85 @@ describe('test notification', () => {
 
     Notification.addNotice(notice1);
     Notification.addNotice(notice2);
-    let notification = Notification.addNotice(notice3);
-    let notices = notification.state.notices;
+    Notification.addNotice(notice3);
 
-    expect(notices.length).toBe(3);
+    expect(Notification.len).toBe(3);
 
-    Notification.removeNotice('test-2-1');
+    Notification.removeNotice(notice3.id);
+    jest.runOnlyPendingTimers();
+    Notification.removeNotice(notice2.id);
+    jest.runOnlyPendingTimers();
+    Notification.removeNotice(notice1.id);
     jest.runOnlyPendingTimers();
 
-    let notices2 = notification.state.notices;
-    expect(notices2.length).toBe(2);
-
-    Notification.removeNotice('test-2-2');
-    jest.runOnlyPendingTimers();
-    Notification.removeNotice('test-2-3');
-    jest.runOnlyPendingTimers();
-
-    let notices3 = notification.state.notices;
-    expect(notices3.length).toBe(0);
+    expect(Notification.len).toBe(0);
 
   });
 
-  it('updates the notification', () => {
+  it('tests update', () => {
 
+    let id = 'test-3';
     let notice = {
       title: 'Note:',
       content: 'I am content',
       showIcon: true,
       isAutoHide: false,
       width: 300,
-      id: 'test-3'
+      id: id,
+      type: 'success'
+    };
+    let notice2 = {
+      title: 'Update:',
+      content: 'I am updated content',
+      showIcon: true,
+      isAutoHide: false,
+      width: 300,
+      id: id,
+      type: 'info'
+    };
+    let notice3 = {
+      title: 'Update:',
+      content: 'I am updated content',
+      showIcon: true,
+      isAutoHide: false,
+      width: 300,
+      id: id
     };
 
     let notification = Notification.addNotice(notice);
-
-    let title2 = 'Update:';
-    let content2 = 'I am updated content';
-
-    notice.title = title2;
-    notice.content = content2;
-    Notification.updateNotice(notice);
+    Notification.updateNotice(notice2);
 
     let notices = notification.state.notices;
-    expect(notices[0].title).toBe(notice.title);
-    expect(notices[0].content).toBe(notice.content);
+    expect(notices[0].title).toBe(notice2.title);
+    expect(notices[0].content).toBe(notice2.content);
+
+    Notification.updateNotice(notice3);
+    notices = notification.state.notices;
+    expect(notices[0].type).toBe(undefined);
+
+    Notification.removeNotice(id);
+    clear();
+
+  });
+
+  it('tests add notice with duplicated id', () => {
+
+    let id = 'test-4';
+    let notice = {
+      content: 'I am content',
+      id: id
+    };
+    let notice2 = {
+      content: 'I am updated content',
+      id: id
+    };
+
+    Notification.addNotice(notice);
+    Notification.addNotice(notice2);
+
+    expect(Notification.len).toBe(1);
+
+    clear();
 
   });
 
