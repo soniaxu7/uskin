@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 
 import Slider from '../js/components/slider/index';
 
@@ -117,6 +117,133 @@ describe('test slider', () => {
       slider.setProps({value: val2});
 
       expect(slider.node.props['data-value']).toBe(min);
+
+    });
+
+  });
+
+  describe('test drag', () => {
+
+    //default range is 0 ~ 100
+    const width = 100;
+    let simulateMouseDown;
+    let simulateMouseMove;
+    let simulateMouseUp;
+
+    function makeSlider(slider) {
+      const thumbNode = slider.node.refs.thumb;
+      const sliderNode = slider.node.refs.slider;
+
+      //mock some attributes
+      sliderNode.getBoundingClientRect = () => ({
+        left: 0
+      });
+      sliderNode.offsetWidth = width;
+
+      //mousedown event
+      simulateMouseDown = () => {
+        slider.simulate('mousedown', {
+          preventDefault() {}
+        });
+      };
+
+      //simulate document mousemove event
+      simulateMouseMove = (clientX) => {
+        slider.node.updateSlide({
+          type: 'mousemove',
+          target: thumbNode,
+          clientX: clientX //equal to value
+        });
+      };
+
+      //simulate document mouseup event
+      simulateMouseUp = (clientX) => {
+        slider.node.endSlide({
+          type: 'mouseup',
+          target: thumbNode,
+          clientX: clientX //equal to value
+        });
+      };
+    }
+
+    it('should drag thumb to correct value', () => {
+
+      let listener = jest.genMockFunction();
+      const slider = mount(
+        <Slider onChange={listener} width={width} />
+      );
+      makeSlider(slider);
+
+      let value = 10;
+      simulateMouseDown();
+      simulateMouseMove(value);
+      simulateMouseUp(value);
+
+      expect(listener.mock.calls[0][1]).toBe('' + value); //mousemove
+      expect(listener.mock.calls[1][1]).toBe('' + value); //mouseup
+
+    });
+
+    it('should drag thumb to closer value', () => {
+
+      let listener = jest.genMockFunction();
+      const slider = mount(
+        <Slider step={20} onChange={listener} width={width} />
+      );
+      makeSlider(slider);
+
+      let value = 25;
+      simulateMouseDown();
+      simulateMouseMove(value);
+      simulateMouseUp(value);
+
+      expect(listener.mock.calls[0][1]).toBe('' + value); //mousemove, return value
+      expect(listener.mock.calls[1][1]).toBe('20'); //mouseup, return closer value
+
+    });
+
+    it('should drag thumb to correct value without listener', () => {
+
+      const slider = mount(
+        <Slider width={width} />
+      );
+      makeSlider(slider);
+
+      let value = 10;
+
+      simulateMouseDown();
+      simulateMouseMove(value);
+      simulateMouseUp(value);
+
+      expect(slider.state().value).toBe('' + value);
+
+    });
+
+    it('should return to correct value when dragging to out of bound', () => {
+
+      let listener = jest.genMockFunction();
+      const slider = mount(
+        <Slider onChange={listener} width={width} />
+      );
+      makeSlider(slider);
+
+      //test lower bound
+      let lowerBound = -10;
+      simulateMouseDown();
+      simulateMouseMove(lowerBound);
+      simulateMouseUp(lowerBound);
+
+      expect(listener.mock.calls[0][1]).toBe('0'); //mousemove
+      expect(listener.mock.calls[1][1]).toBe('0'); //mouseup
+
+      //test upper bound
+      let upperBound = width + 10;
+      simulateMouseDown();
+      simulateMouseMove(upperBound);
+      simulateMouseUp(upperBound);
+
+      expect(listener.mock.calls[2][1]).toBe('' + width); //mousemove
+      expect(listener.mock.calls[3][1]).toBe('' + width); //mouseup
 
     });
 

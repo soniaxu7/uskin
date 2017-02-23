@@ -118,12 +118,6 @@ class Slider extends React.Component {
 
     let perc = this.trackOffsetCloserPerc(e);
     let value = this.trackOffsetValue(perc);
-    if (isNaN(perc)) {
-      perc = 0;
-    }
-    if (isNaN(value)) {
-      value = this._min;
-    }
     this.setState({
       perc: perc,
       value: value
@@ -179,10 +173,10 @@ Slider.propTypes = {
 };
 
 Slider.defaultProps = {
-  min: 1,
-  max: 10,
+  min: 0,
+  max: 100,
   step: 1,
-  value: 1,
+  value: 0,
   width: 300,
   onChange: noop,
   hideThumb: false,

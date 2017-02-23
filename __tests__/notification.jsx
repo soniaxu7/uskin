@@ -168,6 +168,7 @@ describe('test notification', () => {
 
     expect(Notification.len).toBe(1);
 
+    Notification.removeNotice(id);
     clear();
 
   });
