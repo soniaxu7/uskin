@@ -3,6 +3,15 @@ import {mount, shallow} from 'enzyme';
 
 import Slider from '../js/components/slider/index';
 
+// https://github.com/react-component/slider/blob/master/tests/common/createSlider.test.js
+const polyfillJsDomApi = (object, property, value) => {
+  Object.defineProperty(object, property, {
+    get() { return value; },
+    enumerable: true,
+    configurable: true
+  });
+};
+
 describe('test slider', () => {
 
   describe('test render', () => {
@@ -138,7 +147,7 @@ describe('test slider', () => {
       sliderNode.getBoundingClientRect = () => ({
         left: 0
       });
-      sliderNode.offsetWidth = width;
+      polyfillJsDomApi(sliderNode, 'offsetWidth', width);
 
       //mousedown event
       simulateMouseDown = () => {
