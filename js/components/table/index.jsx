@@ -144,6 +144,7 @@ class Table extends React.Component {
   onFilter(column, e) {
     e.stopPropagation();
     e = e.nativeEvent;
+    e.stopImmediatePropagation();
 
     //create a filter, if it exists, destroy it
     const prevFilter = DOC.getElementById(FILTER_ID);
@@ -154,13 +155,7 @@ class Table extends React.Component {
 
     //destroy filter listener
     const that = this;
-    DOC.addEventListener('click', function shouldDestroyFilter(event) {
-      if (!(e.target.isEqualNode(event.target) && event.target.className === 'filter-icon')) {
-        that.destroyFilter();
-      }
-
-      DOC.removeEventListener('click', shouldDestroyFilter, false);
-    }, false);
+    DOC.addEventListener('click', this.destroyFilter, false);
   }
 
   destroyFilter() {
@@ -170,6 +165,8 @@ class Table extends React.Component {
       ReactDOM.unmountComponentAtNode(filter);
       root.removeChild(filter);
     }
+
+    DOC.removeEventListener('click', this.destroyFilter, false);
   }
 
   createFilter(column, e) {
@@ -213,7 +210,9 @@ class Table extends React.Component {
 
     let container = document.createElement('div');
     container.id = FILTER_ID;
+
     root.appendChild(container);
+    console.log(root);
     ReactDOM.render(filter, container);
   }
 
@@ -317,11 +316,7 @@ class Table extends React.Component {
   }
 
   //public function
-  check(checkedKey, data) {
-    if (!data) {
-      data = this.state.data;
-    }
-
+  check(checkedKey) {
     this.setState({
       checkedKey: checkedKey
     });
@@ -347,7 +342,7 @@ class Table extends React.Component {
     });
 
     //check checkbox
-    this.check(this.state.checkedKey, data);
+    this.check(this.state.checkedKey);
   }
 
   sort(column, direction) {

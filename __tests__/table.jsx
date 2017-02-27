@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 
 import Table from '../js/components/table/index';
 
@@ -181,7 +181,7 @@ describe('test table', () => {
     checkboxOnChange = jest.genMockFunction();
     checkboxInitialize = jest.genMockFunction();
 
-    table = shallow(
+    table = mount(
       <Table column={column}
         data={data}
         dataKey="id"
@@ -195,35 +195,181 @@ describe('test table', () => {
 
   });
 
-  it('renders table', () => {
+  describe('test render', () => {
 
-    const checkboxNodes = table.find('input');
-    const columnNodes = table.find('.table-header').children();
-    const rowNodes = table.find('.row');
+    beforeEach(() => {
 
-    expect(checkboxNodes.length).toBe(data.length + 1);
-    expect(columnNodes.length).toBe(column.length + 1);
-    expect(rowNodes.length).toBe(data.length);
-    expect(checkboxInitialize.mock.calls.length).toBe(data.length);
+      checkboxOnChange = jest.genMockFunction();
+      checkboxInitialize = (item) => {
+        return item.flavor === 'Micro';
+      };
+      table = mount(
+        <Table column={column}
+          data={data}
+          dataKey="id"
+          checkbox={true}
+          checkboxInitialize={checkboxInitialize}
+          checkboxOnChange={checkboxOnChange}
+          striped={true}
+          hover={true} />
+      );
+      table.instance().resizeCol = () => {};
+
+    });
+
+    it('should render a table', () => {
+
+      const checkboxNodes = table.find('input');
+      const columnNodes = table.find('.table-header').children();
+      const rowNodes = table.find('.row');
+      const selectedRow = table.find('.row.selected');
+
+      expect(checkboxNodes.length).toBe(data.length + 1);
+      expect(columnNodes.length).toBe(column.length + 1);
+      expect(rowNodes.length).toBe(data.length);
+      expect(selectedRow.length).toBe(data.filter(checkboxInitialize).length);
+
+    });
+
+    it('should render a table without listener', () => {
+
+      table = mount(
+        <Table column={column}
+          data={data}
+          dataKey="id"
+          checkbox={true} />
+      );
+      table.instance().resizeCol = () => {};
+      const columnNodes = table.find('.table-header').children();
+      const rowNodes = table.find('.row');
+
+      let key = 0;
+      let checked = true;
+      const checkbox = table.find('input').at(key + 1);
+
+      checkbox.simulate('change', {
+        target: {
+          value: data[key].id,
+          checked: checked
+        }
+      });
+      const selectedRow = table.find('.row.selected');
+
+      expect(selectedRow.length).toBe(1);
+      expect(columnNodes.length).toBe(column.length + 1);
+      expect(rowNodes.length).toBe(data.length);
+
+    });
+
+    it('should update data when receive new props', () => {
+
+      //when table has no filter, sortCol
+      let newData = [{
+        id: 1,
+        category: 'Micro-1',
+        flavor: 'Micro',
+        level: 'First Level',
+        cpu: '4',
+        price: '2.3333'
+      }];
+      table.setProps({
+        data: newData,
+        dataKey: 'id'
+      });
+      const rowNodes = table.find('.row');
+
+      expect(rowNodes.length).toBe(newData.length);
+
+      //when table has filter, sortCol
+
+      //test
+
+    });
+
+    it('should unmount the table', () => {
+
+      spyOn(table.node, 'componentWillUnmount').and.callThrough();
+      table.unmount();
+
+      expect(table.node.componentWillUnmount).toHaveBeenCalled();
+
+    });
 
   });
 
-  it('tests onclick checkbox row', () => {
+  describe('test provided api', () => {
 
-    let key = 0;
-    let checked = true;
-    const checkbox = table.find('input').at(key + 1);
+    it('should be loading', () => {
 
-    checkbox.simulate('change', {
-      target: {
-        value: data[key].id,
-        checked: checked
-      }
+      let isLoading = true;
+      table.node.loading(isLoading);
+      const tbody = table.find('.table-body');
+
+      expect(table.state().loading).toBe(isLoading);
+      expect(tbody.props().style.display).toBe('none');
+
     });
 
-    expect(checkboxOnChange).toBeCalled();
-    expect(checkboxOnChange.mock.calls[0][0]).toBe(checked);
-    expect(checkboxOnChange.mock.calls[0][1]).toBe(data[key]);
+  });
+
+  describe('test checkbox', () => {
+
+    it('should check a row', () => {
+
+      let key = 0;
+      let checked = true;
+      const checkbox = table.find('input').at(key + 1);
+
+      checkbox.simulate('change', {
+        target: {
+          value: data[key].id,
+          checked: checked
+        }
+      });
+
+      expect(checkboxOnChange).toBeCalled();
+      expect(checkboxOnChange.mock.calls[0]).toEqual([checked, data[key], [data[key]]]);
+
+      checkbox.simulate('change', {
+        target: {
+          value: data[key].id,
+          checked: !checked
+        }
+      });
+
+      expect(checkboxOnChange.mock.calls[1]).toEqual([!checked, data[key], []]);
+
+    });
+
+    it('should check all rows', () => {
+
+      let keyValue = 'null';
+      let checked = true;
+      const checkbox = table.find('input').at(0);
+
+      checkbox.simulate('change', {
+        target: {
+          value: keyValue,
+          checked: checked
+        }
+      });
+      let checkedRows = table.find('.row.selected');
+
+      expect(checkedRows.length).toBe(data.length);
+      expect(checkboxOnChange.mock.calls[0]).toEqual([checked, undefined, data]);
+
+      checkbox.simulate('change', {
+        target: {
+          value: keyValue,
+          checked: !checked
+        }
+      });
+      checkedRows = table.find('.row.selected');
+
+      expect(checkedRows.length).toBe(0);
+      expect(checkboxOnChange.mock.calls[1]).toEqual([!checked, undefined, []]);
+
+    });
 
   });
 
