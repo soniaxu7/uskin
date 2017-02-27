@@ -200,9 +200,7 @@ describe('test table', () => {
     beforeEach(() => {
 
       checkboxOnChange = jest.genMockFunction();
-      checkboxInitialize = (item) => {
-        return item.flavor === 'Micro';
-      };
+      checkboxInitialize = (item) => (item.flavor === 'Micro');
       table = mount(
         <Table column={column}
           data={data}

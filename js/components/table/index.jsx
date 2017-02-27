@@ -143,8 +143,7 @@ class Table extends React.Component {
   //filter onClick
   onFilter(column, e) {
     e.stopPropagation();
-    e = e.nativeEvent;
-    e.stopImmediatePropagation();
+    e.nativeEvent.stopImmediatePropagation();
 
     //create a filter, if it exists, destroy it
     const prevFilter = DOC.getElementById(FILTER_ID);
@@ -154,7 +153,6 @@ class Table extends React.Component {
     this.createFilter(column, e);
 
     //destroy filter listener
-    const that = this;
     DOC.addEventListener('click', this.destroyFilter, false);
   }
 
@@ -212,7 +210,6 @@ class Table extends React.Component {
     container.id = FILTER_ID;
 
     root.appendChild(container);
-    console.log(root);
     ReactDOM.render(filter, container);
   }
 
@@ -452,14 +449,6 @@ class Table extends React.Component {
                 <div key={col.key} style={col.width ? this.getFixedWidth(col.width) : null}
                   className={col.sortBy ? 'sortable' : null}
                   onClick={col.sortBy && this.onSort.bind(this, col, nextDir)}>
-                  <span>{col.title}</span>
-                  {
-                    col.filter ?
-                      <div className="filter-box">
-                        <div className="filter-icon" onClick={this.onFilter.bind(this, col)} />
-                      </div>
-                    : null
-                  }
                   {
                     col.sortBy ?
                       <div className="sort-box">
@@ -471,6 +460,14 @@ class Table extends React.Component {
                           onClick={this.onSort.bind(this, col, -1)} >
                           <span className="arrow-down" data-value={col.key} data-direction="down" />
                         </span>
+                      </div>
+                    : null
+                  }
+                  <span>{col.title}</span>
+                  {
+                    col.filter ?
+                      <div className="filter-box">
+                        <div className="filter-icon" onClick={this.onFilter.bind(this, col)} />
                       </div>
                     : null
                   }
