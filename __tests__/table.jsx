@@ -308,6 +308,30 @@ describe('test table', () => {
 
     });
 
+    it('should clear state', () => {
+
+      checkboxOnChange = jest.genMockFunction();
+      checkboxInitialize = (item) => (item.flavor === 'Micro');
+      table = mount(
+        <Table column={column}
+          data={data}
+          dataKey="id"
+          checkbox={true}
+          checkboxInitialize={checkboxInitialize}
+          checkboxOnChange={checkboxOnChange}
+          striped={true}
+          hover={true} />
+      );
+      table.instance().resizeCol = () => {};
+
+      expect(table.find('.row.selected').length).toBe(data.filter(checkboxInitialize).length);
+
+      table.node.clearState();
+
+      expect(table.find('.row.selected').length).toBe(0);
+
+    });
+
   });
 
   describe('test checkbox', () => {
