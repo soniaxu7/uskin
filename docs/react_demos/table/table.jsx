@@ -74,7 +74,7 @@ let column = [{
   key: 'cpu',
   dataIndex: 'cpu',
   sortBy: 'number',
-  width: '50px'
+  width: '80px'
 }, {
   title: 'Price',
   key: 'price',

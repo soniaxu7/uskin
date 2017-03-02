@@ -20,10 +20,11 @@ class Table extends React.Component {
       sortCol: undefined,
       sortDirection: undefined,
       filterColKey: {},
-      filterBy: undefined
+      filterBy: undefined,
+      colWidth: new Array(props.column.length)
     };
 
-    ['resizeCol', 'onCheck', 'check', 'filter', 'sort'].forEach((func) => {
+    ['resizeScrollCol', 'onCheck', 'check', 'filter', 'sort', 'onResizeColumn'].forEach((func) => {
       this[func] = this[func].bind(this);
     });
   }
@@ -49,16 +50,16 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.resizeCol);
-    this.resizeCol();
+    window.addEventListener('resize', this.resizeScrollCol);
+    this.resizeScrollCol();
   }
 
   componentDidUpdate() {
-    this.resizeCol();
+    this.resizeScrollCol();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.resizeCol);
+    window.removeEventListener('resize', this.resizeScrollCol);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,7 +70,7 @@ class Table extends React.Component {
     });
   }
 
-  resizeCol() {
+  resizeScrollCol() {
     const theadDOM = this.refs.thead;
     const tbodyDOM = this.refs.tbody;
 
@@ -253,7 +254,6 @@ class Table extends React.Component {
         this.sort(column, direction);
       }
     }
-
   }
 
   //sort helper
@@ -310,6 +310,72 @@ class Table extends React.Component {
 
   sortByKey(a, b, key) {
     return a[key] > b[key] ? 1 : -1;
+  }
+
+  //resizable column
+  onResizeColumn(colIndex, e) {
+    let getCol = (i) => (this.refs['col-' + i]);
+    let thead = this.refs.thead;
+    let tbody = this.refs.tbody;
+    let col = getCol(colIndex);
+    let nextCol = getCol(colIndex + 1);
+    let line = document.createElement('div');
+    let startX = col.offsetLeft + col.offsetWidth;
+    let startXMouse = e.clientX;
+    let startY = col.offsetTop;
+    let minWidth = 32;
+    let minX = col.offsetLeft + minWidth;
+    let maxX = nextCol.offsetLeft + nextCol.offsetWidth - minWidth;
+    let tableHeight = thead.clientHeight + tbody.clientHeight;
+
+    let lineStyle = line.style;
+    lineStyle['background-color'] = '#d5dddf';
+    lineStyle.width = '1px';
+    lineStyle.height = tableHeight + 'px';
+    lineStyle.position = 'fixed';
+    lineStyle.left = (startX - 1) + 'px';
+    lineStyle.top = startY + 'px';
+
+    let bodyStyle = document.body.style;
+    bodyStyle['user-select'] = 'none';
+
+    document.body.appendChild(line);
+
+    function getValidX (value) {
+      if (value < minX) {
+        return minX;
+      } else if (value > maxX) {
+        return maxX;
+      }
+      return value;
+    }
+
+    let onDrag = (evt) => {
+      let offset = startXMouse - evt.clientX;
+      lineStyle.left = getValidX(startX - offset) + 'px';
+    };
+
+    let endDrag = (evt) => {
+      let endXMouse = getValidX(evt.clientX);
+      let offset = startXMouse - endXMouse;
+
+      let colWidth = this.state.colWidth;
+      colWidth[colIndex] = col.offsetWidth - offset;
+      colWidth[colIndex + 1] = nextCol.offsetWidth + offset;
+
+      this.setState({
+        colWidth: colWidth
+      });
+
+      bodyStyle['user-select'] = '';
+      document.body.removeChild(line);
+
+      document.removeEventListener('mousemove', onDrag, true);
+      document.removeEventListener('mouseup', endDrag, true);
+    };
+
+    document.addEventListener('mouseup', endDrag, true);
+    document.addEventListener('mousemove', onDrag, true);
   }
 
   //public function
@@ -441,14 +507,27 @@ class Table extends React.Component {
             : null
           }
           {
-            props.column.map((col) => {
+            props.column.map((col, index) => {
               let isSorted = (col === state.sortCol);
               let nextDir = (isSorted && state.sortDirection) ? state.sortDirection * -1 : 1;
+              let ref = 'col-' + index;
+              let colStyle = {};
+              if (state.colWidth[index]) {
+                colStyle = this.getFixedWidth(state.colWidth[index]);
+              } else if (col.width) {
+                colStyle = this.getFixedWidth(col.width);
+              }
 
               return (
-                <div key={col.key} style={col.width ? this.getFixedWidth(col.width) : null}
-                  className={col.sortBy ? 'sortable' : null}
-                  onClick={col.sortBy && this.onSort.bind(this, col, nextDir)}>
+                <div key={col.key}
+                  ref={ref}
+                  style={colStyle}
+                  className={col.sortBy ? 'sortable' : null}>
+                  {
+                    index < props.column.length - 1 ?
+                      <div className="drag-line" onMouseDown={this.onResizeColumn.bind(this, index)} />
+                    : null
+                  }
                   {
                     col.sortBy ?
                       <div className="sort-box">
@@ -463,7 +542,10 @@ class Table extends React.Component {
                       </div>
                     : null
                   }
-                  <span>{col.title}</span>
+                  <span className="title"
+                    onClick={col.sortBy && this.onSort.bind(this, col, nextDir)}>
+                    {col.title}
+                  </span>
                   {
                     col.filter ?
                       <div className="filter-box">
@@ -502,11 +584,22 @@ class Table extends React.Component {
                     : null
                   }
                   {
-                    props.column.map((col) =>
-                      <div key={col.key} style={col.width ? this.getFixedWidth(col.width) : null}>
-                        {col.render ? col.render(col, item, index) : item[col.dataIndex]}
-                      </div>
-                    )
+                    props.column.map((col, colIndex) => {
+                      let cellStyle = {};
+                      if (state.colWidth[colIndex]) {
+                        cellStyle = this.getFixedWidth(state.colWidth[colIndex]);
+                      } else if (col.width) {
+                        cellStyle = this.getFixedWidth(col.width);
+                      }
+
+                      return (
+                        <div key={col.key}
+                          ref={'row-' + index + '-col-' + colIndex}
+                          style={cellStyle}>
+                          {col.render ? col.render(col, item, index) : item[col.dataIndex]}
+                        </div>
+                      );
+                    })
                   }
                 </div>
               );

@@ -89,6 +89,7 @@ table.table {
     max-height: 36px;
     > div {
       flex: 1;
+      box-sizing: border-box;
       height: 36px;
       line-height: 36px;
       padding-left: 16px;
@@ -168,14 +169,16 @@ table.table {
       }
 
       &.checkbox {
-        width: 26px;
+        width: 36px;
         flex: none;
-        padding-left: 10px;
+        padding: 0 10px;
       }
 
       &.sortable {
         display: inline-block;
-        cursor: pointer;
+        .title {
+          cursor: pointer;
+        }
         .sort-box {
           width: 20px;
           height: 36px;
@@ -231,6 +234,14 @@ table.table {
           }
         }
       }
+
+      .drag-line {
+        float: right;
+        width: 8px;
+        height: @table_hd_height;
+        cursor: col-resize;
+      }
+
     }
   }
 
@@ -251,7 +262,6 @@ table.table {
   }
 
   .table-body {
-    flex: 1;
     overflow-x: hidden;
     overflow-y: auto;
     .row {
@@ -259,6 +269,7 @@ table.table {
       border-bottom: @table_bd_border;
       > div {
         flex: 1;
+        box-sizing: border-box;
         height: 40px;
         line-height: 40px;
         padding-left: 16px;
@@ -271,9 +282,9 @@ table.table {
         }
 
         &.checkbox {
-          width: 26px;
+          width: 36px;
           flex: none;
-          padding-left: 10px;
+          padding: 0 10px;
         }
       }
 
