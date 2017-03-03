@@ -36,13 +36,17 @@ module.exports = function(grunt) {
           filename: '[name].js'
         },
         plugins: [
-          new ExtractTextPlugin('../css/uskin.css')
+          new ExtractTextPlugin({
+            filename: '../css/uskin.css'
+          })
         ],
         devtool: 'source-map'
       },
       build: {
         plugins: [
-          new ExtractTextPlugin('../css/[hash:6].uskin.min.css'),
+          new ExtractTextPlugin({
+            filename: '../css/[hash:6].uskin.min.css'
+          }),
           new webpack.optimize.UglifyJsPlugin(),
           new webpack.DefinePlugin({
             'process.env': {

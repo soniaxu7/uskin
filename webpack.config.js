@@ -4,7 +4,6 @@ var autoprefixer = require('autoprefixer');
 var theme = process.env.npm_config_theme || 'default';
 
 module.exports = {
-  progress: true,
   entry: {
     uskin: './js/uskin.js',
     css: './css/uskin.less'
@@ -24,39 +23,53 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js|jsx$/,
       exclude: /node_modules|__tests__/,
-      loader: 'babel-loader',
-      query: {
-        cacheDirectory: process.env.NODE_ENV !== 'production'
+      use: {
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: process.env.NODE_ENV !== 'production'
+        }
       }
-    }, {
-      test: /\.json$/,
-      loader: 'json-loader'
+
     }, {
       test: /\.less$/,
-      loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!postcss-loader!less?{sourceMap: true, modifyVars:{"theme": "\'' + theme + '\'"}}'
-      )
-    }, {
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract(
-        'css?sourceMap&-minimize!postcss-loader'
-      )
+      use: ExtractTextPlugin.extract({
+        use: [
+          'css-loader?sourceMap&-minimize', {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function() {
+                return [autoprefixer];
+              }
+            }
+          },
+          'less-loader?{sourceMap: true, modifyVars:{"theme": "\'' + theme + '\'"}}'
+        ]
+      })
     }, {
       test: /\.(woff|svg|eot|ttf)\??.*$/,
-      loader: 'url?limit=1000&name=./fonts/[hash:8].icon.[ext]'
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 1000,
+          name: '../css/fonts/[hash:8].icon.[ext]'
+        }
+      }]
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
-      loader: 'url?limit=2000&name=./img/[hash:8].[name].[ext]'
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 2000,
+          name: '../css/img/[hash:8].[name].[ext]'
+        }
+      }]
     }]
-  },
-  postcss: function() {
-    return [autoprefixer];
   },
   plugins: []
 };
