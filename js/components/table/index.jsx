@@ -315,31 +315,36 @@ class Table extends React.Component {
   //resizable column
   onResizeColumn(colIndex, e) {
     let getCol = (i) => (this.refs['col-' + i]);
+
+    let table = this.refs.table;
     let thead = this.refs.thead;
     let tbody = this.refs.tbody;
+    let line = document.createElement('div');
+
     let col = getCol(colIndex);
     let nextCol = getCol(colIndex + 1);
-    let line = document.createElement('div');
-    let startX = col.offsetLeft + col.offsetWidth;
+
+    let startX = col.getBoundingClientRect().left + col.offsetWidth;
     let startXMouse = e.clientX;
-    let startY = col.offsetTop;
+    let startY = col.getBoundingClientRect().top;
     let minWidth = 32;
-    let minX = col.offsetLeft + minWidth;
-    let maxX = nextCol.offsetLeft + nextCol.offsetWidth - minWidth;
+    let minX = col.getBoundingClientRect().left + minWidth;
+    let maxX = nextCol.getBoundingClientRect().left + nextCol.offsetWidth - minWidth;
     let tableHeight = thead.clientHeight + tbody.clientHeight;
 
+    line.className = 'resize-column-line';
     let lineStyle = line.style;
-    lineStyle['background-color'] = '#d5dddf';
-    lineStyle.width = '1px';
     lineStyle.height = tableHeight + 'px';
-    lineStyle.position = 'fixed';
     lineStyle.left = (startX - 1) + 'px';
     lineStyle.top = startY + 'px';
 
     let bodyStyle = document.body.style;
     bodyStyle['user-select'] = 'none';
+    bodyStyle['-moz-user-select'] = 'none';
+    bodyStyle['-webkit-user-select'] = 'none';
+    bodyStyle['-ms-user-select'] = 'none';
 
-    document.body.appendChild(line);
+    table.appendChild(line);
 
     function getValidX (value) {
       if (value < minX) {
@@ -368,7 +373,7 @@ class Table extends React.Component {
       });
 
       bodyStyle['user-select'] = '';
-      document.body.removeChild(line);
+      table.removeChild(line);
 
       document.removeEventListener('mousemove', onDrag, true);
       document.removeEventListener('mouseup', endDrag, true);
@@ -497,7 +502,7 @@ class Table extends React.Component {
     let checkedAll = this.checkedAll(state.data, dataKey, state.checkedKey);
 
     return (
-      <div style={style} className={className}>
+      <div ref="table" style={style} className={className}>
         <div ref="thead" className="table-header" onClick={this.tableHeadOnClick}>
           {
             props.checkbox ?

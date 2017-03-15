@@ -13,6 +13,7 @@
 @table_bd_border: 1px solid @color_grey;
 @table_padding_left: 16px;
 @table_ft_color: @color_grey;
+@table_resize_column_color: @color_disabled_400;
 
 @filter_selected_color: @color_info;
 
@@ -293,6 +294,14 @@ table.table {
       }
     }
   }
+
+  .resize-column-line {
+    background-color: @table_resize_column_color;
+    width: 1px;
+    position: fixed;
+    z-index: 999;
+  }
+
 }
 
 .table-striped {
