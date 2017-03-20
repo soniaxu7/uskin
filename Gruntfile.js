@@ -113,7 +113,7 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   // Build JS
-  grunt.registerTask('js', ['webpack:build', 'webpack:dev']);
+  grunt.registerTask('js', ['webpack:dev', 'webpack:build']);
 
   // Default task.
   grunt.registerTask('build', ['clean:dist', 'js', 'copy', 'clean:legacy', 'usebanner']);

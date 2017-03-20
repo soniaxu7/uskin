@@ -8,8 +8,8 @@ config.devtool = 'source-map';
 
 config.output.filename = '[name].js';
 
-config.module.rules.splice(4, 2, {
-  test: /\.(woff|svg|eot|ttf)\??.*$/,
+config.module.rules.splice(2, 2, {
+  test: /\.(woff|svg|eot|ttf)$/,
   use: [{
     loader: 'url-loader',
     options: {
@@ -18,7 +18,7 @@ config.module.rules.splice(4, 2, {
     }
   }]
 }, {
-  test: /\.(jpe?g|png|gif|svg)$/i,
+  test: /\.(jpe?g|png|gif)$/i,
   use: [{
     loader: 'url-loader',
     options: {

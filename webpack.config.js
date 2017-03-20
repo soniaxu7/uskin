@@ -39,8 +39,13 @@ module.exports = {
     }, {
       test: /\.less$/,
       use: ExtractTextPlugin.extract({
-        use: [
-          'css-loader?sourceMap&-minimize', {
+        use: [{
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              minimize: false
+            }
+          }, {
             loader: 'postcss-loader',
             options: {
               plugins: function() {
@@ -52,21 +57,21 @@ module.exports = {
         ]
       })
     }, {
-      test: /\.(woff|svg|eot|ttf)\??.*$/,
+      test: /\.(woff|svg|eot|ttf)$/,
       use: [{
         loader: 'url-loader',
         options: {
           limit: 1000,
-          name: '../css/fonts/[hash:8].icon.[ext]'
+          name: './fonts/[hash:8].icon.[ext]'
         }
       }]
     }, {
-      test: /\.(jpe?g|png|gif|svg)$/i,
+      test: /\.(jpe?g|png|gif)$/i,
       use: [{
         loader: 'url-loader',
         options: {
           limit: 2000,
-          name: '../css/img/[hash:8].[name].[ext]'
+          name: './img/[hash:8].[name].[ext]'
         }
       }]
     }]

@@ -51,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
     "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^0.10.1",
     "grunt": "^1.0.1",
     "grunt-banner": "^0.6.0",
     "grunt-contrib-clean": "^1.0.0",
