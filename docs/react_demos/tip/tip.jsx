@@ -19,8 +19,8 @@ ReactDOM.render(
     <Tip title={text.title} content={text.warning} type="warning" />
     <Tip title={text.title} content={text.danger} type="danger" />
     <Tip title={text.title} content={text.para} type="danger" width="400" />
-    <Tip content={text.content} icon="loading" enableClose={true} />
-    <Tip content={text.info} icon="loading" enableClose={true} type="info" />
+    <Tip content={text.content} showIcon={true} enableClose={true} />
+    <Tip content={text.info} showIcon={true} enableClose={true} type="info" />
     <Tip content={text.success} showIcon={true} enableClose={true} type="success" />
     <Tip content={text.warning} showIcon={true} enableClose={true} type="warning" />
     <Tip content={text.danger} showIcon={true} enableClose={true} type="danger" />

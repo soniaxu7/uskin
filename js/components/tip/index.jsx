@@ -47,17 +47,18 @@ class Tip extends React.Component {
     let iconType = null;
 
     if (props.icon) {
-      iconType = 'glyphicon ' + props.icon;
+      iconType = 'glyphicon icon-' + props.icon;
     } else if (props.showIcon) {
       iconType = 'glyphicon ';
 
       switch (props.type) {
-        case 'success':
-          iconType += 'icon-status-active';
-          break;
         case 'danger':
+        case 'info':
         case 'warning':
           iconType += 'icon-status-warning';
+          break;
+        case 'success':
+          iconType += 'icon-status-active';
           break;
         default:
           iconType += 'loading-tip';
