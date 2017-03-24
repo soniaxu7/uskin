@@ -43,7 +43,7 @@ describe('test tip', () => {
     it('renders with icon', () => {
 
       let width = 160;
-      let icon = 'loading';
+      let icon = 'icon-loading';
       const tip = mount(<Tip content={content} width={width} icon={icon} />);
       const iconNode = tip.find('.' + icon);
       const tipNode = tip.find('.tip');

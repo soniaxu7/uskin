@@ -47,7 +47,7 @@ class Tip extends React.Component {
     let iconType = null;
 
     if (props.icon) {
-      iconType = 'glyphicon icon-' + props.icon;
+      iconType = 'glyphicon ' + props.icon;
     } else if (props.showIcon) {
       iconType = 'glyphicon ';
 
@@ -108,7 +108,7 @@ Tip.propTypes = {
   width: PropTypes.number,
   type: PropTypes.oneOf(TYPES),
   showIcon: PropTypes.bool,
-  icon: PropTypes.oneOf(['success', 'warning', 'loading']),
+  icon: PropTypes.string,
   enableClose: PropTypes.bool,
   isAutoHide: PropTypes.bool
 };
