@@ -1,3 +1,5 @@
+var path = require('path');
+
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
@@ -9,7 +11,7 @@ module.exports = {
     css: './css/uskin.less'
   },
   output: {
-    path: './dist/js',
+    path: path.resolve(__dirname, './dist/js'),
     filename: '[hash:6].[name].min.js',
     library: 'uskin',
     libraryTarget: 'umd'
