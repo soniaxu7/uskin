@@ -137,7 +137,7 @@ class Notice extends React.Component {
           {props.title ? <div><strong>{props.title}</strong></div> : ''}
           {props.content}
         </div>
-        <i className="glyphicon icon-close" onClick={this.close}></i>
+        <i className="glyphicon icon-close" onClick={this.close.bind(this)}></i>
       </div>
     );
   }
