@@ -1,12 +1,14 @@
-<img src="https://icecreamliker.github.io/uskin/images/logo.png" width="200" height="200">
+<p align="center">
+  <img src="https://icecreamliker.github.io/uskin/images/logo.png" width="100" height="100">
+</p>
+<p align="center">
+  [![Build status](https://ci.appveyor.com/api/projects/status/dflrwd6sm6e6o8da?svg=true)](https://ci.appveyor.com/project/icecreamliker/uskin)
+  [![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin) 
+  [![Coverage Status](https://coveralls.io/repos/github/icecreamliker/uskin/badge.svg?branch=master)](https://coveralls.io/github/icecreamliker/uskin?branch=master)
+  [![bitHound Score](https://www.bithound.io/github/icecreamliker/uskin/badges/score.svg)](https://www.bithound.io/github/icecreamliker/uskin) 
+</p>
 
 # USkin
-
-[![Build status](https://ci.appveyor.com/api/projects/status/dflrwd6sm6e6o8da?svg=true)](https://ci.appveyor.com/project/icecreamliker/uskin)
-[![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin) 
-[![Coverage Status](https://coveralls.io/repos/github/icecreamliker/uskin/badge.svg?branch=master)](https://coveralls.io/github/icecreamliker/uskin?branch=master)
-[![bitHound Score](https://www.bithound.io/github/icecreamliker/uskin/badges/score.svg)](https://www.bithound.io/github/icecreamliker/uskin) 
-
 
 USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
 
