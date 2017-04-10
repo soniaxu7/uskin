@@ -22,11 +22,11 @@ const iconMap = {
         <div className="modal-reminder-title">
           <i className={'glyphicon icon-status-' + iconMap[m] + ' ' + m} />
           <span>
-          {
-            props.title ?
-              props.title
-            : m.charAt(0).toUpperCase() + m.slice(1)
-          }
+            {
+              props.title ?
+                props.title
+              : m.charAt(0).toUpperCase() + m.slice(1)
+            }
           </span>
         </div>
         <div className="modal-reminder-message">

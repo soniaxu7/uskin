@@ -24,7 +24,6 @@ xdescribe('test calendar', () => {
       const calendar = mount(
         <Calendar page={'2016-10-11'} startWeek={week.index} />
       );
-      console.log(calendar.CalendarDOM)
       const firstWrp = calendar.find('th').at(0);
 
       expect(firstWrp.text()).toBe(week.value);

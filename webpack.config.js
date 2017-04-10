@@ -42,19 +42,19 @@ module.exports = {
       test: /\.less$/,
       use: ExtractTextPlugin.extract({
         use: [{
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              minimize: false
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            minimize: false
+          }
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function() {
+              return [autoprefixer];
             }
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: function() {
-                return [autoprefixer];
-              }
-            }
-          },
+          }
+        },
           'less-loader?{sourceMap: true, modifyVars:{"theme": "\'' + theme + '\'"}}'
         ]
       })

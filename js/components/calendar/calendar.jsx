@@ -77,17 +77,21 @@ class Calendar extends React.Component {
       document.addEventListener('click', this.destroyCalendar, false);
     }
 
-    this.setState({ unfold: true });
+    this.setState({
+      unfold: true
+    });
   }
 
   updateCalendar() {
     if (!this.CalenderDOM) {
       this.createCalendar();
     } else {
-      ReactDOM.render(this.getCalendar(this.props, this.state), this.CalenderDOM); 
+      ReactDOM.render(this.getCalendar(this.props, this.state), this.CalenderDOM);
     }
 
-    this.setState({ unfold: true });
+    this.setState({
+      unfold: true
+    });
   }
 
   destroyCalendar(e) {
@@ -101,7 +105,9 @@ class Calendar extends React.Component {
       delete this.CalenderDOM;
     }
 
-    this.setState({ unfold: false });
+    this.setState({
+      unfold: false
+    });
   }
 
   onPreventFold(e) {
@@ -206,7 +212,7 @@ class Calendar extends React.Component {
     const position = calendarBox.getBoundingClientRect();
 
     const scrollTop = position.top + 32 + window.pageYOffset;
-    const scrollLeft = position.left + window.pageXOffset
+    const scrollLeft = position.left + window.pageXOffset;
     const style = {
       position: 'absolute',
       top: scrollTop,
@@ -228,7 +234,7 @@ class Calendar extends React.Component {
   render() {
     const props = this.props;
     const state = this.state;
-// console.trace('render')
+
     return (
       <div className="calendar-box" ref="calendar-box" onClick={this.onToggle}>
         <Screen {...state}

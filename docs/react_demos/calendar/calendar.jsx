@@ -24,11 +24,10 @@ const disabled = {
   dates: ['2016-10-10', '2016-10-13', '2016-10-18', '2016-10-21']
 };
 
-
 ReactDOM.render(
   <div>
     <Calendar />
-    <Calendar startWeek={1} local={local} page="2016-10" selectedDate="2016-10-14" onChange={onChange} beforeChange={beforeChange} afterChange={afterChange}  />
+    <Calendar startWeek={1} local={local} page="2016-10" selectedDate="2016-10-14" onChange={onChange} beforeChange={beforeChange} afterChange={afterChange} />
     <Calendar page="2016-10" disabled={disabled} placeholder="Please enter the date" />
   </div>,
   document.getElementById('example')
