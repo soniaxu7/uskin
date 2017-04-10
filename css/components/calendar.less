@@ -14,6 +14,8 @@
 
 .calendar-box {
   position: relative;
+  display: inline-block;
+  width: 161px;
 
   .calendar-screen {
     position: relative;
@@ -40,172 +42,173 @@
       }
     }
   }
+}
 
-  .calendar {
-    width: 224px;
-    padding: 8px;
-    border: 1px solid @calendar_border_color;
-    box-shadow: @calendar_boxshadow;
-    border-radius: 2px;
-    user-select: none;
-    color: @calendar_color;
-    background-color: @calendar_bg_color;
+.calendar {
+  z-index: 999;
+  width: 224px;
+  padding: 8px;
+  border: 1px solid @calendar_border_color;
+  box-shadow: @calendar_boxshadow;
+  border-radius: 2px;
+  user-select: none;
+  color: @calendar_color;
+  background-color: @calendar_bg_color;
 
-    &.hide {
-      display: none;
-    }
+  &.hide {
+    display: none;
+  }
 
-    .calendar-header {
-      display: flex;
-      height: 32px;
+  .calendar-header {
+    display: flex;
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px solid @calendar_border_color;
+    position: relative;
+
+    > i.direction {
+      flex: 1;
       line-height: 32px;
-      border-bottom: 1px solid @calendar_border_color;
-      position: relative;
-
-      > i.direction {
-        flex: 1;
-        line-height: 32px;
-        font-size: 14px;
-        text-align: center;
-        cursor: pointer;
-        &:hover {
-          color: @color_info;
-          font-weight: 600;
-        }
-      }
-
-      .title {
-        flex: 5;
-        font-size: 13px;
-        text-align: center;
-
-        .title-left {
-          text-align: right;
-        }
-        .title-right {
-          text-align: left;
-        }
-
-        .title-left,
-        .title-right {
-          width: @calendar_title_width;
-          display: inline-block;
-          box-sizing: border-box;
-          position: relative;
-          border: 1px solid transparent;
-          padding: 0 @calendar_title_padding;
-
-          &:hover {
-            cursor: pointer;
-          }
-          &.selected {
-            border: 1px solid @calendar_border_color;
-            .title-content > i.toggle {
-              transform: rotate(-180deg);
-            }
-          }
-          &:hover, &.selected {
-            .title-content > i.toggle {
-              opacity: 1;
-              margin-left: 15px;
-            }
-          }
-
-          .title-content > i.toggle {
-            float: right;
-            height: 32px;
-            width: 10px;
-            line-height: 32px;
-            font-size: 10px;
-            opacity: 0;
-            transition-duration: .2s;
-            transition-property: transform, opacity, margin-left;
-            transition-timing-function: ease-in-out;
-          }
-
-          > ul.list {
-            position: absolute;
-            left: -1px;
-            top: 30px;
-            z-index: 999;
-            width: 100%;
-            height: 220px;
-            width: @calendar_title_width - 2;
-            text-align: left;
-            overflow-y: auto;
-            border: 1px solid @calendar_border_color;
-            background: #fff;
-            box-shadow: @calendar_boxshadow;
-            &.hide {
-              display: none;
-            }
-            > li {
-              padding: 0 @calendar_title_padding;
-              height: 24px;
-              line-height: 24px;
-              overflow: hidden;
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              &:hover {
-                background-color: @calendar_hover_color;
-              }
-              &.selected {
-                color: @calendar_selected_color;
-                background-color: @calendar_selected_bg_color;
-              }
-            }
-          }
-        }
-      }
-      > div.mask {
-        position: absolute;
-        top: 32px;
-        left: 0;
-        cursor: default;
-        background-color: #fff;
-        opacity: 0.85;
-        width: 224px;
-        height: 224px;
+      font-size: 14px;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        color: @color_info;
+        font-weight: 600;
       }
     }
 
-    .calendar-datepicker {
-      > table {
-        width: 100%;
-        > tbody,
-        > thead {
-          > tr {
-            display: flex;
-            height: 32px;
-            > th,
-            > td {
-              flex: 1;
-              line-height: 32px;
-              text-align: center;
-            }
+    .title {
+      flex: 5;
+      font-size: 13px;
+      text-align: center;
+
+      .title-left {
+        text-align: right;
+      }
+      .title-right {
+        text-align: left;
+      }
+
+      .title-left,
+      .title-right {
+        width: @calendar_title_width;
+        display: inline-block;
+        box-sizing: border-box;
+        position: relative;
+        border: 1px solid transparent;
+        padding: 0 @calendar_title_padding;
+
+        &:hover {
+          cursor: pointer;
+        }
+        &.selected {
+          border: 1px solid @calendar_border_color;
+          .title-content > i.toggle {
+            transform: rotate(-180deg);
+          }
+        }
+        &:hover, &.selected {
+          .title-content > i.toggle {
+            opacity: 1;
+            margin-left: 15px;
           }
         }
 
-        > tbody > tr {
-          > td {
-            cursor: default;
-            &.default {
-              cursor: pointer;
-              &:hover {
-                background-color: @calendar_hover_color;
-              }
+        .title-content > i.toggle {
+          float: right;
+          height: 32px;
+          width: 10px;
+          line-height: 32px;
+          font-size: 10px;
+          opacity: 0;
+          transition-duration: .2s;
+          transition-property: transform, opacity, margin-left;
+          transition-timing-function: ease-in-out;
+        }
+
+        > ul.list {
+          position: absolute;
+          left: -1px;
+          top: 30px;
+          z-index: 999;
+          width: 100%;
+          height: 220px;
+          width: @calendar_title_width - 2;
+          text-align: left;
+          overflow-y: auto;
+          border: 1px solid @calendar_border_color;
+          background: #fff;
+          box-shadow: @calendar_boxshadow;
+          &.hide {
+            display: none;
+          }
+          > li {
+            padding: 0 @calendar_title_padding;
+            height: 24px;
+            line-height: 24px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            &:hover {
+              background-color: @calendar_hover_color;
             }
             &.selected {
               color: @calendar_selected_color;
               background-color: @calendar_selected_bg_color;
             }
-            &.not-selected {
-              color: @calendar_disabled_selected_color;
-              background-color: @calendar_disabled_selected_bg_color;
+          }
+        }
+      }
+    }
+    > div.mask {
+      position: absolute;
+      top: 32px;
+      left: 0;
+      cursor: default;
+      background-color: #fff;
+      opacity: 0.85;
+      width: 224px;
+      height: 224px;
+    }
+  }
+
+  .calendar-datepicker {
+    > table {
+      width: 100%;
+      > tbody,
+      > thead {
+        > tr {
+          display: flex;
+          height: 32px;
+          > th,
+          > td {
+            flex: 1;
+            line-height: 32px;
+            text-align: center;
+          }
+        }
+      }
+
+      > tbody > tr {
+        > td {
+          cursor: default;
+          &.default {
+            cursor: pointer;
+            &:hover {
+              background-color: @calendar_hover_color;
             }
-            &.disabled {
-              color: @calendar_disabled_color;
-            }
+          }
+          &.selected {
+            color: @calendar_selected_color;
+            background-color: @calendar_selected_bg_color;
+          }
+          &.not-selected {
+            color: @calendar_disabled_selected_color;
+            background-color: @calendar_disabled_selected_bg_color;
+          }
+          &.disabled {
+            color: @calendar_disabled_color;
           }
         }
       }

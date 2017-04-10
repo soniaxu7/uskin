@@ -7,10 +7,10 @@ class Screen extends React.Component {
     super(props);
 
     this.state = {
-      value: this.getDefaultValue()
+      value: this.getDefaultValue(props)
     };
 
-    ['toggle', 'onChange', 'onKeyPress'].forEach((func) => {
+    ['onChange', 'onKeyPress'].forEach((func) => {
       this[func] = this[func].bind(this);
     });
   }
@@ -22,15 +22,10 @@ class Screen extends React.Component {
   }
 
   getDefaultValue(props) {
-    let selected = props ? props.selected : this.props.selected;
+    let selected = props.selected;
     let format = (num) => (num < 10 ? '0' + num : '' + num);
 
     return selected.date ? selected.year + '-' + format(selected.month + 1) + '-' + format(selected.date) : '';
-  }
-
-  toggle(e) {
-    let func = this.props.onToggle;
-    func && func(e);
   }
 
   onChange(e) {
@@ -47,9 +42,14 @@ class Screen extends React.Component {
       if (date) {
         this.props.onConfirm(date);
       } else {
-        this.setState({
-          value: this.getDefaultValue()
-        });
+        const selected = this.props.selected;
+        if (selected.date) {
+          this.props.onConfirm(selected);
+        } else {
+          this.setState({
+            value: ''
+          });
+        }
       }
     }
   }
@@ -59,7 +59,7 @@ class Screen extends React.Component {
     const state = this.state;
 
     return (
-      <div className={'calendar-screen' + (props.toggle ? ' unfold' : '')} onClick={this.toggle}>
+      <div className={'calendar-screen' + (props.unfold ? ' unfold' : '')}>
         <i className="glyphicon icon-calendar" />
         <input key="screen"
           onChange={this.onChange}

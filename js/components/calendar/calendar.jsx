@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import ReactDOM from 'react-dom';
 import Screen from './screen';
 import Header from './header';
 import DatePicker from './datepicker';
@@ -13,7 +14,7 @@ class Calendar extends React.Component {
 
     this.state = this.initialState(props);
 
-    ['onToggle', 'onChange', 'onSelected', 'onConfirmScreen'].forEach((func) => {
+    ['onToggle', 'onChange', 'onSelected', 'onConfirmScreen', 'destroyCalendar'].forEach((func) => {
       this[func] = this[func].bind(this);
     });
   }
@@ -41,53 +42,66 @@ class Calendar extends React.Component {
     let state = {
       page: page,
       selected: selected,
-      toggle: props.hasScreen ? props.unfold : true
+      unfold: false
     };
 
     return state;
   }
 
-  componentWillMount() {
-    if (this.props.hasScreen) {
-      this.foldListener();
-    }
-  }
-
-  foldListener() {
-    const that = this;
-    function hideCalendar(e) {
-      that.setState({
-        toggle: false
-      });
-
-      that.refs.header.closeLists(e);
-      document.removeEventListener('click', hideCalendar, false);
-    }
-
-    if (this.state.toggle) {
-      document.addEventListener('click', hideCalendar, false);
-    }
-  }
-
-  onToggle(event) {
-    let nextToggle = !this.state.toggle;
-    let selected = this.state.selected;
-
-    if (nextToggle) {
-      if (selected.date) {
-        this.onChange(selected);
-      } else {
-        this.onChange(helper.formatDate(new Date()));
-      }
-    }
-
-    this.setState({
-      toggle: nextToggle
-    }, () => {
-      if (this.props.hasScreen) {
-        this.foldListener();
-      }
+  updateState(state) {
+    this.setState(state, () => {
+      this.updateCalendar();
     });
+  }
+
+  onToggle(e) {
+    const unfold = this.state.unfold;
+
+    if (unfold) {
+      this.destroyCalendar(e);
+    } else {
+      this.updateCalendar();
+    }
+  }
+
+  createCalendar() {
+    if (!this.CalenderDOM) {
+      this.CalenderDOM = document.createElement('div');
+      const root = this.CalenderDOM;
+
+      root.className = 'calendar-container';
+      document.body.appendChild(root);
+
+      ReactDOM.render(this.getCalendar(this.props, this.state), root);
+
+      document.addEventListener('click', this.destroyCalendar, false);
+    }
+
+    this.setState({ unfold: true });
+  }
+
+  updateCalendar() {
+    if (!this.CalenderDOM) {
+      this.createCalendar();
+    } else {
+      ReactDOM.render(this.getCalendar(this.props, this.state), this.CalenderDOM); 
+    }
+
+    this.setState({ unfold: true });
+  }
+
+  destroyCalendar(e) {
+    if (this.CalenderDOM) {
+      const root = this.CalenderDOM;
+
+      ReactDOM.unmountComponentAtNode(root);
+      root.parentNode.removeChild(root);
+      document.removeEventListener('click', this.destroyCalendar, false);
+
+      delete this.CalenderDOM;
+    }
+
+    this.setState({ unfold: false });
   }
 
   onPreventFold(e) {
@@ -99,7 +113,7 @@ class Calendar extends React.Component {
   }
 
   setPage(date) {
-    this.setState({
+    this.updateState({
       page: date
     });
   }
@@ -151,13 +165,13 @@ class Calendar extends React.Component {
     let isValid = this.isSelectable(this.props.disabled, date);
 
     if (isValid) {
-      this.setState({
+      this.updateState({
         selected: date
       });
 
       this.alertChange(date);
     } else {
-      this.setState({
+      this.updateState({
         selected: this.state.selected
       });
     }
@@ -187,29 +201,42 @@ class Calendar extends React.Component {
     this.props.afterChange(date);
   }
 
+  getCalendar(props, state) {
+    const calendarBox = this.refs['calendar-box'];
+    const position = calendarBox.getBoundingClientRect();
+
+    const scrollTop = position.top + 32 + window.pageYOffset;
+    const scrollLeft = position.left + window.pageXOffset
+    const style = {
+      position: 'absolute',
+      top: scrollTop,
+      left: scrollLeft
+    };
+
+    return (
+      <div className="calendar" style={style}>
+        <Header {...props} {...state}
+          onPreventFold={this.onPreventFold}
+          onChange={this.onChange} />
+        <DatePicker {...props} {...state}
+          onSelected={this.onSelected}
+          isSelectable={this.isSelectable} />
+      </div>
+    );
+  }
+
   render() {
     const props = this.props;
     const state = this.state;
-
+// console.trace('render')
     return (
-      <div className="calendar-box">
-        {
-          props.hasScreen ?
-            <Screen {...props} {...state}
-              onToggle={this.onToggle}
-              onSelected={this.onSelected}
-              onChange={this.onChange}
-              onConfirm={this.onConfirmScreen} />
-          : null
-        }
-        <div className={'calendar' + (state.toggle ? '' : ' hide')}>
-          <Header ref="header" {...props} {...state}
-            onPreventFold={this.onPreventFold}
-            onChange={this.onChange} />
-          <DatePicker {...props} {...state}
-            onSelected={this.onSelected}
-            isSelectable={this.isSelectable} />
-        </div>
+      <div className="calendar-box" ref="calendar-box" onClick={this.onToggle}>
+        <Screen {...state}
+          unfold={state.unfold}
+          placeholder={props.placeholder}
+          onSelected={this.onSelected}
+          onChange={this.onChange}
+          onConfirm={this.onConfirmScreen} />
       </div>
     );
   }
@@ -233,17 +260,14 @@ Calendar.propTypes = {
   local: PropTypes.shape({
     weeks: PropTypes.arrayOf(PropTypes.string),
     months: PropTypes.arrayOf(PropTypes.string)
-  }),
-  hasScreen: PropTypes.bool,
-  unfold: PropTypes.bool
+  })
 };
 
 Calendar.defaultProps = {
   onChange: noop,
   beforeChange: noop,
   afterChange: noop,
-  startWeek: 0,
-  unfold: false
+  startWeek: 0
 };
 
 export default Calendar;
