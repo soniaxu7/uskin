@@ -2,14 +2,13 @@
 
 # USkin
 
-[![version](https://img.shields.io/npm/v/uskin.svg)](https://www.npmjs.com/package/uskin)
+[![Version](https://img.shields.io/npm/v/uskin.svg)](https://www.npmjs.com/package/uskin)
+[![Downloads](https://img.shields.io/npm/dt/uskin.svg)](https://www.npmjs.com/package/uskin)
 [![Build status](https://ci.appveyor.com/api/projects/status/dflrwd6sm6e6o8da?svg=true)](https://ci.appveyor.com/project/icecreamliker/uskin)
-[![Build Status](https://travis-ci.org/icecreamliker/uskin.svg?branch=master)](https://travis-ci.org/icecreamliker/uskin)
-[![Coverage Status](https://coveralls.io/repos/github/icecreamliker/uskin/badge.svg?branch=master)](https://coveralls.io/github/icecreamliker/uskin?branch=master)
-[![bitHound Score](https://www.bithound.io/github/icecreamliker/uskin/badges/score.svg)](https://www.bithound.io/github/icecreamliker/uskin)
-[![downloads](https://img.shields.io/npm/dt/uskin.svg)](https://www.npmjs.com/package/uskin)
-[![license](https://img.shields.io/github/license/icecreamliker/uskin.svg)](https://github.com/icecreamliker/uskin)
-
+[![Build status](https://img.shields.io/travis/icecreamliker/uskin.svg)](https://travis-ci.org/icecreamliker/uskin)
+[![Dependencies](https://img.shields.io/gemnasium/icecreamliker/uskin.svg)](https://gemnasium.com/icecreamliker/uskin)
+[![Coverage status](https://img.shields.io/coveralls/icecreamliker/uskin.svg)](https://coveralls.io/github/icecreamliker/uskin?branch=master)
+[![License](https://img.shields.io/github/license/icecreamliker/uskin.svg)](https://github.com/icecreamliker/uskin)
 
 USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
 
