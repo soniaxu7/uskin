@@ -10,57 +10,27 @@
 [![Coverage status](https://img.shields.io/coveralls/icecreamliker/uskin.svg)](https://coveralls.io/github/icecreamliker/uskin?branch=master)
 [![License](https://img.shields.io/github/license/icecreamliker/uskin.svg)](https://github.com/icecreamliker/uskin)
 
+## Intro
+
 USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
+
+**Versatile** providing a wide range of React components.
+
+**Flexible** assembling components freely to build web sites and web apps.
+
+**Tiny** minimum and default API for easy handling.
 
 ## Quick start
 
-- [Download the latest release](http://git.ustack.com/ustack/uskin/repository/archive.zip), or clone the repo `git clone http://git.ustack.com/ustack/uskin.git`.
+- [Download the latest release](http://github.com/uskin/uskin/archive/master.zip), or clone the repo `git clone https://github.com/uskin/uskin.git`.
 
 - Install all the denpendecies by `npm install`, and your first compile will also be completed by this command.
 
-- You can compile your code via [Grunt](http://gruntjs.com/) using `grunt build` or `make build` at any time you need.
+- You can compile your code via `npm run build` or `make build` at any time you need.
 
-- You can find demos in folder `docs`, showing the basic usage of the components. Congratulations, an overview-introduction page is coming soon.
+- You can find demos in folder `docs`, showing the basic usage of the components.
 
-## Available commands
-
-Before using the commands, please make sure all the dependencies are well installed.
-
-Compile all the files:
-```
-grunt build
-```
-In most of the situations, you can use make command instead. In this case, `make build`.
-
-Clean all generated files:
-```
-grunt clean
-```
-Equivalent command, `make clean`.
-
-When test is needed:
-```
-npm run test
-```
-Use ESLint for code parsing:
-```
-npm run eslint
-```
-
-Watch changes of your code real time while developing, you can run the dev mode:
-```
-npm run dev
-```
-
-Customize the theme of uskin:
-```
-npm run dev --theme=default
-```
-or
-```
-npm run build --theme=default
-```
-Currently, we only provide two themes: `default` and `premium`.
+Congratulations, an overview-introduction page is coming soon.
 
 ## Note
 
@@ -70,15 +40,10 @@ Any questions to the releases are welcome, feel free to [create issues](https://
 
 ## Authors
 
-**Lee Yao**
+**Lee Yao** yaoli111144@gmail.com
 
-- Weibo: <http://weibo.com/icecreamliker>
-- Email: yaoli111144@gmail.com
-
-**Sonia Xu**
-
-- Email: soniaxu7@foxmail.com
+**Sonia Xu** soniaxu7@foxmail.com
 
 ## License
 
-USkin is available under the terms of [the MIT license](LICENSE).
+[MIT](LICENSE)
