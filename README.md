@@ -14,11 +14,13 @@
 
 USkin is a front-end framework which provides stunning web components based on CSS3 and ReactJS.
 
-**Versatile** providing a wide range of React components.
+The features include:
 
-**Flexible** assembling components freely to build web sites and web apps.
+- **Versatile** providing a wide range of React components.
 
-**Tiny** minimum and default API for easy handling.
+- **Flexible** assembling components freely to build web sites and web apps.
+
+- **Tiny** minimum and default API for easy handling.
 
 ## Quick start
 
@@ -28,9 +30,9 @@ USkin is a front-end framework which provides stunning web components based on C
 
 - You can compile your code via `npm run build` or `make build` at any time you need.
 
-- You can find demos in folder `docs`, showing the basic usage of the components.
+- You can find demos in folder `docs`, showing the basic usage of the components. Congratulations, an overview-introduction page is coming soon.
 
-Congratulations, an overview-introduction page is coming soon.
+To find out more commands for developers and contributors, please read [COMMAND.md](https://github.com/uskin/uskin/blob/master/COMMAND.md).
 
 ## Note
 
